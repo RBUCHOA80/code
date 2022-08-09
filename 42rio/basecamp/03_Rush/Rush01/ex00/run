@@ -1,0 +1,2 @@
+#!/bin/sh
+clear && norminette -R CheckForbiddenSourceHeader *.c && gcc -Wall -Wextra -Werror *.c && cc -Wall -Wextra -Werror *.c && ./a.out "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2" && rm a.out

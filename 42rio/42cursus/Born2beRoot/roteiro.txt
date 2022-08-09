@@ -1,0 +1,191 @@
+# Born 2 be root evaluation
+Read this before submit
+1. Make sure to run everything in [Born 2 be root evaluation](https://www.notion.so/Born-2-be-root-evaluation-93ad86a0a8104d87b814eb474b7701eb) to make sure you gonna pass
+2. Make sure that you submit `signature.txt` in git repository
+3. Make sure that signature match with the one in file by running `shasum` in `.vdi` file
+4. Do not start virtual machine after submit
+
+# Sudo
+## **Installing *sudo
+
+1. Switch to *root* and its environment via `su -`
+2. Install *sudo* via `apt install sudo`
+3. Verify whether *sudo* was successfully installed via `dpkg -l | grep sudo`
+
+## **Adding user to *sudo* group**
+
+1. Add user to *sudo* group via `adduser <username> sudo`
+2. Verify whether user was successfully added to *sudo* group via `getent group sudo`
+3. Reboot machine with `reboot` to changes make effect
+4. Test if it works with `sudo -v` and type your password
+
+## **Running *root p*rivileged commands**
+
+1. Run `sudo apt update` and you gonna see that now you can run root privileged commands
+
+## **Configuring *sudo
+
+1. Configure *sudo* via `sudo nano /etc/sudoers.d/<filename>`
+    
+    > The `filename` should not end with `~` or contains `.`
+    > 
+2. Final file should look like this
+
+```makefile
+# Set limit attempts to 3
+Defaults        passwd_tries=3
+# Set custom message when user type wrong password
+Defaults        badpass_message="Ta errando muito a senha em"
+# File where sudo logs would be stored (i suggest `logfile`)
+Defaults        logfile="/var/log/sudo/<filename>"
+# Archive action inputs and outputs from sudo
+Defaults        log_input,log_output
+# Specify the directory where should store
+Defaults        iolog_dir="/var/log/sudo"
+# Security paths that can be access by sudo
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+```
+
+# **SSH**
+
+
+## **Installing & Configuring SSH**
+
+1. Install open ssh server `sudo apt install openssh-server`.
+2. Verify whether *open ssh server* was successfully installed via `dpkg -l | grep ssh`.
+3. Configure SSH via `sudo nano /etc/ssh/sshd_config`
+4. Change in line 13: `#Port 22` → `Port 4242`
+5. Change in line 32: `#PermitRootLogin prohibit-password` → `PermitRootLogin no`
+6. Restart ssh with `sudo service ssh restart`
+7. Check if it works with `sudo service ssh status`
+
+## **Installing & Configuring UFW**
+
+1. Install *ufw*  `sudo apt install ufw`
+2. Verify whether *ufw* was successfully installed via `dpkg -l | grep ufw`
+3. Enable Firewall via `sudo ufw enable`
+4. Allow incoming connections using Port 4242 via `sudo ufw allow 4242`
+5. Check UFW status via `sudo ufw status`
+
+## **Connecting to Server via SSH**
+
+1. SSH into your virtual machine using Port 4242 via `ssh <username>@<ip-address> -p 4242`
+2. Terminate SSH session at any time via `logout`
+
+# **User Management**
+
+
+## **Setting Up a Strong Password Policy**
+
+1. **Password age**
+    1. Configure password age policy via `sudo nano /etc/login.defs`
+    2. Change line 160: `PASS_MAX_DAYS   99999` → `PASS_MAX_DAYS   30`
+    3. Changes line 161: `PASS_MIN_DAYS   0` → `PASS_MIN_DAYS   2`
+    4. Change line 162: `PASS_WARN_AGE   7`
+2. **Password Strength**
+    1. Install `sudo apt install libpam-pwquality`
+    2. Check if was succesfully installed `dpkg -l | grep libpam-pwquality`
+    3. Configure password strength policy via `sudo nano /etc/pam.d/common-password`
+    4. Line 25 should look like this
+    
+    ```makefile
+    
+    password        requisite                       pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
+    ```
+    
+
+<aside>
+ What the pdf asks
+
+- Your password must be at least 10 characters long. It must contain an uppercase
+letter and a number. Also, it must not contain more than 3 consecutive identical
+characters.
+    - at least 10 characters long ⇒ `minlen=10`
+    - uppercase letter and a number ⇒ `ucredit=-1 dcredit=-1`
+    - not contain more than 3 consecutive identical characters ⇒ `maxrepeat=3`
+- The password must not include the name of the user ⇒ `reject_username`
+- The password must have at least 7 characters that are not part of the former password ⇒ `difok=7`
+- Of course, your root password has to comply with this policy ⇒ `enforce_for_root`
+</aside>
+
+## **Creating a New User**
+
+1. Create new user via `sudo adduser <username>`
+2. Verify whether user was successfully created via `getent passwd <username>`
+3. Verify newly-created user's password expiry information via `sudo chage -l <username>`
+
+```makefile
+# Result should look like this
+Last password change					: <last-password-change-date>
+Password expires					: <last-password-change-date + PASS_MAX_DAYS>
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: <PASS_MIN_DAYS>
+Maximum number of days between password change		: <PASS_MAX_DAYS>
+Number of days of warning before password expires	: <PASS_WARN_AGE>
+```
+
+## **Creating a New Group**
+
+1. Create new *user42* group via `sudo addgroup user42`
+2. Add user to *user42* group via `sudo adduser <username> user42`
+3. Verify whether user was successfully added to *user42* group via `getent group user42`
+
+# Cron Jobs
+
+
+## **Setting Up a *cron* Job**
+
+1. Create `monitoring.sh` in root home
+2. Make sure to make script executable by running `chmod +x monitoring.sh`
+3. Configure *cron* as *root* via `sudo crontab -u root -e`
+4. To schedule a shell script to run every 10 minutes, add after the last line:
+
+```makefile
+*/10 * * * * /path/to/script
+```
+
+1. Check *root*'s scheduled *cron* jobs via `sudo crontab -u root -l`
+
+### monitoring.sh
+
+```bash
+#!/bin/bash
+
+FREE_RAM=$(free -m | awk '$1 == "Mem:" {print $2}')
+USED_RAM=$(free -m | awk '$1 == "Mem:" {print $3}')
+USED_RAM_PERCENT=$(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
+
+FREE_DISK=$(df -Bg | grep '^/dev/' | grep -v '/boot$' | awk '{ft += $2} END {print ft}')
+USED_DISK=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} END {print ut}')
+USED_DISK_PERCENT=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} {ft += $2} END {printf("%d"), ut/ft*100}')
+
+NUMS_OF_LVM=$(lsblk | grep "lvm" | wc -l)
+
+ARCHITECTURE=$(uname -a)
+CPU_PHYSICAL=$(nproc)
+V_CPU=$(cat /proc/cpuinfo | grep processor | wc -l)
+MEM_USAGE="${USED_RAM}/${FREE_RAM}MB (${USED_RAM_PERCENT}%)"
+DISK_USAGE="${USED_DISK}/${FREE_DISK}Gb (${USED_DISK_PERCENT}%)"
+CPU_LOAD=$(top -bn1 | grep '^%Cpu' | cut -c 9- | xargs | awk '{printf("%.1f%%"), $1 + $3}')
+LAST_BOOT=$(who -b | awk '$1 == "system" {print $3 " " $4}')
+LVM_USE=$(if [ $NUMS_OF_LVM -eq 0 ]; then echo no; else echo yes; fi)
+# Run [sudo apt install net-tools] to this works
+CONNECTIONS_TCP=$(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $3}')
+USER_LOG=$(users | wc -w)
+NETWORK="IP $(hostname -I) ($(ip link show | awk '$1 == "link/ether" {print $2}'))"
+SUDO=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
+
+echo "	#Architecture: ${ARCHITECTURE}
+	#CPU physical: ${CPU_PHYSICAL}
+	#vCPU: ${V_CPU}
+	#Memory Usage: ${MEM_USAGE}
+	#Disk Usage: ${DISK_USAGE}
+	#CPU load: ${CPU_LOAD}
+	#Last boot: ${LAST_BOOT}
+	#LVM use: ${LVM_USE}
+	#Connections TCP: ${CONNECTIONS_TCP} ESTABLISHED
+	#User log: ${USER_LOG}
+	#Network: ${NETWORK}
+	#Sudo: ${SUDO} cmd"
+```

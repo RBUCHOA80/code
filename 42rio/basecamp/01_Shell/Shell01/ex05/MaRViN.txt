@@ -1,0 +1,4 @@
+touch \"\\?\$\*\'MaRViN\'\*\$\?\\\"
+touch -t 2110021221 *
+chmod 614 *
+ls -lRa *MaRV* | cat -e

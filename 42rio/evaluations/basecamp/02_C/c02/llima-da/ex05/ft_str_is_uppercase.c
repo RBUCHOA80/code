@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: llima-da <coder@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/11 05:15:50 by llima-da          #+#    #+#             */
+/*   Updated: 2021/12/12 00:57:45 by llima-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_str_is_uppercase(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+		}
+		else
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int		main(void)
+{
+	char str[] = "IGYIU";
+	int c;	
+
+    c = ft_str_is_uppercase(str);
+
+	printf("%d", c);
+	return (0);
+}

@@ -1,0 +1,11 @@
+Editor hexadecimal
+Origem: Wikipedia, a enciclopedia livre.
+
+O editor hexadecimal Frhed, editando a si mesmo
+Editor hexadecimal, tambem conhecido como editor hex, e um tipo de programa de computador que permite um usuario manipular arquivos editando bytes em hexadecimal, decimal ou octal. [1]
+
+Um editor hexadecimal geralmente e utilizado para modificar arquivos binario, ja que se tem a capacidade de alterar cada byte do arquivo. Diferentemente de um editor de texto que manipula cada byte do arquivo como um caractere em texto.
+
+Tecnicas como ROM hacking sao feitas usando de editores hexadecimais para traduzir jogos ou muitas vezes implementar outras modificacoes no mesmo.
+
+Na engenharia reversa pode ser utilizado para fazer modificacoes simples ou obter informacoes basicas de um software. Porem e normalmente preferido utilizar ferramentas mais potentes como o HT editor.

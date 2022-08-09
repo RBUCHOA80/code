@@ -1,0 +1,21 @@
+O comando scp nos permite transmitir arquivos e diretórios através do SSH, sendo assim podemos utilizá-lo caso seja necessário transferir arquivos do workspace para nossa máquina local ou vice versa.
+
+Enviando arquivos:
+scp -P {porta} {arquivo} coder@codeserver.42.rio:{local no workspace}
+Exemplo:
+scp -P 12345 arquivo coder@codeserver.42.rio:pasta/arquivo
+
+Enviando diretório
+scp -P {porta} -r {diretório} coder@codeserver.42.rio:{local no workspace}
+Exemplo:
+scp -P 12345 -r pasta coder@coderserver.42.rio:nova_pasta
+
+Baixando arquivos:
+scp -P {porta} coder@codeservar.42.rio:{arquivo do workspace} {local para salvar}
+Exemplo:
+scp -P 12345 coder@codeserver.42.rio:pasta/arquivo.txt arquivo_novo.txt
+
+Baixando diretório:
+scp -P {porta} -r coder@codeservar.42.rio:{pasta do workspace} {local para salvar}
+Exemplo:
+scp -P 12345 -r coder@codeserver.42.rio:pasta/ nova_pasta

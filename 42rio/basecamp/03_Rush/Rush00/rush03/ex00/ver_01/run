@@ -1,0 +1,2 @@
+#!/bin/sh
+clear ; norminette -R CheckForbiddenSourceHeader rush03.c ; gcc -Wall -Wextra -Werror ft_putchar.c main.c rush03.c ; ./a.out

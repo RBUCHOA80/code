@@ -1,0 +1,19 @@
+Pantone
+Origem: Wikipedia, a enciclopedia livre.
+
+Esta pagina cita fontes, mas estas nao cobrem todo o conteudo. Ajude a inserir referencias. Conteudo nao verificavel podera ser removido.—Encontre fontes: Google (noticias, livros e academico) (Novembro de 2021)
+
+Cores produzidas pela Pantone
+Pantone LLC e uma empresa sediada em Carlstadt, estado de Nova Jersei, Estados Unidos. e mundialmente conhecida por seu sistema de cores, largamente utilizado na industria grafica.[1]
+
+A Pantone foi fundada em 1962 por Lawrence Herbert, que foi diretor da companhia. Inicialmente, Pantone era uma pequena empresa que fabricava cartoes de cores para companhias de cosmeticos. Rapidamente, Herbert adquiriu a Pantone e desenvolveu o primeiro sistema de cores em 1963.[1]
+
+Entre os primeiros produtos estavam os Guias Pantone, que consistiam num grande numero de pequenos e finos cartoes (aproximadamente com 5 cm), impressos num dos lados com uma serie de cores relacionadas e entao unidos num pequeno livro. Por exemplo, uma determinada pagina poderia conter certo numero de amarelos variando em luminancia desde claro a escuro. Edicoes anuais dos Guias Pantone sao editadas visto que as tintas utilizadas em cada edicao com o tempo degradam-se.[2]
+
+Em teoria, a ideia do sistema Pantone e escolher as cores desejadas dos guias e entao utilizar os numeros para especificar de que forma e que se vai imprimir o output. Por exemplo, podemos pedir a empresa que imprima o trabalho utilizando a cor Pantone 655 e a empresa tera instrucoes sobre como produzir a cor 655 no seu equipamento. Desta forma, o produto final sera exatamente o pretendido. Recomenda-se que os Guias Pantone sejam substituidos anualmente. Os Guias Pantone de diferentes edicoes muitas vezes tem cores diferentes de outras edicoes. Uma solucao e a digitalizacao, com a utilizacao da biblioteca de cores Pantone em espectrofotometros. Desta forma, os utilizadores poderiam medir o valor da cor e compara-lo com o valor Pantone diretamente, sem ter que o comparar com a versao impressa do guia.
+
+Na realidade, existem inumeras diferencas sutis na forma como os diferentes equipamentos produzem um determinado espectro de cores. Materiais impressos utilizam o sistema de quatro cores CMYK, enquanto que ecras de computador usam o sistema RGB, e o acerto entre os dois pode ser extraordinariamente dificil. Enquanto que o sistema Pantone funciona bastante bem entre equipamentos de diferentes tipos, a transicao de ecra para impressao - a forma como a maioria da publicacoes sao hoje produzidas - ainda e vista por muitos como um ato de tentativa e erro.
+
+As cores Pantone, descritas pelo seu numero, encontraram tambem lugar na legislacao, particularmente na descricao das cores das bandeiras. O Parlamento da Escocia debateu uma medida para definir que a Bandeira escocesa seja definida como Pantone 300. Da mesma forma, outros paises como Canada e Coreia do Sul indicam cores Pantone especificas para utilizacao, quando da producao das bandeiras. Desconhece-se se os legisladores sabem que as cores Pantone podem variar ou que a ciencia da cor tem hoje formas muito mais exatas de definir uma determinada cor.
+
+A lista de numeros de cor e valores da Pantone e propriedade intelectual da Pantone e o uso gratuito da lista nao e autorizado. e por este motivo que as cores Pantone nao sao suportadas em software livre como GIMP e Inkscape, e muitas vezes nao estao presentes em solucoes de software de baixo custo.
