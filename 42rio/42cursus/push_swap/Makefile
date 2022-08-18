@@ -45,9 +45,9 @@ re:				fclean all
 
 run:
 				@mkdir -p ft_printf get_next_line libft
-#				@make -C ../libft/
-#				@make -C ../ft_printf/
-#				@make -C ../get_next_line/
+				@make O=./libft/ -C ../libft/
+				@make O=./ft_printf/ -C ../ft_printf/
+				@make O=./get_next_line/ -C ../get_next_line/
 				@cc -Wall -Wextra -Werror ./*.c
 				@./a.out
 				@rm -drf ft_printf get_next_line libft
