@@ -6,24 +6,25 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 18:30:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 19:37:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	encrypt(int pid, char c)
+void	encrypt(int pid, char chr)
 {
-	int i;
+	int bit;
 
-	i = 8;
-	while (i--)
+	bit = 0;
+	while (bit < 8)
 	{
-		if (c & (1 << i))
-			kill(pid, SIGUSR1);
+		if (chr & (1 << bit))
+			kill(pid, SIGUSR1); //bit 1
 		else
-			kill(pid, SIGUSR2);
+			kill(pid, SIGUSR2); //bit 0
 		usleep(DELAY);
+		bit++;
 	}
 }
 

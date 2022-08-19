@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 18:32:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 19:38:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void	decrypt(int sig)
 {
-	if (sig == SIGUSR2)
-		write(1, "0", 1);
-	else
-		write(1, "1", 1);
+	static char	chr;
+	static int	bit;
+
+	if (sig == SIGUSR1) //bit 1
+		chr = (chr | (1 << bit));
+	bit++;
+	if (bit == 8)
+	{
+		ft_putchar_fd(chr, FD);
+		chr = 0;
+		bit = 0;
+	}
 }
 
 int	main(void)
@@ -26,9 +34,9 @@ int	main(void)
 	char				*str;
 
 	s_sigaction.sa_handler = decrypt;
-	ft_putstr_fd("PID: ", FD);
+	ft_putstr_fd("\e[0;35mPID: ", FD);
 	ft_putnbr_fd(getpid(), FD);
-	ft_putstr_fd("\n", FD);
+	ft_putstr_fd("\e[m\n", FD);
 	sigaction(SIGUSR2, &s_sigaction, NULL);
 	sigaction(SIGUSR1, &s_sigaction, NULL);
 	while (1)
