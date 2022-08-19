@@ -6,15 +6,31 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 00:25:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 15:34:49 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+void	encrypt(int pid, char c)
+{
+	int i;
+
+	i = 8;
+	while (i--)
+	{
+		if (c & (1 << i))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(DELAY);
+	}
+}
+
 int	main(int argc, char **argv)
 {
-	int	pid;
+	int 	i;
+	int		pid;
 
 	printf("--- client ---\n");
 	pid = ft_atoi(argv[1]);
@@ -23,9 +39,8 @@ int	main(int argc, char **argv)
 		printf("\e[1;31mSINTAX ERROR!\n");
 		return (0);
 	}
-	kill(pid, SIGUSR2);
-	printf("\e[0;32m%i\t", pid);
-	printf("\e[0;32m%s\n", argv[2]);
+	while (*argv[2])
+		encrypt(pid, *argv[2]++);
 	return (0);
 }
 
