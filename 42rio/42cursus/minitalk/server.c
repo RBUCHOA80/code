@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 18:17:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:32:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(void)
 	char				*str;
 
 	s_sigaction.sa_handler = decrypt;
-	write(FD, "PID: ", 4);
+	ft_putstr_fd("PID: ", FD);
 	ft_putnbr_fd(getpid(), FD);
-	write(FD, "\n", 1);
+	ft_putstr_fd("\n", FD);
 	sigaction(SIGUSR2, &s_sigaction, NULL);
 	sigaction(SIGUSR1, &s_sigaction, NULL);
 	while (1)

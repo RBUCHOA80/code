@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 17:58:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:30:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,10 @@ int	main(int argc, char **argv)
 	int		pid;
 	int 	i;
 
-	str = "--- client ---\n";
-	write(FD, str, ft_strlen(str));
 	pid = ft_atoi(argv[1]);
 	if (argc != 3)
 	{
-		str = "\e[1;31mSINTAX ERROR!\n";
-		write(FD, str, ft_strlen(str));
+		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", FD);
 		return (0);
 	}
 	while (*argv[2])
