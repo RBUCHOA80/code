@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:41:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 15:39:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 17:58:16 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINITALK_H
 
 # define DELAY 200
+# define FD 1
 
 # include "../libft/libft.h" //libft
 # include <signal.h> //SIGUSR1 / SIGUSR2

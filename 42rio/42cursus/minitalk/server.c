@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/19 15:58:18 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/19 18:17:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 void	decrypt(int sig)
 {
 	if (sig == SIGUSR2)
-		printf("0");
+		write(1, "0", 1);
 	else
-		printf("1");
+		write(1, "1", 1);
 }
 
 int	main(void)
 {
-	signal(SIGUSR1, decrypt);
-	signal(SIGUSR2, decrypt);
-	printf("--- server ---\n");
-	printf("\e[0;35mPID: %i\e[m\n", getpid());
+	struct sigaction	s_sigaction;
+	char				*str;
+
+	s_sigaction.sa_handler = decrypt;
+	write(FD, "PID: ", 4);
+	ft_putnbr_fd(getpid(), FD);
+	write(FD, "\n", 1);
+	sigaction(SIGUSR2, &s_sigaction, NULL);
+	sigaction(SIGUSR1, &s_sigaction, NULL);
 	while (1)
-	{
 		pause();
-		printf("\n");
-	}
 	return (0);
 }
