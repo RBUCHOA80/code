@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/07/30 16:25:27 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/18 20:16:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,19 +41,19 @@ RM			= 	rm -f
 
 OBJ			= 	$(SRC:.c=.o)
 
-all:			$(NAME)
+.c.o:
+				$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):		$(OBJ)
-				@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+				$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
-.c.o:
-				@$(CC) $(CFLAGS) -c $< -o $@
+all:			$(NAME)
 
 clean:
-				@$(RM) $(OBJ)
+				$(RM) $(OBJ)
 
 fclean:			clean
-				@$(RM) $(NAME)
+				$(RM) $(NAME)
 
 re:				fclean all
 

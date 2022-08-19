@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/07/12 19:30:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/18 21:37:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,8 +82,8 @@ RFLAGS				=	-f
 .c.o:
 						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):				$(OBJS)
-						$(AR) $(AFLAGS) $(NAME) $(OBJS)
+$(NAME):				$(OBJS) $(BONUS_OBJS)
+						$(AR) $(AFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 all:					$(NAME)
 
@@ -97,6 +97,9 @@ fclean:					clean
 re:						fclean all
 
 
+.PHONY:					all clean fclean re bonus so
+
+
 bonus:					$(OBJS) $(BONUS_OBJS)
 						$(AR) $(AFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
 
@@ -104,4 +107,3 @@ so:
 						$(COMPILER) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
 						$(COMPILER) -nostartfiles -shared -o libft.so $(OBJS)
 
-.PHONY:					all clean fclean re bonus so

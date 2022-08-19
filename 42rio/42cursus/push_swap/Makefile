@@ -6,9 +6,14 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:25:41 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/16 22:53:16 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/18 20:12:14 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+LIB_PATH	=	../
+LIB_LIST	=	libft.a \
+				libftprintf.a \
+				get_next_line
 
 OPATH		=	./
 OBJ			=	*.c
@@ -23,7 +28,7 @@ AFLAGS		=	rc
 RM			=	rm
 RFLAGS		=	-fr
 
-NAME		=	push_swap
+NAME		=	push_swap.a
 
 .c.o		=	$(OBJS:.c.o)
 
@@ -44,11 +49,9 @@ re:				fclean all
 				all clean fclean re
 
 run:
-				@mkdir -p ft_printf get_next_line libft
-				@make O=./libft/ -C ../libft/
-				@make O=./ft_printf/ -C ../ft_printf/
-				@make O=./get_next_line/ -C ../get_next_line/
-				@cc -Wall -Wextra -Werror ./*.c
-				@./a.out
-				@rm -drf ft_printf get_next_line libft
-				@rm a.out
+				make -C ../libft/
+				make -C ../ft_printf/
+				make -C ../get_next_line/
+				cc -Wall -Wextra -Werror ./*.c
+				./a.out
+				rm a.out
