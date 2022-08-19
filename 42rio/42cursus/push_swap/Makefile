@@ -1,14 +1,7 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/16 19:25:41 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/17 21:55:27 by ruchoa           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+LIB_PATH	=	../
+LIB_LIST	=	libft.a \
+				libftprintf.a \
+				get_next_line
 
 OPATH		=	./
 OBJ			=	*.c
@@ -23,7 +16,7 @@ AFLAGS		=	rc
 RM			=	rm
 RFLAGS		=	-fr
 
-NAME		=	push_swap
+NAME		=	push_swap.a
 
 .c.o		=	$(OBJS:.c.o)
 

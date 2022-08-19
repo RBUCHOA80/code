@@ -1,3 +1,12 @@
+SRCS_PATH	=	
+
+SRCS_LIST	=	
+
+NAME = get_next_line.a
+
+$(NAME):	$(OBJS)
+			$(AR)
+
 all:
 	@gcc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c
 	@ar rc get_next_line.c get_next_line_utils.c
