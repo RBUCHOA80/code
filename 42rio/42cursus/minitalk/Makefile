@@ -6,36 +6,59 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/18 21:02:58 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/19 19:44:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/20 21:57:22 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBS_PATH	=	../
-LIBS_NAME	=	libft
-LIBS		=	$(foreach libname, $(LIBS_NAME), $(addprefix $(LIBS_PATH), libname)
+LIBS_PATH			=	../
+LIBS_NAME			=	libft
+LIBS				=	$(foreach libname, $(LIBS_NAME), $(addprefix $(LIBS_PATH), libname)
 
-NAME		=	libmini_talk.a
+SERVER_NAME			=	server.out
 
-OBJS		=	
+CLIENT_NAME			=	client.out
+
+OBJS				=	
+
+COMPILER			=	cc
+CFLAGS				=	-Wall -Wextra -Werror -I ./
+
+MAKEFLAGS			+=	--silent
 
 $(NAME):
 
-all:		$(NAME)
 
-clean:		
+$(SERVER_NAME):
+					$(COMPILER) $(CFLAGS)
 
-fclean:		clean
-			rm $(NAME)
+$(CLIENT_NAME):
+
+
+all:				server.out client.out
+
+clean:
+
+fclean:				clean
+					rm $(NAME)
 
 re:
-			fclean all
+					fclean all
 
-.PHONY:		clean fclean all re
+.PHONY:				clean fclean all re
 
-run:		
-			@make -C ../libft
-#			@gcc server.c ../libft/libft.a -o server.out ; open -a Terminal -e ./server.out
-#			@gcc server.c ../libft/libft.a -o server.out ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/server.out"'
-			@gcc server.c ../libft/libft.a -o server.out
-			@gcc client.c ../libft/libft.a -o client.out
-			@read -p "Enter server PID: " argv1 && ./client.out $$argv1 "Put your sample text here"
+run:
+					make -C ../libft
+					gcc server.c ../libft/libft.a -o $(SERVER_NAME) ; open -a Terminal -e ./$(SERVER_NAME)
+					gcc client.c ../libft/libft.a -o $(CLIENT_NAME) && read -p "Enter server PID: " argv1 && ./$(CLIENT_NAME) $$argv1 "Put your sample text here"
+
+#detected_OS:= $(shell uname)
+#	ifeq ($(detected_OS),Linux)
+#		make -C ../libft
+#		gcc server.c ../libft/libft.a -o $(SERVER_NAME) ; open -a Terminal -e ./$(SERVER_NAME)
+#		gcc client.c ../libft/libft.a -o $(CLIENT_NAME) && read -p "Enter server PID: " argv1 && ./$(CLIENT_NAME) $$argv1 "Put your sample text here"
+#		gcc server.c ../libft/libft.a -o $(SERVER_NAME) ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/server.out"'
+#	else
+#		make -C ../libft
+#		gcc server.c ../libft/libft.a -o $(SERVER_NAME) ; open -a Terminal -e ./$(SERVER_NAME)
+#		gcc client.c ../libft/libft.a -o $(CLIENT_NAME) && read -p "Enter server PID: " argv1 && ./$(CLIENT_NAME) $$argv1 "Put your sample text here"
+#	endif
