@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/20 22:08:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/21 23:09:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,3 @@ int	main(int argc, char **argv)
 		ft_encrypt(pid, *argv[2]++);
 	return (0);
 }
-
-/*
-argc  ->		 1			 2					 3
-*argv ->		[0]			[1]					[2]
- argv ->	012345678901			 01234567890123456789012345
-			./client.out	54321	"Put your sample text here."
-*/
