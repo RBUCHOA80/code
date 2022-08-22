@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    $(MK)file                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/18 21:02:58 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/21 23:19:08 by ruchoa           ###   ########.fr        #
+#    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
+#    Updated: 2022/08/21 23:54:03 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ $(CLIENT_NAME):		$(LIBS)
 
 all:				$(NAME)
 
+bonus:				$(NAME)_bonus
+
 clean:
 					$(REMOVE) $(RFLAGS)
 
@@ -49,7 +51,7 @@ fclean:				clean
 re:
 					fclean all
 
-.PHONY:				clean fclean all re
+.PHONY:				all bonus clean fclean re
 
 run:
 		$(MK) $(MKFLAGS) $(LIBS_PATH)$(LIBS_NAME)

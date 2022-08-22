@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/21 23:56:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/21 23:58:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	ft_decrypt(int sig)
 {
@@ -30,8 +30,11 @@ void	ft_decrypt(int sig)
 
 int	main(void)
 {
-	signal(SIGUSR2, &ft_decrypt);
-	signal(SIGUSR1, &ft_decrypt);
+	struct sigaction	s_sigaction;
+
+	s_sigaction.sa_handler = ft_decrypt;
+	sigaction(SIGUSR2, &s_sigaction, NULL);
+	sigaction(SIGUSR1, &s_sigaction, NULL);
 	ft_putstr_fd("\e[1;35mPID: ", FD);
 	ft_putnbr_fd(getpid(), FD);
 	ft_putstr_fd("\e[m\n", FD);
