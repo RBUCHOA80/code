@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/22 19:19:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/22 19:32:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_decrypt(int sig)
 	static char	chr;
 	static int	bit;
 
-	if (sig == SIGUSR1) //bit 1
+	if (sig == SIGUSR1)
 		chr = (chr | (1 << bit));
 	bit++;
 	if (bit == 8)
