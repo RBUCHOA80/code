@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/23 19:37:11 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/23 19:38:00 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,16 @@ MKFLAGS				=	-C
 
 MAKEFLAGS			=	--silent
 
-$(NAME):			$(SERVER_NAME) $(CLIENT_NAME)
+$(NAME):
+					$(SERVER_NAME)
+					$(CLIENT_NAME)
 
 
 $(SERVER_NAME):		$(LIBS)
-					$(COMPILER) $(CFLAGS) $(LIBS) $(SERVER_NAME)
+					$(COMPILER) $(CFLAGS) $(LIBS) $(SERVER_NAME).out
 
 $(CLIENT_NAME):		$(LIBS)
-					$(COMPILER) $(CFLAGS) $(LIBS) $(CLIENT_NAME)
+					$(COMPILER) $(CFLAGS) $(LIBS) $(CLIENT_NAME).out
 
 all:				$(NAME)
 
