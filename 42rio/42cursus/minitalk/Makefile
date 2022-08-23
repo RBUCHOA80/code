@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/23 19:36:10 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/23 19:37:11 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ RFLAGS				=	-drf
 MK					=	make
 MKFLAGS				=	-C
 
-MAKEFLAGS			+=	--silent
+MAKEFLAGS			=	--silent
 
 $(NAME):			$(SERVER_NAME) $(CLIENT_NAME)
 
