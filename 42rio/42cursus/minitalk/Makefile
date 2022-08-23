@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/23 19:35:34 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/23 19:36:10 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,12 +61,6 @@ endif
 ifeq ($(shell uname), Linux)
 	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME).out ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/$(SERVER_NAME).out"'
 endif
-
-run2:
-		$(MK) $(MKFLAGS) $(LIBS_PATH)$(LIBS_NAME)
-		$(RUN_SERVER)
-		$(COMPILER) $(CLIENT_NAME).c $(LIBS) -o $(CLIENT_NAME).out
-		read -p "Enter server PID: " argv1 && time ./$(CLIENT_NAME).out $$argv1 "Put your sample text here."
 
 run:
 		$(MK) $(MKFLAGS) $(LIBS_PATH)$(LIBS_NAME)
