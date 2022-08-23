@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/23 18:46:34 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/23 19:35:08 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ all:				$(NAME)
 bonus:				$(NAME)_bonus
 
 clean:
-					$(REMOVE) $(RFLAGS)
+					$(foreach names, $(NAME), $(REMOVE) $(RFLAGS) names)
 
 fclean:				clean
 					$(REMOVE) $(RFLAGS) $(NAME)
@@ -53,11 +53,12 @@ re:
 
 .PHONY:				all bonus clean fclean re
 
-RUN_SERVER			=	$(shell uname)
+RUN_SERVER			=
 
 ifeq ($(shell uname), Darwin)
 	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME).out ; open -a Terminal -e ./$(SERVER_NAME).out
-else ($(shell uname), Linux)
+endif
+ifeq ($(shell uname), Linux)
 	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME).out ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/$(SERVER_NAME).out"'
 endif
 
