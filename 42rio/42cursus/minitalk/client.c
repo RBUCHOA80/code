@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/22 19:33:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/23 19:51:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	ft_encrypt(int pid, char chr)
 
 int	main(int argc, char **argv)
 {
-	char	*str;
 	int		pid;
-	int		i;
 
 	pid = ft_atoi(argv[1]);
 	if (argc != 3)
