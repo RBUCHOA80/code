@@ -6,9 +6,11 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/18 20:16:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 19:21:10 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+MAKEFLAGS	=	--silent
 
 SRC			=	ft_character.c \
 				ft_count.c \
