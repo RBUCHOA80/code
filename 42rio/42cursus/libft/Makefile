@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 19:19:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 20:18:37 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,18 @@ MAKEFLAGS			=	--silent
 
 INCLUDE_PATH		=	./
 
-SRCS_PATH			=	./
+COMPILER			=	cc
+CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
+AR					=	ar
+AFLAGS				=	-rc
+
+NAME				=	libft.a
+
+REMOVE				=	rm
+RFLAGS				=	-rf
+
+SRCS_PATH			=	./
 SRCS_LIST			=	ft_atoi.c\
 						ft_bzero.c\
 						ft_calloc.c\
@@ -71,16 +81,6 @@ BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 
 BONUS_OBJS			=	$(BONUS:.c=.o)
 
-COMPILER			=	cc
-CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
-
-AR					=	ar
-AFLAGS				=	-rc
-NAME				=	libft.a
-
-REMOVE				=	rm
-RFLAGS				=	-f
-
 .c.o:
 						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
@@ -99,7 +99,7 @@ fclean:					clean
 re:						fclean all
 
 
-.PHONY:					all clean fclean re bonus so
+.PHONY:					all clean fclean re
 
 
 bonus:					$(OBJS) $(BONUS_OBJS)
@@ -108,4 +108,3 @@ bonus:					$(OBJS) $(BONUS_OBJS)
 so:
 						$(COMPILER) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
 						$(COMPILER) -nostartfiles -shared -o libft.so $(OBJS)
-
