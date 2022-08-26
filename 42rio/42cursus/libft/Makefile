@@ -6,11 +6,13 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/26 00:07:20 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/26 18:40:03 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS		=	--silent
+
+NAME			=	libft.a
 
 INCLUDE_PATH	=	./
 
@@ -19,8 +21,6 @@ CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
 AR				=	ar
 AFLAGS			=	rc
-
-NAME			=	libft.a
 
 REMOVE			=	rm
 RFLAGS			=	-rf

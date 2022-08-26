@@ -6,11 +6,13 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/26 00:08:27 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/26 18:41:10 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS		=	--silent
+
+NAME			=	get_next_line.a
 
 INCLUDE_PATH	=	./
 
@@ -19,8 +21,6 @@ CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
 AR				=	ar
 AFLAGS			=	rc
-
-NAME			=	get_next_line.a
 
 REMOVE			=	rm
 RFLAGS			=	-rf

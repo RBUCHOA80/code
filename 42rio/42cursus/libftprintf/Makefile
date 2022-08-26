@@ -6,11 +6,13 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/26 00:07:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/26 18:40:47 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS		=	--silent
+
+NAME			= 	libftprintf.a
 
 INCLUDE_PATH	=	./
 
@@ -19,8 +21,6 @@ CFLAGS			= 	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
 AR				= 	ar
 AFLAGS			= 	rc
-
-NAME			= 	libftprintf.a
 
 REMOVE			= 	rm -f
 RFLAGS			=	-rf
