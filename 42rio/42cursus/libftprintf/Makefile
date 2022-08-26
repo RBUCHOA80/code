@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:59:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/26 00:07:42 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,5 +73,6 @@ bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
 
 run:
 					$(COMPILER) $(CFLAGS) *.c
-					valgrind --leak-check=full ./a.out
+#					valgrind --leak-check=full -s ./a.out
+					./a.out
 					$(REMOVE) $(RFLAGS) a.out*

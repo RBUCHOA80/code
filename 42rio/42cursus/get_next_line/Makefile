@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 23:51:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/26 00:08:27 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,14 +57,12 @@ bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
 					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
 
 run:
-					$(COMPILER) $(CFLAGS) main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=42
-					valgrind --leak-check=full ./a.out
+					$(COMPILER) $(CFLAGS) *.c
+#					valgrind --leak-check=full -s ./a.out
+					./a.out
 					$(REMOVE) $(RFLAGS) a.out*
 
 b:
 					$(COMPILER) $(CFLAGS) main.c get_next_line_bonus.c get_next_line_utils_bonus.c -D BUFFER_SIZE=42
 					valgrind --leak-check=full ./a.out
 					$(REMOVE) $(RFLAGS) a.out*
-
-a:
-					$(COMPILE) $(CFLAGS)

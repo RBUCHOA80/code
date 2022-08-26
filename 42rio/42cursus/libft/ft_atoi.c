@@ -64,6 +64,8 @@ static int	ft_issimbol(char c)
 							"2147483647e1234", \
 						};
 
+#include <stdio.h> //printf
+
 int	main(void)
 {
 	int	i;

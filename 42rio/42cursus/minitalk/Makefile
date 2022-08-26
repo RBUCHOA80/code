@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 18:40:03 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/26 01:02:28 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIBS				=	$(LIBS_PATH)$(LIBS_NAME)/$(LIBS_NAME).a
 
 LIBFT				=	$(MK) $(MKFLAGS) $(LIBS_PATH)$(LIBS_NAME)
 
-MAKEFLAGS			=	--silent
+#MAKEFLAGS			=	--silent
 
 $(SERVER_NAME):
 					$(LIBFT)
@@ -64,6 +64,10 @@ ifeq ($(shell uname), Linux)
 endif
 
 #x-terminal-emulator
+
+2:
+		$$argv1=ps | grep -m1 './server.out' | awk '{print$$1}'
+		./$(CLIENT_NAME).out $$argv1 "Sample text here."
 
 run:
 		$(LIBFT)

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:26:27 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/25 21:56:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:59:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int	main(void)
 		i++;
 	}
 	close(fd);
-	printf("%i linhas | %i colunas\n", i, j);
+	printf("%i rows | %i cols\n", i, j);
 	return (0);
 }
