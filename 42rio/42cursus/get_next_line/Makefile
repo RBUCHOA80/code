@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:59:47 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 23:02:51 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
 BONUS_LIST		=	get_next_line_bonus.c \
-					get_next_line_utils_bonus.c \
 
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
