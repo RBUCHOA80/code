@@ -6,11 +6,11 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:32:20 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 22:59:31 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS		=	--silent
+#MAKEFLAGS		=	--silent
 
 INCLUDE_PATH	=	./
 
@@ -18,7 +18,7 @@ COMPILER		=	cc
 CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
 AR				=	ar
-AFLAGS			=	-rc
+AFLAGS			=	rc
 
 NAME			=	libft.a
 
@@ -63,24 +63,6 @@ SRCS_LIST		=	ft_atoi.c \
 					ft_tolower.c \
 					ft_toupper.c \
 
-.c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
-
-$(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
-
-all:				$(NAME)
-
-clean:
-					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
-
-fclean:				clean
-					$(REMOVE) $(RFLAGS) $(NAME)
-
-re:					fclean all
-
-.PHONY:				all clean fclean re
-
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
@@ -93,6 +75,24 @@ BONUS_LIST		=	ft_lstadd_back.c \
 					ft_lstmap.c \
 					ft_lstnew.c \
 					ft_lstsize.c \
+
+.c.o:
+					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
+
+$(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
+
+all:				$(NAME)
+
+clean:
+					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+
+fclean:				clean
+					$(REMOVE) $(RFLAGS) $(NAME)
+
+re:					fclean all
+
+.PHONY:				all clean fclean re
 
 bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
 					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)

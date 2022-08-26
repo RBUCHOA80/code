@@ -6,11 +6,11 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:32:25 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 22:59:40 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS		=	--silent
+#MAKEFLAGS		=	--silent
 
 INCLUDE_PATH	=	./
 
@@ -18,7 +18,7 @@ COMPILER		= 	cc
 CFLAGS			= 	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
 AR				= 	ar
-ARFLAGS			= 	rc
+AFLAGS			= 	rc
 
 NAME			= 	libftprintf.a
 
@@ -45,11 +45,16 @@ SRCS_LIST		=	ft_character.c \
 					ft_strlength.c \
 					ft_unsigned_integer.c \
 
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS		=	$(BONUS:.c=.o)
+BONUS_PATH		=	./
+BONUS_LIST		=	
+
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
 
 all:				$(NAME)
 
@@ -62,11 +67,6 @@ fclean:				clean
 re:					fclean all
 
 .PHONY:				all clean fclean re
-
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
-BONUS_OBJS		=	$(BONUS:.c=.o)
-BONUS_PATH		=	./
-BONUS_LIST		=	
 
 bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
 					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)

@@ -6,11 +6,11 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:33:08 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 22:59:47 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS		=	--silent
+#MAKEFLAGS		=	--silent
 
 INCLUDE_PATH	=	./
 
@@ -30,11 +30,17 @@ SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_LIST		=	get_next_line.c
 
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS		=	$(BONUS:.c=.o)
+BONUS_PATH		=	./
+BONUS_LIST		=	get_next_line_bonus.c \
+					get_next_line_utils_bonus.c \
+
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
 
 all:				$(NAME)
 
@@ -47,12 +53,6 @@ fclean:				clean
 re:					fclean all
 
 .PHONY:				all clean fclean re
-
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
-BONUS_OBJS		=	$(BONUS:.c=.o)
-BONUS_PATH		=	./
-BONUS_LIST		=	get_next_line_bonus.c \
-					get_next_line_utils_bonus.c \
 
 bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
 					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
