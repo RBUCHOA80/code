@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/07/30 16:26:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 /* #include <stdio.h> //printf
 #include <fcntl.h> //open
 

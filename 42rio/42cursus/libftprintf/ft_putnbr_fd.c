@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:52 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/07/14 09:29:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

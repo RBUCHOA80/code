@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/07/12 19:55:15 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	decimal_output(va_list var, int fd)
 {

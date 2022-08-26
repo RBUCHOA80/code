@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 23:02:51 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 23:51:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,3 +65,6 @@ b:
 					$(COMPILER) $(CFLAGS) main.c get_next_line_bonus.c get_next_line_utils_bonus.c -D BUFFER_SIZE=42
 					valgrind --leak-check=full ./a.out
 					$(REMOVE) $(RFLAGS) a.out*
+
+a:
+					$(COMPILE) $(CFLAGS)

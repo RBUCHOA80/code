@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:33 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/07/14 09:29:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_put_u_nbr_fd(unsigned int n, int fd)
 {
