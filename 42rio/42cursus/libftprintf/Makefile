@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 20:18:18 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 22:22:29 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ NAME			= 	libftprintf.a
 REMOVE			= 	rm -f
 RFLAGS			=	-rf
 
+SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_PATH		=	./
 SRCS_LIST		=	ft_character.c \
 					ft_count.c \
@@ -43,33 +44,36 @@ SRCS_LIST		=	ft_character.c \
 					ft_strlength.c \
 					ft_unsigned_integer.c \
 
-SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
-
-OBJ				= 	$(SRCS:.c=.o)
+OBJS			= 	$(SRCS:.c=.o)
 
 .c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $@
+					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):			$(OBJ)
-					$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+$(NAME):			$(OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(OBJS)
 
 all:				$(NAME)
 
 clean:
-					$(REMOVE) $(OBJ)
+					$(REMOVE) $(OBJS)
 
 fclean:				clean
 					$(REMOVE) $(NAME)
 
 re:					fclean all
 
-
 .PHONY:				all clean fclean re
 
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_PATH		=	./
+BONUS_LIST		=	
+
+BONUS_OBJS		=	$(BONUS:.c=.o)
+
+bonus:				$(OBJS) $(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 run:
-					clang -Wall -Wextra -Werror *.c
+					cc -Wall -Wextra -Werror *.c
 					valgrind --leak-check=full ./a.out
-					rm -drf a.out.dSYM
-					rm -rf a.out
-					cat ./sample.txt
+					rm -drf a.out*
