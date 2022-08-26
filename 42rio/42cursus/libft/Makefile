@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:22:58 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 22:32:20 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ REMOVE			=	rm
 RFLAGS			=	-rf
 
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS		=	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_LIST		=	ft_atoi.c \
 					ft_bzero.c \
@@ -62,18 +63,16 @@ SRCS_LIST		=	ft_atoi.c \
 					ft_tolower.c \
 					ft_toupper.c \
 
-OBJS			=	$(SRCS:.c=.o)
-
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):			$(OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(OBJS)
+$(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
 
 all:				$(NAME)
 
 clean:
-					$(REMOVE) $(RFLAGS) $(OBJS) $(BONUS_OBJS)
+					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
 fclean:				clean
 					$(REMOVE) $(RFLAGS) $(NAME)
@@ -83,6 +82,7 @@ re:					fclean all
 .PHONY:				all clean fclean re
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
 BONUS_LIST		=	ft_lstadd_back.c \
 					ft_lstadd_front.c \
@@ -94,16 +94,14 @@ BONUS_LIST		=	ft_lstadd_back.c \
 					ft_lstnew.c \
 					ft_lstsize.c \
 
-BONUS_OBJS		=	$(BONUS:.c=.o)
-
-bonus:				$(OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
 
 run:
-					cc -Wall -Wextra -Werror *.c
+					$(COMPILER) $(CFLAGS) *.c
 					valgrind --leak-check=full ./a.out
-					rm -drf a.out*
+					$(REMOVE) $(RFLAGS) a.out*
 
 so:
 					$(COMPILER) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-					$(COMPILER) -nostartfiles -shared -o libft.so $(OBJS)
+					$(COMPILER) -nostartfiles -shared -o libft.so $(SRCS_OBJS)

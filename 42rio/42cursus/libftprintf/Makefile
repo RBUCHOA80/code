@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/25 22:22:29 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/25 22:32:25 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ REMOVE			= 	rm -f
 RFLAGS			=	-rf
 
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_LIST		=	ft_character.c \
 					ft_count.c \
@@ -44,36 +45,33 @@ SRCS_LIST		=	ft_character.c \
 					ft_strlength.c \
 					ft_unsigned_integer.c \
 
-OBJS			= 	$(SRCS:.c=.o)
-
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):			$(OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(OBJS)
+$(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
 
 all:				$(NAME)
 
 clean:
-					$(REMOVE) $(OBJS)
+					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
 fclean:				clean
-					$(REMOVE) $(NAME)
+					$(REMOVE) $(RFLAGS) $(NAME)
 
 re:					fclean all
 
 .PHONY:				all clean fclean re
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
 BONUS_LIST		=	
 
-BONUS_OBJS		=	$(BONUS:.c=.o)
-
-bonus:				$(OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
 
 run:
-					cc -Wall -Wextra -Werror *.c
+					$(COMPILER) $(CFLAGS) *.c
 					valgrind --leak-check=full ./a.out
-					rm -drf a.out*
+					$(REMOVE) $(RFLAGS) a.out*
