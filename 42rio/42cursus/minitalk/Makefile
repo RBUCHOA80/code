@@ -6,13 +6,13 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/27 19:08:18 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/27 19:30:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SERVER_NAME			=	server
+#MAKEFLAGS			=	--silent
 
-CLIENT_NAME			=	client
+NAME				=	$(SERVER_NAME) $(CLIENT_NAME)
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror -I ./
@@ -29,7 +29,9 @@ LIBS				=	$(LIBS_PATH)$(LIBS_NAME)/$(LIBS_NAME).a
 
 LIBFT				=	$(MK) $(MKFLAGS) $(LIBS_PATH)$(LIBS_NAME)
 
-#MAKEFLAGS			=	--silent
+SERVER_NAME			=	server
+
+CLIENT_NAME			=	client
 
 $(SERVER_NAME):
 					$(LIBFT)
@@ -58,6 +60,9 @@ RUN_SERVER			=
 
 ifeq ($(shell uname), Darwin)
 	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME) ; open -a Terminal -e ./$(SERVER_NAME)
+endif
+ifeq ($(shell uname), Linux)
+	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME) ; x-terminal-emulator -e "./$(SERVER_NAME)" &
 endif
 ifeq ($(shell uname), Linux)
 	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME) ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/$(SERVER_NAME)"'
