@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/18 21:02:58 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/20 20:28:44 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/27 19:09:47 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,5 +14,6 @@
 
 run:		
 			make -C ./libft
-			gcc server.c ./libft/libft.a -o server.out ; open -a Terminal -e ./server.out
-			gcc client.c ./libft/libft.a -o client.out && read -p "Enter server PID: " argv1 && ./client.out $$argv1 "a"
+			gcc server.c ./libft/libft.a -o server ; open -a Terminal -e ./server
+			gcc client.c ./libft/libft.a -o client && read -p "Enter server PID: " argv1 && ./client $$argv1 "Put your sample text here"
+

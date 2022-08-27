@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:18:41 by thfirmin          #+#    #+#             */
-/*   Updated: 2022/08/20 20:55:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/27 15:29:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	send_message(char c, int pid_nb)
 			kill(pid_nb, SIGUSR1); //0
 		}
 		c <<= 1;
-		usleep(500);
+		usleep(100);
 	}
 	write (1, "\n", 1);
 	printf("pid: %d\n", pid_nb);

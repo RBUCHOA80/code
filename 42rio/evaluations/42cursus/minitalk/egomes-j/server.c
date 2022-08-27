@@ -5,40 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 18:18:38 by thfirmin          #+#    #+#             */
-/*   Updated: 2022/08/27 15:32:03 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/08/23 19:44:26 by egomes-j          #+#    #+#             */
+/*   Updated: 2022/08/27 14:30:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-void	ft_handler(int num);
-
-void	ft_server(void);
-
-int	main(void)
-{
-	ft_server();
-	return (0);
-}
-
-void	ft_server(void)
-{
-	struct sigaction sa;
-
-	sa.sa_handler=ft_handler;
-	//signal(SIGUSR1, ft_handler);
-	sigaction(SIGUSR2, &sa, NULL); //1
-	sigaction(SIGUSR1, &sa, NULL); //0
-	int n_pid = getpid();
-	printf ("\e[38;5;11m Process Started\n");
-	printf (" PID: %d\n\e[m", n_pid);
-	int i = 0;
-	while (1)
-		pause();
-}
-
-void	ft_handler(int num)
+  
+static void ft_server_treatment(int num, siginfo_t *info, void *context)
 {
 	static int bit = 8;
 	static unsigned char c;
@@ -54,10 +28,19 @@ void	ft_handler(int num)
 	}
 }
 
-/* void	ft_handler(int num)
+int main (void)
+{	
+	struct sigaction name;
+
+	name.sa_sigaction = &ft_server_treatment; //bônus		
+	ft_putstr_fd("getpid -> ", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putstr_fd("\n", 1);
+	while (1)
 {
-	if (num == 30)
-		write (1, "0", 1);
-	else
-		write (1, "1", 1);	
-} */
+		sigaction(SIGUSR2, &name, NULL); // bit 1
+		sigaction(SIGUSR1, &name, NULL); // bit 0
+		pause();
+		}
+	return (0);
+}
