@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/26 18:41:10 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/27 08:30:20 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,16 +53,16 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
+bonus:				$(BONUS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(BONUS_OBJS)
 
-run:
-					$(COMPILER) $(CFLAGS) *.c
+run:				$(SRCS_OBJS)
+					$(COMPILER) $(CFLAGS) main.c $(SRCS_OBJS)
 #					valgrind --leak-check=full -s ./a.out
 					./a.out
 					$(REMOVE) $(RFLAGS) a.out*
 
 b:
-					$(COMPILER) $(CFLAGS) main.c get_next_line_bonus.c get_next_line_utils_bonus.c -D BUFFER_SIZE=42
+					$(COMPILER) $(CFLAGS) main.c $(BONUS_LIST) -D BUFFER_SIZE=42
 					valgrind --leak-check=full ./a.out
 					$(REMOVE) $(RFLAGS) a.out*
