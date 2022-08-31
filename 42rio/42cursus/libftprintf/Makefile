@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/26 18:40:47 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/31 19:11:22 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS_LIST		=	ft_character.c \
 					ft_puthex_fd.c \
 					ft_puthex_low_fd.c \
 					ft_puthex_upper_fd.c \
-					ft_putnbr_fd.c \
+					ft_putnumber_fd.c \
 					ft_string.c \
 					ft_strlength.c \
 					ft_unsigned_integer.c \

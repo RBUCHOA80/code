@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:16 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/31 19:13:48 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	integer_output(va_list var, int fd)
 	int	res;
 
 	integer = va_arg(var, int);
-	ft_putnbr_fd(integer, fd);
+	ft_putnumber_fd(integer, fd);
 	res = ft_count(integer, BASE_DEC);
 	if (integer < 0)
 		res += 1;

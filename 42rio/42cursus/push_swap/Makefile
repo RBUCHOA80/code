@@ -1,46 +1,86 @@
-LIB_PATH	=	../
-LIB_LIST	=	libft.a \
-				libftprintf.a \
-				get_next_line
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
+#    Updated: 2022/08/31 19:12:02 by ruchoa           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-OPATH		=	./
-OBJ			=	*.c
-OBJS		=	$(addprefix $(OPATH), $(OBJ))
+#MAKEFLAGS		=	--silent
 
-COMPILER	=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+NAME			=	push_swap
 
-AR			=	ar
-AFLAGS		=	rc
+NAME_BONUS		=	checker
 
-RM			=	rm
-RFLAGS		=	-fr
+LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
+LIBS_PATH		=	../
+LIBS_LIST		=	libft \
+					get_next_line \
+					libftprintf
 
-NAME		=	push_swap.a
+INCLUDE_PATH	=	./
 
-.c.o		=	$(OBJS:.c.o)
+COMPILER		=	cc
+CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
-$(NAME):		$(OBJS)
-				$(AR) $(AFLAGS) $(NAME)
+AR				=	ar
+AFLAGS			=	rc
 
-all:			$(NAME)
+REMOVE			=	rm
+RFLAGS			=	-drf
+
+SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS		= 	$(SRCS:.c=.o)
+SRCS_PATH		=	./
+SRCS_LIST		=	push_swap.c
+
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS		=	$(BONUS:.c=.o)
+BONUS_PATH		=	./
+BONUS_LIST		=	checker.c
+
+.c.o:
+					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
+
+$(NAME):			$(SRCS_OBJS)
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(COMPILER) $(CFLAGS) $(LIBS_O) $(SRCS_OBJS) main.c -o $(NAME)
+
+$(NAME_BONUS):		$(BONUS_OBJS) 
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(COMPILER) $(CFLAGS) $(LIBS_O) $(BONUS_OBJS) main.c -o $(NAME_BONUS)
+
+all:				$(NAME)
+
+bonus:				$(NAME_BONUS)
 
 clean:
-				$(RM) $(RFLAGS) $(OBJS)
+					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+					$(foreach dir, $(LIBS), make clean -C $(dir) ;)
 
-fclean:			clean
-				$(RM) $(RFLAGS) $(NAME)
+fclean:				clean
+					$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
+					$(foreach dir, $(LIBS), make fclean -C $(dir) ;)
 
-re:				fclean all
+re:					fclean all bonus
+					$(foreach dir, $(LIBS), make re -C $(dir) ;)
 
-.PHONY:
-				all clean fclean re
+.PHONY:				all clean fclean re
 
-run:
-				@make -C ../libft/
-				@make -C ../ft_printf/
-				@make -C ../get_next_line/
-#				@cc -Wall -Wextra -Werror ./*.c ../libft/libft.a ../ft_printf/ft_printf.a ../get_next_line/get_next_line.a
-#				@./a.out
-#				@rm -drf ft_printf get_next_line libft
-#				@rm a.out
+run:				$(NAME)
+					$(COMPILER) $(CFLAGS) $(NAME) main.c
+#					valgrind --leak-check=full -s $(NAME)
+					./$(NAME)
+					$(REMOVE) $(RFLAGS) $(NAME)
+
+b:					$(NAME_BONUS)
+					$(COMPILER) $(CFLAGS) $(NAME_BONUS) main.c
+#					valgrind --leak-check=full -s $(NAME_BONUS)
+
+					./$(NAME_BONUS)
+					$(REMOVE) $(RFLAGS) $(NAME_BONUS)

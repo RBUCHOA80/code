@@ -45,7 +45,7 @@ void	ft_put_u_nbr_fd(unsigned int n, int fd);
 void	ft_puthex_fd(unsigned long long nb, int fd);
 void	ft_puthex_low_fd(unsigned int nb, int fd);
 void	ft_puthex_upper_fd(unsigned int nb, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putnumber_fd(int n, int fd);
 
 int		ft_count(long nbr, int base);
 size_t	ft_strlength(const char *s);

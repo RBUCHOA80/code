@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnumber_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:52 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/31 19:11:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnumber_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
@@ -31,7 +31,7 @@ void	ft_putnbr_fd(int n, int fd)
 		return ;
 	}
 	else
-		ft_putnbr_fd((n / 10), fd);
+		ft_putnumber_fd((n / 10), fd);
 	n = ((n % 10) + '0');
 	write(fd, &n, 1);
 }
