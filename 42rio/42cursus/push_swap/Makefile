@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/31 19:12:02 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/31 19:22:03 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,14 +73,9 @@ re:					fclean all bonus
 .PHONY:				all clean fclean re
 
 run:				$(NAME)
-					$(COMPILER) $(CFLAGS) $(NAME) main.c
 #					valgrind --leak-check=full -s $(NAME)
 					./$(NAME)
-					$(REMOVE) $(RFLAGS) $(NAME)
 
 b:					$(NAME_BONUS)
-					$(COMPILER) $(CFLAGS) $(NAME_BONUS) main.c
 #					valgrind --leak-check=full -s $(NAME_BONUS)
-
 					./$(NAME_BONUS)
-					$(REMOVE) $(RFLAGS) $(NAME_BONUS)
