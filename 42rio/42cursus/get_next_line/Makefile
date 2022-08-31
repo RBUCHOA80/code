@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/30 19:10:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/30 22:21:13 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,12 @@
 
 NAME			=	get_next_line.a
 
-NAME_BONUS			=	get_next_line_bonus.a
+NAME_BONUS		=	get_next_line_bonus.a
+
+LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
+LIBS_PATH		=	../
+LIBS_LIST		=	libft
 
 INCLUDE_PATH	=	./
 
@@ -41,10 +46,12 @@ BONUS_LIST		=	get_next_line_bonus.c
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):			$(SRCS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
 
 $(NAME_BONUS):		$(BONUS_OBJS) 
-					$(AR) $(AFLAGS) $(NAME_BONUS) $(BONUS_OBJS)
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
 
 all:				$(NAME)
 
@@ -52,21 +59,25 @@ bonus:				$(NAME_BONUS)
 
 clean:
 					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+					$(foreach dir, $(LIBS), make clean -C $(dir) ;)
 
 fclean:				clean
 					$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
+					$(foreach dir, $(LIBS), make fclean -C $(dir) ;)
 
 re:					fclean all bonus
+					$(foreach dir, $(LIBS), make re -C $(dir) ;)
 
 .PHONY:				all clean fclean re
 
-run:				$(SRCS_OBJS)
-					$(COMPILER) $(CFLAGS) main.c $(SRCS_OBJS)
-#					valgrind --leak-check=full -s ./a.out
-					./a.out
+run:				$(NAME)
+					$(COMPILER) $(CFLAGS) $(NAME) main.c
+					valgrind --leak-check=full -s ./a.out
+#					./a.out
 					$(REMOVE) $(RFLAGS) a.out*
 
-b:
-					$(COMPILER) $(CFLAGS) main.c $(BONUS_LIST) -D BUFFER_SIZE=42
-					valgrind --leak-check=full ./a.out
+b:					$(NAME_BONUS)
+					$(COMPILER) $(CFLAGS) $(NAME_BONUS) main.c
+#					valgrind --leak-check=full -s ./a.out
+					./a.out
 					$(REMOVE) $(RFLAGS) a.out*

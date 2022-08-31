@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:36:16 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/25 16:52:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/30 22:18:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(ret, s1, s1_len);
 	ft_memcpy(ret + s1_len, s2, s2_len);
 	ret[s1_len + s2_len] = '\0';
+	free((char *)s1);
 	return (ret);
 }
 

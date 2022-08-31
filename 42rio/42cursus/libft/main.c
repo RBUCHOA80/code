@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 21:41:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/21 23:55:31 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/08/30 21:50:59 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/08/30 21:52:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_BONUS_H
-# define MINITALK_BONUS_H
+#include "libft.h"
 
-# define DELAY 750
-# define FD 1
+int	main(void)
+{
+	char	*str;
 
-# include "../libft/libft.h" //libft
-# include <signal.h> //SIGUSR1 / SIGUSR2
-# include <unistd.h> //write / getpid
-
-#endif
+	str = "Put your sample text here.\n";
+	ft_putstr_fd(str, 1);
+	return (0);
+}

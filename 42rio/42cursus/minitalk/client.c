@@ -6,11 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/29 23:28:13 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/30 20:56:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+# include "../libft/libft.h" //libft
+# include <signal.h> //SIGUSR1 / SIGUSR2
 
 void	ft_encrypt(int pid, char chr)
 {
@@ -23,7 +24,7 @@ void	ft_encrypt(int pid, char chr)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(DELAY);
+		usleep(750);
 		bit++;
 	}
 }
@@ -35,7 +36,7 @@ int	main(int argc, char **argv)
 	pid = ft_atoi(argv[1]);
 	if (argc != 3)
 	{
-		ft_putstr_fd("\e[1;31mSINTAX ERROR!\e[0m\n", FD);
+		ft_putstr_fd("\e[1;31mSINTAX ERROR!\e[0m\n", 1);
 		return (1);
 	}
 	while (*argv[2])

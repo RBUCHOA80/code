@@ -6,13 +6,18 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/29 23:42:32 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/30 22:29:17 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS			=	--silent
 
-NAME				=	$(SERVER_NAME) $(CLIENT_NAME)
+LIBS				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
+LIBS_PATH			=	../
+LIBS_LIST			=	libftprintf \
+						get_next_line \
+						libft \
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror -I ./
@@ -33,15 +38,17 @@ SERVER_NAME			=	server
 
 CLIENT_NAME			=	client
 
-$(SERVER_NAME):
-						$(LIBFT)
+$(SERVER):				$(LIBFT)
 						$(COMPILER) $(CFLAGS) $(LIBS) $(SERVER_NAME).c -o $(SERVER_NAME)
 
-$(CLIENT_NAME):
-						$(LIBFT)
+$(CLIENT):				$(LIBFT)
 						$(COMPILER) $(CFLAGS) $(LIBS) $(CLIENT_NAME).c -o $(CLIENT_NAME)
 
-all:					$(SERVER_NAME) $(CLIENT_NAME)
+$(NAME):
+						$(SERVER)
+						$(CLIENT)
+
+all:					$(NAME)
 
 bonus:					$(NAME)_bonus
 
