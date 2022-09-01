@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/31 19:22:03 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/08/31 21:10:59 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,11 @@ BONUS_LIST		=	checker.c
 
 $(NAME):			$(SRCS_OBJS)
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(COMPILER) $(CFLAGS) $(LIBS_O) $(SRCS_OBJS) main.c -o $(NAME)
+					$(COMPILER) $(CFLAGS) $(LIBS_O) $(SRCS_OBJS) -o $(NAME)
 
 $(NAME_BONUS):		$(BONUS_OBJS) 
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(COMPILER) $(CFLAGS) $(LIBS_O) $(BONUS_OBJS) main.c -o $(NAME_BONUS)
+					$(COMPILER) $(CFLAGS) $(LIBS_O) $(BONUS_OBJS) -o $(NAME_BONUS)
 
 all:				$(NAME)
 
@@ -72,9 +72,11 @@ re:					fclean all bonus
 
 .PHONY:				all clean fclean re
 
+ARG				=	4 67 3 87 23 456 87 51 999
+
 run:				$(NAME)
 #					valgrind --leak-check=full -s $(NAME)
-					./$(NAME)
+					./$(NAME) $(ARG)
 
 b:					$(NAME_BONUS)
 #					valgrind --leak-check=full -s $(NAME_BONUS)
