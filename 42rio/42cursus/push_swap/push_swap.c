@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/31 23:15:35 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/01 20:30:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap(int *nbr, int	count)
+void	ft_print_arr(int *nbr, int	count)
 {
 	int	i;
 
@@ -22,6 +22,21 @@ int	push_swap(int *nbr, int	count)
 		ft_printf("nbr[%i] = %d\n", i, nbr[i]);
 		i++;
 	}
+	ft_printf("\n");
+}
+
+int	*ft_merge_sort(int *nbr, int count)
+{
+	int	*ret;
+	return (ret);
+}
+
+int	push_swap(int *nbr, int	count)
+{
+	int	*ret;
+	ft_print_arr(nbr, count);
+	ret = ft_merge_sort(nbr, count);
+	ft_print_arr(ret, count);
 	return (0);
 }
 

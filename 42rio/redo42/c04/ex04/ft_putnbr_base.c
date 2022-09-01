@@ -6,63 +6,52 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:28:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/01 00:18:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/01 18:11:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-void	ft_putnbr_base(int nb, char	*base)
+ void	ft_putnbr_base(int nbr, char *base)
 {
-	char	nbr[33];
-	int		len;
+	char	ret[33];
+	int		count;
 	int		i;
 
-	len = 0;
-	while (base[len])
-		len++;
+	count = 0;
+	while (base[count])
+		count++;
 	i = 0;
-	if (nb == 0)
-		write(1, "0", 1);
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		nbr[31 - i] = base[(nb % len) * (-1)];
-		nb = (nb / len) * (-1);
-		i++;
-	}
-	while (nb != 0)
-	{
-		nbr[31 - i] = base[(nb % len)];
-		nb = (nb / len);
-		i++;
-	}
-	nbr[32] = '\0';
-	write(1, &nbr[31 - i], i);
-	printf("%s\n", &nbr[31 - i]);
-}
-
-/* void	ft_putnbr_base(unsigned long long int nbr, char *base)
-{
-	int	len;
-
-	len = 0;
-	while (base[len])
-		len++;
 	if (nbr == 0)
 	{
-		write(1, &base[0], 1);
-		return ;
+		ret[31 - i] = '0';
+		i++;
 	}
-	if (nbr > 0)
-		ft_putnbr_base((nbr /= len), base);
-	if (nbr != 0)
-		write(1, &base[nbr % len], 1);
-} */
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		ret[31 - i] = base[(nbr % count) * (-1)];
+		nbr = (nbr / count) * (-1);
+		i++;
+	}
+	while (nbr != 0)
+	{
+		ret[31 - i] = base[(nbr % count)];
+		nbr = (nbr / count);
+		i++;
+	}
+	ret[32] = '\0';
+	write(1, &ret[32 - i], i);
+}
 
 int		g_nbr[] = {\
-					16, \
+					-11, \
+					-9, \
+					-1, \
+					0, \
+					1, \
+					9, \
+					10, \
 					};
 
 char	*g_base[] = {\
