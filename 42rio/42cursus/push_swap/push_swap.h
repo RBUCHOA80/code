@@ -6,14 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/31 20:57:47 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/08/31 23:15:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# include <stdio.h> //printf
 
 # include "../libft/libft.h" //libft
 # include "../libftprintf/libftprintf.h" //ft_printf
