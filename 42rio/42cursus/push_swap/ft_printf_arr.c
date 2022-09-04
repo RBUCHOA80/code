@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf_arr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 21:35:06 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 21:51:57 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/03 21:33:26 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/03 22:38:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libftprintf/libftprintf.h" //ft_printf
+#include "push_swap.h"
 
-#include <stdlib.h> //malloc / free
-#include <stdio.h> //printf
+void	ft_printf_arr(int *arr, int size)
+{
+	int	i;
 
-void	ft_merge(int *arr, int start, int mid, int end);
-void	ft_merge_sort(int *arr, int start, int end);
-void	ft_printf_arr(int *arr, int size);
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("arr[%i] = %d\n", i, arr[i]);
+		i++;
+	}
+}

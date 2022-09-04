@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/03 18:53:22 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/03 22:38:46 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
 LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
 LIBS_PATH		=	../
 LIBS_LIST		=	libft \
-					get_next_line \
-					libftprintf
+					libftprintf \
 
 INCLUDE_PATH	=	./
 
@@ -37,12 +36,18 @@ RFLAGS			=	-drf
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
-SRCS_LIST		=	push_swap.c
+SRCS_LIST		=	main.c \
+					push_swap.c \
+					ft_merge_sort.c \
+					ft_printf_arr.c \
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
-BONUS_LIST		=	checker.c
+BONUS_LIST		=	main.c \
+					checker.c \
+					ft_merge_sort.c \
+					ft_printf_arr.c \
 
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)

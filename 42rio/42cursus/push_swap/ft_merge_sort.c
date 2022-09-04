@@ -6,11 +6,24 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:00:51 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:24:18 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/03 22:36:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_merge_sort(int *arr, int start, int end)
+{
+	int	mid;
+
+	if (start < end)
+	{
+		mid = ((start + end) / 2);
+		ft_merge_sort(arr, start, mid);
+		ft_merge_sort(arr, mid + 1, end);
+		ft_merge(arr, start, mid, end);
+	}
+}
 
 void	ft_merge(int *arr, int start, int mid, int end)
 {
@@ -37,29 +50,14 @@ void	ft_merge(int *arr, int start, int mid, int end)
 				temp[i] = arr[p2++];
 		}
 		else
-		{
 			if ((p1 > mid) == 0)
 				temp[i] = arr[p1++];
-			else
-				temp[i] = arr[p2++];
-		}
+		else
+			temp[i] = arr[p2++];
 		i++;
 	}
 	i = 0;
 	while (i < size)
 		arr[start++] = temp[i++];
 	free (temp);
-}
-
-void	ft_merge_sort(int *arr, int start, int end)
-{
-	int	mid;
-
-	if (start < end)
-	{
-		mid = ((start + end) / 2);
-		ft_merge_sort(arr, start, mid);
-		ft_merge_sort(arr, mid + 1, end);
-		ft_merge(arr, start, mid, end);
-	}
 }
