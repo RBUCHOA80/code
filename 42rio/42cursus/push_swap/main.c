@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 21:37:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:44:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/03 22:53:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ int	main(int argc, char **argv)
 		return (1);
 	argc -= 1;
 	arr = ft_calloc(argc, sizeof(*arr));
-	i = 0;
-	while (i < argc)
-	{
+	i = -1;
+	while (++i < argc)
 		arr[i] = ft_atoi(argv[i + 1]);
-		i++;
-	}
 	push_swap(arr, 0, argc - 1);
 	ft_printf_arr(arr, argc);
+	free(arr);
 	return (0);
 }

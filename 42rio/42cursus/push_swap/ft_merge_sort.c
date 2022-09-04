@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:00:51 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:36:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/03 22:49:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_merge_sort(int *arr, int start, int end)
 
 void	ft_merge(int *arr, int start, int mid, int end)
 {
-	int	size;
 	int	*temp;
+	int	size;
 	int	p1;
 	int	p2;
 	int	i;

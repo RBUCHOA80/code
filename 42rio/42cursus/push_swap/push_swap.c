@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:35:03 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/03 22:47:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(int *arr, int	start, int end)
+void	push_swap(int *arr, int start, int end)
 {
 	ft_merge_sort(arr, start, end);
 }
