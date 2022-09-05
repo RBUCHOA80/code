@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 21:37:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/05 16:11:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/05 16:31:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 	fd = open("./array_de_inteiros.txt", O_RDONLY);
 	ret = get_next_line(fd);
 	lista = ft_split(ret, ',');
-	count = -1;
+	count = 0;
 	while (lista[count])
 		count++;
 	arr = ft_calloc(count, sizeof(*arr));
