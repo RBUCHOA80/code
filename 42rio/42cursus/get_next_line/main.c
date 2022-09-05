@@ -15,19 +15,19 @@
 #include <stdio.h> //printf
 
 char	*g_path[] = {\
-	"./txt_files/sample3.txt", \
-	/* "./txt_files/sample4.txt", \ */
-	/* "./txt_files/sample5.txt", \ */
-	/* "./txt_files/sample6.txt", \ */
-	/* "./txt_files/sample7.txt", \ */
+	"./aux_files/sample3.txt", \
+	/* "./aux_files/sample4.txt", \ */
+	/* "./aux_files/sample5.txt", \ */
+	/* "./aux_files/sample6.txt", \ */
+	/* "./aux_files/sample7.txt", \ */
 };
 
 /*
-fd[5] line[11]
-fd[7] line[13]
-fd[3] line[19]
-fd[6] line[19]
-fd[4] line[26]
+fd[5] lines[11]
+fd[7] lines[13]
+fd[3] lines[19]
+fd[6] lines[19]
+fd[4] lines[26]
 */
 
 int	main(void)

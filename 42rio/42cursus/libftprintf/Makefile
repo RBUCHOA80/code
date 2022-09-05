@@ -14,6 +14,13 @@
 
 NAME			= 	libftprintf.a
 
+NAME_BONUS		=	libftprintf_bonus.a
+
+LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
+LIBS_PATH		=	../
+LIBS_LIST		=	
+
 INCLUDE_PATH	=	./
 
 COMPILER		= 	cc
@@ -22,8 +29,8 @@ CFLAGS			= 	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 AR				= 	ar
 AFLAGS			= 	rc
 
-REMOVE			= 	rm -f
-RFLAGS			=	-rf
+REMOVE			= 	rm
+RFLAGS			=	-drf
 
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
@@ -53,10 +60,17 @@ BONUS_LIST		=
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):			$(SRCS_OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
+$(NAME):			$(SRCS_OBJS)
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
+
+$(NAME_BONUS):		$(BONUS_OBJS) 
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
 
 all:				$(NAME)
+
+bonus:				$(NAME_BONUS)
 
 clean:
 					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
@@ -68,11 +82,8 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-bonus:				$(SRCS_OBJS) $(BONUS_OBJS)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS) $(BONUS_OBJS)
-
-run:
-					$(COMPILER) $(CFLAGS) *.c
+run:				$(NAME)
+					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
 #					valgrind --leak-check=full -s ./a.out
 					./a.out
 					$(REMOVE) $(RFLAGS) a.out*

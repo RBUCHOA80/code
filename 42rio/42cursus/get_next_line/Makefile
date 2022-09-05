@@ -59,21 +59,18 @@ bonus:				$(NAME_BONUS)
 
 clean:
 					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
-					$(foreach dir, $(LIBS), make clean -C $(dir) ;)
 
 fclean:				clean
 					$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
-					$(foreach dir, $(LIBS), make fclean -C $(dir) ;)
 
-re:					fclean all bonus
-					$(foreach dir, $(LIBS), make re -C $(dir) ;)
+re:					fclean all
 
 .PHONY:				all clean fclean re
 
 run:				$(NAME)
-					$(COMPILER) $(CFLAGS) $(NAME) main.c
-					valgrind --leak-check=full -s ./a.out
-#					./a.out
+					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+#					valgrind --leak-check=full -s ./a.out
+					./a.out
 					$(REMOVE) $(RFLAGS) a.out*
 
 b:					$(NAME_BONUS)
