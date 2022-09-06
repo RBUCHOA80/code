@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 21:37:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/05 16:31:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/06 18:32:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	int		fd;
 	int		i;
 
-	fd = open("./array_de_inteiros.txt", O_RDONLY);
+	fd = open("./aux_files/array_de_inteiros.txt", O_RDONLY);
 	ret = get_next_line(fd);
 	lista = ft_split(ret, ',');
 	count = 0;
