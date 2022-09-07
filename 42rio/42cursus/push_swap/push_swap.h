@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:48:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/06 23:41:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,17 @@ void	push_swap(int *arr, int start, int end);
 void	ft_merge(int *arr, int start, int mid, int end);
 void	ft_merge_sort(int *arr, int start, int end);
 void	ft_printf_arr(int *arr, int size);
+
+void	sa(int *stack_a);
+void	sb(int *stack_b);
+void	ss(int *stack_a, int *stack_b);
+void	pa(int *stack_a, int size_a, int *stack_b, int size_b);
+void	pb(int *stack_a, int size_a, int *stack_b, int size_b);
+void	ra(int *stack_a, int size);
+void	rb(int *stack_b, int size);
+void	rr(int *stack_a, int size_a, int *stack_b, int size_b);
+void	rra(int *stack_a, int size);
+void	rrb(int *stack_b, int size);
+void	rrr(int *stack_a, int size_a, int *stack_b, int size_b);
 
 #endif

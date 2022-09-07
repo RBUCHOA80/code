@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/06 20:31:53 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/06 23:46:27 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,10 @@ SRCS_LIST		=	main.c \
 					push_swap.c \
 					ft_merge_sort.c \
 					ft_printf_arr.c \
+					operation_push.c \
+					operation_reverse.c \
+					operation_rotate.c \
+					operation_swap.c \
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
@@ -75,14 +79,12 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-ARG				=	8 \
-					5 \
-					3 \
-					7 \
-					6 \
-					2 \
-					4 \
+ARG				=	2 \
 					1 \
+					3 \
+					6 \
+					5 \
+					8 \
 
 run:				$(NAME)
 					./$(NAME) $(ARG)

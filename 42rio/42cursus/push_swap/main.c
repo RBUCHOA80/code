@@ -6,12 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 21:37:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/06 21:57:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/06 23:23:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <fcntl.h>
+/* #include <fcntl.h>
 
 int	main(void)
 {
@@ -43,7 +43,7 @@ int	main(void)
 		ft_printf("arr[%i] -> %i\n", i, arr[i]);
 	free(arr);
 	return (0);
-}
+} */
 
 /* int	g_arr[] = {\
 					40, \
@@ -72,23 +72,5 @@ int	main(void)
 	end = ((sizeof(g_arr) / sizeof(*g_arr)));
 	push_swap(g_arr, start, end - 1);
 	ft_printf_arr(g_arr, end);
-	return (0);
-} */
-
-/* int	main(int argc, char **argv)
-{
-	int	*arr;
-	int	i;
-
-	if (argc < 2)
-		return (1);
-	argc -= 1;
-	arr = ft_calloc(argc, sizeof(*arr));
-	i = -1;
-	while (++i < argc)
-		arr[i] = ft_atoi(argv[i + 1]);
-	push_swap(arr, 0, argc - 1);
-	ft_printf_arr(arr, argc);
-	free(arr);
 	return (0);
 } */
