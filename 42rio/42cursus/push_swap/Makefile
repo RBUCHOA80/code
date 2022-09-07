@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/06 23:51:22 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/06 23:52:58 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,7 @@ RFLAGS			=	-drf
 SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
-SRCS_LIST		=	main.c \
-					push_swap.c \
+SRCS_LIST		=	push_swap.c \
 					ft_merge_sort.c \
 					ft_printf_arr.c \
 					operation_push.c \
@@ -49,8 +48,7 @@ SRCS_LIST		=	main.c \
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
-BONUS_LIST		=	main.c \
-					checker.c \
+BONUS_LIST		=	checker.c \
 					ft_merge_sort.c \
 					ft_printf_arr.c \
 
@@ -88,11 +86,11 @@ ARG				=	2 \
 
 run:				$(NAME)
 					./$(NAME) $(ARG)
-					$(REMOVE) $(RFLAGS) $(NAME)
+					$(REMOVE) $(RFLAGS) $(NAME) main.c
 
 vrun:				$(NAME)
 					valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
-					$(REMOVE) $(RFLAGS) $(NAME)
+					$(REMOVE) $(RFLAGS) $(NAME) main.c
 
 b:					$(NAME_BONUS)
 #					valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
