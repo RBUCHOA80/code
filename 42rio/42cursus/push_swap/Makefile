@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/06 23:46:27 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/06 23:51:22 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,13 +88,13 @@ ARG				=	2 \
 
 run:				$(NAME)
 					./$(NAME) $(ARG)
-					$(REMOVE) $(RFLAGS) a.out*
+					$(REMOVE) $(RFLAGS) $(NAME)
 
 vrun:				$(NAME)
 					valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
-					$(REMOVE) $(RFLAGS) a.out*
+					$(REMOVE) $(RFLAGS) $(NAME)
 
 b:					$(NAME_BONUS)
 #					valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
 					./$(NAME_BONUS) $(ARG)
-					$(REMOVE) $(RFLAGS) a.out*
+					$(REMOVE) $(RFLAGS) $(NAME_BONUS)
