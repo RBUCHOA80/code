@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/30 22:21:13 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/06 20:35:06 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,12 @@ re:					fclean all
 
 run:				$(NAME)
 					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
-#					valgrind --leak-check=full -s ./a.out
 					./a.out
+					$(REMOVE) $(RFLAGS) a.out*
+
+vrun:				$(NAME)
+					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+					valgrind --leak-check=full -s ./a.out
 					$(REMOVE) $(RFLAGS) a.out*
 
 b:					$(NAME_BONUS)

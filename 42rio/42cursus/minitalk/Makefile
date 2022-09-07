@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/30 22:29:17 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/06 20:35:31 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ LIBS_O				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
 LIBS_PATH			=	../
 LIBS_LIST			=	libftprintf \
 						get_next_line \
-						libft \
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror -I ./
