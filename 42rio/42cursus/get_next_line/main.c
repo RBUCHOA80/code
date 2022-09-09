@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 01:00:13 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/30 21:48:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/08 21:17:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	main(void)
 			if (!ret)
 				exit++;
 			else
-				printf("\e[1;32mfd[%i] \e[1;31mline[%i] --> \e[0m%s", 3 + i, line, ret);
+				printf("\e[1;32mfd[%i] \e[1;31mline[%i] --> \e[0m%s"\
+					, 3 + i, line, ret);
 			free(ret);
 			i++;
 		}

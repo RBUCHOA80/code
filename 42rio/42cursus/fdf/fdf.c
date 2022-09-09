@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:26:27 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/25 23:59:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/08 21:18:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(void)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if(!line)
-			break;
+		if (!line)
+			break ;
 		if (((i > 0) && j != (ft_strlen(line) - 1)))
 		{
 			printf("ARQUIVO INVALIDO\n");

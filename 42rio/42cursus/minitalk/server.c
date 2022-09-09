@@ -6,12 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/30 20:57:03 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/08 21:14:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../libft/libft.h" //libft
-# include <signal.h> //SIGUSR1 / SIGUSR2
+#include "../libft/libft.h" //libft
+#include <signal.h> //SIGUSR1 / SIGUSR2
 
 void	ft_decrypt(int sig)
 {
