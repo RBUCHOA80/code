@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:30:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/06 23:47:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/08 22:19:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	pb(int *stack_a, int size_a, int *stack_b, int size_b)
 int	main(void)
 {
 	static int	stack_a[] = {2, 1, 3, 6, 5, 8};
-	static int	stack_b[] = {6, 5, 8, 2, 1, 3};
+	static int	stack_b[] = {};
 	int			size_a;
 	int			size_b;
 
