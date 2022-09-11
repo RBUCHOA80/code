@@ -6,9 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:20:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/06 22:58:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/10 09:56:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_oswap(int *stack)
+{
+	int	temp;
+
+	temp = stack[0];
+	stack[0] = stack[1];
+	stack[1] = temp;
+	return ;
+}
 
 /*
 sa (swap a):
@@ -51,15 +61,15 @@ void	ss(int *stack_a, int *stack_b)
 	return ;
 }
 
-/* #include "push_swap.h"
+#include "push_swap.h"
+
+#define NELEMS(arr)  (sizeof(arr) / sizeof((arr)[0]))
 
 int	main(void)
 {
 	static int	stack_a[] = {2, 1, 3, 6, 5, 8};
-	int			size;
 
-	size = (sizeof(stack_a) / sizeof(*stack_a));
 	sa(stack_a);
-	ft_printf_arr(stack_a, size);
+	ft_printf_arr(stack_a, NELEMS(stack_a));
 	return (0);
-} */
+}

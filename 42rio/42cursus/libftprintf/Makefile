@@ -6,20 +6,20 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/06 20:33:59 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/10 16:53:10 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS		=	--silent
 
-NAME			= 	libftprintf.a
-
-NAME_BONUS		=	libftprintf_bonus.a
-
 LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
 LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
 LIBS_PATH		=	../
 LIBS_LIST		=	
+
+NAME			= 	libftprintf.a
+
+NAME_BONUS		=	libftprintf_bonus.a
 
 INCLUDE_PATH	=	./
 
@@ -62,7 +62,7 @@ BONUS_LIST		=
 
 $(NAME):			$(SRCS_OBJS)
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
+					$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
 
 $(NAME_BONUS):		$(BONUS_OBJS) 
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
