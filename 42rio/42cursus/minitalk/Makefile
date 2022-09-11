@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/06 20:35:31 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/10 17:30:09 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,37 +15,42 @@
 LIBS				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
 LIBS_O				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
 LIBS_PATH			=	../
-LIBS_LIST			=	libftprintf \
+LIBS_LIST			=	libft \
+						libftprintf \
 						get_next_line \
 
+NAME				=	
+
+NAME_BONUS			=	
+
+INCLUDE_PATH		=	./
+
 COMPILER			=	cc
-CFLAGS				=	-Wall -Wextra -Werror -I ./
+CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
+
+AR					= 	ar
+AFLAGS				= 	rc
 
 REMOVE				=	rm
 RFLAGS				=	-drf
-
-MK					=	make
-MKFLAGS				=	-C
-
-LIBS_PATH			=	../
-LIBS_NAME			=	libft
-LIBS				=	$(LIBS_PATH)$(LIBS_NAME)/$(LIBS_NAME).a
-
-LIBFT				=	$(MK) $(MKFLAGS) $(LIBS_PATH)$(LIBS_NAME)
 
 SERVER_NAME			=	server
 
 CLIENT_NAME			=	client
 
-$(SERVER):				$(LIBFT)
-						$(COMPILER) $(CFLAGS) $(LIBS) $(SERVER_NAME).c -o $(SERVER_NAME)
+$(NAME):				$(CLIENT_NAME)
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(CLIENT_NAME)
+						$(SERVER_NAME) 
 
-$(CLIENT):				$(LIBFT)
-						$(COMPILER) $(CFLAGS) $(LIBS) $(CLIENT_NAME).c -o $(CLIENT_NAME)
+$(SERVER_NAME):			$(LIBFT)
+						$(COMPILER) $(CFLAGS) $(LIBS_O) $(SERVER_NAME).c -o $(SERVER_NAME)
 
-$(NAME):
-						$(SERVER)
-						$(CLIENT)
+$(CLIENT_NAME):			$(LIBFT)
+						$(COMPILER) $(CFLAGS) $(LIBS_O) $(CLIENT_NAME).c -o $(CLIENT_NAME)
+
+.c.o:
+						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all:					$(NAME)
 
