@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_arr.c                                    :+:      :+:    :+:   */
+/*   ft_strtolist.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 21:33:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:38:26 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/14 17:46:01 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/14 17:46:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_printf_arr(int *arr, int size)
+t_stack	*ft_strtolist(char **str)
 {
-	int	i;
+	t_stack	*list;
+	int		count;
+	int		i;
 
+	count = 0;
+	while (str[count])
+		count++;
+	list = ft_calloc(count, sizeof(*list));
+	if (!list)
+		return (NULL);
 	i = 0;
-	while (i < size)
+	while (str[i])
 	{
-		ft_printf("arr[%i] = %d\n", i, arr[i]);
+		list[i].content = ft_atoi(str[i]);
+		if (i)
+			list[i - 1].next = &list[i];
 		i++;
 	}
+	return (list);
 }

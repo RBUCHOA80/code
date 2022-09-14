@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_freelist.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 19:28:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/03 22:47:35 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/14 17:48:25 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/14 17:56:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(void)
+void	ft_freelist(t_stack *list)
 {
-	return (0);
+	int	count;
+
+	count = 0;
+	while (&list[count])
+		count++;
+	while (count)
+		free(&list[count--]);
 }
