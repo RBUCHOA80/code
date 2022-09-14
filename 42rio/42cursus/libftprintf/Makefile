@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/10 16:53:10 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/13 21:00:57 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,9 +57,6 @@ BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
 BONUS_LIST		=	
 
-.c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
-
 $(NAME):			$(SRCS_OBJS)
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
 					$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
@@ -67,6 +64,9 @@ $(NAME):			$(SRCS_OBJS)
 $(NAME_BONUS):		$(BONUS_OBJS) 
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
 					$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
+
+.c.o:
+					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all:				$(NAME)
 

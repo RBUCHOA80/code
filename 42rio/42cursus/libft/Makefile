@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/06 20:34:41 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/13 21:01:58 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,9 +83,6 @@ BONUS_LIST		=	ft_lstadd_back.c \
 					ft_lstnew.c \
 					ft_lstsize.c \
 
-.c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
-
 $(NAME):			$(SRCS_OBJS)
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
 					$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
@@ -93,6 +90,9 @@ $(NAME):			$(SRCS_OBJS)
 $(NAME_BONUS):		$(BONUS_OBJS) 
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
 					$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
+
+.c.o:
+					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all:				$(NAME)
 
