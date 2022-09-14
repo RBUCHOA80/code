@@ -6,66 +6,72 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/10 17:30:09 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/13 21:41:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS			=	--silent
 
-LIBS				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
-LIBS_O				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
-LIBS_PATH			=	../
-LIBS_LIST			=	libft \
-						libftprintf \
-						get_next_line \
+LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
+LIBS_PATH		=	../
+LIBS_LIST		=	libft \
 
-NAME				=	
+NAME			=	server client
 
-NAME_BONUS			=	
+NAME_BONUS		=	server_bonus client_bonus
 
-INCLUDE_PATH		=	./
+INCLUDE_PATH	=	./
 
-COMPILER			=	cc
-CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
+COMPILER		=	cc
+CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
-AR					= 	ar
-AFLAGS				= 	rc
+AR				= 	ar
+AFLAGS			= 	rc
 
-REMOVE				=	rm
-RFLAGS				=	-drf
+REMOVE			=	rm
+RFLAGS			=	-drf
 
-SERVER_NAME			=	server
+SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS		= 	$(SRCS:.c=.o)
+SRCS_PATH		=	./
+SRCS_LIST		=	server.c \
+					client.c \
 
-CLIENT_NAME			=	client
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS		=	$(BONUS:.c=.o)
+BONUS_PATH		=	./
+BONUS_LIST		=	
 
-$(NAME):				$(CLIENT_NAME)
-						$(foreach dir, $(LIBS), make all -C $(dir) ;)
-						$(CLIENT_NAME)
-						$(SERVER_NAME) 
+$(NAME):			$(SRCS_OBJS)
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+					$(COMPILER) $(CFLAGS) $(LIBS_O) $< -o $@
 
-$(SERVER_NAME):			$(LIBFT)
-						$(COMPILER) $(CFLAGS) $(LIBS_O) $(SERVER_NAME).c -o $(SERVER_NAME)
-
-$(CLIENT_NAME):			$(LIBFT)
-						$(COMPILER) $(CFLAGS) $(LIBS_O) $(CLIENT_NAME).c -o $(CLIENT_NAME)
+$(NAME_BONUS):		$(BONUS_OBJS) 
+					$(foreach dir, $(LIBS), make all -C $(dir) ;)
 
 .c.o:
-						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
+					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-all:					$(NAME)
+server:				
+					gcc server.o
 
-bonus:					$(NAME)_bonus
+client:				client.o
+					$(COMPILER) $(CFLAGS) $(LIBS_O) $< -o client
+
+all:				$(NAME)
+
+bonus:				$(NAME_BONUS)
 
 clean:
-						$(foreach names, $(NAME), $(REMOVE) $(RFLAGS) names)
+					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
-fclean:					clean
-						$(REMOVE) $(RFLAGS) $(NAME)
+fclean:				clean
+					$(REMOVE) $(RFLAGS) $(NAME)
 
-re:
-						fclean all
+re:					fclean all
 
-.PHONY:					all bonus clean fclean re
+.PHONY:				all clean fclean re
 
 RUN_SERVER			=
 
