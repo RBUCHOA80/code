@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printflist.c                                    :+:      :+:    :+:   */
+/*   ft_listlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:58 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 19:14:07 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/14 18:19:11 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/14 19:14:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_printflist(t_stack *list)
+int	ft_listlen(t_stack *list)
 {
-	int	i;
+	int	len;
 
-	i = 0;
+	len = 0;
 	while (1)
 	{
-		ft_printf("%p | ", &list[i]);
-		ft_printf("Node[%i] | ", i);
-		ft_printf("Content = %i | ", list[i].content);
-		ft_printf("Next = %p\n", list[i].next);
-		if (!list[i].next)
+		if (!list[len].next)
 			break ;
-		i++;
-	}	
+		len++;
+	}
+	return (len);
 }
