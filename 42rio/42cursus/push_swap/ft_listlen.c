@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:19:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 19:49:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/14 21:27:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_listlen(t_stack *list)
 {
 	int	len;
 
-	len = 1;
+	len = 0;
 	while (list[len].next)
 		len++;
-	return (len);
+	return (len + 1);
 }

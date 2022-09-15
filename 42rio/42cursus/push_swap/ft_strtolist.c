@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:46:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 17:46:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/14 22:55:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_stack	*ft_strtolist(char **str)
 	int		count;
 	int		i;
 
+	if (!str)
+		return (NULL);
 	count = 0;
 	while (str[count])
 		count++;
