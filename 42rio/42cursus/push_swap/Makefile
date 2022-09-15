@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/14 18:54:35 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/14 23:25:51 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_LIST		=	main.c \
+					ft_freelist.c \
 					ft_listlen.c \
 					ft_printflist.c \
 					ft_strtolist.c \

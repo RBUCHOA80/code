@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/13 21:56:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/14 23:34:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	push_swap(int *arr, int start, int end)
 {
-	ft_merge_sort(arr, start, end);
+	//ft_merge_sort(arr, start, end);
 }

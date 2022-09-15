@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:56:17 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 22:55:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/14 23:42:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	main(void)
 	list = ft_strtolist(str);
 	ft_printflist(list);
 	ft_printf("Total of %i Node(s).\n", ft_listlen(list));
+	ft_freelist(list);
+	// ft_printflist(list);
 	return (0);
 }

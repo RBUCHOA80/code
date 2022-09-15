@@ -6,24 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:00:51 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/06 20:04:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/14 23:33:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_merge_sort(int *arr, int start, int end)
-{
-	int	mid;
-
-	if (start < end)
-	{
-		mid = ((start + end) / 2);
-		ft_merge_sort(arr, start, mid);
-		ft_merge_sort(arr, mid + 1, end);
-		ft_merge(arr, start, mid, end);
-	}
-}
 
 void	ft_merge(int *arr, int start, int mid, int end)
 {
@@ -60,4 +47,17 @@ void	ft_merge(int *arr, int start, int mid, int end)
 	while (i < size)
 		arr[start++] = temp[i++];
 	free (temp);
+}
+
+void	ft_merge_sort(int *arr, int start, int end)
+{
+	int	mid;
+
+	if (start < end)
+	{
+		mid = ((start + end) / 2);
+		ft_merge_sort(arr, start, mid);
+		ft_merge_sort(arr, mid + 1, end);
+		ft_merge(arr, start, mid, end);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:48:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 17:56:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/14 23:44:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	ft_freelist(t_stack *list)
 {
 	int	count;
 
-	count = 0;
-	while (&list[count])
-		count++;
-	while (count)
-		free(&list[count--]);
+	count = ft_listlen(list);
+	while (count--)
+	{
+		ft_printf("freeing Node[%i]\n", count);
+		free(&list[count]);
+	}
 }
