@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:56:17 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/15 21:31:21 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/15 21:52:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 int	main(void)
 {
-	t_stack	*list;
-	char	**str;
-	char	*file;
 	int		fd;
+	char	*file;
+	char	**str;
+	t_stack	*list;
 
 	fd = open("./aux_files/array_de_inteiros.txt", O_RDONLY);
 	file = get_next_line(fd);
