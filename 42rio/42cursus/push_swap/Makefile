@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/14 23:25:51 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/15 21:30:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,17 +38,15 @@ SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_LIST		=	main.c \
-					ft_freelist.c \
-					ft_listlen.c \
-					ft_printflist.c \
-					ft_strtolist.c \
+					ft_free_str.c \
+					ft_list_len.c \
+					ft_printf_list.c \
+					ft_str_to_list.c \
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
 BONUS_LIST		=	checker.c \
-					ft_merge_sort.c \
-					ft_printf_arr.c \
 
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)

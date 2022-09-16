@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 18:28:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/15 21:30:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	ft_freelist(t_stack *list);
-int		ft_listlen(t_stack *list);
-void	ft_printflist(t_stack *list);
-t_stack	*ft_strtolist(char **str);
+void	ft_free_str(char **str);
+int		ft_list_len(t_stack *list);
+void	ft_printf_list(t_stack *list);
+t_stack	*ft_str_to_list(char **str);
 
 #endif

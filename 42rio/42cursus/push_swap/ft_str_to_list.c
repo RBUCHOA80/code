@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolist.c                                     :+:      :+:    :+:   */
+/*   ft_str_to_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:46:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/14 22:55:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/15 21:30:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_strtolist(char **str)
+t_stack	*ft_str_to_list(char **str)
 {
 	t_stack	*list;
 	int		count;
