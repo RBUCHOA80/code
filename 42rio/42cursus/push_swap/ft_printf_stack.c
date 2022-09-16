@@ -17,14 +17,12 @@ void	ft_printf_stack(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (1)
+	while (stack)
 	{
-		ft_printf("%p \t", &stack[i]);
-		ft_printf("Node[%i] \t", i);
-		ft_printf("Content = %i \t", stack[i].content);
-		ft_printf("Next = %p\n", stack[i].next);
-		if (!stack[i].next)
-			break ;
-		i++;
+		ft_printf("%p \t", stack);
+		ft_printf("Node[%i] \t", i++);
+		ft_printf("Content = %i \t", stack->content);
+		ft_printf("Next = %p\n", stack->next);
+		stack = stack->next;
 	}	
 }

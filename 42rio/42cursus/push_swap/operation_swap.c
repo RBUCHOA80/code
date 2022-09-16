@@ -6,17 +6,17 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:20:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/16 08:11:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/16 08:30:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_o_swap(t_stack *stack)
+void	ft_o_swap(t_stack **stack)
 {
-	t_stack	temp;
+	t_stack	*temp;
 
-	temp = stack[0];
+	temp = *stack;
 	stack[0] = stack[1];
 	stack[1] = temp;
 	stack = &stack[1];
@@ -28,7 +28,7 @@ sa (swap a):
 Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements.
 */
-void	sa(t_stack *stack_a)
+void	sa(t_stack **stack_a)
 {
 	ft_o_swap(stack_a);
 	return ;
@@ -39,7 +39,7 @@ sb (swap b):
 Swap the first 2 elements at the top of stack b.
 Do nothing if there is only one or no elements.
 */
-void	sb(t_stack *stack_b)
+void	sb(t_stack **stack_b)
 {
 	ft_o_swap(stack_b);
 	return ;
@@ -49,7 +49,7 @@ void	sb(t_stack *stack_b)
 ss :
 sa and sb at the same time.
 */
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
@@ -69,7 +69,7 @@ int	main(void)
 	stack = ft_str_to_stack(str);
 	ft_printf_stack(stack);
 	ft_printf("Total of %i Node(s).\n", ft_stack_len(stack));
-	sa(stack);
+	sa(&stack);
 	ft_printf_stack(stack);
 	close(fd);
 	free(file);
