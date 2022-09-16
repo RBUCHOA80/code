@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_to_list.c                                   :+:      :+:    :+:   */
+/*   ft_str_to_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_str_to_list(char **str)
+t_stack	*ft_str_to_stack(char **str)
 {
-	t_stack	*list;
+	t_stack	*stack;
 	int		count;
 	int		i;
 
@@ -23,16 +23,16 @@ t_stack	*ft_str_to_list(char **str)
 	count = 0;
 	while (str[count])
 		count++;
-	list = ft_calloc(count, sizeof(*list));
-	if (!list)
+	stack = ft_calloc(count, sizeof(*stack));
+	if (!stack)
 		return (NULL);
 	i = 0;
 	while (str[i])
 	{
-		list[i].content = ft_atoi(str[i]);
+		stack[i].content = ft_atoi(str[i]);
 		if (i)
-			list[i - 1].next = &list[i];
+			stack[i - 1].next = &stack[i];
 		i++;
 	}
-	return (list);
+	return (stack);
 }

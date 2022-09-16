@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_list.c                                   :+:      :+:    :+:   */
+/*   ft_printf_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-void	ft_printf_list(t_stack *list)
+void	ft_printf_stack(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
 	while (1)
 	{
-		ft_printf("%p \t", &list[i]);
+		ft_printf("%p \t", &stack[i]);
 		ft_printf("Node[%i] \t", i);
-		ft_printf("Content = %i \t", list[i].content);
-		ft_printf("Next = %p\n", list[i].next);
-		if (!list[i].next)
+		ft_printf("Content = %i \t", stack[i].content);
+		ft_printf("Next = %p\n", stack[i].next);
+		if (!stack[i].next)
 			break ;
 		i++;
 	}	

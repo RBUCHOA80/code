@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_len.c                                      :+:      :+:    :+:   */
+/*   ft_stack_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int	ft_list_len(t_stack *list)
+int	ft_stack_len(t_stack *stack)
 {
 	int	len;
 
 	len = 0;
-	while (list[len].next)
+	while (stack[len].next)
 		len++;
 	return (len + 1);
 }

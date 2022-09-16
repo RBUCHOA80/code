@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_list.c                                     :+:      :+:    :+:   */
+/*   ft_free_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-void	ft_free_list(t_stack *list)
+void	ft_free_stack(t_stack *stack)
 {
 	int	count;
 
-	if (!list)
+	if (!stack)
 		return ;
-	count = ft_listlen(list);
+	count = ft_stacklen(stack);
 	while (count--)
 	{
 		ft_printf("freeing Node[%i]\n", count);
 	}
-	free(list);
+	free(stack);
 }
