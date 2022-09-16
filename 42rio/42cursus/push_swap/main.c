@@ -6,12 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:56:17 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/15 21:52:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/15 22:14:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <fcntl.h> // open | close
+/* #include "push_swap.h"
 
 int	main(void)
 {
@@ -31,4 +30,4 @@ int	main(void)
 	ft_free_str(str);
 	free(list);
 	return (0);
-}
+} */

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/15 22:03:26 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/15 22:13:07 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS_LIST		=	main.c \
 					ft_list_len.c \
 					ft_printf_list.c \
 					ft_str_to_list.c \
+					operation_swap.c \
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
