@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/15 21:30:05 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/15 22:03:26 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,18 +73,13 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-ARG				=	2 \
-					1 \
-					3 \
-					6 \
-					5 \
-					8 \
+ARG=$(echo {1..500}$'\n' | sort -R | tr "\n" " "); ./push_swap $ARG
 
 run:				$(NAME)
-					./$(NAME) $(ARG)
+					./$(NAME)
 
 vrun:				$(NAME)
-					valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
+					valgrind --leak-check=full -s -v ./$(NAME)
 
 b:					$(NAME_BONUS)
 #					valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
