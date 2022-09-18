@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/08 21:14:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/18 17:54:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_decrypt(int sig)
 
 int	main(void)
 {
-	signal(SIGUSR2, &ft_decrypt);
 	signal(SIGUSR1, &ft_decrypt);
+	signal(SIGUSR2, &ft_decrypt);
 	ft_putstr_fd("\e[1;35mPID: ", 1);
 	ft_putnbr_fd(getpid(), 1);
 	ft_putstr_fd("\e[m\n", 1);

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/17 23:45:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/18 19:58:11 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ NAME			=	push_swap
 
 NAME_BONUS		=	checker
 
-LIBS			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/)
-LIBS_O			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/*.o)
+LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
 LIBS_PATH		=	../
-LIBS_list		=	libft \
+LIBS_LIST		=	libft \
 					libftprintf \
 					get_next_line \
 
@@ -34,17 +34,27 @@ AFLAGS			=	rc
 REMOVE			=	rm
 RFLAGS			=	-drf
 
-SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_list))
+SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
-SRCS_list		=	main.c \
+SRCS_LIST		=	\
+					ft_last_node.c \
+					ft_pop_base.c \
+					ft_pop_top.c \
 					ft_printf_list.c \
+					ft_push_base.c \
+					ft_push_top.c \
 					ft_str_to_list.c \
+					main.c \
+					operation_push.c \
+					operation_reverse.c \
+					operation_rotate.c \
+					operation_swap.c \
 
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_list))
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
-BONUS_list		=	checker.c \
+BONUS_LIST		=	checker.c \
 
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)

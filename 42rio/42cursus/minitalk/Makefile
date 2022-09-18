@@ -6,87 +6,91 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/13 21:41:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/18 18:37:09 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #MAKEFLAGS			=	--silent
 
-LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
-LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
-LIBS_PATH		=	../
-LIBS_LIST		=	libft \
+LIBS				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS_O				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
+LIBS_PATH			=	../
+LIBS_LIST			=	libft \
 
-NAME			=	server client
+SERVER_NAME			=	server
 
-NAME_BONUS		=	server_bonus client_bonus
+CLIENT_NAME			=	client
 
-INCLUDE_PATH	=	./
+NAME				=	$(SERVER_NAME) $(CLIENT_NAME)
 
-COMPILER		=	cc
-CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
+NAME_BONUS			=	$(SERVER_NAME)_bonus $(CLIENT_NAME)_bonus
 
-AR				= 	ar
-AFLAGS			= 	rc
+INCLUDE_PATH		=	./
 
-REMOVE			=	rm
-RFLAGS			=	-drf
+COMPILER			=	cc
+CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
-SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
-SRCS_OBJS		= 	$(SRCS:.c=.o)
-SRCS_PATH		=	./
-SRCS_LIST		=	server.c \
-					client.c \
+AR					= 	ar
+AFLAGS				= 	rc
 
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
-BONUS_OBJS		=	$(BONUS:.c=.o)
-BONUS_PATH		=	./
-BONUS_LIST		=	
+REMOVE				=	rm
+RFLAGS				=	-drf
 
-$(NAME):			$(SRCS_OBJS)
-					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(COMPILER) $(CFLAGS) $(LIBS_O) $< -o $@
+SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS			= 	$(SRCS:.c=.o)
+SRCS_PATH			=	./
+SRCS_LIST			=	server.c \
+						client.c \
 
-$(NAME_BONUS):		$(BONUS_OBJS) 
-					$(foreach dir, $(LIBS), make all -C $(dir) ;)
+BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS			=	$(BONUS:.c=.o)
+BONUS_PATH			=	./
+BONUS_LIST			=	
+
+$(NAME):				$(SRCS_OBJS)
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(COMPILER) $(CFLAGS) $(LIBS_O) $< -o $@
+
+$(NAME_BONUS):			$(BONUS_OBJS) 
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
 
 .c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
+						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-server:				
-					gcc server.o
+$(SERVER_NAME):			$(SERVER_NAME).o
+						$(COMPILER) $(CFLAGS) $(LIBS_O) $(SERVER_NAME).o -o $(SERVER_NAME)
 
-client:				client.o
-					$(COMPILER) $(CFLAGS) $(LIBS_O) $< -o client
+$(CLIENT_NAME):			$(CLIENT_NAME).o
+						$(COMPILER) $(CFLAGS) $(LIBS_O) $(CLIENT_NAME).o -o $(CLIENT_NAME)
 
-all:				$(NAME)
+all:					$(NAME)
 
-bonus:				$(NAME_BONUS)
+bonus:					$(NAME_BONUS)
 
 clean:
-					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
-fclean:				clean
-					$(REMOVE) $(RFLAGS) $(NAME)
+fclean:					clean
+						$(REMOVE) $(RFLAGS) $(NAME)
 
-re:					fclean all
+re:						fclean all
 
-.PHONY:				all clean fclean re
+.PHONY:					all clean fclean re
 
 RUN_SERVER			=
 
 ifeq ($(shell uname), Darwin)
-	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME) ; open -a Terminal -e ./$(SERVER_NAME) &
+	RUN_SERVER		=	$(COMPILER) $(CFLAGS) $(SERVER_NAME).c $(LIBS_O) -o $(SERVER_NAME) ; open -a Terminal -e ./$(SERVER_NAME) &
+endif
+ifeq ($(shell uname), LinuxNativo)
+	RUN_SERVER		=	$(COMPILER) $(CFLAGS) $(SERVER_NAME).c $(LIBS_O) -o $(SERVER_NAME) ; x-terminal-emulator -e "./$(SERVER_NAME)" &
 endif
 ifeq ($(shell uname), Linux)
-	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME) ; x-terminal-emulator -e "./$(SERVER_NAME)" &
-endif
-ifeq ($(shell uname), Linux)
-	RUN_SERVER		=	$(COMPILER) $(SERVER_NAME).c $(LIBS) -o $(SERVER_NAME) ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/$(SERVER_NAME)"' &
+	RUN_SERVER		=	$(COMPILER) $(CFLAGS) $(SERVER_NAME).c $(LIBS_O) -o $(SERVER_NAME) ; cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/dev/42rio/42cursus/minitalk/$(SERVER_NAME)"' &
 endif
 
-#RUN_CLIENT			=	$(COMPILER) $(CLIENT_NAME).c $(LIBS) -o $(CLIENT_NAME) ; time ./$(CLIENT_NAME) $(shell pgrep server)
-RUN_CLIENT			=	$(COMPILER) $(CLIENT_NAME).c $(LIBS) -o $(CLIENT_NAME) ; read -p "Enter server PID: " argv1 && time ./$(CLIENT_NAME) $$argv1
+#RUN_CLIENT			=	$(COMPILER) $(CFLAGS) $(CLIENT_NAME).c $(LIBS_O) -o $(CLIENT_NAME) ; time ./$(CLIENT_NAME) $(shell pgrep server)
+RUN_CLIENT			=	$(COMPILER) $(CFLAGS) $(CLIENT_NAME).c $(LIBS_O) -o $(CLIENT_NAME) ; read -p "Enter server PID: " argv1 && time ./$(CLIENT_NAME) $$argv1
 
 run:
 		$(LIBFT)

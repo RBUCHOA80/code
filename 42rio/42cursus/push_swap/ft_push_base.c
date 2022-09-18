@@ -12,19 +12,24 @@
 
 #include "push_swap.h"
 
-t_list	*ft_str_to_list(char **str)
+void	ft_push_base(t_list **list, void *content)
 {
-	t_list	*list;
-	int		*new_content;
+	t_list	*new_node;
+	t_list	*temp;
 
-	list = NULL;
-	while (*str)
+	if (!(list && content))
+		return ;
+	new_node = ft_calloc(1, sizeof(*new_node));
+	if (!new_node)
+		return ;
+	new_node->content = content;
+	new_node->next = NULL;
+	if (!*list)
 	{
-		// list = ft_calloc(1, sizeof(*list));
-		new_content = ft_calloc(1, sizeof(*new_content));
-		*new_content = ft_atoi(*str);
-		ft_push_base(&list, new_content);
-		str++;
+		*list = new_node;
+		return ;
 	}
-	return (list);
+	temp = ft_last_node(*list);
+	temp->next = new_node;
+	return ;
 }

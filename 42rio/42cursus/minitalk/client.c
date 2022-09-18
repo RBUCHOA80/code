@@ -6,12 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/08 21:14:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/18 17:53:59 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h" //libft
-#include <signal.h> //SIGUSR1 / SIGUSR2
+#include <signal.h> //SIGUSR1 | SIGUSR2
 
 void	ft_encrypt(int pid, char chr)
 {
