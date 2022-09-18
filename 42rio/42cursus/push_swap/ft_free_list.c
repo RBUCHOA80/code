@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_stack.c                                     :+:      :+:    :+:   */
+/*   ft_free_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:48:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/15 21:30:32 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/17 16:36:58 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/17 20:16:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_stack(t_stack *stack)
+void	ft_free_list(t_list *list)
 {
 	int	count;
 
-	if (!stack)
+	if (!list)
 		return ;
-	count = ft_stacklen(stack);
+	count = ft_list_len(list);
 	while (count--)
 	{
 		ft_printf("freeing Node[%i]\n", count);
 	}
-	free(stack);
+	free(list);
 }

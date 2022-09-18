@@ -6,49 +6,49 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:24:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/06 23:19:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/17 20:16:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ra (rotate a):
-Shift up all elements of stack a by 1.
+Shift up all elements of list a by 1.
 The first element becomes the last one.
 */
-void	ra(int *stack_a, int size)
+void	ra(int *list_a, int size)
 {
 	int	temp;
 	int	i;
 
 	i = 0;
-	temp = stack_a[i];
+	temp = list_a[i];
 	while (i < size)
 	{
-		stack_a[i] = stack_a[i + 1];
+		list_a[i] = list_a[i + 1];
 		i++;
 	}
-	stack_a[i - 1] = temp;
+	list_a[i - 1] = temp;
 	return ;
 }
 
 /*
 rb (rotate b):
-Shift up all elements of stack b by 1.
+Shift up all elements of list b by 1.
 The first element becomes the last one.
 */
-void	rb(int *stack_b, int size)
+void	rb(int *list_b, int size)
 {
 	int	temp;
 	int	i;
 
 	i = 0;
-	temp = stack_b[i];
+	temp = list_b[i];
 	while (i < size)
 	{
-		stack_b[i] = stack_b[i + 1];
+		list_b[i] = list_b[i + 1];
 		i++;
 	}
-	stack_b[i - 1] = temp;
+	list_b[i - 1] = temp;
 	return ;
 }
 
@@ -56,10 +56,10 @@ void	rb(int *stack_b, int size)
 rr :
 ra and rb at the same time.
 */
-void	rr(int *stack_a, int size_a, int *stack_b, int size_b)
+void	rr(int *list_a, int size_a, int *list_b, int size_b)
 {
-	ra(stack_a, size_a);
-	ra(stack_b, size_b);
+	ra(list_a, size_a);
+	ra(list_b, size_b);
 	return ;
 }
 
@@ -67,11 +67,11 @@ void	rr(int *stack_a, int size_a, int *stack_b, int size_b)
 
 int	main(void)
 {
-	static int	stack_a[] = {2, 1, 3, 6, 5, 8};
+	static int	list_a[] = {2, 1, 3, 6, 5, 8};
 	int			size;
 
-	size = (sizeof(stack_a) / sizeof(*stack_a));
-	ra(stack_a, size);
-	ft_printf_arr(stack_a, size);
+	size = (sizeof(list_a) / sizeof(*list_a));
+	ra(list_a, size);
+	ft_printf_arr(list_a, size);
 	return (0);
 } */

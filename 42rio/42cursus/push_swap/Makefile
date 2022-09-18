@@ -6,20 +6,20 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/16 08:11:11 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/17 23:45:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#MAKEFLAGS		=	--silent
+MAKEFLAGS		=	--silent
 
 NAME			=	push_swap
 
 NAME_BONUS		=	checker
 
-LIBS			=	$(foreach libs, $(LIBS_stack), $(LIBS_PATH)$(libs)/)
-LIBS_O			=	$(foreach libs, $(LIBS_stack), $(LIBS_PATH)$(libs)/*.o)
+LIBS			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/)
+LIBS_O			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/*.o)
 LIBS_PATH		=	../
-LIBS_stack		=	libft \
+LIBS_list		=	libft \
 					libftprintf \
 					get_next_line \
 
@@ -34,20 +34,17 @@ AFLAGS			=	rc
 REMOVE			=	rm
 RFLAGS			=	-drf
 
-SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_stack))
+SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_list))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
-SRCS_stack		=	main.c \
-					ft_free_str.c \
-					ft_stack_len.c \
-					ft_printf_stack.c \
-					ft_str_to_stack.c \
-					operation_swap.c \
+SRCS_list		=	main.c \
+					ft_printf_list.c \
+					ft_str_to_list.c \
 
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_stack))
+BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_list))
 BONUS_OBJS		=	$(BONUS:.c=.o)
 BONUS_PATH		=	./
-BONUS_stack		=	checker.c \
+BONUS_list		=	checker.c \
 
 .c.o:
 					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)

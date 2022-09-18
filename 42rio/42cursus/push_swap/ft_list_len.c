@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_to_stack.c                                   :+:      :+:    :+:   */
+/*   ft_list_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/15 21:30:55 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/14 18:19:11 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/17 16:41:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_str_to_stack(char **str)
+int	ft_list_len(t_list *list)
 {
-	t_stack	*stack;
-	int		count;
-	int		i;
+	int	len;
 
-	if (!str)
-		return (NULL);
-	count = 0;
-	while (str[count])
-		count++;
-	stack = ft_calloc(count, sizeof(*stack));
-	if (!stack)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		stack[i].content = ft_atoi(str[i]);
-		if (i)
-			stack[i - 1].next = &stack[i];
-		i++;
-	}
-	return (stack);
+	len = 0;
+	while (list[len].next)
+		len++;
+	return (len + 1);
 }

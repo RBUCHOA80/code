@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_stack.c                                   :+:      :+:    :+:   */
+/*   ft_printf_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:58 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/15 21:30:43 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/17 16:36:48 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/09/17 20:16:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_printf_stack(t_stack *stack)
+void	ft_printf_list(t_list *list)
 {
+	int	content;
 	int	i;
 
 	i = 0;
-	while (stack)
+	while (list)
 	{
-		ft_printf("%p \t", stack);
+		content = *((int*)list->content);
+		ft_printf("%p \t", list);
 		ft_printf("Node[%i] \t", i++);
-		ft_printf("Content = %i \t", stack->content);
-		ft_printf("Next = %p\n", stack->next);
-		stack = stack->next;
+		ft_printf("Content = %i \t", content);
+		ft_printf("Next = %p\n", list->next);
+		list = list->next;
 	}	
 }
