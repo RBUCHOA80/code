@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:32:27 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/20 23:44:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/21 18:35:35 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ft_printf_tab(t_list *stack)
 	while (stack)
 	{
 		ft_printf("%p ", stack);
-		ft_printf("%s |", stack->content);
+		ft_printf("%s\t|", stack->content);
 		ft_printf("\n");
 		stack = stack->next;
 	}
-	ft_printf("               ---   ---\n");
-	ft_printf("                a     b\n");
+	ft_printf("               ---\t   ---\n");
+	ft_printf("                a\t    b\n");
 	ft_printf("\e[0m");
 	return ;
 }
