@@ -20,7 +20,6 @@ t_list	*ft_str_to_list(char **str)
 	list = NULL;
 	while (*str)
 	{
-		// list = ft_calloc(1, sizeof(*list));
 		new_content = ft_calloc(1, sizeof(*new_content));
 		*new_content = ft_atoi(*str);
 		ft_push_base(&list, new_content);
@@ -28,3 +27,5 @@ t_list	*ft_str_to_list(char **str)
 	}
 	return (list);
 }
+
+		// list = ft_calloc(1, sizeof(*list));

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/18 17:32:58 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/20 23:03:15 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-ARG				=	VAR="4 2 3 1 5"; ./push_swap $$VAR
+ARG				=	VAR="987 654 321 789 456 123"; ./$(NAME) $$VAR
 
 run:				$(NAME)
 					$(ARG)

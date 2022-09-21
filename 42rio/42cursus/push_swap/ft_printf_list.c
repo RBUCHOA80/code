@@ -20,7 +20,7 @@ void	ft_printf_list(t_list *list)
 	i = 0;
 	while (list)
 	{
-		content = *((int*)list->content);
+		content = *((int *)list->content);
 		ft_printf("%p \t", list);
 		ft_printf("Node[%i] \t", i++);
 		ft_printf("Content = %i \t", content);

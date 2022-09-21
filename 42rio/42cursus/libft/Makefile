@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/13 21:01:58 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/20 21:18:01 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,15 @@ SRCS_LIST		=	ft_atoi.c \
 					ft_isdigit.c \
 					ft_isprint.c \
 					ft_itoa.c \
+					ft_lstadd_back.c \
+					ft_lstadd_front.c \
+					ft_lstclear.c \
+					ft_lstdelone.c \
+					ft_lstiter.c \
+					ft_lstlast.c \
+					ft_lstmap.c \
+					ft_lstnew.c \
+					ft_lstsize.c \
 					ft_memchr.c \
 					ft_memcmp.c \
 					ft_memcpy.c \

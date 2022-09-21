@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 19:26:08 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/11 23:21:59 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/20 20:32:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-/* static t_list	*ft_newlst(char *str, char sep);
+/* #include <stdio.h>
+
+static t_list	*ft_newlst(char *str, char sep);
 static void		ft_print_lst(t_list *lst);
 static void		ft_del(void *lst);
 
@@ -83,8 +85,11 @@ static void	ft_print_lst(t_list *lst)
 	i = 0;
 	while (lst)
 	{
-		printf("Node[%i] | addr: %p | content: %s\t| next: %p\n", \
-				i, lst, (char *)lst->content, lst->next);
+		printf("Node[%i] | ", i);
+		printf("addr: %p | ", lst);
+		printf("content: %s \t| ", (char *)lst->content);
+		printf("next: %p", lst->next);
+		printf("\n");
 		lst = lst->next;
 		i++;
 	}

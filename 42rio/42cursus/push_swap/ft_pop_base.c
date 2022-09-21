@@ -17,6 +17,7 @@ void	*ft_pop_base(t_list **list)
 	t_list	*temp;
 	void	*content;
 
+	temp = NULL;
 	if (!(list && *list))
 		return (NULL);
 	if (!((*list)->next))

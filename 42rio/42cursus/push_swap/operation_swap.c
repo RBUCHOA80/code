@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:20:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/18 19:32:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/20 19:03:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_operation_swap(t_list **list)
 {
 	void	*content0;
 	void	*content1;
-	
+
 	content0 = ft_pop_top(list);
 	content1 = ft_pop_top(list);
 	ft_push_top(list, content1);

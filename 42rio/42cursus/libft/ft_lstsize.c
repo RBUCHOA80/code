@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 17:57:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/11 23:21:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/20 20:32:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	ft_lstsize(t_list *lst)
 	return (len);
 }
 
-/* static t_list	*ft_newlst(char *str, char sep);
+/* #include <stdio.h>
+
+static t_list	*ft_newlst(char *str, char sep);
 static void		ft_print_lst(t_list *lst);
 
 int	main(void)
@@ -73,8 +75,11 @@ static void	ft_print_lst(t_list *lst)
 	i = 0;
 	while (lst)
 	{
-		printf("Node[%i] | addr: %p | content: %s\t| next: %p\n", \
-				i, lst, (char *)lst->content, lst->next);
+		printf("Node[%i] | ", i);
+		printf("addr: %p | ", lst);
+		printf("content: %s \t| ", (char *)lst->content);
+		printf("next: %p", lst->next);
+		printf("\n");
 		lst = lst->next;
 		i++;
 	}

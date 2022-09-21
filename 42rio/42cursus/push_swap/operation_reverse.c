@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:23:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/18 19:32:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/20 18:30:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_operation_reverse(t_list **list)
 {
 	void	*content;
 
-	
 	content = ft_pop_base(list);
 	ft_push_top(list, content);
 	return ;
@@ -50,7 +49,7 @@ rra and rrb at the same time.
 */
 void	rrr(t_list **list_a, t_list **list_b)
 {
-	rrb(list_a);
+	rra(list_a);
 	rrb(list_b);
 	return ;
 }
