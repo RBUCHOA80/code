@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/21 18:48:18 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/21 23:22:41 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_list))
 SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_list		=	push_swap.c \
+					ft_lst_take.c \
+					ft_operation_push.c \
 					main.c \
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_list))
@@ -70,7 +72,8 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-ARG				=	VAR="987 654 321 789 456 123"; ./$(NAME) $$VAR
+#ARG=$(echo {1..500}$'\n' | sort -R | tr "\n" " "); ./push_swap $ARG
+ARG				=	VAR="987 258 654 321 555 147 789 369 456 123"; ./$(NAME) $$VAR
 
 run:				$(NAME)
 					$(ARG)
