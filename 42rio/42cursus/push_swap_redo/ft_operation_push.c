@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:20:19 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/21 23:35:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/22 22:16:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_operation_push(t_list **stack_a, t_list **stack_b)
 {
 	void	*content;
 
-	content = ft_lsttake_front(stack_a);
-	ft_printf("%s <- content\n", (char *)content);
-	ft_lstadd_front(stack_b, content);
-	return ;
+	if ((*stack_a))
+	{
+		content = ft_lsttake_front(stack_a);
+		ft_lstadd_front(stack_b, ft_lstnew(content));
+		return ;
+	}
+	ft_printf("\e[1;31mError: ");
 }
 
 /* 
@@ -30,7 +33,7 @@ Do nothing if b is empty.
 void	pa(t_list **stack_b, t_list **stack_a)
 {
 	ft_operation_push(stack_b, stack_a);
-	ft_printf("pa\n");
+	ft_printf("pa\e[0m\n");
 	return ;
 }
 
@@ -42,6 +45,6 @@ Do nothing if a is empty.
 void	pb(t_list **stack_a, t_list **stack_b)
 {
 	ft_operation_push(stack_a, stack_b);
-	ft_printf("pb\n");
+	ft_printf("pb\e[0m\n");
 	return ;
 }

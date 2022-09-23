@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:09:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/21 23:12:35 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/22 21:41:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	ft_operation_swap(t_list **stack)
 {
-	return ;
+	if (*stack && (*stack)->next)
+	{
+		return ;
+	}
+	ft_printf("Error: ");
 }
 
 /* 
