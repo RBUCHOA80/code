@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:26:27 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/08 21:18:19 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/24 16:59:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../get_next_line/get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -20,8 +20,9 @@ int	main(void)
 	int		fd;
 	int		i;
 	int		j;
+	int		k;
 
-	fd = open("./42.fdf", O_RDONLY);
+	fd = open("/Users/ruchoa/dev/42rio/42cursus/fdf/42.fdf", O_RDONLY);
 	i = 0;
 	j = 0;
 	while (1)
@@ -36,6 +37,14 @@ int	main(void)
 			exit(0);
 		}
 		j = (ft_strlen(line) - 1);
+		k = 0;
+		while (line[k])
+		{
+			if (line[k] != 32)
+				printf("%i,", atoi(&line[k]));
+			k++;
+		}
+		printf("\n");
 		free(line);
 		i++;
 	}

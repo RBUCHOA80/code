@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:49:17 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 10:05:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/24 15:01:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,19 @@ void	*ft_lsttake_back(t_list **stack)
 	t_list	*temp;
 	void	*content;
 
-	if (!(stack && *stack && (*stack)->next))
-		while ((*stack)->next->next)
-			(*stack) = (*stack)->next;
-	temp = (*stack)->next;
-	content = (*stack)->content;
-	free(temp);
-	return (content);
+	if (!(stack && (*stack)))
+		return (NULL);
+	if (!((*stack)->next))
+		return (ft_lsttake_front(stack));
+	else
+	{
+		temp = (*stack);
+		while ((temp)->next->next)
+			(temp) = (temp)->next;
+		content = (temp)->next->content;
+		(temp)->next = NULL;
+		temp = (*stack)->next;
+		free(temp);
+		return (content);
+	}
 }

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 23:59:52 by ruchoa            #+#    #+#              #
-#    Updated: 2022/08/26 18:46:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/24 16:18:33 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,3 +43,7 @@ lib:
 
 test:
 					cat $(LIBS).h
+
+run:
+					gcc *.c ../get_next_line/get_next_line.c ../libft/*.c
+					./a.out

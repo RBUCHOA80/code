@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 10:09:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/24 11:36:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 	void			*content;
 	struct s_list	*next;
 }					t_list; */
+
+void	push_swap(t_list **stack_a, t_list **stack_b);
 
 void	*ft_lsttake_front(t_list **stack);
 void	*ft_lsttake_back(t_list **stack);
