@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/21 23:22:41 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/24 10:30:46 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS_PATH		=	./
 SRCS_list		=	push_swap.c \
 					ft_lst_take.c \
 					ft_operation_push.c \
+					ft_printf_stacks.c \
 					main.c \
 
 BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_list))
