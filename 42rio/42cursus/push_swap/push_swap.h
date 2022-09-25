@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 11:36:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/24 17:11:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ void	pa(t_list **stack_b, t_list **stack_a);
 void	pb(t_list **stack_a, t_list **stack_b);
 
 void	ft_printf_stacks(t_list *stack_a, t_list *stack_b);
+void	ft_printf_tab(t_list **stack, int *size, int i);
+int		ft_size_tab(t_list *stack);
 
 #endif

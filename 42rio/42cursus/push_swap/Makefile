@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/24 10:30:46 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/24 19:58:19 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,10 @@ SRCS_OBJS		= 	$(SRCS:.c=.o)
 SRCS_PATH		=	./
 SRCS_list		=	push_swap.c \
 					ft_lst_take.c \
+					ft_operation_reverse.c \
+					ft_operation_rotate.c \
 					ft_operation_push.c \
+					ft_operation_swap.c \
 					ft_printf_stacks.c \
 					main.c \
 
@@ -74,16 +77,16 @@ re:					fclean all
 .PHONY:				all clean fclean re
 
 #ARG=$(echo {1..500}$'\n' | sort -R | tr "\n" " "); ./push_swap $ARG
-ARG				=	VAR="987 258 654 321 555 147 789 369 456 123"; ./$(NAME) $$VAR
+ARG				=	VAR="987 258 654 321 555 147 789 369 456 123";
 
 run:				$(NAME)
-					$(ARG)
+					$(ARG) ./$(NAME) $$VAR
 					
 
 vrun:				$(NAME)
-					valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
+					$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
 
 b:					$(NAME_BONUS)
 #					valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
-					./$(NAME_BONUS) $(ARG)
+					$(ARG) ./$(NAME_BONUS) $$VAR
 					$(REMOVE) $(RFLAGS) $(NAME_BONUS)

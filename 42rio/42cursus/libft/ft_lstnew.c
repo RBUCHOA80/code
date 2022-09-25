@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:30:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/20 21:15:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/24 21:07:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*list;
 
-	list = (t_list *)malloc(sizeof(t_list));
+	if (!content)
+		return (NULL);
+	list = ft_calloc(1, sizeof(t_list));
 	if (!list)
 		return (NULL);
 	list->content = (char *)content;

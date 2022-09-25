@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:11:17 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/21 23:33:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/24 20:58:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst && new)
+	if (lst && new && new->content)
 	{
 		new->next = *lst;
 		*lst = new;
 	}
-	else if (new)
+	else if (new && new->content)
 		*lst = new;
 }
 
