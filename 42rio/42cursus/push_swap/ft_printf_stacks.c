@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 21:41:59 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:47:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,20 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 	static int	size_a;
 	static int	size_b;
 
-	if (!(stack_a || stack_b))
-		return ;
 	size_a = ft_size_tab(stack_a);
 	size_b = ft_size_tab(stack_b);
-	while (size_a > 0 || size_b > 0)
+	while (size_a || size_b)
 	{
-		if (size_a > 0 && size_a >= size_b)
+		if (size_a >= size_b)
 		{
 			ft_printf("\e[0;32m%p %s", stack_a->content, stack_a->content);
 			stack_a = stack_a->next;
 			size_a--;
 		}
 		else
-			ft_printf("                   ");
+			ft_printf("\e[0;32m                  ");
 		ft_printf(" | ");
-		if (size_b > 0 && size_b >= size_a + 1)
+		if (size_b >= size_a + 1)
 		{
 			ft_printf("\e[0;32m%s %p", stack_b->content, stack_b->content);
 			stack_b = stack_b->next;
