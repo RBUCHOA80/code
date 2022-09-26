@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:09:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 21:03:03 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:27:31 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 void	ft_operation_swap(t_list **stack)
 {
-	t_list	*new_node1;
-	t_list	*new_node2;
 	void	*content1;
 	void	*content2;
 
 	content1 = ft_lsttake_front(stack);
 	content2 = ft_lsttake_front(stack);
-	new_node1 = ft_lstnew(content1);
-	new_node2 = ft_lstnew(content2);
-	ft_lstadd_front(stack, content1);
-	ft_lstadd_front(stack, content2);
+	ft_lstadd_front(stack, ft_lstnew(content1));
+	ft_lstadd_front(stack, ft_lstnew(content2));
 	return ;
 }
 
