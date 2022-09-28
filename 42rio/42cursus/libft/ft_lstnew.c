@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:30:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 21:07:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/27 21:25:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(void)
 	while (strs[i])
 	{
 		lst = ft_lstnew(strs[i]);
-		printf("Node[%i]* | addr: %p | content: %s\t| next: %p\n", \
+		printf("Node[%i] | addr: %p | content: %s\t| next: %p\n", \
 				i, lst, (char *)lst->content, lst->next);
 		i++;
 	}

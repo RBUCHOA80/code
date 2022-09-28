@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 17:57:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/20 20:32:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/27 21:42:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_lstsize(t_list *lst)
 {
 	int	len;
 
+	if (!lst)
+		return (0);
 	len = 0;
 	while (lst)
 	{
