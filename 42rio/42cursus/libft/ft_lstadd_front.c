@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:11:17 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 20:58:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/09/28 19:06:33 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 	char	sep;
 	char	*new_content;
 
-	str = "Put your text here.";
+	str = "Put your text here";
 	sep = ' ';
 	lst = ft_newlst(str, sep);
 	ft_print_lst(lst);

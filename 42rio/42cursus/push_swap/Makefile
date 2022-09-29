@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/24 19:58:19 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/28 19:30:07 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,9 @@ ARG				=	VAR="987 258 654 321 555 147 789 369 456 123";
 
 run:				$(NAME)
 					$(ARG) ./$(NAME) $$VAR
-					
+
+run2:
+					./push_swap {100..105}$$'\n' | sort -R
 
 vrun:				$(NAME)
 					$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
