@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/28 19:30:07 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/09/29 23:26:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ NAME			=	push_swap
 NAME_BONUS		=	checker
 
 LIBS			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/)
-LIBS_O			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/*.o)
 LIBS_A			=	$(foreach libs, $(LIBS_list), $(LIBS_PATH)$(libs)/$(libs).a)
 LIBS_PATH		=	../
 LIBS_list		=	libft \
@@ -56,11 +55,11 @@ BONUS_list		=	checker.c \
 
 $(NAME):			$(SRCS_OBJS)
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(COMPILER) $(CFLAGS) $(LIBS_O) $(SRCS_OBJS) -o $(NAME)
+					$(COMPILER) $(CFLAGS) $(LIBS_A) $(SRCS_OBJS) -o $(NAME)
 
 $(NAME_BONUS):		$(BONUS_OBJS) 
 					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(COMPILER) $(CFLAGS) $(LIBS_O) $(BONUS_OBJS) -o $(NAME_BONUS)
+					$(COMPILER) $(CFLAGS) $(LIBS_A) $(BONUS_OBJS) -o $(NAME_BONUS)
 
 all:				$(NAME)
 
@@ -76,14 +75,10 @@ re:					fclean all
 
 .PHONY:				all clean fclean re
 
-#ARG=$(echo {1..500}$'\n' | sort -R | tr "\n" " "); ./push_swap $ARG
-ARG				=	VAR="987 258 654 321 555 147 789 369 456 123";
+ARG				=	VAR=$$(echo {100..109}$$'\n' | sort --sort=random | tr "\n" " ");
 
 run:				$(NAME)
 					$(ARG) ./$(NAME) $$VAR
-
-run2:
-					./push_swap {100..105}$$'\n' | sort -R
 
 vrun:				$(NAME)
 					$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
