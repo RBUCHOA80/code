@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/10/10 21:23:25 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/10/10 20:05:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "../libft/libft.h"
 
-void	ft_encrypt(int pid, char chr)
+void	ft_decrypt(int sig)
 {
-	int	bit;
+	static char	chr;
+	static int	bit;
 
-	bit = 0;
-	while (bit < 8)
+	if (sig == SIGUSR1)
+		chr = (chr | (1 << bit));
+	bit++;
+	if (bit == 8)
 	{
-		if (chr & (1 << bit))
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
-		usleep(750);
-		bit++;
+		ft_putchar_fd(chr, 1);
+		chr = 0;
+		bit = 0;
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int		pid;
+	struct sigaction	s_sigaction;
 
-	pid = ft_atoi(argv[1]);
-	if (argc != 3)
-	{
-		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", 1);
-		return (1);
-	}
-	while (*argv[2])
-		ft_encrypt(pid, *argv[2]++);
+	s_sigaction.sa_handler = ft_decrypt;
+	sigaction(SIGUSR2, &s_sigaction, NULL);
+	sigaction(SIGUSR1, &s_sigaction, NULL);
+	ft_putstr_fd("\e[1;35mPID: ", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putstr_fd("\e[m\n", 1);
+	while (1)
+		pause();
 	return (0);
 }

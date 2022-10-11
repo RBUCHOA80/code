@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/10/07 16:46:53 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/10/10 21:35:38 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME				=	libft.a
 
 NAME_BONUS			=	libft_bonus.a
 
-LIBS				=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
+LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
 LIBS_A				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_PATH			=	../
 LIBS_LIST			=	
@@ -92,14 +92,6 @@ BONUS_LIST			=	ft_lstadd_back.c \
 						ft_lstnew.c \
 						ft_lstsize.c \
 
-$(NAME):				$(SRCS_OBJS)
-						$(foreach dir, $(LIBS), make all -C $(dir) ;)
-						$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
-
-$(NAME_BONUS):			$(BONUS_OBJS) 
-						$(foreach dir, $(LIBS), make all -C $(dir) ;)
-						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
-
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
 #						$(shell echo '$^ <- Lista de dependências.')
@@ -113,11 +105,19 @@ all:					$(NAME)
 
 bonus:					$(NAME_BONUS)
 
+$(NAME):				$(SRCS_OBJS)
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(AR) $(AFLAGS) $(NAME) $(SRCS_OBJS)
+
+$(NAME_BONUS):			$(BONUS_OBJS) 
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
+
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
 fclean:					clean
-						$(REMOVE) $(RFLAGS) $(NAME)
+						$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
 
 re:						fclean all
 

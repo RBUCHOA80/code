@@ -6,79 +6,85 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 19:42:31 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/13 21:01:43 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/10/10 21:36:49 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#MAKEFLAGS		=	--silent
+#MAKEFLAGS			=	--silent
 
-NAME			=	get_next_line.a
+NAME				=	get_next_line.a
 
-NAME_BONUS		=	get_next_line_bonus.a
+NAME_BONUS			=	get_next_line_bonus.a
 
-LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
-LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
-LIBS_PATH		=	../
-LIBS_LIST		=	libft
+LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
+LIBS_A				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/$(lib).a)
+LIBS_PATH			=	../
+LIBS_LIST			=	libft
 
-INCLUDE_PATH	=	./
+INCLUDE_PATH		=	./
 
-COMPILER		=	cc
-CFLAGS			=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
+COMPILER			=	cc
+CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
-AR				=	ar
-AFLAGS			=	rc
+AR					=	ar
+AFLAGS				=	rc
 
-REMOVE			=	rm
-RFLAGS			=	-drf
+REMOVE				=	rm
+RFLAGS				=	-drf
 
-SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
-SRCS_OBJS		= 	$(SRCS:.c=.o)
-SRCS_PATH		=	./
-SRCS_LIST		=	get_next_line.c
+SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS			= 	$(SRCS:.c=.o)
+SRCS_PATH			=	./
+SRCS_LIST			=	get_next_line.c
 
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
-BONUS_OBJS		=	$(BONUS:.c=.o)
-BONUS_PATH		=	./
-BONUS_LIST		=	get_next_line_bonus.c
+BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS			=	$(BONUS:.c=.o)
+BONUS_PATH			=	./
+BONUS_LIST			=	get_next_line_bonus.c
 
-$(NAME):			$(SRCS_OBJS)
-					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
-
-$(NAME_BONUS):		$(BONUS_OBJS) 
-					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
+#						$(shell echo '$@ <- Nome da regra.')
+#						$(shell echo '$< <- Nome da primeira dependência.')
+#						$(shell echo '$^ <- Lista de dependências.')
+#						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
+#						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 .c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
+						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-all:				$(NAME)
+all:					$(NAME)
 
-bonus:				$(NAME_BONUS)
+bonus:					$(NAME_BONUS)
+
+$(NAME):				$(SRCS_OBJS)
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
+
+$(NAME_BONUS):			$(BONUS_OBJS) 
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
 
 clean:
-					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
-fclean:				clean
-					$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
+fclean:					clean
+						$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
 
-re:					fclean all
+re:						fclean all
 
-.PHONY:				all clean fclean re
+.PHONY:					all clean fclean re
 
-run:				$(NAME)
-					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
-					./a.out
-					$(REMOVE) $(RFLAGS) a.out*
+run:					$(NAME)
+						$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+						./a.out
+						$(REMOVE) $(RFLAGS) a.out*
 
-vrun:				$(NAME)
-					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
-					valgrind --leak-check=full -s ./a.out
-					$(REMOVE) $(RFLAGS) a.out*
+vrun:					$(NAME)
+						$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+						valgrind --leak-check=full -s ./a.out
+						$(REMOVE) $(RFLAGS) a.out*
 
-b:					$(NAME_BONUS)
-					$(COMPILER) $(CFLAGS) $(NAME_BONUS) main.c
-#					valgrind --leak-check=full -s ./a.out
-					./a.out
-					$(REMOVE) $(RFLAGS) a.out*
+b:						$(NAME_BONUS)
+						$(COMPILER) $(CFLAGS) $(NAME_BONUS) main.c
+#						valgrind --leak-check=full -s ./a.out
+						./a.out
+						$(REMOVE) $(RFLAGS) a.out*

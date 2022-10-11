@@ -6,88 +6,94 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/09/13 21:00:57 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/10/10 21:37:21 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#MAKEFLAGS		=	--silent
+#MAKEFLAGS			=	--silent
 
-LIBS			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/)
-LIBS_O			=	$(foreach libs, $(LIBS_LIST), $(LIBS_PATH)$(libs)/*.o)
-LIBS_PATH		=	../
-LIBS_LIST		=	
+NAME				= 	libftprintf.a
 
-NAME			= 	libftprintf.a
+NAME_BONUS			=	libftprintf_bonus.a
 
-NAME_BONUS		=	libftprintf_bonus.a
+LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
+LIBS_A				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/$(lib).a)
+LIBS_PATH			=	../
+LIBS_LIST			=	
 
-INCLUDE_PATH	=	./
+INCLUDE_PATH		=	./
 
-COMPILER		= 	cc
-CFLAGS			= 	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
+COMPILER			= 	cc
+CFLAGS				= 	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
-AR				= 	ar
-AFLAGS			= 	rc
+AR					= 	ar
+AFLAGS				= 	rc
 
-REMOVE			= 	rm
-RFLAGS			=	-drf
+REMOVE				= 	rm
+RFLAGS				=	-drf
 
-SRCS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
-SRCS_OBJS		= 	$(SRCS:.c=.o)
-SRCS_PATH		=	./
-SRCS_LIST		=	ft_character.c \
-					ft_count.c \
-					ft_decimal.c \
-					ft_hexadecimal_lower.c \
-					ft_hexadecimal_upper.c\
-					ft_integer.c \
-					ft_pointer.c \
-					ft_printf.c \
-					ft_put_u_nbr_fd.c \
-					ft_puthex_fd.c \
-					ft_puthex_low_fd.c \
-					ft_puthex_upper_fd.c \
-					ft_putnumber_fd.c \
-					ft_string.c \
-					ft_strlength.c \
-					ft_unsigned_integer.c \
+SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS			= 	$(SRCS:.c=.o)
+SRCS_PATH			=	./
+SRCS_LIST			=	ft_character.c \
+						ft_count.c \
+						ft_decimal.c \
+						ft_hexadecimal_lower.c \
+						ft_hexadecimal_upper.c\
+						ft_integer.c \
+						ft_pointer.c \
+						ft_printf.c \
+						ft_put_u_nbr_fd.c \
+						ft_puthex_fd.c \
+						ft_puthex_low_fd.c \
+						ft_puthex_upper_fd.c \
+						ft_putnumber_fd.c \
+						ft_string.c \
+						ft_strlength.c \
+						ft_unsigned_integer.c \
 
-BONUS			=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
-BONUS_OBJS		=	$(BONUS:.c=.o)
-BONUS_PATH		=	./
-BONUS_LIST		=	
+BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
+BONUS_OBJS			=	$(BONUS:.c=.o)
+BONUS_PATH			=	./
+BONUS_LIST			=	
 
-$(NAME):			$(SRCS_OBJS)
-					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
-
-$(NAME_BONUS):		$(BONUS_OBJS) 
-					$(foreach dir, $(LIBS), make all -C $(dir) ;)
-					$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
+#						$(shell echo '$@ <- Nome da regra.')
+#						$(shell echo '$< <- Nome da primeira dependência.')
+#						$(shell echo '$^ <- Lista de dependências.')
+#						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
+#						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 .c.o:
-					$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
+						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-all:				$(NAME)
+all:					$(NAME)
 
-bonus:				$(NAME_BONUS)
+bonus:					$(NAME_BONUS)
+
+$(NAME):				$(SRCS_OBJS)
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
+
+$(NAME_BONUS):			$(BONUS_OBJS) 
+						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
 
 clean:
-					$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
 
-fclean:				clean
-					$(REMOVE) $(RFLAGS) $(NAME)
+fclean:					clean
+						$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
 
-re:					fclean all
+re:						fclean all
 
-.PHONY:				all clean fclean re
+.PHONY:					all clean fclean re
 
-run:				$(NAME)
-					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
-					./a.out
-					$(REMOVE) $(RFLAGS) a.out*
+run:					$(NAME)
+						$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+						./a.out
+						$(REMOVE) $(RFLAGS) a.out*
 
-vrun:				$(NAME)
-					$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
-					valgrind --leak-check=full -s -v ./a.out
-					$(REMOVE) $(RFLAGS) a.out*
+vrun:					$(NAME)
+						$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+						valgrind --leak-check=full -s -v ./a.out
+						$(REMOVE) $(RFLAGS) a.out*

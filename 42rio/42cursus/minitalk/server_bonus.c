@@ -6,11 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/22 19:33:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/10/10 21:23:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk_bonus.h"
+#include <signal.h>
+#include "../libft/libft.h"
 
 void	ft_decrypt(int sig)
 {
@@ -22,7 +23,7 @@ void	ft_decrypt(int sig)
 	bit++;
 	if (bit == 8)
 	{
-		ft_putchar_fd(chr, FD);
+		ft_putchar_fd(chr, 1);
 		chr = 0;
 		bit = 0;
 	}
@@ -35,9 +36,9 @@ int	main(void)
 	s_sigaction.sa_handler = ft_decrypt;
 	sigaction(SIGUSR2, &s_sigaction, NULL);
 	sigaction(SIGUSR1, &s_sigaction, NULL);
-	ft_putstr_fd("\e[1;35mPID: ", FD);
-	ft_putnbr_fd(getpid(), FD);
-	ft_putstr_fd("\e[m\n", FD);
+	ft_putstr_fd("\e[1;35mPID: ", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putstr_fd("\e[m\n", 1);
 	while (1)
 		pause();
 	return (0);
