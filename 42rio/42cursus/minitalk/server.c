@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/10/10 20:05:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/04 18:06:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ void	ft_decrypt(int sig)
 
 int	main(void)
 {
-	struct sigaction	s_sigaction;
-
-	s_sigaction.sa_handler = ft_decrypt;
-	sigaction(SIGUSR2, &s_sigaction, NULL);
-	sigaction(SIGUSR1, &s_sigaction, NULL);
+	signal(SIGUSR1, &ft_decrypt);
+	signal(SIGUSR2, &ft_decrypt);
 	ft_putstr_fd("\e[1;35mPID: ", 1);
 	ft_putnbr_fd(getpid(), 1);
 	ft_putstr_fd("\e[m\n", 1);
