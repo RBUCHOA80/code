@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/10/10 21:37:02 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/04 19:49:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME_BONUS			=	checker
 LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
 LIBS_A				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_PATH			=	../
-LIBS_list			=	libft \
+LIBS_LIST			=	libft \
 						libftprintf \
 
 INCLUDE_PATH		=	./
@@ -33,10 +33,10 @@ AFLAGS				=	rc
 REMOVE				=	rm
 RFLAGS				=	-drf
 
-SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_list))
+SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_list			=	push_swap.c \
+SRCS_LIST			=	push_swap.c \
 						ft_lst_take.c \
 						ft_operation_reverse.c \
 						ft_operation_rotate.c \
@@ -45,10 +45,10 @@ SRCS_list			=	push_swap.c \
 						ft_printf_stacks.c \
 						main.c \
 
-BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_list))
+BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS			=	$(BONUS:.c=.o)
 BONUS_PATH			=	./
-BONUS_list			=	checker.c \
+BONUS_LIST			=	checker.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -64,11 +64,11 @@ all:					$(NAME)
 bonus:					$(NAME_BONUS)
 
 $(NAME):				$(SRCS_OBJS)
-						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(foreach lib, $(LIBS), make all -C $(lib) ;)
 						$(COMPILER) $(CFLAGS) $(LIBS_A) $(SRCS_OBJS) -o $(NAME)
 
 $(NAME_BONUS):			$(BONUS_OBJS) 
-						$(foreach dir, $(LIBS), make all -C $(dir) ;)
+						$(foreach lib, $(LIBS), make all -C $(lib) ;)
 						$(COMPILER) $(CFLAGS) $(LIBS_A) $(BONUS_OBJS) -o $(NAME_BONUS)
 
 clean:

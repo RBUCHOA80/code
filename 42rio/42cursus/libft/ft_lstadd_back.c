@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 01:08:23 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/03 18:46:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:47:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 static t_list	*ft_newlst(char *str, char sep);
 static void		ft_print_lst(t_list *lst);
@@ -83,4 +83,4 @@ static void	ft_print_lst(t_list *lst)
 		i++;
 	}
 	printf("\n");
-}
+} */
