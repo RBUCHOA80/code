@@ -6,9 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/04 18:10:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/08 21:41:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#define STDOUT_FILENO 1
 
 #include <signal.h>
 #include "../libft/libft.h"
@@ -35,7 +37,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", 1);
+		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", STDOUT_FILENO);
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);

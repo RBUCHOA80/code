@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/10/10 21:39:48 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/08 21:19:50 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,11 +63,11 @@ bonus:					$(NAME_BONUS)
 
 $(SERVER_NAME):			$(SERVER_NAME).o
 						$(foreach lib, $(LIBS), make all -C $(lib) ;)
-						$(COMPILER) $(CFLAGS) $< $(LIBS_A) -o $@
+						$(COMPILER) $(CFLAGS) $(LIBS_A) $@.c -o $@
 
 $(CLIENT_NAME):			$(CLIENT_NAME).o
 						$(foreach lib, $(LIBS), make all -C $(lib) ;)
-						$(COMPILER) $(CFLAGS) $< $(LIBS_A) -o $@
+						$(COMPILER) $(CFLAGS) $(LIBS_A) $@.c -o $@
 
 $(NAME):				$(SRCS_OBJS)
 #						$(foreach dir, $(LIBS), make all -C $(dir) ;)
@@ -75,7 +75,7 @@ $(NAME):				$(SRCS_OBJS)
 
 $(NAME_BONUS):			$(BONUS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib) ;)
-						$(COMPILER) $(CFLAGS) $< $(LIBS_A) -o $@
+						$(COMPILER) $(CFLAGS) $(LIBS_A) $@.c -o $@
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
