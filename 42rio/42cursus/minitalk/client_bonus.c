@@ -6,14 +6,14 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/08 21:41:32 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/11 20:38:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define STDOUT_FILENO 1
-
 #include <signal.h>
 #include "../libft/libft.h"
+
+#define FD 1
 
 void	ft_encrypt(int pid, char chr)
 {
@@ -37,11 +37,12 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", STDOUT_FILENO);
+		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", FD);
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
 	while (*argv[2])
 		ft_encrypt(pid, *argv[2]++);
+	ft_encrypt(pid, *argv[2]);
 	return (0);
 }
