@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 21:14:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/08 21:15:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/14 18:59:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # define BASE_DEC 10
 # define BASE_HEX 16
+
+# ifndef STD_OUT
+#  define STD_OUT 1
+# endif
 
 # if __APPLE__
 #  define PTR_ERROR "0x0"
