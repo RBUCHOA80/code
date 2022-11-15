@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 09:55:03 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 10:08:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 
 # include "../libftprintf/libftprintf.h" //ft_printf
 # include "../libft/libft.h" //libft
-
-#ifndef STD_IN
-# define STD_IN 1
-#endif
 
 void	push_swap(t_list **stack_a, t_list **stack_b);
 

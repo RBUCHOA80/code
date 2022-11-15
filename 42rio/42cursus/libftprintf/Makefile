@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 19:31:43 by ruchoa            #+#    #+#              #
-#    Updated: 2022/10/10 21:37:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/15 10:45:33 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,11 +72,11 @@ bonus:					$(NAME_BONUS)
 
 $(NAME):				$(SRCS_OBJS)
 						$(foreach dir, $(LIBS), make all -C $(dir) ;)
-						$(AR) $(AFLAGS) $(NAME) $(LIBS_O) $(SRCS_OBJS)
+						$(AR) $(AFLAGS) $(NAME) $(LIBS_A) $(SRCS_OBJS)
 
 $(NAME_BONUS):			$(BONUS_OBJS) 
 						$(foreach dir, $(LIBS), make all -C $(dir) ;)
-						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_O) $(BONUS_OBJS)
+						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_A) $(BONUS_OBJS)
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
@@ -89,11 +89,11 @@ re:						fclean all
 .PHONY:					all clean fclean re
 
 run:					$(NAME)
-						$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+						$(COMPILER) $(CFLAGS) main.c $(LIBS_A) $(NAME) -o a.out
 						./a.out
 						$(REMOVE) $(RFLAGS) a.out*
 
 vrun:					$(NAME)
-						$(COMPILER) $(CFLAGS) $(NAME) main.c -o a.out
+						$(COMPILER) $(CFLAGS) main.c $(LIBS_A) $(NAME) -o a.out
 						valgrind --leak-check=full -s -v ./a.out
 						$(REMOVE) $(RFLAGS) a.out*
