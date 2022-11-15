@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_len.c                                     :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 19:11:27 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:11:31 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/11/15 19:00:54 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/11/15 19:03:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-int	ft_stack_len(t_stack *stack)
-{
-	int	len;
+# ifndef FD
+#  define FD 1
+# endif
 
-	len = 0;
-	while (stack[len].next)
-		len++;
-	return (len + 1);
-}
+# ifndef DELAY
+#  define DELAY 750
+# endif
+
+# include <signal.h>
+# include "../libft/libft.h"
+
+#endif

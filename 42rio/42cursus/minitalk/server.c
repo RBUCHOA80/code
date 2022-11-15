@@ -6,14 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/11 20:39:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:05:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include "../libft/libft.h"
-
-#define FD 1
+#include "./minitalk.h"
 
 void	ft_decrypt(int sig)
 {

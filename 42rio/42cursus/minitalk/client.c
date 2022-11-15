@@ -6,14 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 13:21:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:00:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include "../libft/libft.h"
-
-#define FD 1
+#include "./minitalk.h"
 
 void	ft_encrypt(int pid, char chr)
 {
@@ -26,7 +23,7 @@ void	ft_encrypt(int pid, char chr)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(750);
+		usleep(DELAY);
 		bit++;
 	}
 }

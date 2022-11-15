@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/04 19:53:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:15:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
-	int i;
+	int	i;
 
 	if (stack_a && stack_b)
 	{
@@ -27,6 +27,10 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 				rra(stack_a);
 			i++;
 		}
+	}
+	return ;
+}
+
 		// pa(stack_b, stack_a);
 		// pb(stack_a, stack_b);
 		// pb(stack_a, stack_b);
@@ -40,6 +44,3 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		// ss(stack_a, stack_b);
 		// sa(stack_a);
 		// sb(stack_b);
-	}
-	return ;
-}

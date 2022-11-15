@@ -6,14 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/11 20:39:35 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:04:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include "../libft/libft.h"
-
-#define FD 1
+#include "./minitalk.h"
 
 void	ft_decrypt(int sig, siginfo_t *info, void *context)
 {
@@ -35,13 +32,14 @@ void	ft_decrypt(int sig, siginfo_t *info, void *context)
 	}
 }
 
+//sigemptyset(&s_sigaction.sa_mask);
+
 int	main(void)
 {
 	struct sigaction	s_sigaction;
 
 	s_sigaction.sa_sigaction = ft_decrypt;
 	s_sigaction.sa_flags = SA_SIGINFO;
-	//sigemptyset(&s_sigaction.sa_mask);
 	sigaction(SIGUSR1, &s_sigaction, NULL);
 	sigaction(SIGUSR2, &s_sigaction, NULL);
 	ft_putstr_fd("\e[1;35mPID: ", FD);

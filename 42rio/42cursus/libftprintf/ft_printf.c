@@ -6,11 +6,34 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 10:41:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:02:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+int	ft_printf(const char *str, ...)
+{
+	int					index;
+	int					fd;
+	va_list				var;
+	int					ret;
+
+	fd = FD;
+	va_start(var, str);
+	ret = 0;
+	index = 0;
+	while (str[index])
+	{
+		if (str[index] == '%')
+			ret += ft_printf_aux(str[index++ + 1], var, fd);
+		else
+			ret += write(fd, &str[index], 1);
+		index++;
+	}
+	va_end(var);
+	return (ret);
+}
 
 int	ft_printf_aux(char str, va_list var, int fd)
 {
@@ -35,36 +58,5 @@ int	ft_printf_aux(char str, va_list var, int fd)
 		ret = hexadecimal_upper_output(var, fd);
 	else if (str == '%')
 		ret = write(fd, "%", 1);
-	return (ret);
-}
-
-//fd = open("./sample.txt", O_RDWR | O_CREAT | O_APPEND, 00700);
-
-int	ft_printf(const char *str, ...)
-{
-	int					index;
-	int					fd;
-	va_list				var;
-	int					ret;
-
-	ret = 0;
-	fd = 1;
-	va_start(var, str);
-	index = 0;
-	while (str[index])
-	{
-		if (str[index] == '%')
-		{
-			ret += ft_printf_aux(str[index + 1], var, fd);
-			index++;
-		}
-		else
-		{
-			write(fd, &str[index], 1);
-			ret++;
-		}
-		index++;
-	}
-	va_end(var);
 	return (ret);
 }

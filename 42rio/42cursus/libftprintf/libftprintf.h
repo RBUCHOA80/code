@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 21:14:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/14 18:59:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:02:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # define BASE_DEC 10
 # define BASE_HEX 16
 
-# ifndef STD_OUT
-#  define STD_OUT 1
+# ifndef FD
+#  define FD 1
+//#  include <fcntl.h> //open
+//#  define FD open("./sample.txt", O_RDWR | O_CREAT | O_APPEND, 00700);
 # endif
 
 # if __APPLE__
@@ -35,6 +37,7 @@
 # include <unistd.h> //write
 
 int		ft_printf(const char *str, ...);
+int		ft_printf_aux(char str, va_list var, int fd);
 
 int		character_output(va_list var, int fd);
 int		decimal_output(va_list var, int fd);
