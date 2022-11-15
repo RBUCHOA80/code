@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/11 20:38:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/15 13:21:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n", FD);
+		ft_putstr_fd("\e[1;31mSINTAX ERROR!\n\e[m", FD);
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
