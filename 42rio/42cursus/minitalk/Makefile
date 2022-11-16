@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/15 18:21:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/15 21:06:40 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,11 +102,10 @@ endif
 #RUN_CLIENT			=	$(COMPILER) $(CFLAGS) $(CLIENT_NAME).c $(LIBS_A) -o $(CLIENT_NAME) ; read -p "Enter $(SERVER_NAME) PID: " argv1 && time ./$(CLIENT_NAME) $$argv1
 RUN_CLIENT			=	$(COMPILER) $(CFLAGS) $(CLIENT_NAME).c $(LIBS_A) -o $(CLIENT_NAME) ;
 ifeq ($(shell pgrep --newest $(SERVER_NAME)), )
-	RUN_CLIENT		+=	sleep 1 ;
 	RUN_CLIENT		+=	make $@
 else ifneq ($(shell pgrep --newest $(SERVER_NAME)), )
 	RUN_CLIENT		+=	time ./$(CLIENT_NAME) $(shell pgrep --newest $(SERVER_NAME))
-	RUN_CLIENT		+=	$(10000)
+	RUN_CLIENT		+=	$(SAMPLE)
 endif
 
 run: $(NAME)
