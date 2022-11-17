@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/15 21:06:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/17 20:00:56 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ re:						fclean all
 .PHONY:					all clean fclean re
 
 RUN_SERVER			=	$(COMPILER) $(CFLAGS) $(SERVER_NAME).c $(LIBS_A) -o $(SERVER_NAME) ;
-ifeq ($(shell pgrep --newest $(SERVER_NAME)), )
+ifeq ($(shell pgrep -n $(SERVER_NAME)), )
 	ifeq ($(shell uname), Darwin) # MacOS
 		RUN_SERVER	+=	echo "\e[1;33mMacOS detected.\e[m" ;
 		RUN_SERVER	+=	open -a Terminal -e ./$(SERVER_NAME) &
@@ -101,10 +101,11 @@ endif
 
 #RUN_CLIENT			=	$(COMPILER) $(CFLAGS) $(CLIENT_NAME).c $(LIBS_A) -o $(CLIENT_NAME) ; read -p "Enter $(SERVER_NAME) PID: " argv1 && time ./$(CLIENT_NAME) $$argv1
 RUN_CLIENT			=	$(COMPILER) $(CFLAGS) $(CLIENT_NAME).c $(LIBS_A) -o $(CLIENT_NAME) ;
-ifeq ($(shell pgrep --newest $(SERVER_NAME)), )
+ifeq ($(shell pgrep -n $(SERVER_NAME)), )
+	RUN_CLIENT		+=	sleep 1 ;
 	RUN_CLIENT		+=	make $@
-else ifneq ($(shell pgrep --newest $(SERVER_NAME)), )
-	RUN_CLIENT		+=	time ./$(CLIENT_NAME) $(shell pgrep --newest $(SERVER_NAME))
+else ifneq ($(shell pgrep -n $(SERVER_NAME)), )
+	RUN_CLIENT		+=	time ./$(CLIENT_NAME) $(shell pgrep -n $(SERVER_NAME))
 	RUN_CLIENT		+=	$(SAMPLE)
 endif
 
