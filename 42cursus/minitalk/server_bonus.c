@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/17 19:27:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/19 10:32:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minitalk.h"
+#include "./minitalk_bonus.h"
 
 void	ft_decrypt(int sig, siginfo_t *info, void *context)
 {
@@ -38,7 +38,7 @@ int	main(void)
 {
 	struct sigaction	s_sigaction;
 
-	s_sigaction.sa_sigaction = ft_decrypt;
+	s_sigaction.sa_sigaction = &ft_decrypt;
 	s_sigaction.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &s_sigaction, NULL);
 	sigaction(SIGUSR2, &s_sigaction, NULL);
