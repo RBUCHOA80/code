@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:46:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/04/30 21:28:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/19 15:56:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 }
 
 /*
-Para testar a strlcpy original, você deve compilar o exercício com a flag -lbsd.
+Para testar a strlcpy implementada, você deve compilar o exercício com a flag -lbsd.
 ex: gcc -Wall -Werror -Wextra *.c -lbsd ; ./a.out ; rm a.out
 sudo apt install libbsd-dev
 */
