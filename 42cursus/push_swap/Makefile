@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/16 22:24:28 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/17 22:08:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ re:						fclean all
 ARG					=	
 						ifeq ($(shell uname), Darwin) # MacOS
 							ARG	+=	echo "\e[1;33mMacOS detected.\e[m" ;
-							ARG	+=	VAR=$$(echo {100..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+							ARG	+=	VAR=$$(echo {100..102}$$'\n' | sort --sort=random | tr "\n" " ") ;
 						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							ARG	+=	echo "\e[1;33mWindows / WSL detected.\e[m" ;
 							ARG	+=	VAR="100 102 101 107 103 105 104 108 109 106" ;
