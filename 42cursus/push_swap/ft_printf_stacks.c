@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/26 12:47:43 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/19 17:50:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 		ft_printf(" | ");
 		if (size_b >= size_a + 1)
 		{
-			ft_printf("\e[0;32m%s %p", stack_b->content, stack_b->content);
+			ft_printf("\e[0;32m%s %s", stack_b->content, stack_b->content);
 			stack_b = stack_b->next;
 			size_b--;
 		}
