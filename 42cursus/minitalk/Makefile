@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/17 20:00:56 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/18 22:59:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ ifeq ($(shell pgrep -n $(SERVER_NAME)), )
 		RUN_SERVER	+=	open -a Terminal -e ./$(SERVER_NAME) &
 	else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 		RUN_SERVER	+=	echo "\e[1;33mWindows / WSL detected.\e[m" ;
-		RUN_SERVER	+=	cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/code/42rio/42cursus/minitalk/$(SERVER_NAME)"' &
+		RUN_SERVER	+=	cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/code/42cursus/minitalk/$(SERVER_NAME)"' &
 	else ifeq ($(shell uname), Linux) # Native Linux
 		RUN_SERVER	+=	echo "\e[1;33mNative Linux detected.\e[m" ;
 		RUN_SERVER	+=	x-terminal-emulator -e "./$(SERVER_NAME)" &
