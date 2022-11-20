@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/19 17:50:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/19 21:27:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 	{
 		if (size_a >= size_b)
 		{
-			ft_printf("\e[0;32m%p %s", stack_a->content, stack_a->content);
+			ft_printf("\e[0;32m%p %d", stack_a->content, stack_a->content);
 			stack_a = stack_a->next;
 			size_a--;
 		}
@@ -47,7 +47,7 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 		ft_printf(" | ");
 		if (size_b >= size_a + 1)
 		{
-			ft_printf("\e[0;32m%s %s", stack_b->content, stack_b->content);
+			ft_printf("\e[0;32m%d %p", stack_b->content, stack_b->content);
 			stack_b = stack_b->next;
 			size_b--;
 		}

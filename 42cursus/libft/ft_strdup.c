@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 19:23:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/11 23:20:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/19 21:33:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ char	*ft_strdup(const char *s1)
 	size_t	len;
 	char	*dest;
 
+	if (!s1)
+		return (NULL);
 	len = ft_strlen((char *)s1);
 	dest = (char *)malloc(sizeof(*dest) * (len + 1));
-	if (!s1 || !dest)
+	if (!dest)
 		return (NULL);
 	ft_memcpy(dest, s1, len);
 	dest[len] = '\0';

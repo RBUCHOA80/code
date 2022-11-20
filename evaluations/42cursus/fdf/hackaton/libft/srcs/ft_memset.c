@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_stack.c                                  :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:58 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:11:18 by ruchoa           ###   ########.fr       */
+/*   Created: 2017/11/07 23:22:37 by pmiceli           #+#    #+#             */
+/*   Updated: 2017/11/10 17:03:49 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_printf_stack(t_stack *stack)
+void	*ft_memset(void *s, int k, size_t n)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*c;
 
+	c = (unsigned char *)s;
 	i = 0;
-	while (stack)
+	while (i < n)
 	{
-		ft_printf("%p \t", stack);
-		ft_printf("Node[%i] \t", i++);
-		ft_printf("Content = %i \t", stack->content);
-		ft_printf("Next = %p\n", stack->next);
-		stack = stack->next;
-	}	
+		c[i] = k;
+		i++;
+	}
+	s = c;
+	return (s);
 }
