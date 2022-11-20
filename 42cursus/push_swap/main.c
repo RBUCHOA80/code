@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:32:27 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/19 21:34:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/20 12:25:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	while (*(++argv))
 		ft_lstadd_back(&stack_a, ft_lstnew(ft_addint(*argv)));
-//		ft_lstadd_back(&stack_a, ft_lstnew(ft_strdup(*argv)));
 	push_swap(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);

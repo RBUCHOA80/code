@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/19 21:27:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/20 12:55:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,30 @@ int	ft_size_tab(t_list *stack)
 
 void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 {
-	static int	size_a;
-	static int	size_b;
+	int	size_a;
+	int	size_b;
 
 	size_a = ft_size_tab(stack_a);
 	size_b = ft_size_tab(stack_b);
+	ft_printf("\e[0;32m");
 	while (size_a || size_b)
 	{
 		if (size_a >= size_b)
 		{
-			ft_printf("\e[0;32m%p %d", stack_a->content, stack_a->content);
+			ft_printf("%p %d", stack_a->content, *((int *)stack_a->content));
 			stack_a = stack_a->next;
 			size_a--;
 		}
 		else
-			ft_printf("\e[0;32m                  ");
+			ft_printf("                  ");
 		ft_printf(" | ");
 		if (size_b >= size_a + 1)
 		{
-			ft_printf("\e[0;32m%d %p", stack_b->content, stack_b->content);
+			ft_printf("%d %p", *((int *)stack_b->content), stack_b->content);
 			stack_b = stack_b->next;
 			size_b--;
 		}
 		ft_printf("\n");
 	}
-	ft_printf("               ---   ---\n                a  |  b\e[0m\n");
+	ft_printf("               ---   ---\n                a  |  b\e[0m\n\n");
 }

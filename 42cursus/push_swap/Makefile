@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/19 21:23:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/20 12:30:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,11 +73,14 @@ $(NAME_BONUS):			$(BONUS_OBJS)
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
+						$(foreach lib, $(LIBS), make $@ -C $(lib) ;)
 
 fclean:					clean
 						$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
+						$(foreach lib, $(LIBS), make $@ -C $(lib) ;)
 
 re:						fclean all
+						$(foreach lib, $(LIBS), make $@ -C $(lib) ;)
 
 .PHONY:					all clean fclean re
 
