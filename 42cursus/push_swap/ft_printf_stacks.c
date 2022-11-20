@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/20 12:55:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/20 12:56:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 
 	size_a = ft_size_tab(stack_a);
 	size_b = ft_size_tab(stack_b);
-	ft_printf("\e[0;32m");
 	while (size_a || size_b)
 	{
 		if (size_a >= size_b)
