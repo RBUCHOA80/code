@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/19 10:32:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:42:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(void)
 	signal(SIGUSR2, &ft_decrypt);
 	ft_putstr_fd("\e[1;35mPID: ", FD);
 	ft_putnbr_fd(getpid(), FD);
-	ft_putstr_fd("\e[m\n", FD);
+	ft_putstr_fd("\e[0m\n", FD);
 	while (1)
 		pause();
 	return (0);

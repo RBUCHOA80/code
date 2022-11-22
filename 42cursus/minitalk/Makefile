@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/20 12:32:41 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/21 22:36:50 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ $(NAME):				$(SRCS_OBJS)
 
 $(NAME_BONUS):			$(BONUS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib) ;)
-						$(COMPILER) $(CFLAGS) $(LIBS_A) $@.c -o $@
+						$(COMPILER) $(CFLAGS) $@.c $(LIBS_A) -o $@
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)

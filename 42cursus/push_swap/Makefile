@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/20 12:30:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/21 22:19:32 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	push_swap.c \
+						ft_addint.c \
 						ft_lst_take.c \
 						ft_operation_reverse.c \
 						ft_operation_rotate.c \

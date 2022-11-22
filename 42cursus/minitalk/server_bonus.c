@@ -6,18 +6,17 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/19 10:32:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:47:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minitalk_bonus.h"
 
-void	ft_decrypt(int sig, siginfo_t *info, void *context)
+void	ft_decrypt(int sig, siginfo_t *s_sigaction, void *context)
 {
 	static char	chr;
 	static int	bit;
 
-	(void)info;
 	(void)context;
 	if (sig == SIGUSR1)
 		chr = (chr | (1 << bit));
@@ -25,10 +24,18 @@ void	ft_decrypt(int sig, siginfo_t *info, void *context)
 	if (bit == 8)
 	{
 		if (chr == 0)
+		{
+			kill(s_sigaction->si_pid, SIGUSR1);
 			ft_putstr_fd("\0", FD);
-		ft_putchar_fd(chr, FD);
-		chr = 0;
-		bit = 0;
+			chr = 0;
+			bit = 0;
+		}
+		else
+		{
+			ft_putchar_fd(chr, FD);
+			chr = 0;
+			bit = 0;
+		}		
 	}
 }
 
@@ -44,7 +51,7 @@ int	main(void)
 	sigaction(SIGUSR2, &s_sigaction, NULL);
 	ft_putstr_fd("\e[1;35mPID: ", FD);
 	ft_putnbr_fd(getpid(), FD);
-	ft_putstr_fd("\e[m\n", FD);
+	ft_putstr_fd("\e[0m\n", FD);
 	while (1)
 		pause();
 	return (0);
