@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:20:19 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/24 21:04:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include"./push_swap.h"
 
 void	ft_operation_push(t_list **stack_a, t_list **stack_b)
 {

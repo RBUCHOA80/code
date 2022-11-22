@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 22:24:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/09/06 23:19:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	rr(int *stack_a, int size_a, int *stack_b, int size_b)
 	return ;
 }
 
-/* #include "push_swap.h"
+/* #include "./push_swap.h"
 
 int	main(void)
 {

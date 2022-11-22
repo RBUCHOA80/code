@@ -1,38 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_to_stack.c                                  :+:      :+:    :+:   */
+/*   ft_gabarito.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:00 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/11/21 21:59:40 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/11/21 22:14:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-t_stack	*ft_str_to_stack(char **str)
+int	*ft_addint(char *str)
 {
-	t_stack	*stack;
-	int		count;
-	int		i;
+	int	*dest;
 
 	if (!str)
 		return (NULL);
-	count = 0;
-	while (str[count])
-		count++;
-	stack = ft_calloc(count, sizeof(*stack));
-	if (!stack)
+	dest = (int *)ft_calloc(1, sizeof(*dest));
+	if (!dest)
 		return (NULL);
-	i = 0;
-	while (str[i])
+	*dest = ft_atoi(str);
+	return (dest);
+}
+
+t_list	ft_gabarito(t_list *stack, char *str)
+{
+	t_list	*temp;
+	int		i;
+
+	temp = stack;
+	while (stack->next)
 	{
-		stack[i].content = ft_atoi(str[i]);
-		if (i)
-			stack[i - 1].next = &stack[i];
-		i++;
+		i = 0;
+		while (str[i])
+		{
+			if (stack->content == ft_atoi(str[i]))
+			{
+				*((int *)stack->content) = i;
+				break ;
+			}
+			i++;
+		}
+		stack = stack->next;
 	}
-	return (stack);
+	return (*temp);
 }

@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:48:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:10:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:07:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
 
 void	ft_free_stack(t_stack *stack)
 {
