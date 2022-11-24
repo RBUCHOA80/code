@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:59:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:00:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/23 20:58:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minitalk.h"
 
-void	ft_encrypt(int pid, char chr)
+void	ft_char2signal(int pid, char chr)
 {
 	int	bit;
 
@@ -39,6 +39,6 @@ int	main(int argc, char **argv)
 	}
 	pid = ft_atoi(argv[1]);
 	while (*argv[2])
-		ft_encrypt(pid, *argv[2]++);
+		ft_char2signal(pid, *argv[2]++);
 	return (0);
 }

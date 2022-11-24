@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:01:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:42:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/23 20:59:18 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minitalk.h"
 
-void	ft_decrypt(int sig)
+void	ft_signal2char(int sig)
 {
 	static char	chr;
 	static int	bit;
@@ -30,8 +30,8 @@ void	ft_decrypt(int sig)
 
 int	main(void)
 {
-	signal(SIGUSR1, &ft_decrypt);
-	signal(SIGUSR2, &ft_decrypt);
+	signal(SIGUSR1, &ft_signal2char);
+	signal(SIGUSR2, &ft_signal2char);
 	ft_putstr_fd("\e[1;35mPID: ", FD);
 	ft_putnbr_fd(getpid(), FD);
 	ft_putstr_fd("\e[0m\n", FD);

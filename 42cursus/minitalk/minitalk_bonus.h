@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:00:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:31:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/11/23 19:17:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,5 @@
 
 # include <signal.h>
 # include "../libft/libft.h"
-
-void	ft_decrypt(int sig, siginfo_t *s_sigaction, void *context);
-void	ft_encrypt(int pid, char chr);
 
 #endif
