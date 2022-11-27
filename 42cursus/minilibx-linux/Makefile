@@ -11,14 +11,16 @@
 ## Please use configure script
 
 
-all	: do_configure
+all:					do_configure
 
-do_configure	:
-	./configure
+do_configure:
+						./configure
 
-clean	:
-	./configure clean
+clean:
+						./configure clean
 
-fclean	: clean
+fclean:					clean
 
-re	: clean all
+re:						fclean all
+
+.PHONY:					all clean fclean re

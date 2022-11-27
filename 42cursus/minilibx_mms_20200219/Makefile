@@ -1,45 +1,48 @@
 #
 #
 
-NAME		=	libmlx.dylib
+NAME				=	libmlx.dylib
 
-SW_SRC	=	mlx_image.swift \
-				mlx_window.swift \
-				mlx_init.swift \
+C_SRC				=	mlx_xpm.c \
+						mlx_png.c \
+						mlx_string_put.c\
 
-MODULE_OBJ	=	$(SW_SRC:.swift=.swiftmodule)
+C_OBJS				=	$(C_SRC:.c=.o)
 
-SRC			=	interface.swift $(SW_SRC)
+SW_SRC				=	mlx_image.swift \
+						mlx_window.swift \
+						mlx_init.swift \
 
-OBJ			=	$(SRC:.swift=.o)
+MODULE_OBJ			=	$(SW_SRC:.swift=.swiftmodule)
 
-C_SRC		=	mlx_xpm.c \
-				mlx_png.c \
-				mlx_string_put.c\
+SRC					=	interface.swift $(SW_SRC)
 
-C_OBJ		=	$(C_SRC:.c=.o)
+OBJ					=	$(SRC:.swift=.o)
 
-CFLAGS		=	-O3
+INCLUDE				=	-I.
 
+COMPILER			=	cc
 
-INC=-I.
+CFLAGS				=	-O3 -w
 
-#OPTI	=	-Ounchecked
+#OPTI				=	-Ounchecked
 
-all:			$(NAME)
+all:					$(NAME)
 
-$(NAME):		$(MODULE_OBJ) $(OBJ) $(C_OBJ)
-				swiftc $(OPTI) $(INC) -o $(NAME) -emit-library $(OBJ) $(C_OBJ) -lz
+$(NAME):				$(MODULE_OBJ) $(OBJ) $(C_OBJS)
+						swiftc $(OPTI) $(INCLUDE) -o $(NAME) -emit-library $(OBJ) $(C_OBJS) -lz
 
-%.o:			%.swift
-				swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@
+%.o:					%.swift
+						swiftc $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@
 
-%.swiftmodule:	%.swift
-				swiftc $(OPTI) $(INC) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
+%.swiftmodule:			%.swift
+						swiftc $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
 
 clean:
-				rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJ) *.swiftdoc *~
+						rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJS) *.swiftdoc *~
 
-fclean:			clean
+fclean:					clean
 
-re:				clean all
+re:						fclean all
+
+.PHONY:					all clean fclean re

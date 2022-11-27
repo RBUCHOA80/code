@@ -15,7 +15,7 @@ M_SRCS				=	mlx_new_window.m \
 
 M_OBJS				=	$(M_SRCS:.m=.o)
 
-COMPILER			=	gcc
+COMPILER			=	cc
 
 CFLAGS				=	-O2 -w
 
