@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/26 15:59:03 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/28 20:30:38 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,13 +91,13 @@ re:						fclean all
 RUN_SERVER			=	$(COMPILER) $(CFLAGS) $(SERVER_NAME).c $(LIBS_A) -o $(SERVER_NAME) ;
 ifeq ($(shell pgrep -n $(SERVER_NAME)), )
 	ifeq ($(shell uname), Darwin) # MacOS
-		RUN_SERVER	+=	echo "\e[1;33mMacOS detected.\e[m" ;
+		RUN_SERVER	+=	@printf "\e[1;33mMacOS detected.\e[m" ;
 		RUN_SERVER	+=	open -a Terminal -e ./$(SERVER_NAME) &
 	else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-		RUN_SERVER	+=	echo "\e[1;33mWindows / WSL detected.\e[m" ;
+		RUN_SERVER	+=	@printf "\e[1;33mWindows / WSL detected.\e[m" ;
 		RUN_SERVER	+=	cmd.exe /c start cmd.exe /c 'bash -c "/mnt/d/GoogleDrive/code/42cursus/minitalk/$(SERVER_NAME)"' &
 	else ifeq ($(shell uname), Linux) # Native Linux
-		RUN_SERVER	+=	echo "\e[1;33mNative Linux detected.\e[m" ;
+		RUN_SERVER	+=	@printf "\e[1;33mNative Linux detected.\e[m" ;
 		RUN_SERVER	+=	x-terminal-emulator -e "./$(SERVER_NAME)" &
 	endif
 endif
