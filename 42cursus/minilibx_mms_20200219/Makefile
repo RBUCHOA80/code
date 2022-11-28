@@ -25,27 +25,31 @@ COMPILER			=	cc
 
 CFLAGS				=	-O3 -Wall -Wextra -Werror -w
 
+SW_COMPILER			=	swiftc
+
+SWFLAGS				=	-suppress-warnings
+
 .c.o:
 						$(COMPILER) $(CFLAGS) -c $< -o $(@:.c=.o)
 
 #OPTI				=	-Ounchecked
-OPTI				=	-Wunused-argument
 
 all:					$(NAME)
 
 $(NAME):				$(SW_MODULES) $(SW_OBJS) $(C_OBJS)
-						swiftc $(OPTI) $(INCLUDE) -o $(NAME) -emit-library $(SW_OBJS) $(C_OBJS) -lz
+						$(SW_COMPILER) $(SWFLAGS) $(OPTI) $(INCLUDE) -o $(NAME) -emit-library $(SW_OBJS) $(C_OBJS) -lz
 
 %.o:					%.swift
-						swiftc $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@
+						$(SW_COMPILER) $(SWFLAGS) $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@
 
 %.swiftmodule:			%.swift
-						swiftc $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
+						$(SW_COMPILER) $(SWFLAGS) $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
 
 clean:
-						rm -f $(NAME) $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *~
+						rm -drf $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *~
 
 fclean:					clean
+						rm -drf $(NAME)
 
 re:						fclean all
 
