@@ -23,6 +23,11 @@ INCLUDE				=	-I.
 
 COMPILER			=	cc
 
+CFLAGS				=	-Wall -Wextra -Werror -w
+
+.c.o:
+						$(COMPILER) $(CFLAGS) -c $< -o $(@:.c=.o)
+
 all:					$(NAME)
 
 $(NAME):				$(SW_MODULES) $(SW_OBJS) $(C_OBJS)

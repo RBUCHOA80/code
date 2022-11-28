@@ -9,28 +9,32 @@ C_SRC				=	mlx_xpm.c \
 
 C_OBJS				=	$(C_SRC:.c=.o)
 
-SW_SRC				=	mlx_image.swift \
+SW_SRCs				=	mlx_image.swift \
 						mlx_window.swift \
 						mlx_init.swift \
 
-MODULE_OBJ			=	$(SW_SRC:.swift=.swiftmodule)
+SW_MODULES			=	$(SW_SRCs:.swift=.swiftmodule)
 
-SRC					=	interface.swift $(SW_SRC)
+SW_INTERFACE		=	interface.swift $(SW_SRCs)
 
-OBJ					=	$(SRC:.swift=.o)
+SW_OBJS					=	$(SW_INTERFACE:.swift=.o)
 
 INCLUDE				=	-I.
 
 COMPILER			=	cc
 
-CFLAGS				=	-O3 -w
+CFLAGS				=	-O3 -Wall -Wextra -Werror -w
+
+.c.o:
+						$(COMPILER) $(CFLAGS) -c $< -o $(@:.c=.o)
 
 #OPTI				=	-Ounchecked
+OPTI				=	-Wunused-argument
 
 all:					$(NAME)
 
-$(NAME):				$(MODULE_OBJ) $(OBJ) $(C_OBJS)
-						swiftc $(OPTI) $(INCLUDE) -o $(NAME) -emit-library $(OBJ) $(C_OBJS) -lz
+$(NAME):				$(SW_MODULES) $(SW_OBJS) $(C_OBJS)
+						swiftc $(OPTI) $(INCLUDE) -o $(NAME) -emit-library $(SW_OBJS) $(C_OBJS) -lz
 
 %.o:					%.swift
 						swiftc $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@
@@ -39,7 +43,7 @@ $(NAME):				$(MODULE_OBJ) $(OBJ) $(C_OBJS)
 						swiftc $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
 
 clean:
-						rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJS) *.swiftdoc *~
+						rm -f $(NAME) $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *~
 
 fclean:					clean
 

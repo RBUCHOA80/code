@@ -24,6 +24,9 @@ CFLAGS				=	-O2 -w
 # add to match string put with X11 in size and position
 CFLAGS				+=	-DSTRINGPUTX11
 
+.c.o:
+						$(COMPILER) $(CFLAGS) -c $< -o $(@:.c=.o)
+
 all:					$(NAME)
 
 $(NAME):				$(C_OBJS) $(M_OBJS)
