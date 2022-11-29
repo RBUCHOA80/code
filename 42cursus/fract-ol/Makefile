@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/28 23:22:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/28 23:31:27 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ all:					run
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib) ;)
 						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) -o $(NAME)
+						$(COMPILER) $(SRCS_OBJS) -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
 
 clean:
 						rm -drf $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *~
@@ -87,6 +88,10 @@ INSTALL					=
 OS					=	
 						ifeq ($(shell uname), Darwin) # MacOS
 							OS	+=	$(shell printf "\e[1;33mMacOS detected.\e[m") ; 
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							OS	+=	@printf "\e[1;33mWindows / WSL detected.\e[m" ; 
 						else ifeq ($(shell uname), Linux) # Native Linux
@@ -95,8 +100,6 @@ OS					=
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-$(NAME): $(SRCS_OBJS)
-	$(COMPILER) $(SRCS_OBJS) -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
 						endif
 
 show:
