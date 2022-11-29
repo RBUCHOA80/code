@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/28 22:49:36 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/28 23:22:42 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,9 +61,6 @@ all:					run
 						$(COMPILER) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME):				$(SRCS_OBJS)
-						$(COMPILER) $(SRCS_OBJS) -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
-
-$(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib) ;)
 						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) -o $(NAME)
 
@@ -78,32 +75,36 @@ re:						fclean all
 .PHONY:					all clean fclean re show
 
 INSTALL					=	
-						ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
+						ifeq ($(shell uname), Darwin) # MacOS
+							INSTALL	+=	@printf "\e[1;33mMacOS detected.\e[m" ;
+						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							INSTALL	+=	@printf "\e[1;33mWindows / WSL detected.\e[m" ; 
 							INSTALL	+=	sudo apt update && sudo apt install xorg libxext-dev zlib1g-dev libbsd-dev ; 
-						else ifeq ($(shell uname), Darwin) # MacOS
-							INSTALL	+=	@printf '\e[1;33mMacOS detected.\e[m' ;
 						else ifeq ($(shell uname), Linux) # Native Linux
 							INSTALL	+=	@printf "\e[1;33mNative Linux detected.\e[m" ; 
 						endif
 
 OS					=	
-						ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
+						ifeq ($(shell uname), Darwin) # MacOS
+							OS	+=	$(shell printf "\e[1;33mMacOS detected.\e[m") ; 
+						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							OS	+=	@printf "\e[1;33mWindows / WSL detected.\e[m" ; 
-						elif ($(shell uname), Darwin) # MacOS
-							OS	+=	@printf '\e[1;33mMacOS detected.\e[m' ;
-						elif ($(shell uname), Linux) # Native Linux
-							OS	+=	@printf "\e[1;33mNative Linux detected.\e[m" ; 
+						else ifeq ($(shell uname), Linux) # Native Linux
+							OS	+=	$(shell printf "\e[1;33mNative Linux detected.\e[m") ; 
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+$(NAME): $(SRCS_OBJS)
+	$(COMPILER) $(SRCS_OBJS) -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
 						endif
 
 show:
-	@printf "OS			: $(OS)\n"
-	@printf "NAME		: $(NAME)\n"
-	@printf "NAME_UNAME	: $(NAME_UNAME)\n"
-	@printf "COMPILER	: $(COMPILER)\n"
-	@printf "CFLAGS		: $(CFLAGS)\n"
-	@printf "SRC		:\n	$(SRCS)\n"
-	@printf "OBJ		:\n	$(SRCS_OBJS)\n"
+						@printf "NAME		: $(shell uname -r)\n"
+						@printf "NAME		: $(NAME)\n"
+						@printf "COMPILER	: $(COMPILER)\n"
+						@printf "CFLAGS		: $(CFLAGS)\n"
+						@printf "SRC		: $(SRCS)\n"
 
 run:
 						$(OS)
