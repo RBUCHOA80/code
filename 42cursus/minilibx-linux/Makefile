@@ -20,6 +20,7 @@ clean:
 						./configure clean
 
 fclean:					clean
+						make -f test/makefile.gen clean
 
 re:						fclean all
 

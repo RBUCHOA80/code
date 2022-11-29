@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/28 20:50:16 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/11/28 22:49:36 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,16 +75,35 @@ fclean:					clean
 
 re:						fclean all
 
-.PHONY:					all clean fclean re
+.PHONY:					all clean fclean re show
+
+INSTALL					=	
+						ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
+							INSTALL	+=	@printf "\e[1;33mWindows / WSL detected.\e[m" ; 
+							INSTALL	+=	sudo apt update && sudo apt install xorg libxext-dev zlib1g-dev libbsd-dev ; 
+						else ifeq ($(shell uname), Darwin) # MacOS
+							INSTALL	+=	@printf '\e[1;33mMacOS detected.\e[m' ;
+						else ifeq ($(shell uname), Linux) # Native Linux
+							INSTALL	+=	@printf "\e[1;33mNative Linux detected.\e[m" ; 
+						endif
 
 OS					=	
 						ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							OS	+=	@printf "\e[1;33mWindows / WSL detected.\e[m" ; 
-						else ifeq ($(shell uname), Darwin) # MacOS
+						elif ($(shell uname), Darwin) # MacOS
 							OS	+=	@printf '\e[1;33mMacOS detected.\e[m' ;
-						else ifeq ($(shell uname), Linux) # Native Linux
+						elif ($(shell uname), Linux) # Native Linux
 							OS	+=	@printf "\e[1;33mNative Linux detected.\e[m" ; 
 						endif
+
+show:
+	@printf "OS			: $(OS)\n"
+	@printf "NAME		: $(NAME)\n"
+	@printf "NAME_UNAME	: $(NAME_UNAME)\n"
+	@printf "COMPILER	: $(COMPILER)\n"
+	@printf "CFLAGS		: $(CFLAGS)\n"
+	@printf "SRC		:\n	$(SRCS)\n"
+	@printf "OBJ		:\n	$(SRCS_OBJS)\n"
 
 run:
 						$(OS)
