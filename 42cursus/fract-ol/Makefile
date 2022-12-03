@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/03 17:21:30 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/03 19:12:57 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ all:					$(NAME)
 
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_DIR) $(LIBS_A) $(FRAMEWORK) -o $(NAME)
+						$(OS)
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
@@ -110,11 +110,11 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-run:					re
+run:					$(SRCS_OBJS)
 						$(OS)
 
 test:					$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
 						$(OS)
 
-#gcc fractol.c -I ../mlx/ -L ../mlx/ -lmlxcc -Wall -Wextra -Werror ./fractol.o -L ../mlx/ -lmlx -framework AppKit -framework OpenGL -o fractol
+#cc -Wall -Wextra -Werror ./fractol.o -L ../mlx/ -lmlx -framework AppKit -framework OpenGL -o fractol
