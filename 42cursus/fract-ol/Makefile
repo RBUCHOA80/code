@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/03 19:12:57 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/03 19:15:20 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,6 @@ OS					=
 						ifeq ($(shell uname), Darwin) # MacOS
 							OS	+=	printf "\e[1;33mMacOS detected.\e[m" ;
 							OS	+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_DIR) $(LIBS_A) $(FRAMEWORK) -o $(NAME) ;
-							OS	+=	./$(NAME)
 						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							OS	+=	printf "\e[1;33mWindows / WSL detected.\e[m"
 						else ifeq ($(shell uname), Linux) # Native Linux
@@ -111,10 +110,8 @@ show:
 						@printf "SRC		: $(SRCS)\n"
 
 run:					$(SRCS_OBJS)
-						$(OS)
-
-test:					$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
 						$(OS)
+						./$(NAME)
 
 #cc -Wall -Wextra -Werror ./fractol.o -L ../mlx/ -lmlx -framework AppKit -framework OpenGL -o fractol
