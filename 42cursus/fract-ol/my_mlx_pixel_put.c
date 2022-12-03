@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/28 23:28:26 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/01 20:59:52 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/01 21:00:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "./fractol.h"
 
-int	main(void)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	void	*mlx;
+	char	*dst;
 
-	mlx = mlx_init();
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

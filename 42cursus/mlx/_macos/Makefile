@@ -4,7 +4,6 @@
 NAME				=	libmlx.a
 
 C_SRCS				=	mlx_xpm.c \
-						mlx_png.c \
 						mlx_shaders.c \
 						mlx_int_str_to_wordtab.c \
 
@@ -13,7 +12,6 @@ C_OBJS				=	$(C_SRCS:.c=.o)
 M_SRCS				=	mlx_new_window.m \
 						mlx_init_loop.m \
 						mlx_new_image.m \
-						mlx_mouse.m \
 
 M_OBJS				=	$(M_SRCS:.m=.o)
 
@@ -21,10 +19,10 @@ COMPILER			=	cc
 
 CFLAGS				=	-O2 -w
 
-# add to match string put with X11 in size and position
-CFLAGS				+=	-DSTRINGPUTX11
-
 .c.o:
+						$(COMPILER) $(CFLAGS) -c $< -o $(@:.c=.o)
+
+.m.o:
 						$(COMPILER) $(CFLAGS) -c $< -o $(@:.c=.o)
 
 all:					$(NAME)
