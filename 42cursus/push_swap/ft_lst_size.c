@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_str.c                                      :+:      :+:    :+:   */
+/*   ft_lst_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:20:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/05 19:05:48 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/05 19:21:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	ft_free_str(char **str)
+int	ft_lst_size(t_list *stack)
 {
 	int	count;
 
-	if (!str)
-		return ;
+	if (!stack)
+		return (0);
 	count = 0;
-	while (str[count])
+	while (stack)
+	{
+		stack = stack->next;
 		count++;
-	while (count--)
-		free(str[count]);
-	free(str);
+	}
+	return (count);
 }

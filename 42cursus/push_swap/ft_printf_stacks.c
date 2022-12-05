@@ -6,34 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:21:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
-
-int	ft_size_tab(t_list *stack)
-{
-	int	count;
-
-	if (!stack)
-		return (0);
-	count = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		count++;
-	}
-	return (count);
-}
 
 void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 {
 	int	size_a;
 	int	size_b;
 
-	size_a = ft_size_tab(stack_a);
-	size_b = ft_size_tab(stack_b);
+	size_a = ft_lst_size(stack_a);
+	size_b = ft_lst_size(stack_b);
 	while (size_a || size_b)
 	{
 		if (size_a >= size_b)

@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_to_stack.c                                  :+:      :+:    :+:   */
+/*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:00 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/05 20:11:48 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/05 20:25:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-t_stack	*ft_str_to_stack(char **str)
+void	ft_bubble_sort(int *arr, int size)
 {
-	t_stack	*stack;
-	int		count;
-	int		i;
+	int	temp;
+	int	i;
+	int	j;
 
-	if (!str)
-		return (NULL);
-	count = 0;
-	while (str[count])
-		count++;
-	stack = ft_calloc(count, sizeof(*stack));
-	if (!stack)
-		return (NULL);
 	i = 0;
-	while (str[i])
+	while (i < size)
 	{
-		stack[i].content = ft_atoi(str[i]);
-		if (i)
-			stack[i - 1].next = &stack[i];
+		j = 0;
+		while (j < size)
+		{
+			if (j && arr[j - 1] > arr[j])
+			{
+				temp = arr[j];
+				arr[j] = arr[j - 1];
+				arr[j - 1] = temp;
+			}
+			j++;
+		}
 		i++;
 	}
-	return (stack);
 }

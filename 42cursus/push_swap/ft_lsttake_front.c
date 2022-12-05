@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_stack.c                                  :+:      :+:    :+:   */
+/*   ft_lsttake_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 17:46:58 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:11:18 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/09/20 23:49:17 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/05 18:41:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
 
-void	ft_printf_stack(t_stack *stack)
+void	*ft_lsttake_front(t_list **stack)
 {
-	int	i;
+	t_list	*temp;
+	void	*content;
 
-	i = 0;
-	while (stack)
-	{
-		ft_printf("%p \t", stack);
-		ft_printf("Node[%i] \t", i++);
-		ft_printf("Content = %i \t", stack->content);
-		ft_printf("Next = %p\n", stack->next);
-		stack = stack->next;
-	}	
+	if (!(stack && *stack))
+		return (NULL);
+	content = (*stack)->content;
+	temp = (*stack);
+	*stack = (*stack)->next;
+	free(temp);
+	return (content);
 }
