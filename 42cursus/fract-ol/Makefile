@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/03 19:15:20 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/06 19:03:21 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@
 NAME				=	fractol
 
 #-I <dir>				Add directory to library search path
-INCLUDE_DIR			=	$(foreach lib, $(INCLUDE_LIST),-I $(INCLUDE_PATH)$(lib)/)
+INCLUDE_DIR			=	$(foreach lib, $(INCLUDE_LIST),-I $(INCLUDE_PATH)$(lib)/_macos/)
 INCLUDE_PATH		=	../
 INCLUDE_LIST		=	mlx \
 
 #-L <dir>				Add directory to library search path
 LIBS_A				=	$(foreach lib, $(LIBS_LIST),-l$(lib))
 LIBS_DIR			=	$(foreach lib, $(LIBS),-L $(lib))
-LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
+LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/_macos/)
 LIBS_PATH			=	../
 LIBS_LIST			=	mlx \
 
@@ -90,12 +90,12 @@ INSTALL				=
 
 OS					=	
 						ifeq ($(shell uname), Darwin) # MacOS
-							OS	+=	printf "\e[1;33mMacOS detected.\e[m" ;
+							OS	+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
 							OS	+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_DIR) $(LIBS_A) $(FRAMEWORK) -o $(NAME) ;
 						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-							OS	+=	printf "\e[1;33mWindows / WSL detected.\e[m"
+							OS	+=	printf "\e[1;33mWindows / WSL detected.\n\e[m"
 						else ifeq ($(shell uname), Linux) # Native Linux
-							OS	+=	$(shell printf "\e[1;33mNative Linux detected.\e[m")
+							OS	+=	$(shell printf "\e[1;33mNative Linux detected.\n\e[m")
 #							%.o: %.c
 #								$(COMPILER) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 #							$(NAME): $(SRCS_OBJS)
