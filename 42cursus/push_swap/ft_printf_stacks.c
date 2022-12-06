@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 19:21:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/05 22:12:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 	int	size_a;
 	int	size_b;
 
-	size_a = ft_lst_size(stack_a);
-	size_b = ft_lst_size(stack_b);
+	size_a = ft_lstsize(stack_a);
+	size_b = ft_lstsize(stack_b);
 	while (size_a || size_b)
 	{
 		if (size_a >= size_b)
 		{
-			ft_printf("%p %d", stack_a->content, *((int *)stack_a->content));
+			ft_printf("%p  %d ", stack_a->content, *((int *)stack_a->content));
 			stack_a = stack_a->next;
 			size_a--;
 		}

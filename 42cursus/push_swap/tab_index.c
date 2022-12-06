@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_size.c                                      :+:      :+:    :+:   */
+/*   ft_template.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 19:05:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 19:21:08 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/05 19:19:26 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/05 21:01:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_lst_size(t_list *stack)
+int	*tab_index(t_list *stack)
 {
+	int	*template;
 	int	count;
 
-	if (!stack)
-		return (0);
+	count = ft_lstsize(stack);
+	template = (int *)ft_calloc(count, sizeof(*template));
+	if (!template)
+		return (NULL);
 	count = 0;
 	while (stack)
 	{
+		template[count++] = *((int *)stack->content);
 		stack = stack->next;
-		count++;
 	}
-	return (count);
+	ft_bubble_sort(template, count);
+	return (template);
 }

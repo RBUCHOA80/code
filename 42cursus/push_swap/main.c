@@ -6,11 +6,24 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:53:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 18:53:51 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/05 20:55:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
+
+int	*ft_addint(char *str)
+{
+	int	*dest;
+
+	if (!str)
+		return (NULL);
+	dest = (int *)ft_calloc(1, sizeof(*dest));
+	if (!dest)
+		return (NULL);
+	*dest = ft_atoi(str);
+	return (dest);
+}
 
 int	main(int argc, char **argv)
 {

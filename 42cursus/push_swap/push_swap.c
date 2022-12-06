@@ -6,19 +6,35 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 19:42:07 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/05 22:10:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	push_swap(t_list **stack_a, t_list **stack_b)
+void	index_stack(t_list *stack, int *template)
 {
-	int	*template;
 	int	i;
 
-	template = ft_template(*stack_a);
-	(void)template;
+	while (stack)
+	{
+		i = 0;
+		while (template[i])
+		{
+			if (*((int *)stack->content) == template[i])
+				*((int *)stack->content) = i;
+			i++;
+		}
+		stack = stack->next;
+	}
+	free(template);
+}
+
+void	push_swap(t_list **stack_a, t_list **stack_b)
+{
+	int	i;
+
+	index_stack(*stack_a, tab_index(*stack_a));
 	if (stack_a && stack_b)
 	{
 		i = 0;
