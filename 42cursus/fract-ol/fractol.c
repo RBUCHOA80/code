@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/03 17:38:35 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/06 21:14:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-/* int	main(void)
+int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -27,10 +27,11 @@
 								&img.endian);
 	my_mlx_pixel_put(&img, (WINDOW_WIDTH / 2), (WINDOW_HEIGHT / 2), 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_hook(mlx_win, ON_KEYDOWN, 1L << 0, close, &img);
 	mlx_loop(mlx);
-} */
+}
 
-int	main(void)
+/* int	main(void)
 {
 	t_vars	vars;
 
@@ -39,4 +40,4 @@ int	main(void)
 			WINDOW_TITTLE);
 	mlx_hook(vars.mlx_win, ON_KEYDOWN, 1L << 0, close, &vars);
 	mlx_loop(vars.mlx);
-}
+} */

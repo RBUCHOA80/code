@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/06 19:03:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/06 21:16:13 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,7 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-run:					$(SRCS_OBJS)
+run:					re $(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
 						$(OS)
 						./$(NAME)
