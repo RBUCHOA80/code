@@ -17,7 +17,7 @@ SW_MODULES			=	$(SW_SRCs:.swift=.swiftmodule)
 
 SW_INTERFACE		=	interface.swift $(SW_SRCs)
 
-SW_OBJS					=	$(SW_INTERFACE:.swift=.o)
+SW_OBJS				=	$(SW_INTERFACE:.swift=.o)
 
 INCLUDE				=	-I.
 
@@ -46,7 +46,7 @@ $(NAME):				$(SW_MODULES) $(SW_OBJS) $(C_OBJS)
 						$(SW_COMPILER) $(SWFLAGS) $(OPTI) $(INCLUDE) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
 
 clean:
-						rm -drf $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *~
+						rm -drf $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *.swiftsourceinfo *~
 
 fclean:					clean
 						rm -drf $(NAME)
