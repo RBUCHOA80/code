@@ -44,7 +44,7 @@ $(NAME):				$(SW_MODULES) $(SW_OBJS) $(C_OBJS)
 						$(SW_COMPILER) $(SWFLAGS) $(INCLUDE) -parse-as-library -c $< -o $@ -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
 
 clean:
-						rm -drf $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *~
+						rm -drf $(SW_OBJS) $(SW_MODULES) $(C_OBJS) *.swiftdoc *.swiftsourceinfo *~
 
 fclean:					clean
 						rm -drf $(NAME)

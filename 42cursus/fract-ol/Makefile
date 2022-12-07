@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/06 21:40:09 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/06 22:03:19 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@
 NAME				=	fractol
 
 #-I <dir>				Add directory to library search path
-INCLUDE_DIR			=	$(foreach lib, $(INCLUDE_LIST),-I $(INCLUDE_PATH)$(lib)/_mms_20200219/)
+INCLUDE_DIR			=	$(foreach lib, $(INCLUDE_LIST),-I $(INCLUDE_PATH)$(lib)/_macos/)
 INCLUDE_PATH		=	../
 INCLUDE_LIST		=	mlx \
 
 #-L <dir>				Add directory to library search path
 LIBS_A				=	$(foreach lib, $(LIBS_LIST),-l$(lib))
 LIBS_DIR			=	$(foreach lib, $(LIBS),-L $(lib))
-LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/_mms_20200219/)
+LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/_macos/)
 LIBS_PATH			=	../
 LIBS_LIST			=	mlx \
 
