@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/08 07:23:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/08 07:45:35 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_data
 }	t_data;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		create_trgb(int t, int r, int g, int b);
 
 int		events(int keycode, t_data *exec);
 void	close(t_data *exec);

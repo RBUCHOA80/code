@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/07 20:30:57 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/08 07:44:21 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,7 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	create_trgb.c \
-						events.c \
+SRCS_LIST			=	events.c \
 						fractol.c \
 						my_mlx_pixel_put.c \
 
@@ -61,7 +60,6 @@ all:					$(NAME)
 
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
-						$(OS)
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
@@ -113,5 +111,11 @@ run:					re $(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
 						$(OS)
 						./$(NAME)
+
+rgb:
+						gcc create_trgb.c -I ../libftprintf/ -L ../libftprintf/ -lftprintf -o a.out
+						./a.out
+						rm a.out
+
 
 #cc -Wall -Wextra -Werror ./fractol.o -L ../mlx/ -lmlx -framework AppKit -framework OpenGL -o fractol
