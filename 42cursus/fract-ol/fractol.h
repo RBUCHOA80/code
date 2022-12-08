@@ -6,13 +6,14 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/07 21:38:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/08 07:23:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include <stdio.h> //printf -- REMOVER --
 # include <mlx.h> //libmlx
 # include <stdlib.h> //exit
 
@@ -51,6 +52,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 
 int		events(int keycode, t_data *exec);
-int		close(t_data *exec);
+void	close(t_data *exec);
+void	print_keycode(int keycode);
 
 #endif
