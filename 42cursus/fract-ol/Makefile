@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/06 22:03:19 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/07 20:30:57 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,8 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	close.c \
-						create_trgb.c \
+SRCS_LIST			=	create_trgb.c \
+						events.c \
 						fractol.c \
 						my_mlx_pixel_put.c \
 

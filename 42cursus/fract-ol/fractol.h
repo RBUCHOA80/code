@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/03 17:25:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:38:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define FRACTOL_H
 
 # include <mlx.h> //libmlx
+# include <stdlib.h> //exit
+
+# ifndef FD
+#  define FD 1
+# endif
 
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH  768
@@ -33,6 +38,8 @@ enum
 
 typedef struct s_data
 {
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -40,14 +47,10 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*mlx_win;
-}	t_vars;
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
-int		close(int keycode, t_vars *vars);
+
+int		events(int keycode, t_data *exec);
+int		close(t_data *exec);
 
 #endif

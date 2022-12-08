@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/06 21:14:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:44:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,29 @@
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	t_data	exec;
+	int		x;
+	int		y;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITTLE);
-	img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, \
-								&img.bits_per_pixel, \
-								&img.line_length, \
-								&img.endian);
-	my_mlx_pixel_put(&img, (WINDOW_WIDTH / 2), (WINDOW_HEIGHT / 2), 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_hook(mlx_win, ON_KEYDOWN, 1L << 0, close, &img);
-	mlx_loop(mlx);
+	exec.mlx = mlx_init();
+	exec.win = mlx_new_window(exec.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITTLE);
+	exec.img = mlx_new_image(exec.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	exec.addr = mlx_get_data_addr(exec.img, &exec.bits_per_pixel, &exec.line_length, &exec.endian);
+	mlx_hook(exec.win, ON_KEYUP, 0L, &events, &exec);
+	x = 0;
+	while (x < WINDOW_WIDTH)
+	{
+		y = 0;
+		while (y < WINDOW_HEIGHT)
+		{
+			my_mlx_pixel_put(&exec, x, y, 0x00FFFFFF);
+			y++;
+		}
+		x++;
+	}
+	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) - 5, (WINDOW_HEIGHT / 2) + 0, 0x00FF0000);
+	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 0, (WINDOW_HEIGHT / 2) + 0, 0x0000FF00);
+	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 5, (WINDOW_HEIGHT / 2) + 0, 0x000000FF);
+	mlx_put_image_to_window(exec.mlx, exec.win, exec.img, 0, 0);
+	mlx_loop(exec.mlx);
 }
-
-/* int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.mlx_win = mlx_new_window(vars.mlx, WINDOW_WIDTH, WINDOW_HEIGHT,
-			WINDOW_TITTLE);
-	mlx_hook(vars.mlx_win, ON_KEYDOWN, 1L << 0, close, &vars);
-	mlx_loop(vars.mlx);
-} */
