@@ -1,0 +1,30 @@
+Assignment name  : repeat_alpha
+Expected files   : repeat_alpha.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Bir string alan ve icindeki karakterleri alfabedeki sirasina kadar tekrar ederek gosteren
+ve ardindan yeni bir satira gecen repeat_alpha isimli bir program yazin.
+
+
+'a' => 'a', 'b' => 'bb', 'e' => 'eeeee', etc...
+
+Büyüklük/kücüklük degismeyecek.
+
+Eğer arguman sayisi 1 değilse, sadece yeni satira gec.
+
+
+Ornekler:
+
+$>./repeat_alpha "abc"
+abbccc
+$>./repeat_alpha "Alex." | cat -e
+Alllllllllllleeeeexxxxxxxxxxxxxxxxxxxxxxxx.$
+$>./repeat_alpha 'abacadaba 42!' | cat -e
+abbacccaddddabba 42!$
+$>./repeat_alpha | cat -e
+$
+$>
+$>./repeat_alpha "" | cat -e
+$
+$>

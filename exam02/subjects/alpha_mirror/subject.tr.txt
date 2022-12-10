@@ -1,0 +1,23 @@
+Assignment name  : alpha_mirror
+Expected files   : alpha_mirror.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+Adı alpha_mirror olan bi program yazın. Bu program aldığı string(metin)'in
+harflerini, alfabedeki tam simetrik konumundaki harfle değiştirip göstermelidir
+ve yeni satıra geçerek bitmelidir.
+
+'a' ,'z' haline gelir, 'Z' , 'A' haline gelir.
+
+'d' , 'w' haline gelir, 'M' , 'N' haline gelir.
+
+Eğer argüman sayısı 1 değilse sadece yeni satıra geçin.
+
+Örnek:
+
+$>./alpha_mirror "abc"
+zyx
+$>./alpha_mirror "My horse is Amazing." | cat -e
+Nb slihv rh Znzarmt.$
+$>./alpha_mirror | cat -e
+$
+$>

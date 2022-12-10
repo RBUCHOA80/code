@@ -1,0 +1,27 @@
+Nome esercizio		: alpha_mirror
+File da consegnare	: alpha_mirror.c
+Funzioni richieste	: write
+--------------------------------------------------------------------------------
+
+Scrivi un programma chiamato alpha_mirror che prenda una stringa e la visualizzi
+dopo averne sostituito ogni carattere alfabetico con il carattere alfabetico opposto,
+seguita da una nuova riga.
+
+'a' diventa 'z', 'Z' diventa 'A'
+'d' diventa 'w', 'M' diventa 'N'
+
+e così via.
+
+Il Case(Maiuscolo o minuscolo) rimane invariato.
+
+Se il numero degli argomenti non è 1, visualizzerà solo una nuova riga.
+
+Esempi:
+
+$>./alpha_mirror "abc"
+zyx
+$>./alpha_mirror "My horse is Amazing." | cat -e
+Nb slihv rh Znzarmt.$
+$>./alpha_mirror | cat -e
+$
+$>

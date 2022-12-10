@@ -1,0 +1,26 @@
+Assignment name  : alpha_mirror
+Expected files   : alpha_mirror.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Escreva um programa alpha_mirror que tenha uma cadeia e a mostre após ter substituído cada
+caractere alfabético pelo caractere alfabético oposto, seguida de uma newline.
+
+'a' vira 'z', 'Z' vira 'A'
+'d' vira 'w', 'M' vira 'N'
+
+Etc...
+
+A capitalização não muda.
+
+Se o número de argumentos não for 1, mostre apenas uma newline.
+
+Exemplos:
+
+$>./alpha_mirror "abc"
+zyx
+$>./alpha_mirror "My horse is Amazing." | cat -e
+Nb slihv rh Znzarmt.$
+$>./alpha_mirror | cat -e
+$
+$>

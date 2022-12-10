@@ -1,0 +1,14 @@
+Assignment name  : ft_split
+Expected files   : ft_split.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Bir string(metin) alıp bu string'i kelimelere bölüp NULL ile biten
+string(metin)'ler dizisi şeklinde döndüren bir fonksiyon yazın.
+
+"Kelime", bir string(metin)'de boşluk/tab/yeni satır veya string(metin)
+başı/sonu ile ayrılmış parçaları olarak tanımlanır.
+
+Fonksiyonunuz aşağıdaki gibi tanımlanmalıdır:
+
+char    **ft_split(char *str);

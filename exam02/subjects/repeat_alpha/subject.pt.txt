@@ -1,0 +1,29 @@
+Assignment name  : repeat_alpha
+Expected files   : repeat_alpha.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Escreva um programa repeat_alpha que tenha uma cadeia e a mostre repetindo
+cada caractere alfabético o mesmo número de vezes que seu índice no alfabeto,
+seguida de um newline.
+
+'a' fica 'a', 'b' vira 'bb', 'e' vira 'eeeee', etc...
+
+A capitalização não muda.
+
+Se o número de argumentos não for 1, mostre apenas um newline.
+
+Exemplos:
+
+$>./repeat_alpha "abc"
+abbccc
+$>./repeat_alpha "Alex." | cat -e
+Alllllllllllleeeeexxxxxxxxxxxxxxxxxxxxxxxx.$
+$>./repeat_alpha 'abacadaba 42!' | cat -e
+abbacccaddddabba 42!$
+$>./repeat_alpha | cat -e
+$
+$>
+$>./repeat_alpha "" | cat -e
+$
+$>

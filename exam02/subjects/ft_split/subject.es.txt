@@ -1,0 +1,16 @@
+Assignment name  : ft_split
+Expected files   : ft_split.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Crea una función que reciba como parámetro un string y lo
+divida en palabras, que serán devueltas en forma de una tabla de strings
+acabada en NULL.
+
+Llamamos "palabra" a una porción del string delimitada por
+espacios, o saltos de línea, o tabulaciones, o el principio del string, o el 
+final del string.
+
+El prototipo de su función deberá ser el siguiente:
+
+char    **ft_split(char *str);

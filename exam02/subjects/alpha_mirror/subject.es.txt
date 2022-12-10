@@ -1,0 +1,26 @@
+Assignment name  : alpha_mirror
+Expected files   : alpha_mirror.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Escribe un programa alpha_mirror que reciba un string y lo muestre tras haber sustituido cada
+carácter alfabético por el carácter alfabético opuesto, seguido de un salto de línea.
+
+'a' se convierte en 'z', 'Z' se convierte en 'A'
+'d' se convierte en 'w', 'M' se convierte en 'N'
+
+Etc.
+
+No se cambian las mayúsculas y las minúsculas.
+
+Si el número de argumentos no es 1, mostrar solo un salto de línea.
+
+Ejemplos:
+
+$>./alpha_mirror "abc"
+zyx
+$>./alpha_mirror "My horse is Amazing." | cat -e
+Nb slihv rh Znzarmt.$
+$>./alpha_mirror | cat -e
+$
+$>

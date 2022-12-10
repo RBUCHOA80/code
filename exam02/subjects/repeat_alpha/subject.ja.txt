@@ -1,0 +1,28 @@
+課題名            : repeat_alpha
+提出ファイル       : repeat_alpha.c
+使用可能な関数      : write
+--------------------------------------------------------------------------------
+
+文字列をコマンドライン引数から受け取り、文字列のアルファベットをそれぞれそのアルファベットのインデックスと同じ回数だけ繰り返して標準出力に出力するrepeat_alphaというプログラムを書きなさい。
+
+例）
+
+'a'は'a', 'b'は'bb', 'e'は'eeeee'
+
+ただし、大文字、小文字はそのままにして変換しないこと。
+コマンドライン引数の数が1つではない場合、改行だけを標準出力に出力すること。
+
+例）
+
+$>./repeat_alpha "abc"
+abbccc
+$>./repeat_alpha "Alex." | cat -e
+Alllllllllllleeeeexxxxxxxxxxxxxxxxxxxxxxxx.$
+$>./repeat_alpha 'abacadaba 42!' | cat -e
+abbacccaddddabba 42!$
+$>./repeat_alpha | cat -e
+$
+$>
+$>./repeat_alpha "" | cat -e
+$
+$>
