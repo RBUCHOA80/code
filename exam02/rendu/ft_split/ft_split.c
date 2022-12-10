@@ -11,15 +11,14 @@ char **ft_split(char *str)
 	int k;
 
 	i = 0;
-	while (str[i] < 33)
-		i++;
 	while (str[i])
 	{
-		if (str[i] && ( str[i] <= 33 || 126 <= str[i]))
-			count++;
 		while (str[i] && str[i] < 33)
 			i++;
-		i++;
+		if (str[i] && (33 <= str[i] && str[i] <= 126))
+			count++;
+		while (str[i] && 32 < str[i])
+			i++;
 	}
 	if (!str)
 	{
@@ -27,7 +26,7 @@ char **ft_split(char *str)
 		ret = NULL;
 		return (ret);
 	}
-	ret = (char**)malloc(count * sizeof(*ret));
+	ret = (char**)malloc((count + 1) * sizeof(*ret));
 	if (!ret)
 		return (NULL);
 	int dest = 0;
@@ -44,7 +43,7 @@ char **ft_split(char *str)
 			dest++;
 			len++;
 		}
-		ret[j] = (char*)malloc(dest);
+		ret[j] = (char*)malloc(dest + 1);
 		k = 0;
 		while(str[i] > 32)
 		{
@@ -62,16 +61,20 @@ char **ft_split(char *str)
 
 int	main(void)
 {
-	char	**ret;
-	char	*str;
 	int i;
 
-	str = " Sample   lksajf klasjfa text 654    here  ";
-
-	ret = ft_split(str);
 	i = 0;
-	while (ret[i])
-		printf("%s\n", ret[i++]);
+	while (ft_split("Sample   lksajf klasjfa text 654    here")[i])
+		printf("|%s| ", ft_split("Sample   lksajf klasjfa text 654    here")[i++]);
+	printf("\n");
+	i = 0;
+	while (ft_split("   Sample   lksajf klasjfa text 654    here")[i])
+		printf("|%s| ", ft_split("   Sample   lksajf klasjfa text 654    here")[i++]);
+	printf("\n");
+	i = 0;
+	while (ft_split("   Sample   lksajf klasjfa text 654    here   ")[i])
+		printf("|%s| ", ft_split("   Sample   lksajf klasjfa text 654    here   ")[i++]);
+	printf("\n");
 	return (0);
 }
 

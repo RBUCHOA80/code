@@ -1,3 +1,5 @@
+MAKEFLAGS = --silent
+
 NAME = ft_split
 
 run:
