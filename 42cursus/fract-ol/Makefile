@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/10 09:31:16 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/10 17:56:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 
 NAME				=	fractol
 
+LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
 LIBS_PATH			=	../
 LIBS				=	libftprintf \
@@ -30,7 +31,7 @@ ifeq ($(shell uname), Darwin) # MacOS
 	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_macos/
 	MLX_LIB			+=	-lmlx
 	COMP			+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
-	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) $(FRAMEWORK) -o $(NAME) ;
+	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) $(FRAMEWORK) -o $(NAME) ;
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 	MLX_INCLUDE		+=	-I /usr/include -I ../mlx/_linux/ -O3 -c $< -o $@
 	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/ -L /usr/lib
