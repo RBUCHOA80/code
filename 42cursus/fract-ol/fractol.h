@@ -6,16 +6,16 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/09 21:24:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/10 09:30:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdio.h> //printf -- REMOVER --
 # include <mlx.h> //libmlx
 # include <stdlib.h> //exit
+# include <libftprintf.h> //ft_printf
 
 # ifndef FD
 #  define FD 1
@@ -51,8 +51,7 @@ typedef struct s_data
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 int		events(int keycode, t_data *exec);
-void	close(t_data *exec);
+int		mlx_close(t_data *exec);
 void	print_keycode(int keycode);
-int	x_close(int keycode, t_data *exec);
 
 #endif

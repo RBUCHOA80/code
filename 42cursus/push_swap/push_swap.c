@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 22:10:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/10 08:12:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	index_stack(t_list *stack, int *template)
 		while (template[i])
 		{
 			if (*((int *)stack->content) == template[i])
-				*((int *)stack->content) = i;
+				*((int *)stack->content) = i + 1;
 			i++;
 		}
 		stack = stack->next;

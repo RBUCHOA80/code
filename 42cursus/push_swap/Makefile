@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/05 21:40:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/10 08:13:17 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,14 +90,14 @@ re:						fclean all
 ARG					=	
 						ifeq ($(shell uname), Darwin) # MacOS
 							ARG	+=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
-							ARG	+=	VAR=$$(echo {101..110}$$'\n' | sort --sort=random | tr "\n" " ") ;
+							ARG	+=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 							ARG	+=	@printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
-							ARG	+=	VAR="106 102 101 107 103 105 104 108 109 100" ;
-#							ARG	:=	VAR=$$(echo -e {101..110}$$'\n' | sort --sort=random | tr "\n" " ") ;
+							ARG	+=	VAR="106 102 101 107 103 105 104 108 109" ;
+#							ARG	:=	VAR=$$(echo -e {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 						else ifeq ($(shell uname), Linux) # Native Linux
 							ARG	+=	@printf "\e[1;33mNative Linux detected.\n\e[m" ;
-							ARG	+=	VAR=$$(echo {101..110}$$'\n' | sort --sort=random | tr "\n" " ") ;
+							ARG	+=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 						endif
 
 run:					$(NAME)
