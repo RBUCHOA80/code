@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/08 07:45:35 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/09 21:24:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		events(int keycode, t_data *exec);
 void	close(t_data *exec);
 void	print_keycode(int keycode);
+int	x_close(int keycode, t_data *exec);
 
 #endif

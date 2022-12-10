@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_trgb.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 07:34:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/08 20:03:26 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/08 19:53:45 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/08 20:02:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <stdio.h>
 
-int	create_trgb(int t, int r, int g, int b)
+enum e_size
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+	win_size_x = 1200,
+	win_size_y = 800,
+	tiny_img_x = 400,
+	tiny_img_y = 270,
+};
 
 int	main(void)
 {
-	int	t;
-	int	r;
-	int	g;
-	int	b;
-	int	hex;
+	int	i;
+	int	j;
 
-	t = 20;
-	r = 80;
-	g = 160;
-	b = 240;
-	hex = create_trgb(t, r, g, b);
-	ft_printf("0x%x\n", hex);
+	i = win_size_y / 3;
+	printf("i = %i\n", i);
+	j = win_size_y / 3;
+	printf("i = %i\n", i);
 	return (0);
 }
-
-/*
-gcc create_trgb.c -I ../libftprintf/ -L ../libftprintf/ -lftprintf -o a.out
-./a.out
-rm a.out
- */

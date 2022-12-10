@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/08 08:01:32 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/09 21:25:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ int	events(int keycode, t_data *exec)
 
 void	close(t_data *exec)
 {
+	mlx_destroy_image(exec->mlx, exec->img);
+	mlx_destroy_window(exec->mlx, exec->win);
+	exit (0);
+}
+
+int	x_close(int keycode, t_data *exec)
+{
+	(void)keycode;
+	mlx_destroy_display(exec->mlx);
 	mlx_destroy_image(exec->mlx, exec->img);
 	mlx_destroy_window(exec->mlx, exec->win);
 	exit (0);

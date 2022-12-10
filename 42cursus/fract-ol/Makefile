@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/08 07:44:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/09 21:02:38 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,37 @@ NAME				=	fractol
 #-I <dir>				Add directory to library search path
 INCLUDE_DIR			=	$(foreach lib, $(INCLUDE_LIST),-I $(INCLUDE_PATH)$(lib)/_macos/)
 INCLUDE_PATH		=	../
-INCLUDE_LIST		=	mlx \
+INCLUDE_LIST		=	
 
 #-L <dir>				Add directory to library search path
 LIBS_A				=	$(foreach lib, $(LIBS_LIST),-l$(lib))
 LIBS_DIR			=	$(foreach lib, $(LIBS),-L $(lib))
 LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/_macos/)
 LIBS_PATH			=	../
-LIBS_LIST			=	mlx \
+LIBS_LIST			=	
+
+#MLX					Minilibx dependences and command line
+ifeq ($(shell uname), Darwin) # MacOS
+	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR)
+	MLX_LIB_DIR		+=	$(INCLUDE_PATH)mlx/_macos/
+	MLX_LIB			+=	-lmlx
+	COMP			+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
+	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_DIR) $(LIBS_A) -L $(MLX_LIB_DIR) $(MLX_LIB) $(FRAMEWORK) -o $(NAME) ;
+else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
+	MLX_INCLUDE		+=	-I /usr/include -I ../mlx/_linux/ -O3 -c $< -o $@
+	MLX_LIB_DIR		+=	$(INCLUDE_PATH)mlx/_linux/ -L /usr/lib
+	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
+	COMP			+=	printf "\e[1;33mWindows / WSL detected.\n\e[m"
+else ifeq ($(shell uname), Linux) # Native Linux
+	MLX_INCLUDE		+=	-I /usr/include -I ../mlx/_linux/ -O3 -c $< -o $@
+	MLX_LIB_DIR		+=	$(INCLUDE_PATH)mlx/_linux/ -L /usr/lib
+	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
+	COMP			+=	$(shell printf "\e[1;33mNative Linux detected.\n\e[m")
+#					%.o: %.c
+#						$(COMPILER) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+#					$(NAME): $(SRCS_OBJS)
+#						$(COMPILER) $(SRCS_OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+endif
 
 #-framework AppKit -framework OpenGL
 FRAMEWORK			=	$(foreach framework, $(FRAMEWORK_LIST),-framework $(framework))
@@ -54,7 +77,7 @@ SRCS_LIST			=	events.c \
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 .c.o:
-						$(COMPILER) $(CFLAGS) $(INCLUDE_DIR) -c $< -o $@
+						$(COMPILER) $(CFLAGS) $(INCLUDE_DIR) $(MLX_INCLUDE) -c $< -o $@
 
 all:					$(NAME)
 
@@ -64,41 +87,16 @@ $(NAME):				$(SRCS_OBJS)
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make $@ -C $(lib))
+						make $@ -C $(MLX_LIB_DIR)
 
 fclean:					clean
 						$(REMOVE) $(RFLAGS) $(NAME)
 						$(foreach lib, $(LIBS), make $@ -C $(lib))
+						make $@ -C $(MLX_LIB_DIR)
 
 re:						fclean all
 
 .PHONY:					all clean fclean re show
-
-INSTALL				=	
-						ifeq ($(shell uname), Darwin) # MacOS
-							INSTALL	+=	printf "\e[1;33mMacOS detected.\e[m" ;
-#brew install Xquartz
-#reboot
-#xeyes # run an hello world X11 app
-						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-							INSTALL	+=	printf "\e[1;33mWindows / WSL detected.\e[m" ; 
-							INSTALL	+=	sudo apt update && sudo apt install xorg libxext-dev zlib1g-dev libbsd-dev ; 
-						else ifeq ($(shell uname), Linux) # Native Linux
-							INSTALL	+=	printf "\e[1;33mNative Linux detected.\e[m" ; 
-						endif
-
-OS					=	
-						ifeq ($(shell uname), Darwin) # MacOS
-							OS	+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
-							OS	+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_DIR) $(LIBS_A) $(FRAMEWORK) -o $(NAME) ;
-						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-							OS	+=	printf "\e[1;33mWindows / WSL detected.\n\e[m"
-						else ifeq ($(shell uname), Linux) # Native Linux
-							OS	+=	$(shell printf "\e[1;33mNative Linux detected.\n\e[m")
-#							%.o: %.c
-#								$(COMPILER) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-#							$(NAME): $(SRCS_OBJS)
-#								$(COMPILER) $(SRCS_OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-						endif
 
 show:
 						@printf "SYSTEM		: $(shell uname)\n"
@@ -107,15 +105,15 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-run:					re $(SRCS_OBJS)
+run:					$(SRCS_OBJS)
 						$(foreach lib, $(LIBS), make all -C $(lib))
-						$(OS)
+						make all -C $(MLX_LIB_DIR)
+						$(COMP)
 						./$(NAME)
+
+rerun:					re run
 
 rgb:
 						gcc create_trgb.c -I ../libftprintf/ -L ../libftprintf/ -lftprintf -o a.out
 						./a.out
 						rm a.out
-
-
-#cc -Wall -Wextra -Werror ./fractol.o -L ../mlx/ -lmlx -framework AppKit -framework OpenGL -o fractol
