@@ -66,7 +66,7 @@ int	main(void)
 	char	*str;
 	int i;
 
-	str = " Sample lksajf klasjfa text 654    here  ";
+	str = " Sample   lksajf klasjfa text 654    here  ";
 
 	ret = ft_split(str);
 	i = 0;
