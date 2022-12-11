@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/10 21:37:26 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/10 22:01:04 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,31 +25,22 @@ INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
 #-L <dir>				Add directory to library search path
 LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/)
 
-#MLX					Minilibx dependences and command line
 ifeq ($(shell uname), Darwin) # MacOS
-	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR)
-	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_macos/
-	MLX_LIB			+=	-lmlx
-	COMP			+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
-	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) $(FRAMEWORK) -o $(NAME) ;
+	SYSTEM			=	printf "\e[1;33mMacOS detected.\n\e[m"
+	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_macos/
+	MLX_INCLUDE		=	-I $(MLX_LIB_DIR)
+	MLX_LIB			=	-lmlx -framework AppKit -framework OpenGL
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR) -O3
-	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/
-	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
-	COMP			+=	printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
-	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) -o $(NAME) ;
+	SYSTEM			=	printf "\e[1;33mWindows / WSL detected.\n\e[m"
+	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
+	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
+	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
 else ifeq ($(shell uname), Linux) # Native Linux
-	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR) -O3
-	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/
-	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
-	COMP			+=	printf "\e[1;33mNative Linux detected.\n\e[m" ;
-	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) -o $(NAME) ;
+	SYSTEM			=	printf "\e[1;33mLinux detected.\n\e[m"
+	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
+	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
+	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
 endif
-
-#-framework AppKit -framework OpenGL
-FRAMEWORK			=	$(foreach framework, $(FRAMEWORK_LIST),-framework $(framework))
-FRAMEWORK_LIST		=	AppKit \
-						OpenGL \
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror
@@ -81,6 +72,7 @@ all:					$(NAME)
 $(NAME):				$(SRCS_OBJS)
 						make all -C $(MLX_LIB_DIR)
 						$(foreach lib, $(LIBS_DIR), make all -C $(lib))
+						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) -o $(NAME)
 
 clean:
 						$(foreach lib, $(LIBS_DIR), make clean -C $(lib))
@@ -103,10 +95,8 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-run:					$(SRCS_OBJS)
-						$(foreach lib, $(LIBS_DIR), make all -C $(lib))
-						make all -C $(MLX_LIB_DIR)
-						$(COMP)
+run:					$(NAME)
+						$(SYSTEM)
 						./$(NAME)
 
 rerun:					re run
