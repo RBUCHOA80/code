@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/10 21:22:58 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/10 21:37:26 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ ifeq ($(shell uname), Darwin) # MacOS
 	COMP			+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
 	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) $(FRAMEWORK) -o $(NAME) ;
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR)
+	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR) -O3
 	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/
 	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
 	COMP			+=	printf "\e[1;33mWindows / WSL detected.\n\e[m" ;

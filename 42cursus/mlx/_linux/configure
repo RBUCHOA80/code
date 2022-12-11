@@ -69,14 +69,14 @@ show_help(){
 cat <<EOF
 Usage :
 $0              Auto-configure and make MinilibX
-$0 clean        Execute the clean rule of both Makefile.gen
+$0 clean        Executing the clean rule of both Makefile.gen
 EOF
 }
 
 clean(){
-	log_info 'Execute "make clean" from "makefile.gen"'
+	log_info 'Executing "make clean" from "makefile.gen"'
 	${MAKE} -f Makefile.gen clean
-	log_info 'Execute "make clean" from "test/makefile.gen"'
+	log_info 'Executing "make clean" from "test/makefile.gen"'
 	${MAKE} -f Makefile.gen -C test/ --no-print-directory clean
 }
 
@@ -117,9 +117,9 @@ main(){
 		echo "INC=$xlib_inc"				>  test/Makefile.gen
 		cat test/Makefile.mk | grep -v %%%% >> test/Makefile.gen
 
-	log_info 'Execute "make all" from file "makefile.gen"'
+	log_info 'Executing "make all" from file "makefile.gen"'
 		${MAKE} -f Makefile.gen all
-	log_info 'Execute "make all" from file "test/makefile.gen"'
+	log_info 'Executing "make all" from file "test/makefile.gen"'
 		(cd test ; ${MAKE} -f Makefile.gen all )
 }
 
