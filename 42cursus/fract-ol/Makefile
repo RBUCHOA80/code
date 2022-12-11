@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/10 22:01:04 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/11 17:01:25 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ fclean:					clean
 						$(REMOVE) $(RFLAGS) $(NAME)
 
 re:						fclean all
+						$(foreach lib, $(LIBS), make re -C $(lib) ;)
 
 .PHONY:					all clean fclean re show
 

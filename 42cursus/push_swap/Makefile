@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/10 08:13:17 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/11 17:07:56 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,18 @@ LIBS_LIST			=	libft \
 						libftprintf \
 
 INCLUDE_PATH		=	./
+
+ifeq ($(shell uname), Darwin) # MacOS
+	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
+	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
+	SYSTEM	=	@printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
+	ARG		=	VAR="106 102 101 107 103 105 104 108 109" ;
+#	ARG		:=	VAR=$$(echo -e {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+else ifeq ($(shell uname), Linux) # Native Linux
+	SYSTEM	=	@printf "\e[1;33mNative Linux detected.\n\e[m" ;
+	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+endif
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
@@ -67,7 +79,7 @@ all:					$(NAME)
 bonus:					$(NAME_BONUS)
 
 $(NAME):				$(SRCS_OBJS)
-						$(foreach lib, $(LIBS), make all -C $(lib) ;)
+						$(foreach lib, $(LIBS), make -C $(lib) ;)
 						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) -o $(NAME)
 
 $(NAME_BONUS):			$(BONUS_OBJS) 
@@ -76,37 +88,29 @@ $(NAME_BONUS):			$(BONUS_OBJS)
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
-						$(foreach lib, $(LIBS), make $@ -C $(lib) ;)
+						$(foreach lib, $(LIBS), make clean -C $(lib) ;)
 
 fclean:					clean
 						$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
-						$(foreach lib, $(LIBS), make $@ -C $(lib) ;)
+						$(foreach lib, $(LIBS), make fclean -C $(lib) ;)
 
 re:						fclean all
-						$(foreach lib, $(LIBS), make $@ -C $(lib) ;)
+						$(foreach lib, $(LIBS), make re -C $(lib) ;)
 
 .PHONY:					all clean fclean re
 
-ARG					=	
-						ifeq ($(shell uname), Darwin) # MacOS
-							ARG	+=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
-							ARG	+=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
-						else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-							ARG	+=	@printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
-							ARG	+=	VAR="106 102 101 107 103 105 104 108 109" ;
-#							ARG	:=	VAR=$$(echo -e {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
-						else ifeq ($(shell uname), Linux) # Native Linux
-							ARG	+=	@printf "\e[1;33mNative Linux detected.\n\e[m" ;
-							ARG	+=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
-						endif
-
 run:					$(NAME)
+						$(SYSTEM)
 						$(ARG) ./$(NAME) $$VAR
 
 vrun:					$(NAME)
+						$(SYSTEM)
 						$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
+
+rerun:					re run
 
 b:						$(NAME_BONUS)
 #						valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
+						$(SYSTEM)
 						$(ARG) ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
