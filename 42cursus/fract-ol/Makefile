@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/10 17:56:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/10 21:22:58 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,19 +33,17 @@ ifeq ($(shell uname), Darwin) # MacOS
 	COMP			+=	printf "\e[1;33mMacOS detected.\n\e[m" ;
 	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) $(FRAMEWORK) -o $(NAME) ;
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-	MLX_INCLUDE		+=	-I /usr/include -I ../mlx/_linux/ -O3 -c $< -o $@
-	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/ -L /usr/lib
+	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR)
+	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/
 	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
-	COMP			+=	printf "\e[1;33mWindows / WSL detected.\n\e[m"
+	COMP			+=	printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
+	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) -o $(NAME) ;
 else ifeq ($(shell uname), Linux) # Native Linux
-	MLX_INCLUDE		+=	-I /usr/include -I ../mlx/_linux/ -O3 -c $< -o $@
-	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/ -L /usr/lib
+	MLX_INCLUDE		+=	-I $(MLX_LIB_DIR) -O3
+	MLX_LIB_DIR		+=	$(LIBS_PATH)mlx/_linux/
 	MLX_LIB			+=	-lmlx -lXext -lX11 -lm -lz
-	COMP			+=	$(shell printf "\e[1;33mNative Linux detected.\n\e[m")
-#					%.o: %.c
-#						$(COMPILER) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-#					$(NAME): $(SRCS_OBJS)
-#						$(COMPILER) $(SRCS_OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	COMP			+=	printf "\e[1;33mNative Linux detected.\n\e[m" ;
+	COMP			+=	$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) -o $(NAME) ;
 endif
 
 #-framework AppKit -framework OpenGL
@@ -81,17 +79,18 @@ SRCS_LIST			=	events.c \
 all:					$(NAME)
 
 $(NAME):				$(SRCS_OBJS)
+						make all -C $(MLX_LIB_DIR)
 						$(foreach lib, $(LIBS_DIR), make all -C $(lib))
 
 clean:
+						$(foreach lib, $(LIBS_DIR), make clean -C $(lib))
+						make clean -C $(MLX_LIB_DIR)
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
-						$(foreach lib, $(LIBS_DIR), make $@ -C $(lib))
-						make $@ -C $(MLX_LIB_DIR)
 
 fclean:					clean
+						$(foreach lib, $(LIBS_DIR), make fclean -C $(lib))
+						make fclean -C $(MLX_LIB_DIR)
 						$(REMOVE) $(RFLAGS) $(NAME)
-						$(foreach lib, $(LIBS_DIR), make $@ -C $(lib))
-						make $@ -C $(MLX_LIB_DIR)
 
 re:						fclean all
 
