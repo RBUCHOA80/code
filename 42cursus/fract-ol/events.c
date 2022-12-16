@@ -14,7 +14,7 @@
 
 int	events(int keycode, t_data *exec)
 {
-	if (keycode == 53)
+	if (keycode == 53 || keycode == 65307)
 		mlx_close(exec);
 	else
 		print_keycode(keycode);

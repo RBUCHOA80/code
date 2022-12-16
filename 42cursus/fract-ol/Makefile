@@ -30,16 +30,19 @@ ifeq ($(shell uname), Darwin) # MacOS
 	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_macos/
 	MLX_INCLUDE		=	-I $(MLX_LIB_DIR)
 	MLX_LIB			=	-lmlx -framework AppKit -framework OpenGL
+	INTALL			=	Brew install Xquartz ; reboot
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 	SYSTEM			=	printf "\e[1;33mWindows / WSL detected.\n\e[m"
 	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
 	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
 	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
+	INSTALL			=	sudo apt install -y gcc make xorg libxext-dev libbsd-dev
 else ifeq ($(shell uname), Linux) # Native Linux
 	SYSTEM			=	printf "\e[1;33mLinux detected.\n\e[m"
 	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
 	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
 	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
+	INSTALL			=	sudo apt install -y gcc make xorg libxext-dev libbsd-dev
 endif
 
 COMPILER			=	cc
@@ -95,6 +98,9 @@ show:
 						@printf "COMPILER	: $(COMPILER)\n"
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
+
+install:
+					$(INSTALL)
 
 run:					$(NAME)
 						$(SYSTEM)
