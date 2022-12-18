@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/18 12:02:41 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/18 18:39:30 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ ifeq ($(shell uname), Darwin) # MacOS
 	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 	SYSTEM	=	@printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
-	ARG		=	VAR="106 102 101 107 103 105 104 108 109" ;
+	ARG		=	VAR="109 106 101 107 103 105 104 108 102" ;
 #	ARG		:=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 else ifeq ($(shell uname), Linux) # Native Linux
 	SYSTEM	=	@printf "\e[1;33mNative Linux detected.\n\e[m" ;
