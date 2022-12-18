@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 21:01:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/18 12:02:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "../libft/libft.h" //libft
 
 void	push_swap(t_list **stack_a, t_list **stack_b);
+
+int	*ft_addint(char *str);
 
 void	ft_printf_stacks(t_list *stack_a, t_list *stack_b);
 void	ft_bubble_sort(int *arr, int size);

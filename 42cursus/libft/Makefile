@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/20 12:33:04 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/18 11:28:33 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,6 +130,8 @@ run:					$(NAME)
 						$(COMPILER) $(CFLAGS) main.c $(NAME) -o a.out
 						./a.out
 						$(REMOVE) $(RFLAGS) a.out*
+
+rerun:					re run
 
 vrun:					$(NAME)
 						$(COMPILER) $(CFLAGS) main.c $(NAME) -o a.out
