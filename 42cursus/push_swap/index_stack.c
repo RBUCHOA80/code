@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   index_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 18:53:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/18 22:19:11 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/18 22:07:25 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/18 22:07:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	main(int argc, char **argv)
+void	index_stack(t_list *stack, int *template)
 {
-	static t_list	*stack_a;
-	static t_list	*stack_b;
+	int	i;
 
-	if (argc < 2)
-		return (1);
-	while (*(++argv))
-		ft_lstadd_back(&stack_a, ft_lstnew(ft_str2int(*argv)));
-	index_stack(stack_a, tab_index(stack_a));
-	push_swap(&stack_a, &stack_b);
-	ft_lstclear(&stack_a, free);
-	ft_lstclear(&stack_b, free);
-	return (0);
+	while (stack)
+	{
+		i = 0;
+		while (template[i])
+		{
+			if (*((int *)stack->content) == template[i])
+			{
+				*((int *)stack->content) = i;
+				break ;
+			}
+			i++;
+		}
+		stack = stack->next;
+	}
+	free(template);
+	return ;
 }

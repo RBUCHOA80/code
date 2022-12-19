@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:09:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:09:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/18 22:19:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	*ft_addint(char *str)
+int	*ft_str2int(char *str)
 {
 	int	*dest;
 

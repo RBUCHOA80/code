@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/18 18:39:30 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/18 22:24:46 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,8 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	ft_addint.c \
-						ft_bubble_sort.c \
+SRCS_LIST			=	ft_bubble_sort.c \
+						index_stack.c \
 						ft_lsttake_back.c \
 						ft_lsttake_front.c \
 						ft_operation_push.c \
