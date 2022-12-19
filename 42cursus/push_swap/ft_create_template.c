@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_stack.c                                      :+:      :+:    :+:   */
+/*   create_template.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 22:07:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/18 22:07:29 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/05 19:19:26 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/19 06:56:25 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	index_stack(t_list *stack, int *template)
+int	*ft_create_template(t_list *stack)
 {
-	int	i;
+	int	*template;
+	int	count;
 
+	count = ft_lstsize(stack);
+	template = (int *)ft_calloc(count, sizeof(*template));
+	if (!template)
+		return (NULL);
+	count = 0;
 	while (stack)
 	{
-		i = 0;
-		while (template[i])
-		{
-			if (*((int *)stack->content) == template[i])
-			{
-				*((int *)stack->content) = i;
-				break ;
-			}
-			i++;
-		}
+		template[count++] = *((int *)stack->content);
 		stack = stack->next;
 	}
-	free(template);
-	return ;
+	ft_bubble_sort(template, count);
+	return (template);
 }

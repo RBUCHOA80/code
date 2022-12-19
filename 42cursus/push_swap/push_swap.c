@@ -6,13 +6,41 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/18 22:07:08 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 07:48:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
+{
+	int	dist;
+	int	index;
+
+	index = 0;
+	while ((*stack_a) && (*stack_a)->next)
+	{
+		dist = ft_search_index(*stack_a, index++);
+		if (dist > 0)
+		{
+			while (dist--)
+				ra(stack_a);
+			pb(stack_a, stack_b);
+		}
+		else
+		{
+			while (dist++)
+				rra(stack_a);
+			pb(stack_a, stack_b);
+		}
+		ft_printf_stacks((*stack_a), (*stack_b));
+		pb(stack_a, stack_b);
+	}
+	ft_printf_stacks((*stack_a), (*stack_b));
+	return ;
+}
+
+/* void	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 
@@ -42,7 +70,6 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 			if (ft_lstsize(*stack_b) > 1)
 			{
 				if (*((int *)(*stack_b)->content) < *((int *)(*stack_b)->next->content))
-				
 					sb(stack_b);
 				else if (*((int *)(*stack_b)->content) < *(int *)(ft_lstlast(*stack_b)->content))
 					rb(stack_b);
@@ -54,4 +81,4 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		ft_printf_stacks((*stack_a), (*stack_b));
 	}
 	return ;
-}
+} */

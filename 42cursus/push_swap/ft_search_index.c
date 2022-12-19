@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_template.c                                      :+:      :+:    :+:   */
+/*   ft_search_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 19:19:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/05 21:01:34 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/19 07:38:00 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/19 07:48:18 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "push_swap.h"
 
-int	*tab_index(t_list *stack)
+int	ft_search_index(t_list *stack, int index)
 {
-	int	*template;
 	int	count;
+	int	len;
+	int	ret;
 
-	count = ft_lstsize(stack);
-	template = (int *)ft_calloc(count, sizeof(*template));
-	if (!template)
-		return (NULL);
+	len = ft_lstsize(stack);
 	count = 0;
-	while (stack)
+	while (stack && stack->next && *((int *)stack->content) != index)
 	{
-		template[count++] = *((int *)stack->content);
 		stack = stack->next;
+		count++;
 	}
-	ft_bubble_sort(template, count);
-	return (template);
+	ret = len - count;
+	return (ret);
 }

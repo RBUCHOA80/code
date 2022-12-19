@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/18 22:24:46 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/19 07:37:58 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	ft_bubble_sort.c \
-						index_stack.c \
+						ft_content2index.c \
+						ft_create_template.c \
 						ft_lsttake_back.c \
 						ft_lsttake_front.c \
 						ft_operation_push.c \
@@ -57,9 +58,10 @@ SRCS_LIST			=	ft_bubble_sort.c \
 						ft_operation_rotate.c \
 						ft_operation_swap.c \
 						ft_printf_stacks.c \
+						ft_search_index.c \
+						ft_str2int.c \
 						main.c \
 						push_swap.c \
-						tab_index.c \
 
 BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS			=	$(BONUS:.c=.o)
