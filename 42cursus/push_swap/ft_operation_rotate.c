@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:14:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 20:03:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_operation_rotate(t_list **stack)
 		ft_lstadd_back(stack, ft_lstnew(content));
 		return ;
 	}
-	ft_printf("\e[0;33mWarning: ");
+	ft_printf("\e[0;33mWarning: \e[0m");
 }
 
 /* 
@@ -33,7 +33,7 @@ The first element becomes the last one.
 void	ra(t_list **stack_a)
 {
 	ft_operation_rotate(stack_a);
-	ft_printf("ra\e[0m\n");
+	ft_printf("ra\n");
 	return ;
 }
 
@@ -45,7 +45,7 @@ The first element becomes the last one.
 void	rb(t_list **stack_b)
 {
 	ft_operation_rotate(stack_b);
-	ft_printf("rb\e[0m\n");
+	ft_printf("rb\n");
 	return ;
 }
 
@@ -57,6 +57,6 @@ void	rr(t_list **stack_a, t_list **stack_b)
 {
 	ft_operation_rotate(stack_a);
 	ft_operation_rotate(stack_b);
-	ft_printf("rr\e[0m\n");
+	ft_printf("rr\n");
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 07:48:51 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 21:33:31 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,48 @@
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
-	int	dist;
 	int	index;
+	int	dist;
+	int	count;
 
+	count = 0;
+	ft_printf_stacks((*stack_a), (*stack_b));
 	index = 0;
-	while ((*stack_a) && (*stack_a)->next)
+	while (ft_lstsize(*stack_a) > 2)
 	{
 		dist = ft_search_index(*stack_a, index++);
 		if (dist > 0)
 		{
 			while (dist--)
+			{
 				ra(stack_a);
-			pb(stack_a, stack_b);
+				count++;
+			}
 		}
 		else
 		{
 			while (dist++)
+			{
 				rra(stack_a);
-			pb(stack_a, stack_b);
+				count++;
+			}
 		}
-		ft_printf_stacks((*stack_a), (*stack_b));
 		pb(stack_a, stack_b);
+		count++;
+		ft_printf_stacks((*stack_a), (*stack_b));
+	}
+	if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
+	{
+		sa(stack_a);
+		count++;
+	}
+	while ((*stack_b))
+	{
+		pa(stack_b, stack_a);
+		count++;
 	}
 	ft_printf_stacks((*stack_a), (*stack_b));
-	return ;
+	ft_printf("\e[1;32mcount = %d\e[0m", count);
 }
 
 /* void	push_swap(t_list **stack_a, t_list **stack_b)

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:09:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 20:03:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ void	ft_operation_swap(t_list **stack)
 	void	*content1;
 	void	*content2;
 
-	content1 = ft_lsttake_front(stack);
-	content2 = ft_lsttake_front(stack);
-	ft_lstadd_front(stack, ft_lstnew(content1));
-	ft_lstadd_front(stack, ft_lstnew(content2));
-	return ;
+	if ((*stack))
+	{
+		content1 = ft_lsttake_front(stack);
+		content2 = ft_lsttake_front(stack);
+		ft_lstadd_front(stack, ft_lstnew(content1));
+		ft_lstadd_front(stack, ft_lstnew(content2));
+		return ;
+	}
+	ft_printf("\e[0;33mWarning: \e[0m");
 }
 
 /* 
@@ -32,7 +36,7 @@ Do nothing if there is only one or no elements.
 void	sa(t_list **stack_a)
 {
 	ft_operation_swap(stack_a);
-	ft_printf("sa\e[0m\n");
+	ft_printf("sa\n");
 	return ;
 }
 
@@ -44,7 +48,7 @@ Do nothing if there is only one or no elements.
 void	sb(t_list **stack_b)
 {
 	ft_operation_swap(stack_b);
-	ft_printf("sb\e[0m\n");
+	ft_printf("sb\n");
 	return ;
 }
 
@@ -56,6 +60,6 @@ void	ss(t_list **stack_a, t_list **stack_b)
 {
 	ft_operation_swap(stack_a);
 	ft_operation_swap(stack_b);
-	ft_printf("ss\e[0m\n");
+	ft_printf("ss\n");
 	return ;
 }

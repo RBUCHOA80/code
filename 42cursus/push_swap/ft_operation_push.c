@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:20:19 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/21 22:07:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 20:02:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_operation_push(t_list **stack_a, t_list **stack_b)
 		ft_lstadd_front(stack_b, ft_lstnew(content));
 		return ;
 	}
-	ft_printf("\e[0;33mWarning: ");
+	ft_printf("\e[0;33mWarning: \e[0m");
 }
 
 /* 
@@ -33,7 +33,7 @@ Do nothing if b is empty.
 void	pa(t_list **stack_b, t_list **stack_a)
 {
 	ft_operation_push(stack_b, stack_a);
-	ft_printf("pa\e[0m\n");
+	ft_printf("pa\n");
 	return ;
 }
 
@@ -45,6 +45,6 @@ Do nothing if a is empty.
 void	pb(t_list **stack_a, t_list **stack_b)
 {
 	ft_operation_push(stack_a, stack_b);
-	ft_printf("pb\e[0m\n");
+	ft_printf("pb\n");
 	return ;
 }

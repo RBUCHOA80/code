@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:06:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 07:19:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 21:32:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 		}
 		ft_printf("\n");
 	}
-	ft_printf("               ---   ---\n                a  |  b\e[0m\n\n");
 }

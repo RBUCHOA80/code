@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 07:43:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 19:47:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libftprintf/libftprintf.h" //ft_printf
 # include "../libft/libft.h" //libft
+# include <fcntl.h> //open
 
 void	push_swap(t_list **stack_a, t_list **stack_b);
 int		ft_search_index(t_list *stack, int index);

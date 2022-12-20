@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 07:38:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 07:48:18 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/19 19:23:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 int	ft_search_index(t_list *stack, int index)
 {
-	int	count;
+	int	dist;
 	int	len;
-	int	ret;
 
 	len = ft_lstsize(stack);
-	count = 0;
+	dist = 0;
 	while (stack && stack->next && *((int *)stack->content) != index)
 	{
 		stack = stack->next;
-		count++;
+		dist++;
 	}
-	ret = len - count;
-	return (ret);
+	if (dist > len / 2)
+		return (-1 * (len - dist));
+	else
+		return (dist);
 }
