@@ -39,7 +39,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-/* int	main(void)
+/* #include <stdio.h>
+
+int	main(void)
 {
 	char	*s1;
 	char	*s2;
@@ -49,7 +51,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	s2 = "ext";
 	n = 24;
 	printf("1ft    :%s\n", ft_strnstr("Foaaaaaaaao Bar Baz", "Bar ", 17));
-	printf("2ft    :%s\n", ft_strnstr("Foo Bar Baz", "Bar", 15));
+	printf("2ft    :%s\n", ft_strnstr("Foo Bar Baz", "Br", 15));
 	printf("3ft    :%s\n", ft_strnstr("Foo Bar Baz", "Bar", 11));
 	printf("4ft    :%s\n", ft_strnstr("Foo Bar Baz", "Bar", 10));
 	printf("5ft    :%s\n", ft_strnstr("Foo Bar Baz", "", 7));
