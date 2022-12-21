@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/20 07:58:55 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/21 07:32:55 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,3 +119,12 @@ b:						$(NAME_BONUS)
 						$(SYSTEM)
 						$(ARG) ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
+
+valid:					$(NAME)
+						gcc ft_isvalid_entry.c $(LIBS_A)
+						./a.out 01
+						./a.out 2b
+						./a.out c3
+						./a.out +d
+						./a.out +4e
+						$(REMOVE) $(RFLAGS) ./a.out
