@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 07:31:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/23 19:33:08 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/23 19:42:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_issignal(unsigned char c)
 	if (!c)
 		return (FALSE);
 	if (c == '+' || c == '-' || ft_isdigit(c))
-		return (TRUE);	
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -36,7 +36,6 @@ int	ft_isvalid_entry(char **strs)
 		{
 			if (!ft_isdigit(strs[i][j]))
 				ft_printf("\e[1;31mstrs[%i][%i] = %c\n\e[0m", i, j, strs[i][j]);
-				//return (FALSE);
 			j++;
 		}
 		i++;
@@ -53,12 +52,18 @@ Nunca irá receber os seguintes caracteres:
 , (virgula)			<- vou trocar por espaço antes do ft_split
 */
 
-char	*g_str[] = { \
+char	*g_str[] = {\
 					"+01", \
 					"-23", \
 					"-23", \
 					"+56", \
 					"64", \
+					"+1234567890", \
+					"1234567890", \
+					"-1234567890", \
+					"+2147483647", \
+					"-2147483648", \
+					"11234567890", \
 					";+01", \
 					"2b", \
 					"c3", \
