@@ -6,28 +6,37 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 07:31:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/21 07:31:08 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/23 19:33:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_isvalid_entry(char **argv)
+int	ft_issignal(unsigned char c)
+{
+	if (!c)
+		return (FALSE);
+	if (c == '+' || c == '-' || ft_isdigit(c))
+		return (TRUE);	
+	return (FALSE);
+}
+
+int	ft_isvalid_entry(char **strs)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (strs[i])
 	{
 		j = 0;
-		while (argv[i][j])
+		if (strs[i][j] && ft_issignal(strs[i][j]))
+			j++;
+		while (strs[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
-			{
-				ft_printf("argv[%i][%i] = %c\n", i, j, argv[i][j]);
-				return (FALSE);
-			}
+			if (!ft_isdigit(strs[i][j]))
+				ft_printf("\e[1;31mstrs[%i][%i] = %c\n\e[0m", i, j, strs[i][j]);
+				//return (FALSE);
 			j++;
 		}
 		i++;
@@ -35,15 +44,30 @@ int	ft_isvalid_entry(char **argv)
 	return (TRUE);
 }
 
-int	main(int argc, char **argv)
-{
-	int	ret;
+/*
+Nunca irá receber os seguintes caracteres:
+" (aspas duplas)	<- o shell remove
+' (aspas simples)	<- o shell remove
+; (ponto e virgula)	<- o terminal trata como se fosse cascatear comandos
+& ("e" comercial)	<- o terminal trata como se fosse cascatear comandos
+, (virgula)			<- vou trocar por espaço antes do ft_split
+*/
 
-	(void) argc;
-	ret = ft_isvalid_entry(argv);
-	if (!ret)
-		write(1, "\e[1;31mSYNTAX ERROR\n\e[0m", 24);
-	else if (ret)
-		write(1, "\e[1;32mTRUE ENTRY\n\e[0m", 23);
+char	*g_str[] = { \
+					"+01", \
+					"-23", \
+					"-23", \
+					"+56", \
+					"64", \
+					";+01", \
+					"2b", \
+					"c3", \
+					"+d", \
+					"+4e", \
+					};
+
+int	main(void)
+{
+	ft_isvalid_entry(g_str);
 	return (0);
 }
