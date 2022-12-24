@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/23 22:15:18 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/24 18:02:12 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ show:
 						@printf "SRC		: $(SRCS)\n"
 
 install:
-					$(INSTALL)
+						$(INSTALL)
 
 run:					$(NAME)
 						$(SYSTEM)

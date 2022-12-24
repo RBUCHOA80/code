@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 07:31:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/24 17:45:08 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/24 19:06:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(void)
 	char	*chr;
 
 	ft_isvalid_entry(g_str);
-	chr = ",(){}[]"
+	chr = ",(){}[]";
 	ft_printf(" antes -> %s\n", str);
 	ft_chr2space(str, chr);
 	ft_printf("depois -> %s\n", str);
