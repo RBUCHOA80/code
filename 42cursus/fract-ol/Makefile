@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/11 17:52:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/23 22:15:18 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,13 @@ else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
 	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
 	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
-	INSTALL			=	sudo apt install -y gcc make xorg libxext-dev libbsd-dev
+	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 else ifeq ($(shell uname), Linux) # Native Linux
 	SYSTEM			=	printf "\e[1;33mLinux detected.\n\e[m"
 	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
 	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
 	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
-	INSTALL			=	sudo apt install -y gcc make xorg libxext-dev libbsd-dev
+	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
 
 COMPILER			=	cc
