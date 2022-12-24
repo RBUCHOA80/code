@@ -6,11 +6,32 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 07:31:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/23 19:42:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/23 22:42:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
+
+void	ft_chr2space(char *str, char *chr)
+{
+	int	i;
+	int	j;
+	
+	if (!str || !chr)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (chr[j])
+		{
+			if (str[i] == chr[j])
+				str[i] = ' ';
+			j++;
+		}		
+		i++;
+	}
+}
 
 int	ft_issignal(unsigned char c)
 {
@@ -50,6 +71,12 @@ Nunca irá receber os seguintes caracteres:
 ; (ponto e virgula)	<- o terminal trata como se fosse cascatear comandos
 & ("e" comercial)	<- o terminal trata como se fosse cascatear comandos
 , (virgula)			<- vou trocar por espaço antes do ft_split
+( (virgula)			<- vou trocar por espaço antes do ft_split
+) (virgula)			<- vou trocar por espaço antes do ft_split
+{ (virgula)			<- vou trocar por espaço antes do ft_split
+} (virgula)			<- vou trocar por espaço antes do ft_split
+[ (virgula)			<- vou trocar por espaço antes do ft_split
+] (virgula)			<- vou trocar por espaço antes do ft_split
 */
 
 char	*g_str[] = {\
@@ -73,6 +100,12 @@ char	*g_str[] = {\
 
 int	main(void)
 {
+	char str[] = "P,ut y(o)ur s{a}mple t[ex]t here";
+	char chr[] = ",(){}[]";
+	
 	ft_isvalid_entry(g_str);
+	ft_printf(" antes -> %s\n", str);
+	ft_chr2space(str, chr);
+	ft_printf("depois -> %s\n", str);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/23 19:02:13 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/23 22:23:52 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ ifeq ($(shell uname), Darwin) # MacOS
 	ARG		=	VAR=$$(echo {101..103}$$'\n' | sort --sort=random | tr "\n" " ") ;
 else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
 	SYSTEM	=	@printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
-	ARG		=	VAR="109 106 101 107 103 105 104 108 102" ;
-#	ARG		:=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+#	ARG		=	VAR="109 106 101 107 103 105 104 108 102" ;
+	ARG		:=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 else ifeq ($(shell uname), Linux) # Native Linux
 	SYSTEM	=	@printf "\e[1;33mNative Linux detected.\n\e[m" ;
 	ARG		=	VAR=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ") ;
@@ -124,3 +124,6 @@ valid:					$(NAME)
 						gcc ft_isvalid_entry.c $(LIBS_A)
 						./a.out
 						$(REMOVE) $(RFLAGS) ./a.out
+
+2:
+						VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ; ./push_swap $$VAR
