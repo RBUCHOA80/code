@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 19:47:21 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/25 11:34:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include "../libft/libft.h" //libft
 # include <fcntl.h> //open
 
-void	push_swap(t_list **stack_a, t_list **stack_b);
-int		ft_search_index(t_list *stack, int index);
-
-void	ft_content2index(t_list *stack, int *template);
+void	ft_argv_to_list(char **argv, t_list **stack);
+int		*ft_str_to_int(char *str);
 int		*ft_create_template(t_list *stack);
 void	ft_bubble_sort(int *arr, int size);
+void	ft_index_content_from_template(t_list *stack, int *template);
 
-int		*ft_str2int(char *str);
+void	push_swap(t_list **stack_a, t_list **stack_b);
+int		ft_search_index(t_list *stack, int index);
 
 void	ft_printf_stacks(t_list *stack_a, t_list *stack_b);
 

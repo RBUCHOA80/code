@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/20 07:58:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/25 11:31:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	int	dist;
 	int	count;
 
+	if (!(stack_a && stack_b))
+		return ;
 	ft_printf_stacks((*stack_a), (*stack_b));
 	count = 0;
 	index = 0;
@@ -60,7 +62,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		count++;
 	}
 	ft_printf_stacks((*stack_a), (*stack_b));
-	ft_printf("\e[1;32mcount = %d\e[0m", count);
+	ft_printf("\e[1;32mcount = %d\n\e[0m", count);
 }
 
 /* void	push_swap(t_list **stack_a, t_list **stack_b)

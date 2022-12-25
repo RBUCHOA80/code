@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/24 19:25:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/25 11:12:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,15 @@ LIBS_LIST			=	libft \
 
 INCLUDE_PATH		=	./
 
-ifeq ($(shell uname), Darwin) # MacOS
+ifeq ($(shell uname), Darwin)
 	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
+	CHECKER	=	checker_Mac
 	ARG		=	VAR=$$(echo {101..103}$$'\n' | sort --sort=random | tr "\n" " ") ;
-else ifeq ($(shell uname -r | grep 'WSL' | wc -l), 1) # Windows / WSL
-	SYSTEM	=	@printf "\e[1;33mWindows / WSL detected.\n\e[m" ;
+else
+	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
+	CHECKER	=	checker_linux
 	ARG		=	VAR="109 106 101 107 103 105 104 108 102" ;
 #	ARG		:=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
-else ifeq ($(shell uname), Linux) # Native Linux
-	SYSTEM	=	@printf "\e[1;33mNative Linux detected.\n\e[m" ;
-	ARG		=	VAR=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ") ;
 endif
 
 COMPILER			=	cc
@@ -48,9 +47,10 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	ft_bubble_sort.c \
-						ft_content2index.c \
+SRCS_LIST			=	ft_argv_to_list.c \
+						ft_bubble_sort.c \
 						ft_create_template.c \
+						ft_index_content_from_template.c \
 						ft_lsttake_back.c \
 						ft_lsttake_front.c \
 						ft_operation_push.c \
@@ -59,7 +59,7 @@ SRCS_LIST			=	ft_bubble_sort.c \
 						ft_operation_swap.c \
 						ft_printf_stacks.c \
 						ft_search_index.c \
-						ft_str2int.c \
+						ft_str_to_int.c \
 						main.c \
 						push_swap.c \
 
@@ -108,11 +108,17 @@ run:					$(NAME)
 
 rerun:					re run
 
+wc:						$(NAME)
+						$(SYSTEM)
+						$(ARG) ./$(NAME) $$VAR | wc -l
+
+check:					$(NAME)
+						$(SYSTEM)
+						$(ARG) ./$(NAME) $$VAR | ./$(CHECKER) $$VAR
+
 vrun:					$(NAME)
 						$(SYSTEM)
 						$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
-
-rerun:					re run
 
 b:						$(NAME_BONUS)
 #						valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
@@ -124,6 +130,3 @@ valid:					$(NAME)
 						gcc ft_isvalid_entry.c $(LIBS_A)
 						./a.out
 						$(REMOVE) $(RFLAGS) ./a.out
-
-2:
-						VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ; ./push_swap $$VAR

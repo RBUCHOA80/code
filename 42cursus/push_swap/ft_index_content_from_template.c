@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_content2index.c                                 :+:      :+:    :+:   */
+/*   ft_index_content_from_template.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:07:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 07:06:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/25 11:30:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	ft_content2index(t_list *stack, int *template)
+void	ft_index_content_from_template(t_list *stack, int *template)
 {
 	int	i;
 
+	if (!(stack && template))
+		return ;
 	while (stack)
 	{
 		i = 0;

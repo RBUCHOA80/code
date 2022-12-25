@@ -6,13 +6,31 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 07:31:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/24 20:00:51 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/25 11:03:27 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	ft_chr2space(char *str, char *chr)
+char	*ft_separate_strs(char *argv)
+{
+	char	*sstr;
+
+	return (sstr);
+}
+
+int	ft_isvalid_entry(char **argv)
+{
+	char	**valid;
+
+	while (*argv)
+		valid = ft_split(*argv++, ' ');
+	while (*valid)
+		ft_printf("%s\n", *valid++);
+	return (TRUE);
+}
+
+/* void	ft_chr2space(char *str, char *chr)
 {
 	int	i;
 	int	j;
@@ -67,13 +85,17 @@ int	ft_isvalid_entry(char **strs)
 		i++;
 	}
 	return (TRUE);
-}
+} */
 
 /*
-Nunca irá receber os seguintes caracteres:
+some arguments aren’t integers
+some arguments are bigger than an integer 
+and/or there are duplicates
 " (aspas duplas)	<- o shell remove
 ' (aspas simples)	<- o shell remove
 & ("e" comercial)	<- o terminal trata como se fosse cascatear comandos
+&& ("e" comercial)	<- o terminal trata como se fosse cascatear comandos
+; (ponto e virgula)	<- o terminal trata como se fosse cascatear comandos
 ; (ponto e virgula)	<- vou trocar por espaço antes do ft_split
 , (virgula)			<- vou trocar por espaço antes do ft_split
 ( (virgula)			<- vou trocar por espaço antes do ft_split
@@ -82,6 +104,7 @@ Nunca irá receber os seguintes caracteres:
 } (virgula)			<- vou trocar por espaço antes do ft_split
 [ (virgula)			<- vou trocar por espaço antes do ft_split
 ] (virgula)			<- vou trocar por espaço antes do ft_split
+. (ponto)			<- não vou fazer nada, o atoi só considera a parcela inteira
 */
 
 char	*g_str[] = {\
@@ -100,10 +123,16 @@ char	*g_str[] = {\
 					"2b", \
 					"c3", \
 					"+d", \
-					"+4e", \
+					"+4e 56", \
 					};
 
 int	main(void)
+{
+	ft_isvalid_entry(g_str);
+	return (0);
+}
+
+/* int	main(void)
 {
 	char	str[] = "P,u;t y(o)ur s{a}mple t[ex]t here";
 	char	*chr;
@@ -114,4 +143,4 @@ int	main(void)
 	ft_chr2space(str, chr);
 	ft_printf("depois -> %s\n", str);
 	return (0);
-}
+} */

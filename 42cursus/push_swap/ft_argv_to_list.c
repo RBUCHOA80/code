@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_addint.c                                        :+:      :+:    :+:   */
+/*   ft_argv_to_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 22:09:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/18 22:19:07 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/25 11:02:38 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/12/25 11:25:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	*ft_str2int(char *str)
+void	ft_argv_to_list(char **argv, t_list **stack)
 {
-	int	*dest;
+	char			**strs;
 
-	if (!str)
-		return (NULL);
-	dest = (int *)ft_calloc(1, sizeof(*dest));
-	if (!dest)
-		return (NULL);
-	*dest = ft_atoi(str);
-	return (dest);
+	if (!(argv && stack))
+		return ;
+	while (*(++argv))
+	{
+		strs = ft_split(*argv, ' ');
+		while (*strs)
+			ft_lstadd_back(stack, ft_lstnew(ft_str_to_int(*strs++)));
+	}
 }
