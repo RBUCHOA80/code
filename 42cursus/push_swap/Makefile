@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/25 11:12:05 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/25 12:00:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS_PATH			=	./
 SRCS_LIST			=	ft_argv_to_list.c \
 						ft_bubble_sort.c \
 						ft_create_template.c \
+						ft_isvalid_entry.c \
 						ft_index_content_from_template.c \
 						ft_lsttake_back.c \
 						ft_lsttake_front.c \
@@ -105,6 +106,10 @@ re:						fclean all
 run:					$(NAME)
 						$(SYSTEM)
 						$(ARG) ./$(NAME) $$VAR
+
+2:						$(NAME)
+						$(SYSTEM)
+						./$(NAME)  110 2345 54352345234 "-109 106 101 107"  "103 105 104 108 102"
 
 rerun:					re run
 
