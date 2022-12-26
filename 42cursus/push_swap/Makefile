@@ -31,7 +31,7 @@ ifeq ($(shell uname), Darwin)
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
-	ARG		=	VAR="109 102 108 105 104 106 103 107 101" ;
+	ARG		=	VAR="109 102 108 105 104 106 103 107 101"
 #	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 endif
 
@@ -105,17 +105,14 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						$(ARG) ./$(NAME) $$VAR
+						$(ARG)
+						./$(NAME) $$VAR
 
 2:						$(NAME)
 						$(SYSTEM)
 						valgrind --leak-check=full -s -v ./$(NAME)  110 2345 "-109 +106 101 107 107 123" c564 54352345234 "103 105 104 108 102"
 
 rerun:					re run
-
-wc:						$(NAME)
-						$(SYSTEM)
-						$(ARG) ./$(NAME) $$VAR | wc -l
 
 check:					$(NAME)
 						$(SYSTEM)
@@ -135,3 +132,9 @@ valid:					$(NAME)
 						gcc ft_isvalid_entry.c $(LIBS_A)
 						./a.out
 						$(REMOVE) $(RFLAGS) ./a.out
+
+autogit:
+						git pull
+						git add ../../.
+						git commit -m "autogit"
+						git push
