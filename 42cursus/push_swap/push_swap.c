@@ -19,7 +19,6 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 
 	if (!(stack_a && stack_b))
 		return ;
-	ft_printf_stacks((*stack_a), (*stack_b));
 	index = 0;
 	while (ft_lstsize(*stack_a) > 2)
 	{
@@ -33,13 +32,11 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 			while (dist++)
 				rra(stack_a);
 		pb(stack_a, stack_b);
-		ft_printf_stacks((*stack_a), (*stack_b));
 	}
 	if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
 		sa(stack_a);
 	while ((*stack_b))
 		pa(stack_b, stack_a);
-	ft_printf_stacks((*stack_a), (*stack_b));
 }
 
 /* void	push_swap(t_list **stack_a, t_list **stack_b)

@@ -31,8 +31,7 @@ ifeq ($(shell uname), Darwin)
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
-	ARG		=	VAR="109 102 108 105 104 106 103 107 101"
-#	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+	ARG		=	"109 102 108 105 104 106 103 107 101"
 endif
 
 COMPILER			=	cc
@@ -105,8 +104,7 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						$(ARG)
-						./$(NAME) $$VAR
+						./$(NAME) $(ARG)
 
 2:						$(NAME)
 						$(SYSTEM)
@@ -120,7 +118,8 @@ check:					$(NAME)
 
 vrun:					$(NAME)
 						$(SYSTEM)
-						$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
+						$(ARG)
+						valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
 
 b:						$(NAME_BONUS)
 #						valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
