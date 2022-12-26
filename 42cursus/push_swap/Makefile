@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/25 12:00:05 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/25 21:48:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ ifeq ($(shell uname), Darwin)
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
-	ARG		=	VAR="109 106 101 107 103 105 104 108 102" ;
-#	ARG		:=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+	ARG		=	VAR="109 102 108 105 104 106 103 107 101" ;
+#	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
 endif
 
 COMPILER			=	cc
@@ -109,7 +109,7 @@ run:					$(NAME)
 
 2:						$(NAME)
 						$(SYSTEM)
-						./$(NAME)  110 2345 54352345234 "-109 106 101 107"  "103 105 104 108 102"
+						valgrind --leak-check=full -s -v ./$(NAME)  110 2345 "-109 +106 101 107 107 123" c564 54352345234 "103 105 104 108 102"
 
 rerun:					re run
 
