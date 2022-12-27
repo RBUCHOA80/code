@@ -16,53 +16,27 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	int	index;
 	int	dist;
-	int	count;
 
 	if (!(stack_a && stack_b))
 		return ;
-	ft_printf_stacks((*stack_a), (*stack_b));
-	count = 0;
 	index = 0;
 	while (ft_lstsize(*stack_a) > 2)
 	{
 		if ((*((int *)(*stack_a)->content) - *((int *)(*stack_a)->next->content)) == 1)
-		{
 			sa(stack_a);
-			count++;
-		}
 		dist = ft_search_index(*stack_a, index++);
 		if (dist > 0)
-		{
 			while (dist--)
-			{
 				ra(stack_a);
-				count++;
-			}
-		}
 		else
-		{
 			while (dist++)
-			{
 				rra(stack_a);
-				count++;
-			}
-		}
 		pb(stack_a, stack_b);
-		count++;
-		ft_printf_stacks((*stack_a), (*stack_b));
 	}
 	if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
-	{
 		sa(stack_a);
-		count++;
-	}
 	while ((*stack_b))
-	{
 		pa(stack_b, stack_a);
-		count++;
-	}
-	ft_printf_stacks((*stack_a), (*stack_b));
-	ft_printf("\e[1;32mcount = %d\n\e[0m", count);
 }
 
 /* void	push_swap(t_list **stack_a, t_list **stack_b)
