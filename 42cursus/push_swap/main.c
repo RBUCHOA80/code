@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:53:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/25 21:48:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/26 21:56:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	static t_list	*stack_a;
 	static t_list	*stack_b;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		write(1, "Error\n", 6);
 		return (1);

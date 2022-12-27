@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/25 21:48:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/26 22:48:40 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ ifeq ($(shell uname), Darwin)
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
-	ARG		=	VAR="109 102 108 105 104 106 103 107 101" ;
-#	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ") ;
+	ARG		=	VAR="109 102 108 105 104 106 103 107 -101" ;
 endif
 
 COMPILER			=	cc
@@ -107,31 +106,14 @@ run:					$(NAME)
 						$(SYSTEM)
 						$(ARG) ./$(NAME) $$VAR
 
-2:						$(NAME)
-						$(SYSTEM)
-						valgrind --leak-check=full -s -v ./$(NAME)  110 2345 "-109 +106 101 107 107 123" c564 54352345234 "103 105 104 108 102"
-
-rerun:					re run
-
-wc:						$(NAME)
-						$(SYSTEM)
-						$(ARG) ./$(NAME) $$VAR | wc -l
-
-check:					$(NAME)
-						$(SYSTEM)
-						$(ARG) ./$(NAME) $$VAR | ./$(CHECKER) $$VAR
-
 vrun:					$(NAME)
 						$(SYSTEM)
 						$(ARG) valgrind --leak-check=full -s -v ./$(NAME) $$VAR
+
+rerun:					re run
 
 b:						$(NAME_BONUS)
 #						valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
 						$(SYSTEM)
 						$(ARG) ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
-
-valid:					$(NAME)
-						gcc ft_isvalid_entry.c $(LIBS_A)
-						./a.out
-						$(REMOVE) $(RFLAGS) ./a.out

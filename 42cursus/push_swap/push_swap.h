@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/25 12:04:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/26 22:10:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h> //open
 
 int		ft_argv_to_list(char **argv, t_list **stack);
-int		ft_isvalid_entry(char *argv);
+int		ft_isvalid_entry(char **argv);
 int		*ft_str_to_int(char *str);
 int		*ft_create_template(t_list *stack);
 void	ft_bubble_sort(int *arr, int size);
