@@ -18,16 +18,14 @@ int	ft_argv_to_list(char **argv, t_list **stack)
 
 	if (!(argv && stack))
 		return (0);
-	if (!ft_isvalid_entry(argv))
+	strs = ft_split(*argv, ' ');
+	if (!ft_isvalid_entry(strs))
 	{
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	while (*(++argv))
-	{
-		strs = ft_split(*argv, ' ');
+	while (*(++strs))
 		while (*strs)
 			ft_lstadd_back(stack, ft_lstnew(ft_str_to_int(*strs++)));
-	}
 	return (1);
 }

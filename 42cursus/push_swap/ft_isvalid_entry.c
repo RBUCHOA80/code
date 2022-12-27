@@ -12,34 +12,30 @@
 
 #include "push_swap.h"
 
-int	ft_isvalid_entry(char **argv)
+int	ft_isvalid_entry(char **strs)
 {
-	char	**strs;
 	int		i;
 	int		j;
 
-	if (!argv)
+	if (!strs)
 		return (0);
-	strs = ft_split(argv[1], ' ');
 	i = 0;
 	while (strs[i])
 	{
+		ft_printf("(A)");
 		if (strs[i][0] == '+')
 		{
 			if (ft_strncmp(&strs[i][1], ft_itoa(ft_atoi(strs[i])), ft_strlen(strs[i])))
 				return (0);
 		}
-		else
-			if (ft_strncmp(strs[i], ft_itoa(ft_atoi(strs[i])), ft_strlen(strs[i])))
+		else if (ft_strncmp(strs[i], ft_itoa(ft_atoi(strs[i])), ft_strlen(strs[i])))
 				return (0);
 		if (strs[i + 1])
 		{
 			j = i + 1;
 			while (strs[j])
-			{
 				if (!ft_strncmp(strs[i], strs[j++], ft_strlen(strs[i])))
 					return (0);
-			}
 		}
 		i++;
 	}

@@ -104,7 +104,7 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						./$(NAME) "109 102 108 105 104 106 103 +107 -101"
+						./$(NAME) "109 102 108 105 104 106 103 107 101"
 
 vrun:					$(NAME)
 						$(SYSTEM)
