@@ -31,11 +31,7 @@ ifeq ($(shell uname), Darwin)
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
-<<<<<<< HEAD
-	ARG		=	VAR="109 102 108 105 104 106 103 107 -101" ;
-=======
-	ARG		=	"109 102 108 105 104 106 103 107 101"
->>>>>>> 121293eb35dfc03dced13c236c7f7db88e94cbb2
+	ARG		=	VAR="109 102 108 105 104 106 103 107 101"
 endif
 
 COMPILER			=	cc
@@ -108,25 +104,18 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						./$(NAME) $(ARG)
+						./$(NAME) "109 102 108 105 104 106 103 +107 -101"
 
-<<<<<<< HEAD
-=======
-2:						$(NAME)
-						$(SYSTEM)
-						valgrind --leak-check=full -s -v ./$(NAME)  110 2345 "-109 +106 101 107 107 123" c564 54352345234 "103 105 104 108 102"
-
-rerun:					re run
-
-check:					$(NAME)
-						$(SYSTEM)
-						$(ARG) ./$(NAME) $$VAR | ./$(CHECKER) $$VAR
-
->>>>>>> 121293eb35dfc03dced13c236c7f7db88e94cbb2
 vrun:					$(NAME)
 						$(SYSTEM)
 						$(ARG)
 						valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
+
+rerun:					re run
+
+check:				$(NAME)
+						$(SYSTEM)
+						$(ARG) ./$(NAME) $$VAR | ./$(CHECKER) $$VAR
 
 rerun:					re run
 
@@ -135,17 +124,9 @@ b:						$(NAME_BONUS)
 						$(SYSTEM)
 						$(ARG) ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
-<<<<<<< HEAD
-=======
-
-valid:					$(NAME)
-						gcc ft_isvalid_entry.c $(LIBS_A)
-						./a.out
-						$(REMOVE) $(RFLAGS) ./a.out
 
 autogit:
 						git pull
 						git add ../../.
 						git commit -m "autogit"
 						git push
->>>>>>> 121293eb35dfc03dced13c236c7f7db88e94cbb2

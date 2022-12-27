@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	static t_list	*stack_a;
 	static t_list	*stack_b;
 
-	if (argc < 2)
+	if (argc != 2)
 	{
 		write(1, "Error\n", 6);
 		return (1);
