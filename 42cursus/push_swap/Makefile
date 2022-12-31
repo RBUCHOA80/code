@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/26 22:48:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2022/12/31 20:03:48 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ INCLUDE_PATH		=	./
 ifeq ($(shell uname), Darwin)
 	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
 	CHECKER	=	checker_Mac
-	ARG		=	VAR=$$(echo {101..103}$$'\n' | sort --sort=random | tr "\n" " ") ;
+	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ")
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
-	ARG		=	VAR="109 102 108 105 104 106 103 107 101"
+	RUN		=	ARG="109 107 101 102 105 108 106 103 104" ; ./$(NAME) $$ARG
 endif
 
 COMPILER			=	cc
@@ -104,16 +104,15 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						./$(NAME) "109 102 108 105 104 106 103 107 101"
+						$(RUN)
 
 vrun:					$(NAME)
 						$(SYSTEM)
-						$(ARG)
-						valgrind --leak-check=full -s -v ./$(NAME) $(ARG)
+						$(ARG) ; valgrind --leak-check=full -s -v ./$(NAME) $$VAR
 
 rerun:					re run
 
-check:				$(NAME)
+check:					$(NAME)
 						$(SYSTEM)
 						$(ARG) ./$(NAME) $$VAR | ./$(CHECKER) $$VAR
 

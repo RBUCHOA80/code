@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:02:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/26 22:28:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2022/12/31 19:25:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	ft_argv_to_list(char **argv, t_list **stack)
 
 	if (!(argv && stack))
 		return (0);
-	strs = ft_split(*argv, ' ');
-	if (!ft_isvalid_entry(strs))
+	strs = ft_split(*++argv, ' ');
+	if (!(strs || ft_isvalid_entry(strs)))
 	{
-		write(1, "Error\n", 6);
+		write(1, "[Error #2]\n", 11);
 		return (0);
 	}
 	while (*(++strs))
