@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2022/12/31 20:03:48 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/01 11:44:31 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,6 @@ LIBS_LIST			=	libft \
 
 INCLUDE_PATH		=	./
 
-ifeq ($(shell uname), Darwin)
-	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
-	CHECKER	=	checker_Mac
-	ARG		=	VAR=$$(echo {101..109}$$'\n' | sort --sort=random | tr "\n" " ")
-else
-	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
-	CHECKER	=	checker_linux
-	RUN		=	ARG="109 107 101 102 105 108 106 103 104" ; ./$(NAME) $$ARG
-endif
-
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror -I $(INCLUDE_PATH)
 
@@ -48,9 +38,9 @@ SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	ft_argv_to_list.c \
 						ft_bubble_sort.c \
+						ft_content_from_template.c \
 						ft_create_template.c \
 						ft_isvalid_entry.c \
-						ft_index_content_from_template.c \
 						ft_lsttake_back.c \
 						ft_lsttake_front.c \
 						ft_operation_push.c \
@@ -68,11 +58,25 @@ BONUS_OBJS			=	$(BONUS:.c=.o)
 BONUS_PATH			=	./
 BONUS_LIST			=	checker.c \
 
+INT_MAX				=	2147483647
+
+INT_MIN				=	-2147483648
+
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
 #						$(shell echo '$^ <- Lista de dependências.')
 #						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
+
+ifeq ($(shell uname), Darwin)
+	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
+	CHECKER	=	checker_Mac
+	ARR		=	ARG=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ") ;
+else
+	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
+	CHECKER	=	checker_linux
+	ARR		=	ARG="$(INT_MAX) $(INT_MIN) 102 104 103" ;
+endif
 
 .c.o:
 						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -104,17 +108,15 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						$(RUN)
+						$(ARR) ./$(NAME) $$ARG
+						$(ARR) ./$(NAME) $$ARG | wc -l
+						$(ARR) ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
 vrun:					$(NAME)
 						$(SYSTEM)
-						$(ARG) ; valgrind --leak-check=full -s -v ./$(NAME) $$VAR
-
-rerun:					re run
-
-check:					$(NAME)
-						$(SYSTEM)
-						$(ARG) ./$(NAME) $$VAR | ./$(CHECKER) $$VAR
+						$(ARR) valgrind --leak-check=full -s -v ./$(NAME) $$ARG
+						$(ARR) ./$(NAME) $$ARG | wc -l
+						$(ARR) ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
 rerun:					re run
 
@@ -123,9 +125,3 @@ b:						$(NAME_BONUS)
 						$(SYSTEM)
 						$(ARG) ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
-
-autogit:
-						git pull
-						git add ../../.
-						git commit -m "autogit"
-						git push
