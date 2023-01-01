@@ -6,11 +6,42 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/25 11:31:08 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/01 12:33:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
+
+int	ft_inorder(t_list *stack)
+{
+	if(!stack)
+		return (0);
+	while (stack && stack->next)
+	{
+		if ((*(int *)stack->next->content - *(int *)stack->content) != 1)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	ft_search_index(t_list *stack, int index)
+{
+	int	dist;
+	int	len;
+
+	len = ft_lstsize(stack);
+	dist = 0;
+	while (stack && stack->next && *((int *)stack->content) != index)
+	{
+		stack = stack->next;
+		dist++;
+	}
+	if (dist > len / 2)
+		return (-1 * (len - dist));
+	else
+		return (dist);
+}
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
@@ -20,7 +51,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	if (!(stack_a && stack_b))
 		return ;
 	index = 0;
-	while (ft_lstsize(*stack_a) > 2)
+	while (!ft_inorder(*stack_a))
 	{
 		if ((*((int *)(*stack_a)->content) - *((int *)(*stack_a)->next->content)) == 1)
 			sa(stack_a);
@@ -32,9 +63,9 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 			while (dist++)
 				rra(stack_a);
 		pb(stack_a, stack_b);
+		if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
+			sa(stack_a);
 	}
-	if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
-		sa(stack_a);
 	while ((*stack_b))
 		pa(stack_b, stack_a);
 }

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/01 11:52:15 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/01 12:26:42 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ SRCS_LIST			=	ft_argv_to_list.c \
 						ft_operation_rotate.c \
 						ft_operation_swap.c \
 						ft_printf_stacks.c \
-						ft_search_index.c \
 						ft_str_to_int.c \
 						main.c \
 						push_swap.c \

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/01 10:55:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/01 12:26:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_bubble_sort(int *arr, int size);
 void	ft_content_from_template(t_list *stack, int *template);
 
 void	push_swap(t_list **stack_a, t_list **stack_b);
-int		ft_search_index(t_list *stack, int index);
 
 void	ft_printf_stacks(t_list *stack_a, t_list *stack_b);
 
