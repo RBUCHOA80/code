@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/01 13:09:50 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/01 13:32:02 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,13 @@ INT_MIN				=	-2147483648
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 ifeq ($(shell uname), Darwin)
-	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m" ;
+	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m"
 	CHECKER	=	checker_Mac
-	ARR		=	ARG=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ") ;
+	ARR		=	ARG=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ")
 else
-	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
+	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m"
 	CHECKER	=	checker_linux
-	ARR		=	ARG=$$(seq 100 | sort --random-sort | tr "\n" " ") ;
+	ARR		=	ARG=$$(seq 100 | sort --random-sort | tr "\n" " ")
 endif
 
 .c.o:
@@ -107,20 +107,19 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
-						$(ARR) ./$(NAME) $$ARG
-						$(ARR) ./$(NAME) $$ARG | wc -l
-						$(ARR) ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
+						$(ARR) ; ./$(NAME) $$ARG | wc -l
+						$(ARR) ; ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
 vrun:					$(NAME)
 						$(SYSTEM)
-						$(ARR) valgrind --leak-check=full -s -v ./$(NAME) $$ARG
-						$(ARR) ./$(NAME) $$ARG | wc -l
-						$(ARR) ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
+						$(ARR) ; valgrind --leak-check=full -s -v ./$(NAME) $$ARG
+						$(ARR) ; ./$(NAME) $$ARG | wc -l
+						$(ARR) ; ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
 rerun:					re run
 
 b:						$(NAME_BONUS)
 #						valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
 						$(SYSTEM)
-						$(ARG) ./$(NAME_BONUS) $$VAR
+						$(ARG) ; ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)

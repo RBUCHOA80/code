@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 07:31:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/01 11:16:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/01 13:27:27 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	ft_isvalid_entry(char **strs)
 		}
 		free(str);
 		j = i + 1;
-		while (strs[j])
-			if (!ft_strncmp(strs[i], strs[j++], ft_strlen(strs[i])))
+		while (strs[i] && strs[j])
+			//if (!ft_strncmp(strs[i], strs[j++], ft_strlen(strs[i])))
+			if (!(ft_atoi(strs[i]) - ft_atoi(strs[j++])))
 				return (0);
 	}
 	return (1);
