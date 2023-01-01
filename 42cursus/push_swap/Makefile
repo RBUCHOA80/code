@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/01 12:26:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/01 12:56:00 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m" ;
 	CHECKER	=	checker_linux
 	ARR		=	ARG="$(INT_MAX) $(INT_MIN) 102 104 103" ;
+#	ARR		=	ARG=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ") ;
 endif
 
 .c.o:

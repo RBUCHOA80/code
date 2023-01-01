@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:09:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 20:03:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/01 12:45:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_operation_swap(t_list **stack)
 	void	*content1;
 	void	*content2;
 
-	if ((*stack))
+	if ((*stack) && (*stack)->next)
 	{
 		content1 = ft_lsttake_front(stack);
 		content2 = ft_lsttake_front(stack);

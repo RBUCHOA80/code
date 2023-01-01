@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/01 12:33:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/01 12:51:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_inorder(t_list *stack)
 {
-	if(!stack)
+	if (!stack)
 		return (0);
 	while (stack && stack->next)
 	{
@@ -45,15 +45,15 @@ int	ft_search_index(t_list *stack, int index)
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
-	int	index;
-	int	dist;
+	static int	index;
+	int			dist;
 
 	if (!(stack_a && stack_b))
 		return ;
-	index = 0;
-	while (!ft_inorder(*stack_a))
+	while ((*stack_a) && (*stack_a)->next && !ft_inorder(*stack_a))
 	{
-		if ((*((int *)(*stack_a)->content) - *((int *)(*stack_a)->next->content)) == 1)
+		if ((*((int *)(*stack_a)->content) - \
+				*((int *)(*stack_a)->next->content)) == 1)
 			sa(stack_a);
 		dist = ft_search_index(*stack_a, index++);
 		if (dist > 0)
@@ -62,8 +62,10 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		else
 			while (dist++)
 				rra(stack_a);
-		pb(stack_a, stack_b);
-		if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
+		if (!ft_inorder(*stack_a))
+			pb(stack_a, stack_b);
+		if ((*stack_a) && (*stack_a)->next && (*((int *)(*stack_a)->content) > \
+				*((int *)(*stack_a)->next->content)))
 			sa(stack_a);
 	}
 	while ((*stack_b))
