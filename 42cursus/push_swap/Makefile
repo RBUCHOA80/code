@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/01 22:11:36 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/01 22:11:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,6 @@ BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS			=	$(BONUS:.c=.o)
 BONUS_PATH			=	./
 BONUS_LIST			=	checker.c \
-
-INT_MAX				=	2147483647
-
-INT_MIN				=	-2147483648
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
