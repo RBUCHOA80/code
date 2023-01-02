@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/01 22:11:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/02 20:32:34 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,8 @@ BONUS_LIST			=	checker.c \
 ifeq ($(shell uname), Darwin)
 	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m"
 	CHECKER	=	checker_Mac
-	ARR		=	ARG=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ")
+#	ARR		=	ARG=$$(echo {101..105}$$'\n' | sort --sort=random | tr "\n" " ")
+	ARR		=	ARG=$$(seq 100 | sort --random-sort | tr "\n" " ")
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m"
 	CHECKER	=	checker_linux
@@ -103,6 +104,7 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
+						$(ARR) ; ./$(NAME) $$ARG
 						$(ARR) ; ./$(NAME) $$ARG | wc -l
 						$(ARR) ; ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
@@ -119,3 +121,10 @@ b:						$(NAME_BONUS)
 						$(SYSTEM)
 						$(ARG) ; ./$(NAME_BONUS) $$VAR
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
+
+SIZE	=	5
+
+TIMES	=	10
+
+test:					$(NAME)
+						bash ./tester_louisabricot/tester.sh ../$(NAME) $(SIZE) $(TIMES)
