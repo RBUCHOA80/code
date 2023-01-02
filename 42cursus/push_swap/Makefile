@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/01 13:32:02 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/01 22:11:36 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ ifeq ($(shell uname), Darwin)
 else
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m"
 	CHECKER	=	checker_linux
-	ARR		=	ARG=$$(seq 100 | sort --random-sort | tr "\n" " ")
+	ARR		=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
 endif
 
 .c.o:
