@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/02 21:03:00 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/02 21:42:13 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,14 +63,15 @@ BONUS_LIST			=	checker.c \
 #						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
-ifeq ($(shell uname), Darwin)
+ARR					=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
+#ARR				=	ARG="-523 544 479 457 -415 -283 -237 -66 -543 -217 386 745 -827 -706 539 176 861 -811 -655 -968 742 -769 968 -444 -209 -158 -96 898 951 -957 -575 449 -785 -457 90 502 -233 -104 49 975 -223 563 -282 551 330 859 559 376 -885 -81 467 709 865 821 424 -705 -394 76 -960 -538 -835 -56 -127 184 770 649 -279 -156 -32 448 -166 909 -149 -403 130 102 -277 -421 -418 168 -816 -425 -290 -732 395 -874 989 910 124 385 405 426 -536 566 139 268 -690 905 888 86"
+
+ifeq ($(shell uname), Darwin)	#MacOS
 	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m"
 	CHECKER	=	checker_Mac
-	ARR		=	ARG=$$(seq 100 | sort --random-sort | tr "\n" " ")
-else
+else 							#Linux
 	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m"
 	CHECKER	=	checker_linux
-	ARR		=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
 endif
 
 .c.o:
@@ -103,6 +104,7 @@ re:						fclean all
 
 run:					$(NAME)
 						$(SYSTEM)
+						$(ARR) ; ./$(NAME) $$ARG
 						$(ARR) ; ./$(NAME) $$ARG | wc -l
 						$(ARR) ; ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
@@ -123,4 +125,4 @@ b:						$(NAME_BONUS)
 SIZE	=	5
 TIMES	=	10
 test:					$(NAME)
-						bash ./tester_louisabricot/tester.sh ../$(NAME) $(SIZE) $(TIMES)
+						bash ./tester/tester.sh ../$(NAME) $(SIZE) $(TIMES)
