@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/02 21:58:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/03 06:59:06 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,8 @@
 
 NAME				=	push_swap
 
-NAME_BONUS			=	checker
-
-LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
+NAME_BONUS			=	
+	LIBS				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/)
 LIBS_A				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_PATH			=	../
 LIBS_LIST			=	libft \
@@ -55,7 +54,7 @@ SRCS_LIST			=	ft_argv_to_list.c \
 BONUS				=	$(addprefix $(BONUS_PATH), $(BONUS_LIST))
 BONUS_OBJS			=	$(BONUS:.c=.o)
 BONUS_PATH			=	./
-BONUS_LIST			=	checker.c \
+BONUS_LIST			=	c	 \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -64,7 +63,6 @@ BONUS_LIST			=	checker.c \
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 ARR					=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
-#ARR				=	ARG="-523 544 479 457 -415 -283 -237 -66 -543 -217 386 745 -827 -706 539 176 861 -811 -655 -968 742 -769 968 -444 -209 -158 -96 898 951 -957 -575 449 -785 -457 90 502 -233 -104 49 975 -223 563 -282 551 330 859 559 376 -885 -81 467 709 865 821 424 -705 -394 76 -960 -538 -835 -56 -127 184 770 649 -279 -156 -32 448 -166 909 -149 -403 130 102 -277 -421 -418 168 -816 -425 -290 -732 395 -874 989 910 124 385 405 426 -536 566 139 268 -690 905 888 86"
 
 ifeq ($(shell uname), Darwin)	#MacOS
 	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m"
@@ -103,15 +101,17 @@ re:						fclean all
 .PHONY:					all clean fclean re
 
 run:					$(NAME)
-						$(SYSTEM)
 						$(ARR) ; ./$(NAME) $$ARG
-						$(ARR) ; ./$(NAME) $$ARG | wc -l
-						$(ARR) ; ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
 vrun:					$(NAME)
-						$(SYSTEM)
 						$(ARR) ; valgrind --leak-check=full -s -v ./$(NAME) $$ARG
+
+wc:						$(NAME)
+						$(SYSTEM)
 						$(ARR) ; ./$(NAME) $$ARG | wc -l
+
+check:					$(NAME)
+						$(SYSTEM)
 						$(ARR) ; ./$(NAME) $$ARG | ./$(CHECKER) $$ARG
 
 rerun:					re run

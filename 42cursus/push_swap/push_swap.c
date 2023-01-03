@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/02 21:46:43 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/03 07:16:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	ft_inorder(t_list *stack)
 	return (1);
 }
 
-int	ft_search_index(t_list *stack, int mid)
+int	ft_search_range(t_list *stack, int mid)
 {
 	int	dist;
 	int	len;
-	static int	n;
+	int	n;
 
 	n = ft_lstsize(stack) / 20;
 	len = ft_lstsize(stack);
@@ -47,18 +47,42 @@ int	ft_search_index(t_list *stack, int mid)
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
+	int dist;
 	int	mid;
-	int	dist;
 
 	if (!(stack_a && stack_b))
 		return ;
 	mid = ft_lstsize(*stack_a) / 2;
-	ft_printf_stacks(*stack_a, *stack_b);
-	while ((*stack_a) && (*stack_a)->next && !ft_inorder(*stack_a))
+	while (!ft_inorder(*stack_a))
 	{
-		if ((*((int *)(*stack_a)->content) - *((int *)(*stack_a)->next->content)) == 1)
-			sa(stack_a);
-		dist = ft_search_index(*stack_a, mid++);
+		if (ft_lstsize(*stack_a) && ft_lstsize(*stack_b))
+		{
+			if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content) && *((int *)(*stack_b)->content) < *((int *)(*stack_b)->next->content))
+				ss(stack_a, stack_b);
+			else if (*((int *)(*stack_a)->content) > *((int *)ft_lstlast((*stack_a))->content) && *((int *)(*stack_b)->content) < *((int *)ft_lstlast(*stack_b)->content))
+				rr(stack_a, stack_b);
+			else if (*((int *)(*stack_a)->content) > *((int *)ft_lstlast((*stack_a))->content) && *((int *)(*stack_b)->content) < *((int *)ft_lstlast(*stack_b)->content))
+				rrr(stack_a, stack_b);
+		}
+		if (ft_lstsize(*stack_a))
+		{
+			if (*((int *)(*stack_a)->content) > *((int *)(*stack_a)->next->content))
+				sa(stack_a);
+			else if (*((int *)(*stack_a)->content) > *(int *)(ft_lstlast((*stack_a))->content))
+				ra(stack_a);
+			else if (*((int *)(*stack_a)->content) > *(int *)(ft_lstlast((*stack_a))->content))
+				rra(stack_a);
+		}
+		if (ft_lstsize(*stack_b))
+		{
+			if (*((int *)(*stack_b)->content) < *((int *)(*stack_b)->next->content))
+				sb(stack_b);
+			else if (*((int *)(*stack_b)->content) < *(int *)(ft_lstlast(*stack_b)->content))
+				rb(stack_b);
+			else if (*((int *)(*stack_b)->content) < *(int *)(ft_lstlast(*stack_b)->content))
+				rrb(stack_b);
+		}
+		dist = ft_search_range(*stack_a, mid);
 		if (dist > 0)
 			while (dist--)
 				ra(stack_a);
@@ -67,11 +91,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 				rra(stack_a);
 		if (!ft_inorder(*stack_a))
 			pb(stack_a, stack_b);
-		if ((*stack_b) && (*stack_b)->next && (*((int *)(*stack_b)->next->content) - *((int *)(*stack_b)->content)) == 1)
-			sb(stack_b);
-		ft_printf_stacks(*stack_a, *stack_b);
 	}
 	while ((*stack_b))
 		pa(stack_b, stack_a);
-	ft_printf_stacks(*stack_a, *stack_b);
 }
