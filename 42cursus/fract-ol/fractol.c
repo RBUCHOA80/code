@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 21:44:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/04 23:13:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	main(void)
 	{
 		y = 0;
 		while (y < WINDOW_HEIGHT / 2)
-		{
-			my_mlx_pixel_put(&exec, x, y, 0x00FFFFFF);
-			y++;
-		}
+			my_mlx_pixel_put(&exec, x, y++, 0x00FFFFFF);
 		x++;
 	}
 	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) - 5, (WINDOW_HEIGHT / 4) + 0, 0x00FF0000);
 	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 0, (WINDOW_HEIGHT / 4) + 0, 0x0000FF00);
 	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 5, (WINDOW_HEIGHT / 4) + 0, 0x000000FF);
+	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) - 5, (WINDOW_HEIGHT * 3 / 4) + 0, 0x00FF0000);
+	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 0, (WINDOW_HEIGHT * 3 / 4) + 0, 0x0000FF00);
+	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 5, (WINDOW_HEIGHT * 3 / 4) + 0, 0x000000FF);
 	mlx_put_image_to_window(exec.mlx, exec.win, exec.img, 0, 0);
 	mlx_loop(exec.mlx);
 }
