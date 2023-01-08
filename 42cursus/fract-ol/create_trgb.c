@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 07:34:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/08 20:03:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/08 09:28:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ int	main(void)
 	int	b;
 	int	hex;
 
-	t = 20;
-	r = 80;
-	g = 160;
-	b = 240;
+	t = 0;
+	r = 139;
+	g = 0;
+	b = 139;
 	hex = create_trgb(t, r, g, b);
-	ft_printf("0x%x\n", hex);
+	ft_printf("hex = 0x%x\n", hex);
+	ft_printf("dec = %i\n", hex);
 	return (0);
 }
 
