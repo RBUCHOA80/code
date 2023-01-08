@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/08 10:45:53 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/01/08 15:57:36 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/01/08 16:11:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include <stdio.h>
 
-//v3.0
-
-void	push_swap(t_list **stack_a, t_list **stack_b)
+void ft_print_str(char **argv)
 {
-	while (ft_lstsize(*stack_a))
-		pb(stack_a, stack_b);
-	while (ft_lstsize(*stack_b))
-		pa(stack_b, stack_a);
+	int	i;
+
+	i = 0;
+	while (*argv)
+		printf("argv[%i] = %s\n", i++, *argv++);
+}
+
+char	*argv[] = {\
+					"Amanda", \
+					"Bruna", \
+					"Chana", \
+					};
+
+int	main(void)
+{
+	ft_print_str(argv);
+	return(0);
 }
