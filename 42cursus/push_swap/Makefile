@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/08 19:12:46 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/09 19:35:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ fclean:					clean
 re:						fclean all
 						$(foreach lib, $(LIBS), make re -C $(lib) ;)
 
-.PHONY:					all clean fclean re
+.PHONY:					all clean fclean re visualizer
 
 run:					$(NAME)
 						$(ARR) ; ./$(NAME) $$ARG
@@ -128,4 +128,4 @@ test:					$(NAME)
 						bash ./tester/tester.sh ../$(NAME) $(SIZE) $(TIMES)
 
 visualizer:				$(NAME)
-						./visualizer/build/bin/visualizer
+						./visualizer/visualizer_linux_amd64
