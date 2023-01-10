@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_index_content_from_template.c                   :+:      :+:    :+:   */
+/*   ft_content_from_template.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:07:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/01 10:55:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/10 05:26:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_content_from_template(t_list *stack, int *template)
 		{
 			if (*((int *)stack->content) == template[i])
 			{
-				*((int *)stack->content) = i;
+				*((int *)stack->content) = i + 1;
 				break ;
 			}
 			i++;

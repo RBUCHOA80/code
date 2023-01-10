@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/10 05:12:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/10 05:26:49 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	if (!(stack_a && stack_b))
 		return ;
 	(void) stack_b;
-	while (ft_lstsize(*stack_a) - 1)
+	while (ft_lstsize(*stack_a))
 	{
-		len = ft_lstsize(*stack_a) - 1;
+		len = ft_lstsize(*stack_a);
 		mid = len / 2;
 		ft_printf("len = %d\n", len);
 		ft_printf("mid = %d\n", mid);
