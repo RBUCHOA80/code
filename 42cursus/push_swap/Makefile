@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/09 19:35:05 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/10 05:10:09 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ BONUS_LIST			=	c	 \
 #						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
-ARR					=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
+ARR					=	ARG=$$(seq 15 | sort --random-sort | tr "\n" " ")
 
 ifeq ($(shell uname), Darwin)	#MacOS
 	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m"
