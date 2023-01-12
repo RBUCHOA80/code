@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swapv3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/11 19:51:59 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/11 19:52:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		while (len--)
 		{
 			ft_printf("if (%d > %d)\n", *((int *)(*stack_a)->content), mid);
-			if (mid < *((int *)(*stack_a)->content) && *((int *)(*stack_a)->content) < mid + 2)
+			if (*((int *)(*stack_a)->content) > mid)
+				if (ft_lstsize(*stack_b) > 1 && *((int *)(*stack_b)->content) > *((int *)(*stack_b)->next->content))
+				{
 					pb(stack_a, stack_b);
-			else if (mid - 2 < *((int *)(*stack_a)->content) && *((int *)(*stack_a)->content) < mid)
+					sb(stack_b);
+				}
+				else
 					pb(stack_a, stack_b);
 			else if (ft_lstsize(*stack_a) > 1)
 				ra(stack_a);
-			ft_printf_stacks(*stack_a, *stack_b);
 		}
 	}
 	ft_printf_stacks(*stack_a, *stack_b);
