@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swapv2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/03 07:16:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/12 22:31:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_search_range(t_list *stack, int mid)
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
-	int dist;
+	int	dist;
 	int	mid;
 
 	if (!(stack_a && stack_b))
