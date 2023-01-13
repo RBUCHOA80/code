@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/12 23:19:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/13 00:07:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 				ra(stack_a);
 			//ft_printf_stacks(*stack_a, *stack_b);
 		}
-		range++;
+		if (mid / 14)
+			range = range + (mid / 14);
+		else
+			range++;
 	}
-	while (ft_lstsize(*stack_b) > 0)
-		pa(stack_b, stack_a);
+	// while (ft_lstsize(*stack_b) > 0)
+	// 	pa(stack_b, stack_a);
 }

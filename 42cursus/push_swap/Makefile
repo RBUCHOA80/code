@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/12 23:21:04 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/12 23:53:59 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,14 +62,14 @@ BONUS_LIST			=	c	 \
 #						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
-ARR					=	ARG=$$(seq 9 | sort --random-sort | tr "\n" " ")
+ARR					=	ARG=$$(seq 200 | sort --random-sort | tr "\n" " ")
 
 ifeq ($(shell uname), Darwin)	#MacOS
-	SYSTEM	=	@printf "\e[1;33mMacOS detected.\n\e[m"
-	CHECKER	=	checker_Mac
+	SYSTEM			=	@printf "\e[1;33mMacOS detected.\n\e[m"
+	CHECKER			=	checker_Mac
 else 							#Linux
-	SYSTEM	=	@printf "\e[1;33mLinux detected.\n\e[m"
-	CHECKER	=	checker_linux
+	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
+	CHECKER			=	checker_linux
 endif
 
 .c.o:
