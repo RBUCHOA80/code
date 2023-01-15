@@ -6,11 +6,24 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 17:33:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 17:51:48 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
+
+int	ft_inorder(t_list *stk)
+{
+	if (!stk)
+		return (0);
+	while (stk && stk->next)
+	{
+		if ((*(int *)stk->next->content - *(int *)stk->content) != 1)
+			return (0);
+		stk = stk->next;
+	}
+	return (1);
+}
 
 int	ft_max(t_list *stk)
 {
@@ -56,7 +69,7 @@ void	push_swap(t_list **stk_a, t_list **stk_b)
 	(void) stk_b;
 	index = ft_lstsize(*stk_a) / 2;
 	range = 0;
-	while (ft_lstsize(*stk_a) > 2)
+	while (ft_lstsize(*stk_a) > 2 && !ft_inorder(*stk_a))
 	{
 		size = ft_lstsize(*stk_a);
 		while (size-- > 0)

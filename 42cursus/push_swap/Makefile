@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/01/15 17:39:37 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,12 @@ SIZE	=	5
 TIMES	=	10
 test:					$(NAME)
 						bash ./tester/tester.sh ../$(NAME) $(SIZE) $(TIMES)
+
+tall:					$(NAME)
+						bash ./tester/tester.sh ../$(NAME) 3 $(TIMES)
+						bash ./tester/tester.sh ../$(NAME) 5 $(TIMES)
+						bash ./tester/tester.sh ../$(NAME) 100 $(TIMES)
+						bash ./tester/tester.sh ../$(NAME) 500 $(TIMES)
 
 visualizer:				$(NAME)
 						./visualizer/visualizer_linux_amd64
