@@ -6,46 +6,46 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/12 22:33:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	push_swap(t_list **stack_a, t_list **stack_b)
+void	push_swap(t_list **stk_a, t_list **stk_b)
 {
 	int	len;
 	int	mid;
 
-	if (!(stack_a && stack_b))
+	if (!(stk_a && stk_b))
 		return ;
-	(void) stack_b;
-	while (ft_lstsize(*stack_a))
+	(void) stk_b;
+	while (ft_lstsize(*stk_a))
 	{
-		len = ft_lstsize(*stack_a);
+		len = ft_lstsize(*stk_a);
 		mid = len / 2;
 		ft_printf("len = %d\n", len);
 		ft_printf("mid = %d\n", mid);
 		while (len--)
 		{
-			ft_printf("if (%d > %d)\n", *((int *)(*stack_a)->content), mid);
-			if (*((int *)(*stack_a)->content) > mid)
+			ft_printf("if (%d > %d)\n", *((int *)(*stk_a)->content), mid);
+			if (*((int *)(*stk_a)->content) > mid)
 			{
-				if ((ft_lstsize(*stack_b) > 1) && (*((int *)(*stack_b)->content) > *((int *)(*stack_b)->next->content)))
+				if ((ft_lstsize(*stk_b) > 1) && (*((int *)(*stk_b)->content) > *((int *)(*stk_b)->next->content)))
 				{
-					pb(stack_a, stack_b);
-					sb(stack_b);
+					pb(stk_a, stk_b);
+					sb(stk_b);
 				}
 				else
-					pb(stack_a, stack_b);
+					pb(stk_a, stk_b);
 			}
-			else if (ft_lstsize(*stack_a) > 1)
+			else if (ft_lstsize(*stk_a) > 1)
 			{
-				ra(stack_a);
+				ra(stk_a);
 			}
 		}
 	}
-	ft_printf_stacks(*stack_a, *stack_b);
+	ft_printf_stks(*stk_a, *stk_b);
 }
 
-//*((int *)(*stack_a)->content)
+//*((int *)(*stk_a)->content)

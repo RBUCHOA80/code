@@ -6,20 +6,20 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:17:52 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/19 20:02:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	ft_operation_reverse(t_list **stack)
+void	ft_operation_reverse(t_list **stk)
 {
 	void	*content;
 
-	if ((*stack))
+	if ((*stk))
 	{
-		content = ft_lsttake_back(stack);
-		ft_lstadd_front(stack, ft_lstnew(content));
+		content = ft_lsttake_back(stk);
+		ft_lstadd_front(stk, ft_lstnew(content));
 		return ;
 	}
 	ft_printf("\e[0;33mWarning: \e[0m");
@@ -27,24 +27,24 @@ void	ft_operation_reverse(t_list **stack)
 
 /* 
 rra (reverse rotate a):
-Shift down all elements of stack a by 1.
+Shift down all elements of stk a by 1.
 The last element becomes the first one.
  */
-void	rra(t_list **stack_a)
+void	rra(t_list **stk_a)
 {
-	ft_operation_reverse(stack_a);
+	ft_operation_reverse(stk_a);
 	ft_printf("rra\n");
 	return ;
 }
 
 /* 
 rrb (reverse rotate b):
-Shift down all elements of stack b by 1.
+Shift down all elements of stk b by 1.
 The last element becomes the first one.
  */
-void	rrb(t_list **stack_b)
+void	rrb(t_list **stk_b)
 {
-	ft_operation_reverse(stack_b);
+	ft_operation_reverse(stk_b);
 	ft_printf("rrb\n");
 	return ;
 }
@@ -53,10 +53,10 @@ void	rrb(t_list **stack_b)
 rrr :
 rra and rrb at the same time.
  */
-void	rrr(t_list **stack_a, t_list **stack_b)
+void	rrr(t_list **stk_a, t_list **stk_b)
 {
-	ft_operation_reverse(stack_a);
-	ft_operation_reverse(stack_b);
+	ft_operation_reverse(stk_a);
+	ft_operation_reverse(stk_b);
 	ft_printf("rrr\n");
 	return ;
 }

@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swapv1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/03 07:31:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_inorder(t_list *stack)
+int	ft_inorder(t_list *stk)
 {
-	if (!stack)
+	if (!stk)
 		return (0);
-	while (stack && stack->next)
+	while (stk && stk->next)
 	{
-		if ((*(int *)stack->next->content - *(int *)stack->content) != 1)
+		if ((*(int *)stk->next->content - *(int *)stk->content) != 1)
 			return (0);
-		stack = stack->next;
+		stk = stk->next;
 	}
 	return (1);
 }
 
-int	ft_search_index(t_list *stack, int index)
+int	ft_search_index(t_list *stk, int index)
 {
 	int	dist;
 	int	len;
 
-	len = ft_lstsize(stack);
+	len = ft_lstsize(stk);
 	dist = 0;
-	while (stack && stack->next && *((int *)stack->content) != index)
+	while (stk && stk->next && *((int *)stk->content) != index)
 	{
-		stack = stack->next;
+		stk = stk->next;
 		dist++;
 	}
 	if (dist > len / 2)
@@ -43,31 +43,31 @@ int	ft_search_index(t_list *stack, int index)
 		return (dist);
 }
 
-void	push_swap(t_list **stack_a, t_list **stack_b)
+void	push_swap(t_list **stk_a, t_list **stk_b)
 {
 	static int	index;
 	int			dist;
 
-	if (!(stack_a && stack_b))
+	if (!(stk_a && stk_b))
 		return ;
-	ft_printf_stacks(*stack_a, *stack_b);
-	while ((*stack_a) && (*stack_a)->next && !ft_inorder(*stack_a))
+	ft_printf_stks(*stk_a, *stk_b);
+	while ((*stk_a) && (*stk_a)->next && !ft_inorder(*stk_a))
 	{
-		if ((*((int *)(*stack_a)->content) - \
-				*((int *)(*stack_a)->next->content)) == 1)
-			sa(stack_a);
-		dist = ft_search_index(*stack_a, index++);
+		if ((*((int *)(*stk_a)->content) - \
+				*((int *)(*stk_a)->next->content)) == 1)
+			sa(stk_a);
+		dist = ft_search_index(*stk_a, index++);
 		if (dist > 0)
 			while (dist--)
-				ra(stack_a);
+				ra(stk_a);
 		else if (dist < 0)
 			while (dist++)
-				rra(stack_a);
-		if (!ft_inorder(*stack_a))
-			pb(stack_a, stack_b);
-		ft_printf_stacks(*stack_a, *stack_b);
+				rra(stk_a);
+		if (!ft_inorder(*stk_a))
+			pb(stk_a, stk_b);
+		ft_printf_stks(*stk_a, *stk_b);
 	}
-	while ((*stack_b))
-		pa(stack_b, stack_a);
-	ft_printf_stacks(*stack_a, *stack_b);
+	while ((*stk_b))
+		pa(stk_b, stk_a);
+	ft_printf_stks(*stk_a, *stk_b);
 }

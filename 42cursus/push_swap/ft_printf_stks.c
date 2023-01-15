@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_stacks.c                                 :+:      :+:    :+:   */
+/*   ft_printf_stks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,19 +12,19 @@
 
 #include "./push_swap.h"
 
-void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
+void	ft_printf_stks(t_list *stk_a, t_list *stk_b)
 {
 	int	size_a;
 	int	size_b;
 
-	size_a = ft_lstsize(stack_a);
-	size_b = ft_lstsize(stack_b);
+	size_a = ft_lstsize(stk_a);
+	size_b = ft_lstsize(stk_b);
 	while (size_a || size_b)
 	{
 		if (size_a >= size_b)
 		{
-			ft_printf("%p  %d ", stack_a->content, *((int *)stack_a->content));
-			stack_a = stack_a->next;
+			ft_printf("%p  %d ", stk_a->content, *((int *)stk_a->content));
+			stk_a = stk_a->next;
 			size_a--;
 		}
 		else
@@ -32,8 +32,8 @@ void	ft_printf_stacks(t_list *stack_a, t_list *stack_b)
 		ft_printf(" |  ");
 		if (size_b >= size_a + 1)
 		{
-			ft_printf("%d  %p", *((int *)stack_b->content), stack_b->content);
-			stack_b = stack_b->next;
+			ft_printf("%d  %p", *((int *)stk_b->content), stk_b->content);
+			stk_b = stk_b->next;
 			size_b--;
 		}
 		ft_printf("\n");

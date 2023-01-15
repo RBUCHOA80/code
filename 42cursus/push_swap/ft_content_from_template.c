@@ -6,31 +6,31 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:07:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/10 05:26:32 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	ft_content_from_template(t_list *stack, int *template)
+void	ft_content_from_template(t_list *stk, int *template)
 {
 	int	i;
 
-	if (!(stack && template))
+	if (!(stk && template))
 		return ;
-	while (stack)
+	while (stk)
 	{
 		i = 0;
 		while (template[i])
 		{
-			if (*((int *)stack->content) == template[i])
+			if (*((int *)stk->content) == template[i])
 			{
-				*((int *)stack->content) = i + 1;
+				*((int *)stk->content) = i + 1;
 				break ;
 			}
 			i++;
 		}
-		stack = stack->next;
+		stk = stk->next;
 	}
 	free(template);
 	return ;
