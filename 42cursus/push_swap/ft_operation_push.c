@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:20:19 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 16:15:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_operation_push(t_list **stk_a, t_list **stk_b)
 		ft_lstadd_front(stk_b, ft_lstnew(content));
 		return ;
 	}
-	ft_printf("\e[0;33mWarning: \e[0m");
+	ft_printf("Warning: ");
 }
 
 /* 

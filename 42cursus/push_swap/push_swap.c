@@ -6,20 +6,34 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 10:46:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 17:21:33 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_search_index(t_list *stk, int mid, int range)
+int	ft_max(t_list *stk)
+{
+	int	max;
+
+	max = 0;
+	while (ft_lstsize(stk))
+	{
+		if (max < *((int *)stk->content))
+			max = *((int *)stk->content);
+		stk = stk->next;
+	}
+	return (max);
+}
+
+int	ft_search_index(t_list *stk, int index, int range)
 {
 	int	dist;
 	int	len;
 
 	len = ft_lstsize(stk);
 	dist = 0;
-	while (ft_lstsize(stk) && (*((int *)stk->content) < (mid - range) || (mid + range) < *((int *)stk->content)))
+	while (ft_lstsize(stk) && (*((int *)stk->content) < (index - range) || (index + range) < *((int *)stk->content)))
 	{
 		stk = stk->next;
 		dist++;
@@ -32,57 +46,56 @@ int	ft_search_index(t_list *stk, int mid, int range)
 
 void	push_swap(t_list **stk_a, t_list **stk_b)
 {
+	int	index;
 	int	range;
 	int	dist;
 	int	size;
-	int	mid;
 
 	if (!(stk_a && stk_b))
 		return ;
 	(void) stk_b;
-	mid = ft_lstsize(*stk_a) / 2;
+	index = ft_lstsize(*stk_a) / 2;
 	range = 0;
 	while (ft_lstsize(*stk_a) > 1)
 	{
 		size = ft_lstsize(*stk_a);
 		while (size-- > 0)
 		{
-			if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
+/* 			if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				ss(stk_a, stk_b);
 			else if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1))
 				sa(stk_a);
 			else if (ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				sb(stk_b);
-				
-			dist = ft_search_index(*stk_a, mid, range);
+ */			dist = ft_search_index(*stk_a, index, range);
 			if (dist > 0)
 				while (dist-- > 0)
-						ra(stk_a);
+					ra(stk_a);
 			else if (dist < 0)
 				while (dist++ < 0)
 					rra(stk_a);
-
-			if ((mid - range) <= *((int *)(*stk_a)->content) && *((int *)(*stk_a)->content) <= (mid + range))
+			if ((index - range) <= *((int *)(*stk_a)->content) && *((int *)(*stk_a)->content) <= (index + range))
 			{
 				pb(stk_a, stk_b);
-				if (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < mid)
+				if (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index)
 					rb(stk_b);
 			}
-
 		}
-		if (mid / 10)
-			range = range + (mid / 10);
+		if (index / 10)
+			range = range + (index / 10);
 		else
 			range++;
 	}
 	while (ft_lstsize(*stk_b))
 	{
+		index = ft_max(*stk_b);
+		dist = ft_search_index(*stk_b, index, 0);
+		if (dist > 0)
+			while (dist-- > 0)
+				rb(stk_b);
+		else if (dist < 0)
+			while (dist++ < 0)
+				rrb(stk_b);
 		pa(stk_b, stk_a);
-		if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) > *((int *)(*stk_a)->next->content)) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) > *((int *)(*stk_b)->content)))
-			ss(stk_a, stk_b);
-		else if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) > *((int *)(*stk_a)->next->content)))
-			sa(stk_a);
-		else if (ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) > *((int *)(*stk_b)->content)))
-			sb(stk_b);
 	}
 }
