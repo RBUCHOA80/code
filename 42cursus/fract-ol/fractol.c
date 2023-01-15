@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/08 09:57:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 17:59:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(void)
 	while (y < WINDOW_HEIGHT)
 	{
 		my_mlx_pixel_put(&exec, x, y, 0x8b008b);
-		x = WINDOW_WIDTH - (y++ * WINDOW_WIDTH / WINDOW_HEIGHT);
+		x = WINDOW_WIDTH - (y * WINDOW_WIDTH / WINDOW_HEIGHT);
+		y++;
 	}
 	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) - 5, (WINDOW_HEIGHT / 4) + 0, 0x00FF0000);
 	my_mlx_pixel_put(&exec, (WINDOW_WIDTH / 2) + 0, (WINDOW_HEIGHT / 4) + 0, 0x0000FF00);
