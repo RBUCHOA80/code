@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 17:21:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/15 17:33:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,18 @@ void	push_swap(t_list **stk_a, t_list **stk_b)
 	(void) stk_b;
 	index = ft_lstsize(*stk_a) / 2;
 	range = 0;
-	while (ft_lstsize(*stk_a) > 1)
+	while (ft_lstsize(*stk_a) > 2)
 	{
 		size = ft_lstsize(*stk_a);
 		while (size-- > 0)
 		{
-/* 			if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
+ 			if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				ss(stk_a, stk_b);
 			else if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1))
 				sa(stk_a);
 			else if (ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				sb(stk_b);
- */			dist = ft_search_index(*stk_a, index, range);
+			dist = ft_search_index(*stk_a, index, range);
 			if (dist > 0)
 				while (dist-- > 0)
 					ra(stk_a);
