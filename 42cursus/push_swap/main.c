@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:53:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/01/18 22:10:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	if (ft_argv_to_list(argv, &stk_a))
