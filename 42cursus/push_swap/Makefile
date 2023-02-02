@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/01/18 22:09:37 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/01 22:54:57 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,15 +123,15 @@ b:						$(NAME_BONUS)
 						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
 
 SIZE	=	5
-TIMES	=	10
+COUNT	=	10
 test:					$(NAME)
-						bash ./tester/tester.sh ../$(NAME) $(SIZE) $(TIMES)
+						bash ./tester/tester.sh ../$(NAME) $(SIZE) $(COUNT)
 
 tall:					$(NAME)
-						bash ./tester/tester.sh ../$(NAME) 3 $(TIMES)
-						bash ./tester/tester.sh ../$(NAME) 5 $(TIMES)
-						bash ./tester/tester.sh ../$(NAME) 100 $(TIMES)
-						bash ./tester/tester.sh ../$(NAME) 500 $(TIMES)
+						bash ./tester/tester.sh ../$(NAME) 3 $(COUNT)
+						bash ./tester/tester.sh ../$(NAME) 5 $(COUNT)
+						bash ./tester/tester.sh ../$(NAME) 100 $(COUNT)
+						bash ./tester/tester.sh ../$(NAME) 500 $(COUNT)
 
 visualizer:				$(NAME)
 						./visualizer/visualizer_linux_amd64

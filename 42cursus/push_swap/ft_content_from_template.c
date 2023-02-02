@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:07:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 07:31:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/01 22:46:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 void	ft_content_from_template(t_list *stk, int *template)
 {
-	int	i;
+	t_list	*temp;
+	int		len;
+	int		i;
 
 	if (!(stk && template))
 		return ;
-	while (stk)
+	len = ft_lstsize(stk);
+	temp = stk;
+	while (temp)
 	{
 		i = 0;
-		while (template[i])
+		while (i < len)
 		{
-			if (*((int *)stk->content) == template[i])
+			if (*((int *)temp->content) == template[i])
 			{
-				*((int *)stk->content) = i + 1;
+				*((int *)temp->content) = i + 1;
 				break ;
 			}
 			i++;
 		}
-		stk = stk->next;
+		temp = temp->next;
 	}
 	free(template);
 	return ;
