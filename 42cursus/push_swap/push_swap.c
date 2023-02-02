@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/01 23:06:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/01 23:20:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ void	push_swap(t_list **stk_a, t_list **stk_b)
 			if (!ft_inorder(*stk_a, ft_max(*stk_a)) && (index - range) <= *((int *)(*stk_a)->content) && *((int *)(*stk_a)->content) <= (index + range))
 			{
 				pb(stk_a, stk_b);
-				if (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index)
+				if ((ft_lstsize(*stk_a) >= 2 && *((int *)(*stk_a)->content) > *((int *)ft_lstlast(*stk_a)->content)) && (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index))
+					rr(stk_a, stk_b);
+				else if (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index)
 					rb(stk_b);
 			}
 		}
