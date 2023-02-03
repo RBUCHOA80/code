@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap v2.c                                     :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/16 22:45:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/01 23:20:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	ft_search_index(t_list *stk, int index, int range)
 
 	len = ft_lstsize(stk);
 	dist = 0;
-	while (ft_lstsize(stk) && (*((int *)stk->content) < (index - range) || (index + range) < *((int *)stk->content)))
+	while (ft_lstsize(stk) && (*((int *)stk->content) < (index - range)
+			|| (index + range) < *((int *)stk->content)))
 	{
 		stk = stk->next;
 		dist++;
@@ -73,19 +74,21 @@ void	push_swap(t_list **stk_a, t_list **stk_b)
 	len = ft_lstsize(*stk_a);
 	index = len / 2;
 	range = 0;
-	while (ft_lstsize(*stk_a) > 2)
+	while (!ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) > 2)
 	{
 		size = ft_lstsize(*stk_a);
-		while (size-- > 0)
+		while (!ft_inorder(*stk_a, ft_max(*stk_a)) && size-- > 0)
 		{
+			if (!ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) >= 2 && *(int *)(*stk_a)->content == ft_max(*stk_a))
+				ra(stk_a);
+			else if (!ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) >= 2 && *(int *)(*stk_a)->next->content == ft_max(*stk_a))
+				rra(stk_a);
 			if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				ss(stk_a, stk_b);
 			else if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1))
 				sa(stk_a);
 			else if (ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				sb(stk_b);
-			if (ft_inorder(*stk_a, len))
-				break ;
 			dist = ft_search_index(*stk_a, index, range);
 			if (dist > 0)
 				while (dist-- > 0)
@@ -93,10 +96,12 @@ void	push_swap(t_list **stk_a, t_list **stk_b)
 			else
 				while (dist++ < 0)
 					rra(stk_a);
-			if ((index - range) <= *((int *)(*stk_a)->content) && *((int *)(*stk_a)->content) <= (index + range))
+			if (!ft_inorder(*stk_a, ft_max(*stk_a)) && (index - range) <= *((int *)(*stk_a)->content) && *((int *)(*stk_a)->content) <= (index + range))
 			{
 				pb(stk_a, stk_b);
-				if (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index)
+				if ((ft_lstsize(*stk_a) >= 2 && *((int *)(*stk_a)->content) > *((int *)ft_lstlast(*stk_a)->content)) && (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index))
+					rr(stk_a, stk_b);
+				else if (ft_lstsize(*stk_b) >= 2 && *((int *)(*stk_b)->content) < index)
 					rb(stk_b);
 			}
 		}
