@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/01 22:20:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/05 17:00:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	push_swap(t_list **stk_a, t_list **stk_b);
 
 void	ft_printf_stks(t_list *stk_a, t_list *stk_b);
 
-void	*ft_lsttake_back(t_list **stk);
 void	*ft_lsttake_front(t_list **stk);
+void	*ft_lsttake_back(t_list **stk);
 
 void	ft_operation_swap(t_list **stk);
 void	sa(t_list **stk_a);
