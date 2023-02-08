@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 13:35:50 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/07 23:42:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/08 00:18:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ int	ft_search_index(t_list *stk, int index, int range)
 		return (dist);
 }
 
+void	ft_rotate(t_list **stk_a, t_list **stk_b)
+{
+	(void)stk_b;
+	if (ft_lstsize(*stk_a) >= 2 && !ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) != 5 && *(int *)(*stk_a)->content == ft_max(*stk_a))
+		ra(stk_a);
+	else if (ft_lstsize(*stk_a) >= 2 && !ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) != 5 && *(int *)(*stk_a)->next->content == ft_max(*stk_a))
+		rra(stk_a);
+}
+
 void	push_swap(t_list **stk_a, t_list **stk_b)
 {
 	int	index;
@@ -78,10 +87,7 @@ void	push_swap(t_list **stk_a, t_list **stk_b)
 		size = ft_lstsize(*stk_a);
 		while (size-- > 0)
 		{
-			if (ft_lstsize(*stk_a) >= 2 && !ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) != 5 && *(int *)(*stk_a)->content == ft_max(*stk_a))
-				ra(stk_a);
-			else if (ft_lstsize(*stk_a) >= 2 && !ft_inorder(*stk_a, ft_max(*stk_a)) && ft_lstsize(*stk_a) != 5 && *(int *)(*stk_a)->next->content == ft_max(*stk_a))
-				rra(stk_a);
+			ft_rotate(stk_a, stk_b);
 			if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1) && ft_lstsize(*stk_b) >= 2 && (*((int *)(*stk_b)->next->content) - *((int *)(*stk_b)->content) == 1))
 				ss(stk_a, stk_b);
 			else if (ft_lstsize(*stk_a) >= 2 && (*((int *)(*stk_a)->content) - *((int *)(*stk_a)->next->content) == 1))
