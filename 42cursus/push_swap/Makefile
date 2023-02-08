@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/07 23:37:11 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/08 19:17:26 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ BONUS_LIST			=	c	 \
 #						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
-ARR					=	ARG=$$(seq 2 | sort --random-sort | tr "\n" " ")
+ARR					=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
 
 ifeq ($(shell uname), Darwin)	#MacOS
 	SYSTEM			=	@printf "\e[1;33mMacOS detected.\n\e[m"
@@ -107,7 +107,6 @@ vrun:					$(NAME)
 						$(ARR) ; valgrind --leak-check=full -s -v ./$(NAME) $$ARG
 
 wc:						$(NAME)
-						$(SYSTEM)
 						$(ARR) ; ./$(NAME) $$ARG | wc -l
 
 check:					$(NAME)
@@ -118,9 +117,7 @@ rerun:					re run
 
 b:						$(NAME_BONUS)
 #						valgrind --leak-check=full -s ./$(NAME_BONUS) $(ARG)
-						$(SYSTEM)
-						$(ARG) ; ./$(NAME_BONUS) $$VAR
-						$(REMOVE) $(RFLAGS) $(NAME_BONUS)
+						$(ARR) ; ./$(NAME) $$ARG
 
 SIZE	=	5
 COUNT	=	10
