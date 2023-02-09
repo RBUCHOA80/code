@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:26:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/05 17:00:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/08 21:50:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	ft_bubble_sort(int *arr, int size);
 void	ft_content_from_template(t_list *stk, int *template);
 
 void	push_swap(t_list **stk_a, t_list **stk_b);
+int		ft_search_index(t_list *stk, int index, int range);
+int		ft_inorder(t_list *stk, int max);
+int		ft_max(t_list *stk);
 
 void	ft_printf_stks(t_list *stk_a, t_list *stk_b);
 
@@ -49,5 +52,10 @@ void	rrr(t_list **stk_a, t_list **stk_b);
 void	ft_operation_push(t_list **stk_a, t_list **stk_b);
 void	pa(t_list **stk_b, t_list **stk_a);
 void	pb(t_list **stk_a, t_list **stk_b);
+
+void	ft_do_rotate(t_list **stk_a, t_list **stk_b);
+
+void	ft_push_to_a(t_list **stk_a, t_list **stk_b);
+void	ft_push_to_b(t_list **stk_a, t_list **stk_b, int index, int range);
 
 #endif

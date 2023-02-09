@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_search_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 18:53:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/08 22:19:40 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/02/08 21:05:13 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/02/08 21:05:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_search_index(t_list *stk, int index, int range)
 {
-	static t_list	*stk_a;
-	static t_list	*stk_b;
+	int	dist;
+	int	len;
 
-	if (argc < 2)
+	len = ft_lstsize(stk);
+	dist = 0;
+	while (ft_lstsize(stk) && (*((int *)stk->content) < (index - range)
+			|| (index + range) < *((int *)stk->content)))
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		stk = stk->next;
+		dist++;
 	}
-	if (ft_argv_to_list(argv, &stk_a))
-	{
-		ft_content_from_template(stk_a, ft_create_template(stk_a));
-		push_swap(&stk_a, &stk_b);
-		ft_lstclear(&stk_a, free);
-		ft_lstclear(&stk_b, free);
-	}
-	return (0);
+	if (dist > len / 2)
+		return (-1 * (len - dist));
+	else
+		return (dist);
 }

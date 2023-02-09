@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 22:14:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/15 16:16:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/08 21:50:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,17 @@ void	rr(t_list **stk_a, t_list **stk_b)
 	ft_operation_rotate(stk_b);
 	ft_printf("rr\n");
 	return ;
+}
+
+void	ft_do_rotate(t_list **stk_a, t_list **stk_b)
+{
+	(void)stk_b;
+	if (ft_lstsize(*stk_a) >= 2 && !ft_inorder(*stk_a, ft_max(*stk_a))
+		&& *(int *)(*stk_a)->content == ft_max(*stk_a)
+		&& ft_lstsize(*stk_a) != 5)
+		ra(stk_a);
+	else if (ft_lstsize(*stk_a) >= 2 && !ft_inorder(*stk_a, ft_max(*stk_a))
+		&& *(int *)(*stk_a)->next->content == ft_max(*stk_a)
+		&& ft_lstsize(*stk_a) != 5)
+		rra(stk_a);
 }

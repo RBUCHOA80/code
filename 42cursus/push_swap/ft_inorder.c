@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_inorder.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 18:53:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/08 22:19:40 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/02/08 21:05:56 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/02/08 21:06:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_inorder(t_list *stk, int max)
 {
-	static t_list	*stk_a;
-	static t_list	*stk_b;
-
-	if (argc < 2)
-	{
-		write(2, "Error\n", 6);
+	if (!(stk && max))
 		return (1);
-	}
-	if (ft_argv_to_list(argv, &stk_a))
+	if (*((int *)ft_lstlast(stk)->content) != max)
+		return (0);
+	while (ft_lstsize(stk) >= 2)
 	{
-		ft_content_from_template(stk_a, ft_create_template(stk_a));
-		push_swap(&stk_a, &stk_b);
-		ft_lstclear(&stk_a, free);
-		ft_lstclear(&stk_b, free);
+		if ((*(int *)stk->next->content - *(int *)stk->content) != 1)
+			return (0);
+		stk = stk->next;
 	}
-	return (0);
+	return (1);
 }

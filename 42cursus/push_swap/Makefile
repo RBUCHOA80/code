@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/08 19:17:26 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/08 21:09:06 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,14 +39,17 @@ SRCS_LIST			=	ft_argv_to_list.c \
 						ft_bubble_sort.c \
 						ft_content_from_template.c \
 						ft_create_template.c \
+						ft_inorder.c \
 						ft_isvalid_entry.c \
 						ft_lsttake_back.c \
 						ft_lsttake_front.c \
+						ft_max.c \
 						ft_operation_push.c \
 						ft_operation_reverse.c \
 						ft_operation_rotate.c \
 						ft_operation_swap.c \
 						ft_printf_stks.c \
+						ft_search_index.c \
 						ft_str_to_int.c \
 						main.c \
 						push_swap.c \
