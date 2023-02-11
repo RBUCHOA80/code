@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/08 21:09:06 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/09 22:53:09 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,12 +59,6 @@ BONUS_OBJS			=	$(BONUS:.c=.o)
 BONUS_PATH			=	./
 BONUS_LIST			=	c	 \
 
-#						$(shell echo '$@ <- Nome da regra.')
-#						$(shell echo '$< <- Nome da primeira dependência.')
-#						$(shell echo '$^ <- Lista de dependências.')
-#						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
-#						$(shell echo '$* <- Nome do arquivo sem sufixo.')
-
 ARR					=	ARG=$$(seq 5 | sort --random-sort | tr "\n" " ")
 
 ifeq ($(shell uname), Darwin)	#MacOS
@@ -74,6 +68,12 @@ else 							#Linux
 	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
 	CHECKER			=	checker_linux
 endif
+
+#						$(shell echo '$@ <- Nome da regra.')
+#						$(shell echo '$< <- Nome da primeira dependência.')
+#						$(shell echo '$^ <- Lista de dependências.')
+#						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
+#						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 .c.o:
 						$(COMPILER) $(CFLAGS) -c $< -o $(<:.c=.o)
