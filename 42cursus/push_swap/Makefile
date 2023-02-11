@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/09 22:53:09 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/11 17:04:30 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ LIBS_PATH			=	../
 LIBS_LIST			=	libft \
 						libftprintf \
 
+#-I <dir>				Add directory to include search path
 INCLUDE_PATH		=	./
 
 COMPILER			=	cc

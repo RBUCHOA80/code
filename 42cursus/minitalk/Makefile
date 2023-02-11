@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/21 23:54:00 by ruchoa            #+#    #+#              #
-#    Updated: 2022/11/28 20:30:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/11 17:04:21 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ LIBS_A				=	$(foreach lib, $(LIBS_LIST),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_PATH			=	../
 LIBS_LIST			=	libft \
 
+#-I <dir>				Add directory to include search path
 INCLUDE_PATH		=	./
 
 COMPILER			=	cc

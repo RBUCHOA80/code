@@ -5,61 +5,54 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/09 22:55:25 by ruchoa           ###   ########.fr        #
+#    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
+#    Updated: 2023/02/11 17:10:53 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#MAKEFLAGS	=	--silent
+#MAKEFLAGS			=	--silent
 
 NAME				=	fractol
+
+LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
+LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
+LIBS_PATH			=	../
+LIBS				=	libft \
+
+#-I <dir>				Add directory to include search path
+INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
+
+#-L <dir>				Add directory to library search path
+LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/)
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror
 
-MLX_NAME			=	libmlx.a
-MLX					=	$(MLX_PATH)$(MLX_NAME)
+AR					=	ar
+AFLAGS				=	rc
 
-LIBFT_PATH			=	../libft/
-LIBFT_NAME			=	libft.a
-LIBFT				=	$(LIBFT_PATH)$(LIBFT_NAME)
+REMOVE				=	rm
+RFLAGS				=	-drf
 
-INC					=	-I ./includes/ \
-						-I $(LIBFT_PATH) \
-						-I $(MLX_PATH) \
+SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
+SRCS_OBJS			= 	$(SRCS:.c=.o)
+SRCS_PATH			=	./
+SRCS_LIST			=	events.c \
+						fractol.c \
+						my_mlx_pixel_put.c \
 
-SRC_PATH			=	./src/
-SRC					=	fractol.c \
-						color.c \
-						events.c \
-						ft_ishexdigit.c \
-						ft_isspace.c \
-						help_msg.c \
-						initialization.c \
-						parse_args.c \
-						render.c \
-						utils.c \
-						fractal_sets/mandelbrot.c \
-						fractal_sets/julia.c \
-						fractal_sets/burning_ship.c \
-						fractal_sets/tricorn.c \
-						fractal_sets/mandelbox.c \
-						color_schemes/color_interpolated.c \
-						color_schemes/color_special.c \
-						color_schemes/color_striped.c \
-
-SRCS				=	$(addprefix $(SRC_PATH), $(SRC))
-
-OBJ_PATH			=	obj/
-OBJ					=	$(SRC:.c=.o)
-OBJS				=	$(addprefix $(OBJ_PATH), $(OBJ))
-
-ifeq ($(shell uname), Darwin)	#MacOS
-	SYSTEM			=	@printf "\e[1;33mMacOS detected.\n\e[m"
-	MLX_PATH		=	../mlx/_macos/
-else							#Linux
-	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
-	MLX_PATH		=	../mlx/_linux/
+ifeq ($(shell uname), Darwin) # MacOS
+	SYSTEM			=	printf "\e[1;33mMacOS detected.\n\e[m"
+	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_macos/
+	MLX_INCLUDE		=	-I $(MLX_LIB_DIR)
+	MLX_LIB			=	-lmlx -framework AppKit -framework OpenGL
+	INTALL			=	Brew install Xquartz ; reboot
+else 
+	SYSTEM			=	printf "\e[1;33mLinux detected.\n\e[m"
+	MLX_LIB_DIR		=	$(LIBS_PATH)mlx/_linux/
+	MLX_INCLUDE		=	-I $(MLX_LIB_DIR) -O3
+	MLX_LIB			=	-lmlx -lXext -lX11 -lm -lz
+	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
 
 #						$(shell echo '$@ <- Nome da regra.')
@@ -68,49 +61,48 @@ endif
 #						$(shell echo '$? <- Lista de dependências mais recentes que a regra.')
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
-$(OBJ_PATH)%.o:			$(SRC_PATH)%.c
-						$(COMPILER) $(CFLAGS) -c $< -o $@ $(INC)
+.c.o:
+						$(COMPILER) $(CFLAGS) $(INCLUDE_DIR) $(MLX_INCLUDE) -c $< -o $@
 
-all:					$(MLX) $(LIBFT) $(NAME)
+all:					$(NAME)
 
-bonus:					all
-
-$(OBJS):				$(OBJ_PATH)
-
-$(NAME):				$(OBJS)
-						make -C $(MLX_PATH)
-						make -C $(LIBFT_PATH)
-						$(COMPILER) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
-						$(SYSTEM)
-
-$(OBJ_PATH):
-						mkdir -p $(OBJ_PATH)
-						mkdir -p $(OBJ_PATH)fractal_sets/
-						mkdir -p $(OBJ_PATH)color_schemes/
-
-$(MLX):
-						make -sC $(MLX_PATH)
-
-$(LIBFT):
-						make -sC $(LIBFT_PATH)
+$(NAME):				$(SRCS_OBJS)
+						make all -C $(MLX_LIB_DIR)
+						$(foreach lib, $(LIBS_DIR), make all -C $(lib))
+						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -L $(MLX_LIB_DIR) $(MLX_LIB) -o $(NAME)
 
 clean:
-						rm -rf $(OBJ_PATH)
-						make clean -C $(MLX_PATH)
-						make clean -C $(LIBFT_PATH)
+						$(foreach lib, $(LIBS_DIR), make clean -C $(lib))
+						make clean -C $(MLX_LIB_DIR)
+						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
 
 fclean:					clean
-						rm -f $(NAME)
-						rm -f $(LIBFT_PATH)$(LIBFT_NAME)
+						$(foreach lib, $(LIBS_DIR), make fclean -C $(lib))
+						make fclean -C $(MLX_LIB_DIR)
+						$(REMOVE) $(RFLAGS) $(NAME)
 
 re:						fclean all
+						$(foreach lib, $(LIBS_DIR), make re -C $(lib) ;)
 
-.PHONY:					all re clean fclean
+.PHONY:					all clean fclean re show
+
+show:
+						@printf "SYSTEM		: $(shell uname)\n"
+						@printf "NAME		: $(NAME)\n"
+						@printf "COMPILER	: $(COMPILER)\n"
+						@printf "CFLAGS		: $(CFLAGS)\n"
+						@printf "SRC		: $(SRCS)\n"
+
+install:
+						$(INSTALL)
 
 run:					$(NAME)
-						./$(NAME) M
-
-vrun:					$(NAME)
-						valgrind --leak-check=full -s -v ./$(NAME) M
+						$(SYSTEM)
+						./$(NAME)
 
 rerun:					re run
+
+rgb:
+						gcc create_trgb.c -I ../libftprintf/ -L ../libftprintf/ -lftprintf -o a.out
+						./a.out
+						rm a.out
