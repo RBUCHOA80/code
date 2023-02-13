@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 14:40:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/13 20:35:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int		key_event(int keycode, t_fractol *mlx);
 int		mouse_event(int keycode, int x, int y, t_fractol *mlx);
 
 /* Initialization  */
-void	clean_init(t_fractol *f);
+void	init_struct(t_fractol *f);
 void	reinit_img(t_fractol *f);
 void	init(t_fractol *f);
 void	get_complex_layout(t_fractol *f);

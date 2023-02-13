@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/12 15:10:32 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/13 20:38:05 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,7 @@ SRC_LIST			=	color_schemes_interpolated.c \
 						fractol.c \
 						ft_ishexdigit.c \
 						ft_isspace.c \
-						help_msg.c \
-						initialization.c \
+						init.c \
 						parse_args.c \
 						render.c \
 						utils.c \

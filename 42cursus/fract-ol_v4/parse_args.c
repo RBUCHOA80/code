@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/13 20:37:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	ft_atox_color(t_fractol *f, char *color)
 	int	x;
 	int	n;
 
+	(void)f;
 	n = 0;
 	i = 0;
 	i = skip_space_sign_0x(color);
@@ -60,8 +61,7 @@ static int	ft_atox_color(t_fractol *f, char *color)
 	if (x == 6 && !color[i])
 		return (n);
 	else
-		help_msg(f);
-	return (-1);
+		return (-1);
 }
 
 /* get_color:
