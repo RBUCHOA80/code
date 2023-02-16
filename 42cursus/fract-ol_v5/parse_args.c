@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/13 20:58:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/15 18:39:25 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 *	Skips spaces, '+' sign character and '0x' or '0X'
 *	to parse hexadecimal color code strings.
 */
-static int	skip_space_sign_0x(char *color)
+/* static int	skip_space_sign_0x(char *color)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static int	skip_space_sign_0x(char *color)
 			&& (color[i + 1] == 'x' || color[i] == 'X')))
 		i = i + 2;
 	return (i);
-}
+} */
 
 /* ft_atox_color:
 *	Translates a hexadecimal color code string into an integer.
@@ -38,7 +38,7 @@ static int	skip_space_sign_0x(char *color)
 *	If the string is not a valid hex color code, an error is displayed.
 *	Returns the converted int. -1 if an error occured.
 */
-static int	ft_atox_color(t_fractol *f, char *color)
+/* static int	ft_atox_color(t_fractol *f, char *color)
 {
 	int	i;
 	int	x;
@@ -62,7 +62,7 @@ static int	ft_atox_color(t_fractol *f, char *color)
 		return (n);
 	else
 		return (-1);
-}
+} */
 
 /* skip_space_sign:
 *	Skips spaces, '+' and '-' sign characters and sets the

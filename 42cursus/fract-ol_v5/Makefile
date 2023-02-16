@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/13 20:52:07 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/15 18:39:52 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,10 +115,10 @@ install:
 						$(INSTALL)
 
 run:					$(NAME)
-						./$(NAME) M
+						./$(NAME)
 
 vrun:					$(NAME)
-						valgrind --leak-check=full -s -v ./$(NAME) M
+						valgrind --leak-check=full -s -v ./$(NAME)
 
 rerun:					re run
 
