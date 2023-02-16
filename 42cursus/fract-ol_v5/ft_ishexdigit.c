@@ -6,19 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 14:08:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 20:01:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-/*
-	DESCRIPTION :
-	The function ft_ishexdigit checks whether c is a hexadecimal
-	digit character or not.
+#include "./fractol.h"
 
-	RETURN VALUE:
-	Non-zero if c is a hexadecimal digit, zero if not.
-*/
 int	ft_ishexdigit(int c)
 {
 	if (c >= '0' && c <= '9')

@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 10:05:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 10:07:13 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 20:04:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <libftprintf.h>
 
 int	create_trgb(int t, int r, int g, int b)
 {

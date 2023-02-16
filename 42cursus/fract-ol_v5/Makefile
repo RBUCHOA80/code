@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/15 23:04:06 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/16 19:50:36 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,10 +89,10 @@ $(NAME):				$(SRCS_OBJS)
 						$(COMPILER) $(CFLAGS) -o $(NAME) $(SRCS_OBJS) $(MLX) $(LIBS_A) $(INCLUDE_DIR) $(LIBRARY_DIR) $(MLX_FLAGS)
 						$(SYSTEM)
 
-debug:					$(SRCS_OBJS)
+debug:
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib))
 						make -sC $(MLX_PATH)
-						$(COMPILER) -g $(CFLAGS) -o $(NAME) $(SRCS_OBJS) $(MLX) $(LIBS_A) $(INCLUDE_DIR) $(LIBRARY_DIR) $(MLX_FLAGS)
+						$(COMPILER) -g $(CFLAGS) -o $(NAME) $(SRCS) $(MLX) $(LIBS_A) $(INCLUDE_DIR) $(LIBRARY_DIR) $(MLX_FLAGS)
 						$(SYSTEM)
 						lldb $(NAME)
 
