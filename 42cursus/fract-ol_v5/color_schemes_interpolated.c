@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:14 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	interpolate(int startcolor, int endcolor, double fraction)
 *	black to the provided color, to white near the fractal
 *	border.
 */
-void	set_color_mono(t_fractol *f, int color)
+void	set_color_mono(t_fractol *exec, int color)
 {
 	int		i;
 	int		j;
@@ -59,14 +59,14 @@ void	set_color_mono(t_fractol *f, int color)
 		while (j < MAX_ITERATIONS / 2)
 		{
 			fraction = (double)j / (MAX_ITERATIONS / 2);
-			f->palette[i + j] = interpolate(color1, color2, fraction);
+			exec->palette[i + j] = interpolate(color1, color2, fraction);
 			j++;
 		}
 		color1 = color2;
 		color2 = 0xFFFFFF;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS -1] = 0;
+	exec->palette[MAX_ITERATIONS -1] = 0;
 }
 
 /* set_color_multiple:
@@ -76,7 +76,7 @@ void	set_color_mono(t_fractol *f, int color)
 *	to provide more than 4 colors by casting a larger array and specifying
 *	how many colors are included.
 */
-void	set_color_multiple(t_fractol *f, int colors[4], int n)
+void	set_color_multiple(t_fractol *exec, int colors[4], int n)
 {
 	int		i;
 	int		j;
@@ -91,11 +91,11 @@ void	set_color_multiple(t_fractol *f, int colors[4], int n)
 		while ((i + j) < MAX_ITERATIONS && j < (MAX_ITERATIONS / (n - 1)))
 		{
 			fraction = (double)j / (MAX_ITERATIONS / (n - 1));
-			f->palette[i + j] = interpolate(colors[x], colors[x + 1], fraction);
+			exec->palette[i + j] = interpolate(colors[x], colors[x + 1], fraction);
 			j++;
 		}
 		x++;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS - 1] = 0;
+	exec->palette[MAX_ITERATIONS - 1] = 0;
 }

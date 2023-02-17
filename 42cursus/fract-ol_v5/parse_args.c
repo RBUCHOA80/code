@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:48 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/15 18:39:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:25:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@
 *	If the string is not a valid hex color code, an error is displayed.
 *	Returns the converted int. -1 if an error occured.
 */
-/* static int	ft_atox_color(t_fractol *f, char *color)
+/* static int	ft_atox_color(t_fractol *exec, char *color)
 {
 	int	i;
 	int	x;
 	int	n;
 
-	(void)f;
+	(void)exec;
 	n = 0;
 	i = 0;
 	i = skip_space_sign_0x(color);

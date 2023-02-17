@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:59 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:23:31 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@
 *	The fractal can then be rendered again with different color
 *	effects.
 */
-static void	color_shift_special(t_fractol *f)
+static void	color_shift_special(t_fractol *exec)
 {
 	int	alt_color;
 
-	if (f->color == 0xFFFFFF)
+	if (exec->color == 0xFFFFFF)
 		alt_color = 0xCCCCCC;
 	else
-		alt_color = f->color;
-	if (f->color_pattern == 5)
-		set_color_contrasted(f, alt_color);
-	else if (f->color_pattern == 6)
-		set_color_opposites(f, f->color);
-	else if (f->color_pattern == 7)
-		set_color_graphic(f, f->color);
-	else if (f->color_pattern == 8)
-		set_color_multiple(f, (int [8]){0xFF0000, 0xFF7F00, 0xFFFF00,
+		alt_color = exec->color;
+	if (exec->color_pattern == 5)
+		set_color_contrasted(exec, alt_color);
+	else if (exec->color_pattern == 6)
+		set_color_opposites(exec, exec->color);
+	else if (exec->color_pattern == 7)
+		set_color_graphic(exec, exec->color);
+	else if (exec->color_pattern == 8)
+		set_color_multiple(exec, (int [8]){0xFF0000, 0xFF7F00, 0xFFFF00,
 			0x00FF00, 0x0000FF, 0x4B0082, 0x9400D3, 0xFFFFFF}, 8);
 }
 
@@ -41,16 +41,16 @@ static void	color_shift_special(t_fractol *f)
 *	The fractal can then be rendered again with different color
 *	effects.
 */
-static void	color_shift_striped(t_fractol *f)
+static void	color_shift_striped(t_fractol *exec)
 {
-	if (f->color_pattern == 2)
-		set_color_zebra(f, f->color);
-	else if (f->color_pattern == 3)
-		set_color_triad(f, f->color);
-	else if (f->color_pattern == 4)
-		set_color_tetra(f, f->color);
+	if (exec->color_pattern == 2)
+		set_color_zebra(exec, exec->color);
+	else if (exec->color_pattern == 3)
+		set_color_triad(exec, exec->color);
+	else if (exec->color_pattern == 4)
+		set_color_tetra(exec, exec->color);
 	else
-		color_shift_special(f);
+		color_shift_special(exec);
 }
 
 /* color_shift:
@@ -58,21 +58,21 @@ static void	color_shift_striped(t_fractol *f)
 *	The fractal can then be rendered again with different color
 *	effects.
 */
-void	color_shift(t_fractol *f)
+void	color_shift(t_fractol *exec)
 {
 	int	alt_color;
 
-	f->color_pattern = (f->color_pattern + 1) % 9;
-	reinit_img(f);
-	if (f->color == 0x000000)
+	exec->color_pattern = (exec->color_pattern + 1) % 9;
+	reinit_img(exec);
+	if (exec->color == 0x000000)
 		alt_color = 0x333333;
 	else
-		alt_color = f->color;
-	if (f->color_pattern == 0)
-		set_color_mono(f, alt_color);
-	else if (f->color_pattern == 1)
-		set_color_multiple(f, (int [4]){0x000000, alt_color,
-			get_percent_color(f->color, 50), 0xFFFFFF}, 4);
+		alt_color = exec->color;
+	if (exec->color_pattern == 0)
+		set_color_mono(exec, alt_color);
+	else if (exec->color_pattern == 1)
+		set_color_multiple(exec, (int [4]){0x000000, alt_color,
+			get_percent_color(exec->color, 50), 0xFFFFFF}, 4);
 	else
-		color_shift_striped(f);
+		color_shift_striped(exec);
 }

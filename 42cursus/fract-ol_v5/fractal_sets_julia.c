@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:22:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 *	fractal shape. This function should be called when the user clicks on
 *	a point on the sceen.
 */
-int	julia_shift(int x, int y, t_fractol *f)
+int	julia_shift(int x, int y, t_fractol *exec)
 {
-	f->kr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
-	f->ki = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
-	render(f);
+	exec->kr = exec->min_r + (double)x * (exec->max_r - exec->min_r) / WIDTH;
+	exec->ki = exec->max_i + (double)y * (exec->min_i - exec->max_i) / HEIGHT;
+	render(exec);
 	return (0);
 }
 
@@ -32,7 +32,7 @@ int	julia_shift(int x, int y, t_fractol *f)
 *	Returns the number of iterations before the number escapes 
 *	the Julia set, which can then be used to determine coloring.
 */
-int	julia(t_fractol *f, double zr, double zi)
+int	julia(t_fractol *exec, double zr, double zi)
 {
 	int		n;
 	double	tmp;
@@ -42,8 +42,8 @@ int	julia(t_fractol *f, double zr, double zi)
 	{
 		if ((zi * zi + zr * zr) > 4.0)
 			break ;
-		tmp = 2 * zr * zi + f->ki;
-		zr = zr * zr - zi * zi + f->kr;
+		tmp = 2 * zr * zi + exec->ki;
+		zr = zr * zr - zi * zi + exec->kr;
 		zi = tmp;
 		n++;
 	}

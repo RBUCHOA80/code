@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:52 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static double	ball_fold(double r, double m)
 *	Returns the number of iterations before the number escapes 
 *	the Mandelbox set, which can then be used to determine coloring.
 */
-int	mandelbox(t_fractol *f, double cr, double ci)
+int	mandelbox(t_fractol *exec, double cr, double ci)
 {
 	int		n;
 	double	vr;
@@ -50,11 +50,11 @@ int	mandelbox(t_fractol *f, double cr, double ci)
 	n = 0;
 	while (n < MAX_ITERATIONS)
 	{		
-		vr = f->fx * box_fold(vr);
-		vi = f->fx * box_fold(vi);
+		vr = exec->fx * box_fold(vr);
+		vi = exec->fx * box_fold(vi);
 		mag = sqrt(vr * vr + vi * vi);
-		vr = vr * f->sx * ball_fold(f->rx, mag) + cr;
-		vi = vi * f->sx * ball_fold(f->rx, mag) + ci;
+		vr = vr * exec->sx * ball_fold(exec->rx, mag) + cr;
+		vi = vi * exec->sx * ball_fold(exec->rx, mag) + ci;
 		if (sqrt(mag) > 2)
 			break ;
 		n++;

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:29:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 *	and destroying the display. Exits the process with the provided
 *	exit code.
 */
-void	clean_exit(int exit_code, t_fractol *f)
+void	clean_exit(int exit_code, t_fractol *exec)
 {
-	if (!f)
+	if (!exec)
 		exit(exit_code);
-	if (f->palette)
-		free(f->palette);
-	if (f->img)
-		mlx_destroy_image(f->mlx, f->img);
-	if (f->win && f->mlx)
-		mlx_destroy_window(f->mlx, f->win);
-	if (f->mlx)
+	if (exec->palette)
+		free(exec->palette);
+	if (exec->img)
+		mlx_destroy_image(exec->mlx, exec->img);
+	if (exec->win && exec->mlx)
+		mlx_destroy_window(exec->mlx, exec->win);
+	if (exec->mlx)
 	{
-		mlx_loop_end(f->mlx);
-		mlx_destroy_display(f->mlx);
-		free(f->mlx);
+		mlx_loop_end(exec->mlx);
+		mlx_destroy_display(exec->mlx);
+		free(exec->mlx);
 	}
 	exit(exit_code);
 }

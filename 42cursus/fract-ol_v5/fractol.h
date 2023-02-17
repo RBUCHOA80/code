@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/13 20:59:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,25 +106,25 @@ typedef struct s_fractol
 
 /*  Fractal Sets  */
 int		mandelbrot(double cr, double ci);
-int		julia(t_fractol *f, double zr, double zi);
+int		julia(t_fractol *exec, double zr, double zi);
 int		burning_ship(double cr, double ci);
 int		tricorn(double cr, double ci);
-int		mandelbox(t_fractol *f, double cr, double ci);
+int		mandelbox(t_fractol *exec, double cr, double ci);
 
 /*  Draw Fractal  */
-void	render(t_fractol *f);
-int		julia_shift(int x, int y, t_fractol *f);
+void	render(t_fractol *exec);
+int		julia_shift(int x, int y, t_fractol *exec);
 
 /* Colors  */
-void	color_shift(t_fractol *f);
-void	set_color_mono(t_fractol *f, int color);
-void	set_color_multiple(t_fractol *f, int colors[4], int n);
-void	set_color_zebra(t_fractol *f, int color);
-void	set_color_triad(t_fractol *f, int color);
-void	set_color_tetra(t_fractol *f, int color);
-void	set_color_opposites(t_fractol *f, int color);
-void	set_color_contrasted(t_fractol *f, int color);
-void	set_color_graphic(t_fractol *f, int color);
+void	color_shift(t_fractol *exec);
+void	set_color_mono(t_fractol *exec, int color);
+void	set_color_multiple(t_fractol *exec, int colors[4], int n);
+void	set_color_zebra(t_fractol *exec, int color);
+void	set_color_triad(t_fractol *exec, int color);
+void	set_color_tetra(t_fractol *exec, int color);
+void	set_color_opposites(t_fractol *exec, int color);
+void	set_color_contrasted(t_fractol *exec, int color);
+void	set_color_graphic(t_fractol *exec, int color);
 int		get_percent_color(int color, double percent);
 
 /*  Events  */
@@ -132,18 +132,18 @@ int		key_event(int keycode, t_fractol *mlx);
 int		mouse_event(int keycode, int x, int y, t_fractol *mlx);
 
 /* Initialization  */
-void	init_struct(t_fractol *f);
-void	reinit_img(t_fractol *f);
-void	init(t_fractol *f);
-void	get_complex_layout(t_fractol *f);
-//void	get_color(t_fractol *f, int ac, char **av);
+void	init_struct(t_fractol *exec);
+void	reinit_img(t_fractol *exec);
+void	init(t_fractol *exec);
+void	get_complex_layout(t_fractol *exec);
+//void	get_color(t_fractol *exec, int ac, char **av);
 double	ft_atof(char *str);
 
 /*  Utils  */
 int		end_fractol(t_fractol *mlx);
-void	clean_exit(int error_code, t_fractol *f);
+void	clean_exit(int error_code, t_fractol *exec);
 int		msg(char *str1, char *str2, int errno);
-void	help_msg(t_fractol *f);
+void	help_msg(t_fractol *exec);
 void	print_controls(void);
 int		ft_ishexdigit(int c);
 int		ft_isspace(int c);

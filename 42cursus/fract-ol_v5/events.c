@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,49 +20,49 @@
 *	If the zoom multiplier is small, like 0.5, the view will
 *	zoom in, if it is big, like 2.0, it will zoom out.
 */
-static void	zoom(t_fractol *f, double zoom)
+static void	zoom(t_fractol *exec, double zoom)
 {
 	double	center_r;
 	double	center_i;
 
-	center_r = f->min_r - f->max_r;
-	center_i = f->max_i - f->min_i;
-	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
-	f->min_r = f->max_r + zoom * center_r;
-	f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
-	f->max_i = f->min_i + zoom * center_i;
+	center_r = exec->min_r - exec->max_r;
+	center_i = exec->max_i - exec->min_i;
+	exec->max_r = exec->max_r + (center_r - zoom * center_r) / 2;
+	exec->min_r = exec->max_r + zoom * center_r;
+	exec->min_i = exec->min_i + (center_i - zoom * center_i) / 2;
+	exec->max_i = exec->min_i + zoom * center_i;
 }
 
 /* move:
 *	Moves the view of the fractal by adjusting the complex
 *	number edge values a certain distance in a certain direction.
 */
-static void	move(t_fractol *f, double distance, char direction)
+static void	move(t_fractol *exec, double distance, char direction)
 {
 	double	center_r;
 	double	center_i;
 
-	center_r = f->max_r - f->min_r;
-	center_i = f->max_i - f->min_i;
+	center_r = exec->max_r - exec->min_r;
+	center_i = exec->max_i - exec->min_i;
 	if (direction == 'R')
 	{
-		f->min_r += center_r * distance;
-		f->max_r += center_r * distance;
+		exec->min_r += center_r * distance;
+		exec->max_r += center_r * distance;
 	}
 	else if (direction == 'L')
 	{
-		f->min_r -= center_r * distance;
-		f->max_r -= center_r * distance;
+		exec->min_r -= center_r * distance;
+		exec->max_r -= center_r * distance;
 	}
 	else if (direction == 'D')
 	{
-		f->min_i -= center_i * distance;
-		f->max_i -= center_i * distance;
+		exec->min_i -= center_i * distance;
+		exec->max_i -= center_i * distance;
 	}
 	else if (direction == 'U')
 	{
-		f->min_i += center_i * distance;
-		f->max_i += center_i * distance;
+		exec->min_i += center_i * distance;
+		exec->max_i += center_i * distance;
 	}
 }
 

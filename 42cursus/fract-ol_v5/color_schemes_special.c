@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:25 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 #include "./fractol.h"
 
-void	set_color_opposites(t_fractol *f, int color)
+void	set_color_opposites(t_fractol *exec, int color)
 {
 	int	i;
 	int	r;
@@ -41,16 +41,16 @@ void	set_color_opposites(t_fractol *f, int color)
 	i = -1;
 	while (++i < MAX_ITERATIONS)
 	{
-		f->palette[i] = 0;
+		exec->palette[i] = 0;
 		r += i % 0xFF;
 		g += i % 0xFF;
 		b += i % 0xFF;
-		f->palette[i] = 0xFF << 24 | r << 16 | g << 8 | b;
+		exec->palette[i] = 0xFF << 24 | r << 16 | g << 8 | b;
 	}
-	f->palette[MAX_ITERATIONS - 1] = 0;
+	exec->palette[MAX_ITERATIONS - 1] = 0;
 }
 
-void	set_color_contrasted(t_fractol *f, int color)
+void	set_color_contrasted(t_fractol *exec, int color)
 {
 	int	i;
 	int	r;
@@ -63,19 +63,19 @@ void	set_color_contrasted(t_fractol *f, int color)
 	i = -1;
 	while (++i < MAX_ITERATIONS)
 	{
-		f->palette[i] = 0;
+		exec->palette[i] = 0;
 		if (r != 0xFF)
 			r += i % 0xFF;
 		if (g != 0xFF)
 			g += i % 0xFF;
 		if (b != 0xFF)
 			b += i % 0xFF;
-		f->palette[i] = 0xFF << 24 | r << 16 | g << 8 | b;
+		exec->palette[i] = 0xFF << 24 | r << 16 | g << 8 | b;
 	}
-	f->palette[MAX_ITERATIONS - 1] = 0;
+	exec->palette[MAX_ITERATIONS - 1] = 0;
 }
 
-void	set_color_graphic(t_fractol *f, int color)
+void	set_color_graphic(t_fractol *exec, int color)
 {
 	int	i;
 	int	rgb[3];
@@ -95,11 +95,11 @@ void	set_color_graphic(t_fractol *f, int color)
 	}
 	while (++i < MAX_ITERATIONS)
 	{
-		f->palette[i] = 0;
+		exec->palette[i] = 0;
 		rgb[0] -= i % 0xFF;
 		rgb[1] -= i % 0xFF;
 		rgb[2] -= i % 0xFF;
-		f->palette[i] = 0xFF << 24 | rgb[0] << 16 | rgb[1] << 8 | rgb[2];
+		exec->palette[i] = 0xFF << 24 | rgb[0] << 16 | rgb[1] << 8 | rgb[2];
 	}
-	f->palette[MAX_ITERATIONS - 1] = 0;
+	exec->palette[MAX_ITERATIONS - 1] = 0;
 }
