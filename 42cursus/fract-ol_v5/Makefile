@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/16 19:50:36 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/16 21:05:49 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ ifeq ($(shell uname), Darwin)	#MacOS
 	SYSTEM			=	@printf "\e[1;33mMacOS detected.\n\e[m"
 	MLX_PATH		=	$(LIBS_PATH)libmlx/_macos/
 	MLX_FLAGS		=	-lmlx -framework AppKit -framework OpenGL
-	INTALL			=	Brew install Xquartz ; reboot
+	INTALL			=	Brew update ; Brew install Xquartz ; reboot
 else							#Linux
 	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
 	MLX_PATH		=	$(LIBS_PATH)libmlx/_linux/
 	MLX_FLAGS		=	-lXext -lX11 -lm
-	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
+	INSTALL			=	sudo apt update ; sudo apt upgrade -y ; sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
 
 #MAKEFLAGS	=	--silent
