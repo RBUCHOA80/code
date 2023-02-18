@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:24:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/17 20:30:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ void	init_struct(t_fractol *exec)
 	exec->palette = NULL;
 	exec->color_pattern = -1;
 	exec->color = 0;
+}
+
+void	init(t_fractol *exec)
+{
+	exec->mlx = mlx_init();
+	if (!exec->mlx)
+		clean_exit(msg("MLX: error connecting to mlx.", "", 1), exec);
+	exec->win = mlx_new_window(exec->mlx, WIDTH, HEIGHT, "Fractol");
+	if (!exec->win)
+		clean_exit(msg("MLX: error creating window.", "", 1), exec);
+	exec->sx = 2.0;
+	exec->rx = 0.5;
+	exec->fx = 1.0;
+	get_complex_layout(exec);
+	color_shift(exec);
 }
 
 /* get_complex_layout:
@@ -105,19 +120,4 @@ void	reinit_img(t_fractol *exec)
 	if (exec->buf)
 		exec->buf = NULL;
 	init_img(exec);
-}
-
-void	init(t_fractol *exec)
-{
-	exec->mlx = mlx_init();
-	if (!exec->mlx)
-		clean_exit(msg("MLX: error connecting to mlx.", "", 1), exec);
-	exec->win = mlx_new_window(exec->mlx, WIDTH, HEIGHT, "Fractol");
-	if (!exec->win)
-		clean_exit(msg("MLX: error creating window.", "", 1), exec);
-	exec->sx = 2.0;
-	exec->rx = 0.5;
-	exec->fx = 1.0;
-	get_complex_layout(exec);
-	color_shift(exec);
 }

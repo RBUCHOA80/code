@@ -6,11 +6,35 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:22:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/17 20:30:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
+
+void	render(t_fractol *exec)
+{
+	int		x;
+	int		y;
+	double	pr;
+	double	pi;
+	int		nb_iter;
+
+	mlx_clear_window(exec->mlx, exec->win);
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+		{
+			pr = exec->min_r + (double)x * (exec->max_r - exec->min_r) / WIDTH;
+			pi = exec->max_i + (double)y * (exec->min_i - exec->max_i) / HEIGHT;
+			nb_iter = calculate_fractal(exec, pr, pi);
+			set_pixel_color(exec, x, y, exec->palette[nb_iter]);
+		}
+	}
+	mlx_put_image_to_window(exec->mlx, exec->win, exec->img, 0, 0);
+}
 
 static void	set_pixel_color(t_fractol *exec, int x, int y, int color)
 {
@@ -39,28 +63,4 @@ static int	calculate_fractal(t_fractol *exec, double pr, double pi)
 	else if (exec->set == MANDELBOX)
 		nb_iter = mandelbox(exec, pr, pi);
 	return (nb_iter);
-}
-
-void	render(t_fractol *exec)
-{
-	int		x;
-	int		y;
-	double	pr;
-	double	pi;
-	int		nb_iter;
-
-	mlx_clear_window(exec->mlx, exec->win);
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		x = -1;
-		while (++x < WIDTH)
-		{
-			pr = exec->min_r + (double)x * (exec->max_r - exec->min_r) / WIDTH;
-			pi = exec->max_i + (double)y * (exec->min_i - exec->max_i) / HEIGHT;
-			nb_iter = calculate_fractal(exec, pr, pi);
-			set_pixel_color(exec, x, y, exec->palette[nb_iter]);
-		}
-	}
-	mlx_put_image_to_window(exec->mlx, exec->win, exec->img, 0, 0);
 }
