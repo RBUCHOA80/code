@@ -12,6 +12,35 @@
 
 #include "./fractol.h"
 
+/* calculate_fractal:
+*	Picks the correct fractal calculation function depending
+*	on the current fractal set.
+*/
+static int	calculate_fractal(t_fractol *exec, double pr, double pi)
+{
+	int	nb_iter;
+
+	if (exec->set == MANDELBROT)
+		nb_iter = mandelbrot(pr, pi);
+	else if (exec->set == JULIA)
+		nb_iter = julia(exec, pr, pi);
+	else if (exec->set == BURNING_SHIP)
+		nb_iter = burning_ship(pr, pi);
+	else if (exec->set == TRICORN)
+		nb_iter = tricorn(pr, pi);
+	else if (exec->set == MANDELBOX)
+		nb_iter = mandelbox(exec, pr, pi);
+	return (nb_iter);
+}
+
+static void	set_pixel_color(t_fractol *exec, int x, int y, int color)
+{
+		exec->buf[x * 4 + y * WIDTH * 4] = color;
+		exec->buf[x * 4 + y * WIDTH * 4 + 1] = color >> 8;
+		exec->buf[x * 4 + y * WIDTH * 4 + 2] = color >> 16;
+		exec->buf[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
+}
+
 void	render(t_fractol *exec)
 {
 	int		x;
@@ -34,33 +63,4 @@ void	render(t_fractol *exec)
 		}
 	}
 	mlx_put_image_to_window(exec->mlx, exec->win, exec->img, 0, 0);
-}
-
-static void	set_pixel_color(t_fractol *exec, int x, int y, int color)
-{
-		exec->buf[x * 4 + y * WIDTH * 4] = color;
-		exec->buf[x * 4 + y * WIDTH * 4 + 1] = color >> 8;
-		exec->buf[x * 4 + y * WIDTH * 4 + 2] = color >> 16;
-		exec->buf[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
-}
-
-/* calculate_fractal:
-*	Picks the correct fractal calculation function depending
-*	on the current fractal set.
-*/
-static int	calculate_fractal(t_fractol *exec, double pr, double pi)
-{
-	int	nb_iter;
-
-	if (exec->set == MANDELBROT)
-		nb_iter = mandelbrot(pr, pi);
-	else if (exec->set == JULIA)
-		nb_iter = julia(exec, pr, pi);
-	else if (exec->set == BURNING_SHIP)
-		nb_iter = burning_ship(pr, pi);
-	else if (exec->set == TRICORN)
-		nb_iter = tricorn(pr, pi);
-	else if (exec->set == MANDELBOX)
-		nb_iter = mandelbox(exec, pr, pi);
-	return (nb_iter);
 }
