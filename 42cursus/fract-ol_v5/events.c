@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/27 19:31:18 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,16 @@ static void	move(t_fractol *exec, double distance, char direction)
 	}
 }
 
-/* key_event_extend:
-*	Handles events from the keyboard keys:
-*		- 1, 2, 3, 4, 5: switch fractals
-*	This function is registered to an MLX hook and will
-*	automatically be called when the user does anything inside the
-*	program window with the keyboard.
-*	If a valid event is detected, settings are adjusted and the fractal
-*	gets redrawn.
-*/
 static int	key_event_extend(int keycode, t_fractol *mlx)
 {
-	if (keycode == KEY_ONE && mlx->set != MANDELBROT)
+	if (keycode == KEY_ONE)
 		mlx->set = MANDELBROT;
-	else if (keycode == KEY_TWO && mlx->set != JULIA)
+	else if (keycode == KEY_TWO)
 		mlx->set = JULIA;
-	else if (keycode == KEY_THREE && mlx->set != BURNING_SHIP)
+	else if (keycode == KEY_THREE)
 		mlx->set = BURNING_SHIP;
-	else if (keycode == KEY_FOUR && mlx->set != TRICORN)
+	else if (keycode == KEY_FOUR)
 		mlx->set = TRICORN;
-	else if (keycode == KEY_FIVE && mlx->set != MANDELBOX)
-		mlx->set = MANDELBOX;
 	else
 		return (1);
 	get_complex_layout(mlx);

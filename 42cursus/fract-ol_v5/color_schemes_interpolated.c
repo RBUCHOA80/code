@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:14 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/27 19:02:48 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ void	set_color_multiple(t_fractol *exec, int colors[4], int n)
 		while ((i + j) < MAX_ITERATIONS && j < (MAX_ITERATIONS / (n - 1)))
 		{
 			fraction = (double)j / (MAX_ITERATIONS / (n - 1));
-			exec->palette[i + j] = interpolate(colors[x], colors[x + 1], fraction);
+			exec->palette[i + j] = \
+				interpolate(colors[x], colors[x + 1], fraction);
 			j++;
 		}
 		x++;

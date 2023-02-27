@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/12 09:18:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/27 19:45:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	burning_ship(double cr, double ci)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
 			break ;
-		zr = fabs(zr);
-		zi = fabs(zi);
+		zr = ft_abs(zr);
+		zi = ft_abs(zi);
 		tmp = 2 * zr * zi + ci;
 		zr = zr * zr - zi * zi + cr;
 		zi = tmp;
@@ -42,10 +42,3 @@ int	burning_ship(double cr, double ci)
 	}
 	return (n);
 }
-/*
-	How it works:
-
-	The Burning Ship fractal is a distortion of the Mandelbrot
-	fractal. It uses the same equation to calculate the set, but
-	uses absolute values of zr and zi at each iteration.
-*/

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 20:42:15 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/27 19:32:14 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/02/27 19:39:47 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/02/27 19:45:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-int	main(void)
+double	ft_abs(double c)
 {
-	t_fractol	exec;
+	double	ret;
 
-	init_struct(&exec);
-	init(&exec);
-	render(&exec);
-	mlx_hook((&exec)->win, EVENT_CLOSE_BTN, 0, end_fractol, &exec);
-	mlx_key_hook((&exec)->win, key_event, &exec);
-	mlx_mouse_hook((&exec)->win, mouse_event, &exec);
-	mlx_loop((&exec)->mlx);
+	if (c < 0)
+		ret = -c;
+	else
+		ret = c;
+	return (ret);
 }

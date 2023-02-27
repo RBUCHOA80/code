@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:22:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/27 19:47:33 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <mlx.h> //libmlx
 # include <libft.h> //libft
 # include <stdio.h>
-# include <math.h>
 
 # if __APPLE__ /*  MacOS Keys  */
 #  define EVENT_CLOSE_BTN	17
@@ -36,7 +35,6 @@
 #  define KEY_TWO			50
 #  define KEY_THREE			51
 #  define KEY_FOUR			52
-#  define KEY_FIVE			53
 #  define KEY_K				107
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
@@ -61,7 +59,6 @@
 #  define KEY_TWO			50
 #  define KEY_THREE			51
 #  define KEY_FOUR			52
-#  define KEY_FIVE			53
 #  define KEY_K				107
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
@@ -109,7 +106,6 @@ int		mandelbrot(double cr, double ci);
 int		julia(t_fractol *exec, double zr, double zi);
 int		burning_ship(double cr, double ci);
 int		tricorn(double cr, double ci);
-int		mandelbox(t_fractol *exec, double cr, double ci);
 
 /*  Draw Fractal  */
 void	render(t_fractol *exec);
@@ -147,5 +143,8 @@ void	help_msg(t_fractol *exec);
 void	print_controls(void);
 int		ft_ishexdigit(int c);
 int		ft_isspace(int c);
+
+/*  Math  */
+double	ft_abs(double c);
 
 #endif

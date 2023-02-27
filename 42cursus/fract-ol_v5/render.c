@@ -6,16 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/17 20:30:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/27 19:27:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-/* calculate_fractal:
-*	Picks the correct fractal calculation function depending
-*	on the current fractal set.
-*/
 static int	calculate_fractal(t_fractol *exec, double pr, double pi)
 {
 	int	nb_iter;
@@ -28,8 +24,6 @@ static int	calculate_fractal(t_fractol *exec, double pr, double pi)
 		nb_iter = burning_ship(pr, pi);
 	else if (exec->set == TRICORN)
 		nb_iter = tricorn(pr, pi);
-	else if (exec->set == MANDELBOX)
-		nb_iter = mandelbox(exec, pr, pi);
 	return (nb_iter);
 }
 

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/16 21:05:49 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/02/27 19:43:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,8 @@ SRC_LIST			=	color_schemes_interpolated.c \
 						fractal_sets_julia.c \
 						fractal_sets_burning_ship.c \
 						fractal_sets_tricorn.c \
-						fractal_sets_mandelbox.c \
 						fractol.c \
+						ft_abs.c \
 						ft_ishexdigit.c \
 						ft_isspace.c \
 						init.c \

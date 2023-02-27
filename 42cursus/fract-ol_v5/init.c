@@ -6,47 +6,45 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/17 20:30:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/02/27 19:23:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-void	init_struct(t_fractol *exec)
+void	init_struct(t_fractol *fract)
 {
-	exec->mlx = NULL;
-	exec->win = NULL;
-	exec->img = NULL;
-	exec->buf = NULL;
-	exec->set = MANDELBROT;
-	exec->min_r = 0;
-	exec->max_r = 0;
-	exec->min_i = 0;
-	exec->max_i = 0;
-	exec->kr = 0;
-	exec->ki = 0;
-	exec->sx = 0;
-	exec->rx = 0;
-	exec->fx = 0;
-	exec->palette = NULL;
-	exec->color_pattern = -1;
-	exec->color = 0;
+	fract->mlx = NULL;
+	fract->win = NULL;
+	fract->img = NULL;
+	fract->buf = NULL;
+	fract->set = MANDELBROT;
+	fract->min_r = 0;
+	fract->max_r = 0;
+	fract->min_i = 0;
+	fract->max_i = 0;
+	fract->kr = 0;
+	fract->ki = 0;
+	fract->sx = 0;
+	fract->rx = 0;
+	fract->fx = 0;
+	fract->palette = NULL;
+	fract->color_pattern = -1;
+	fract->color = 0;
 }
 
-void	init(t_fractol *exec)
+void	init(t_fractol *fract)
 {
-	exec->mlx = mlx_init();
-	if (!exec->mlx)
-		clean_exit(msg("MLX: error connecting to mlx.", "", 1), exec);
-	exec->win = mlx_new_window(exec->mlx, WIDTH, HEIGHT, "Fractol");
-	if (!exec->win)
-		clean_exit(msg("MLX: error creating window.", "", 1), exec);
-	exec->sx = 2.0;
-	exec->rx = 0.5;
-	exec->fx = 1.0;
-	get_complex_layout(exec);
-	color_shift(exec);
+	fract->mlx = mlx_init();
+	fract->win = mlx_new_window(fract->mlx, WIDTH, HEIGHT, "42|RIO - fract-ol");
+	fract->sx = 0.0;
+	fract->rx = 0.5;
+	fract->fx = 1.0;
+	get_complex_layout(fract);
+	color_shift(fract);
 }
+
+//verificado
 
 /* get_complex_layout:
 *	Maps the complex number axes to the window width and height to
@@ -66,21 +64,24 @@ void	get_complex_layout(t_fractol *exec)
 		exec->min_r = -4.0;
 		exec->max_r = 4.0;
 		exec->min_i = -4.0;
-		exec->max_i = exec->min_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
+		exec->max_i = \
+			exec->min_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
 	}
 	else if (exec->set == JULIA)
 	{
 		exec->min_r = -2.0;
 		exec->max_r = 2.0;
 		exec->min_i = -2.0;
-		exec->max_i = exec->min_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
+		exec->max_i = \
+			exec->min_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
 	}
 	else
 	{
 		exec->min_r = -2.0;
 		exec->max_r = 1.0;
 		exec->max_i = -1.5;
-		exec->min_i = exec->max_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
+		exec->min_i = \
+			exec->max_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
 	}
 }
 
