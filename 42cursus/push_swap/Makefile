@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 18:45:54 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/11 17:04:30 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/03/04 20:20:02 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,4 +135,7 @@ tall:					$(NAME)
 						bash ./tester/tester.sh ../$(NAME) 500 $(COUNT)
 
 visualizer:				$(NAME)
-						./visualizer/visualizer_linux_amd64
+						mkdir -p build
+						cmake -S ./visualizer/ -B ./visualizer/build/
+						make -C ./visualizer/build/
+						./visualizer/build/bin/visualizer
