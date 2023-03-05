@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/27 19:47:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:44:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,25 @@
 
 # if __APPLE__ /*  MacOS Keys  */
 #  define EVENT_CLOSE_BTN	17
-#  define KEY_ESC			65307
-#  define KEY_W				119
-#  define KEY_A				97
-#  define KEY_S				115
-#  define KEY_D				100
-#  define KEY_UP			65362
-#  define KEY_DOWN			65364
-#  define KEY_LEFT			65361
-#  define KEY_RIGHT			65363
-#  define KEY_PLUS			61
-#  define KEY_MINUS			45
-#  define KEY_SPACE			32
-#  define KEY_ONE			49
-#  define KEY_TWO			50
-#  define KEY_THREE			51
-#  define KEY_FOUR			52
-#  define KEY_K				107
+#  define KEY_ESC			53
+#  define KEY_W				13
+#  define KEY_A				0
+#  define KEY_S				1
+#  define KEY_D				2
+#  define KEY_UP			126
+#  define KEY_DOWN			125
+#  define KEY_LEFT			123
+#  define KEY_RIGHT			124
+#  define KEY_PLUS			24
+#  define KEY_MINUS			27
+#  define KEY_SPACE			49
+#  define KEY_ONE			18
+#  define KEY_TWO			19
+#  define KEY_THREE			20
+#  define KEY_FOUR			21
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
-#  define MOUSE_WHEEL_BTN	3
 #  define MOUSE_BTN			1
-#  define MOUSE_BTN_2		3
 # else /*  Linux Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			65307
@@ -59,12 +56,9 @@
 #  define KEY_TWO			50
 #  define KEY_THREE			51
 #  define KEY_FOUR			52
-#  define KEY_K				107
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
-#  define MOUSE_WHEEL_BTN	3
 #  define MOUSE_BTN			1
-#  define MOUSE_BTN_2		3
 # endif
 
 /*  Dimensions  */

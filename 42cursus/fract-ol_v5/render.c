@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/27 19:27:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:33:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	calculate_fractal(t_fractol *exec, double pr, double pi)
 		nb_iter = burning_ship(pr, pi);
 	else if (exec->set == TRICORN)
 		nb_iter = tricorn(pr, pi);
+	else
+		nb_iter = mandelbrot(pr, pi);
 	return (nb_iter);
 }
 

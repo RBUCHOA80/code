@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:43:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:29:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:39:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	clean_exit(int exit_code, t_fractol *exec)
 		mlx_destroy_image(exec->mlx, exec->img);
 	if (exec->win && exec->mlx)
 		mlx_destroy_window(exec->mlx, exec->win);
-	if (exec->mlx)
+/* 	if (exec->mlx)
 	{
 		mlx_loop_end(exec->mlx);
 		mlx_destroy_display(exec->mlx);
 		free(exec->mlx);
-	}
+	} */
 	exit(exit_code);
 }
 
