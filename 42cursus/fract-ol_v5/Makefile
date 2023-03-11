@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/27 19:43:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/03/11 08:29:14 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ else							#Linux
 	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
 	MLX_PATH		=	$(LIBS_PATH)libmlx/_linux/
 	MLX_FLAGS		=	-lXext -lX11 -lm
-	INSTALL			=	sudo apt update ; sudo apt upgrade -y ; sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
+	INSTALL			=	sudo apt update ; sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
 
 #MAKEFLAGS	=	--silent
