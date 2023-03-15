@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/03/04 21:44:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/14 18:52:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@
 # define JULIA				2
 # define BURNING_SHIP		3
 # define TRICORN			4
-# define MANDELBOX			5
 
 /*  Struct  */
 typedef struct s_fractol
@@ -124,9 +123,7 @@ int		mouse_event(int keycode, int x, int y, t_fractol *mlx);
 /* Initialization  */
 void	init_struct(t_fractol *exec);
 void	reinit_img(t_fractol *exec);
-void	init(t_fractol *exec);
 void	get_complex_layout(t_fractol *exec);
-//void	get_color(t_fractol *exec, int ac, char **av);
 double	ft_atof(char *str);
 
 /*  Utils  */

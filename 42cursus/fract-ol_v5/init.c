@@ -6,84 +6,56 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/03/04 21:31:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/14 19:20:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-void	init_struct(t_fractol *fract)
+void	init_struct(t_fractol *exec)
 {
-	fract->mlx = NULL;
-	fract->win = NULL;
-	fract->img = NULL;
-	fract->buf = NULL;
-	fract->set = MANDELBROT;
-	fract->min_r = 0;
-	fract->max_r = 0;
-	fract->min_i = 0;
-	fract->max_i = 0;
-	fract->kr = 0;
-	fract->ki = 0;
-	fract->sx = 0;
-	fract->rx = 0;
-	fract->fx = 0;
-	fract->palette = NULL;
-	fract->color_pattern = -1;
-	fract->color = 0;
+	exec->mlx = mlx_init();
+	exec->win = mlx_new_window(exec->mlx, WIDTH, HEIGHT, "42|RIO - fract-ol");
+	exec->img = NULL;
+	exec->buf = NULL;
+	exec->set = MANDELBROT;
+	exec->max_r = 0;
+	exec->min_r = 0;
+	exec->max_i = 0;
+	exec->min_i = 0;
+	exec->kr = 0;
+	exec->ki = 0;
+	exec->sx = 0.0;
+	exec->rx = 0.5;
+	exec->fx = 1.0;
+	exec->palette = NULL;
+	exec->color_pattern = -1;
+	exec->color = 0;
+	get_complex_layout(exec);
+	color_shift(exec);
 }
 
-void	init(t_fractol *fract)
-{
-	fract->mlx = mlx_init();
-	fract->win = mlx_new_window(fract->mlx, WIDTH, HEIGHT, "42|RIO - fract-ol");
-	fract->sx = 0.0;
-	fract->rx = 0.5;
-	fract->fx = 1.0;
-	get_complex_layout(fract);
-	color_shift(fract);
-}
-
-//verificado
-
-/* get_complex_layout:
-*	Maps the complex number axes to the window width and height to
-*	create an equivalence between a given pixel and a complex number.
-*		- The Mandelbox set real and imaginary axes range from 4 to -4
-*		so the edges are mapped to those numbers for the fractal to appear
-*		centered.
-*		- Julia needs a bit more space to the right than Mandelbrot or
-*		Burning Ship, so the mapping must also be shifted slightly.
-*	Also, one of the edges is always calculated according to the other edges
-*	to avoid fractal distortion if the window proportions change.
-*/
 void	get_complex_layout(t_fractol *exec)
 {
-	if (exec->set == MANDELBOX)
+	if (exec->set == JULIA)
 	{
-		exec->min_r = -4.0;
-		exec->max_r = 4.0;
-		exec->min_i = -4.0;
-		exec->max_i = \
-			exec->min_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
-	}
-	else if (exec->set == JULIA)
-	{
-		exec->min_r = -2.0;
 		exec->max_r = 2.0;
-		exec->min_i = -2.0;
+		exec->min_r = -2.0;
 		exec->max_i = \
 			exec->min_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
+		exec->min_i = -2.0;
 	}
 	else
 	{
-		exec->min_r = -2.0;
 		exec->max_r = 1.0;
+		exec->min_r = -2.0;
 		exec->max_i = -1.5;
 		exec->min_i = \
 			exec->max_i + (exec->max_r - exec->min_r) * HEIGHT / WIDTH;
 	}
 }
+
+//verificado
 
 /* init_img:
 *	Initializes an MLX image and a color palette. The color palette will
