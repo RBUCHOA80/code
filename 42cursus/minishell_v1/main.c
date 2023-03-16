@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 00:44:47 by egomes-j         ###   ########.fr       */
+/*   Updated: 2023/03/16 07:38:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void cmd_ls_l(void)
 {
-	printf("command called l\n");
+	printf("%scommand called l%S\n", GREEN, WHILE);
 }
 
 void cmd_ls_a(void)
