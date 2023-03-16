@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 07:57:13 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/16 07:59:18 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void cmd_ls_l(void)
 {
-	printf("%s %s %s", GREEN, "command called l\n", WHITE);
+	printf("%s %s %s", GREEN, "arg called: l\n", WHITE);
 	printf("%s %s %s", GREY, "cinza\n", WHITE);
 	printf("%s %s %s", RED, "vermelho\n", WHITE);
 	printf("%s %s %s", GREEN, "verde\n", WHITE);
@@ -24,17 +24,17 @@ void cmd_ls_l(void)
 
 void cmd_ls_a(void)
 {
-	printf("command called a\n");
+	printf("arg called: a\n");
 }
 
 void cmd_ls_i(void)
 {
-	printf("command called i\n");
+	printf("arg called: i\n");
 }
 
 void cmd_ls_h(void)
 {
-	printf("command called h\n");
+	printf("arg called: h\n");
 }
 
 int ft_get_command_len(void)
@@ -70,7 +70,7 @@ void ft_print_commandline(char *line)
 				{
 					if (ft_strncmp(command[i], args_last[k], ft_strlen(command[i])) == 0)
 					{
-						printf("found args -> %s\n", args_last[k]);
+						printf("found arg(s) -> %s\n", args_last[k]);
 						command_data[j].ft_arg[k]();
 					}
 					k++;
