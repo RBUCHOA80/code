@@ -6,16 +6,17 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 07:49:13 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/16 07:52:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define BLUE "\e[1;30m"
+# define GREY "\e[1;30m"
 # define RED "\e[1;31m"
 # define GREEN "\e[1;32m"
 # define YELLOW "\e[1;33m"
+# define BLUE "\e[1;34m"
 # define WHITE "\e[0m"
 
 # include <stdio.h>

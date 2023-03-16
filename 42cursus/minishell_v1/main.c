@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 07:49:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/16 07:52:52 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 void cmd_ls_l(void)
 {
 	printf("%s %s %s", GREEN, "command called l\n", WHITE);
+	printf("%s %s %s", GREY, "cinza\n", WHITE);
 	printf("%s %s %s", RED, "vermelho\n", WHITE);
 	printf("%s %s %s", GREEN, "verde\n", WHITE);
 	printf("%s %s %s", BLUE, "azul\n", WHITE);
-	printf("%s %s %s", YELLOW, "azul\n", WHITE);
+	printf("%s %s %s", YELLOW, "amarelo\n", WHITE);
 }
 
 void cmd_ls_a(void)
