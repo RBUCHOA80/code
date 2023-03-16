@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 07:52:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/16 07:53:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void cmd_ls_h(void)
 
 int ft_get_command_len(void)
 {
-	return((sizeof(command_data) / sizeof(*command_data)));	
+	return ((sizeof(command_data) / sizeof(*command_data)));
 }
 
 void ft_print_commandline(char *line)
@@ -55,20 +55,20 @@ void ft_print_commandline(char *line)
 	i = 1;
 	j = 0;
 	cmd_len = ft_get_command_len();
-	if(command[0] == NULL)
-		return ;
+	if (command[0] == NULL)
+		return;
 	while (j != cmd_len)
 	{
-		if(ft_strncmp(command_data[j].command_name, command[0], ft_strlen(command[0])) == 0)
+		if (ft_strncmp(command_data[j].command_name, command[0], ft_strlen(command[0])) == 0)
 		{
 			printf("found command -> %s\n", command_data[j].command_name);
-			args_last = ft_split(command_data[j].args, ',');			
-			while(command[i] != NULL)
+			args_last = ft_split(command_data[j].args, ',');
+			while (command[i] != NULL)
 			{
 				k = 0;
-				while(args_last[k] != NULL)
+				while (args_last[k] != NULL)
 				{
-					if(ft_strncmp(command[i], args_last[k], ft_strlen(command[i])) == 0)
+					if (ft_strncmp(command[i], args_last[k], ft_strlen(command[i])) == 0)
 					{
 						printf("found args -> %s\n", args_last[k]);
 						command_data[j].ft_arg[k]();
@@ -82,25 +82,24 @@ void ft_print_commandline(char *line)
 			printf("command not exists -> %s\n", command[0]);
 		j++;
 	}
-		
 }
 
 void minishell_loop(void)
 {
 	char *line;
-	
+
 	while (1)
 	{
 		line = readline("\e[1;31m>$ \e[0m");
 		ft_print_commandline(line);
-		if(!(*line))
+		if (!(*line))
 			break;
 	}
-	return ;	
+	return;
 }
 
 int main(void)
 {
 	minishell_loop();
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
