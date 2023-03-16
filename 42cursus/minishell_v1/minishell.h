@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 00:43:56 by egomes-j         ###   ########.fr       */
+/*   Updated: 2023/03/16 07:49:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define BLUE "\e[1;30m"
+# define RED "\e[1;31m"
 # define GREEN "\e[1;32m"
+# define YELLOW "\e[1;33m"
 # define WHITE "\e[0m"
 
 # include <stdio.h>
