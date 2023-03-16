@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 07:39:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/16 07:40:49 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void cmd_ls_l(void)
 {
-	printf("%scommand called l%s\n", GREEN, WHITE);
+	printf("%s %s %s", GREEN, "command called l\n", WHITE);
 }
 
 void cmd_ls_a(void)
