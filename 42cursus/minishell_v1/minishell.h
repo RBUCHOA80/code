@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 07:52:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/16 22:24:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,25 @@
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
 
-typedef void (*void_ft_ptr)();
+typedef int (*void_ft_ptr)();
 
-void cmd_ls_l(void);
-void cmd_ls_a(void);
-void cmd_ls_i(void);
-void cmd_ls_h(void);
+int	cmd_ls_l(void);
+int	cmd_ls_a(void);
+int	cmd_ls_i(void);
+int	cmd_ls_h(void);
+int	cmd_ls(int index);
 
-typedef struct s_command
+int	cmd_cd(int index);
+
+typedef struct s_cmd
 {
-	char *command_name;
+	char *cmd_name;
 	char *args;
 	void_ft_ptr ft_arg[10];
-} t_command;
+	void_ft_ptr	ft_cmd;
+} t_cmd;
 
-t_command command_data[] = {
+t_cmd cmd_data[] = {
 	{
 		"ls",
 		"l,a,i,h",
@@ -48,9 +52,16 @@ t_command command_data[] = {
 			&cmd_ls_l,
 			&cmd_ls_a,
 			&cmd_ls_i,
-			&cmd_ls_h			
-		}
-	}
+			&cmd_ls_h,
+		},
+		&cmd_ls
+	},
+	{
+		"cd",
+		"",
+		{},
+		&cmd_cd
+	},
 };
 
 #endif
