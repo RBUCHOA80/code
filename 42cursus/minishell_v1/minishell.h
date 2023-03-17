@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/16 22:24:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/17 19:54:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,42 @@
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
 
-typedef int (*void_ft_ptr)();
-
 int	cmd_ls_l(void);
 int	cmd_ls_a(void);
 int	cmd_ls_i(void);
-int	cmd_ls_h(void);
+int	cmd_ls_h(int index);
 int	cmd_ls(int index);
 
 int	cmd_cd(int index);
 
+typedef int	(*t_void_ft_ptr)();
+
 typedef struct s_cmd
 {
-	char *cmd_name;
-	char *args;
-	void_ft_ptr ft_arg[10];
-	void_ft_ptr	ft_cmd;
-} t_cmd;
+	char			*cmd_name;
+	char			*args;
+	t_void_ft_ptr	ft_arg[10];
+	t_void_ft_ptr	ft_cmd;
+}	t_cmd;
 
-t_cmd cmd_data[] = {
-	{
-		"ls",
-		"l,a,i,h",
-		{
-			&cmd_ls_l,
-			&cmd_ls_a,
-			&cmd_ls_i,
-			&cmd_ls_h,
-		},
-		&cmd_ls
-	},
-	{
-		"cd",
-		"",
-		{},
-		&cmd_cd
-	},
+t_cmd		g_cmd_data[] = {
+{
+	"ls",
+	"l,a,i,h",
+{
+	&cmd_ls_l,
+	&cmd_ls_a,
+	&cmd_ls_i,
+	&cmd_ls_h,
+},
+	&cmd_ls
+},
+{
+	"cd",
+	"",
+{},
+	&cmd_cd
+},
 };
 
 #endif
