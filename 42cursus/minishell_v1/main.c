@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/17 20:12:30 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/17 21:50:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,45 +22,46 @@ int	printf_color(void)
 	return (EXIT_SUCCESS);
 }
 
-int	ft_print_cmdline(t_cmd *g_cmd_data)
+void	ft_print_cmd(t_cmd *cmd_data)
 {
-	(void)g_cmd_data;
+	printf("command: %s\n", cmd_data->cmd_name);
+	printf("arg: %s\n", cmd_data->c);
+	return ;
+}
+
+int	cmd_ls_l(t_cmd *cmd_data)
+{
+	ft_print_cmd(cmd_data);
 	return (EXIT_SUCCESS);
 }
 
-int	cmd_ls_l(void)
+int	cmd_ls_a(t_cmd *cmd_data)
 {
-	printf("arg: l\n");
+	ft_print_cmd(cmd_data);
 	return (EXIT_SUCCESS);
 }
 
-int	cmd_ls_a(void)
+int	cmd_ls_i(t_cmd *cmd_data)
 {
-	printf("arg: a\n");
+	ft_print_cmd(cmd_data);
 	return (EXIT_SUCCESS);
 }
 
-int	cmd_ls_i(void)
+int	cmd_ls_h(t_cmd *cmd_data)
 {
-	printf("arg: i\n");
+	ft_print_cmd(cmd_data);
 	return (EXIT_SUCCESS);
 }
 
-int	cmd_ls_h(int index)
+int	cmd_ls(t_cmd *cmd_data)
 {
-	printf("arg: %s\n", g_cmd_data[index].cmd_name);
+	ft_print_cmd(cmd_data);
 	return (EXIT_SUCCESS);
 }
 
-int	cmd_ls(int index)
+int	cmd_cd(t_cmd *cmd_data)
 {
-	printf("command: %s\n", g_cmd_data[index].cmd_name);
-	return (EXIT_SUCCESS);
-}
-
-int	cmd_cd(int index)
-{
-	printf("command: %s\n", g_cmd_data[index].cmd_name);
+	ft_print_cmd(cmd_data);
 	return (EXIT_SUCCESS);
 }
 
@@ -99,14 +100,16 @@ int	ft_execute(char *line)
 					if ((ft_strncmp(cmd_line[arg], args[arg_index], \
 						ft_strlen(cmd_line[arg]))) == 0)
 					{
-						g_cmd_data[cmd_index].ft_arg[arg_index](arg_index);
+						g_cmd_data[cmd_index].c = args[arg_index];
+						g_cmd_data[cmd_index].\
+							ft_arg[arg_index](&g_cmd_data[cmd_index]);
 					}
 					arg_index++;
 				}
 				arg++;
 			}
 			if (arg_index == 0)
-				g_cmd_data[cmd_index].ft_cmd(cmd_index);
+				g_cmd_data[cmd_index].ft_cmd(&g_cmd_data[cmd_index]);
 			return (EXIT_SUCCESS);
 		}
 		cmd_index++;
@@ -146,7 +149,7 @@ dup
 dup2
 execve
 exit
-fork
+fork				//iniciar procesos
 free
 fstat
 getcwd
