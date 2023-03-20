@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/17 21:50:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/20 20:34:12 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,12 @@ int	cmd_ls(t_cmd *cmd_data)
 
 int	cmd_cd(t_cmd *cmd_data)
 {
+	char buff[256];
+	
 	ft_print_cmd(cmd_data);
+	printf("A -> %s\n", getcwd(buff, 256));
+	chdir(cmd_data->c);
+	printf("B -> %s\n", getcwd(buff, 256));	
 	return (EXIT_SUCCESS);
 }
 
@@ -88,23 +93,27 @@ int	ft_execute(char *line)
 	arg_index = 0;
 	while (cmd_index != cmd_len)
 	{
-		if ((ft_strncmp(g_cmd_data[cmd_index].cmd_name, cmd_line[0], \
-			ft_strlen(cmd_line[0]))) == 0)
+		if ((ft_strncmp(g_cmd_data[cmd_index].cmd_name, cmd_line[0], ft_strlen(cmd_line[0]))) == 0)
 		{
 			args = ft_split(g_cmd_data[cmd_index].args, ',');
 			while (cmd_line[arg] != NULL)
 			{
 				arg_index = 0;
-				while (args[arg_index] != NULL)
-				{
-					if ((ft_strncmp(cmd_line[arg], args[arg_index], \
-						ft_strlen(cmd_line[arg]))) == 0)
+				if(cmd_line[arg][0] == '-')
+				{					
+					while (args[arg_index] != NULL)
 					{
-						g_cmd_data[cmd_index].c = args[arg_index];
-						g_cmd_data[cmd_index].\
-							ft_arg[arg_index](&g_cmd_data[cmd_index]);
+						if ((ft_strncmp(cmd_line[arg], args[arg_index], ft_strlen(cmd_line[arg]))) == 0)
+						{
+							g_cmd_data[cmd_index].c = args[arg_index];
+							g_cmd_data[cmd_index].ft_arg[arg_index](&g_cmd_data[cmd_index]);
+						}
+						arg_index++;
 					}
-					arg_index++;
+				}
+				else
+				{
+					printf("G -> %s\n", cmd_line[arg]);					
 				}
 				arg++;
 			}
@@ -160,12 +169,12 @@ kill
 lstat
 malloc
 open
-opendir				//vamos usar para cd
+opendir				// DIR *opendir(const char *name);
 perror
 pipe
 printf
 read
-readdir				//vamos usar para cd
+readdir				// struct dirent *readdir(DIR *dirp);
 readline			//usado para capturar entrada na linha de comando
 rl_clear_history
 rl_on_new_line
@@ -193,4 +202,9 @@ wait3
 wait4
 waitpid
 write
+
+### Erros conhecidos ###
+
+1 - ls está guardando o último arg (quando passado)
+
 */

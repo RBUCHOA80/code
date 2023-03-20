@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
+#    By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 20:03:26 by egomes-j          #+#    #+#              #
-#    Updated: 2023/03/17 20:08:01 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/03/20 20:13:19 by egomes-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#MAKEFLAGS			=	--silent
+MAKEFLAGS			=	--silent
 
 NAME				=	main
 

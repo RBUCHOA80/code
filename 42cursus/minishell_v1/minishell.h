@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/17 21:51:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/20 20:27:30 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <sys/types.h> // opendir
+# include <dirent.h> // opendir
+# include <unistd.h>
 # include <libft.h>
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
@@ -51,7 +54,7 @@ t_cmd		g_cmd_data[] = \
 {
 	{
 		"ls",
-		"l,a,i,h",
+		"-l,-a,-i,-h",
 		{
 			&cmd_ls_l,
 			&cmd_ls_a,
@@ -63,10 +66,10 @@ t_cmd		g_cmd_data[] = \
 	},
 	{
 		"cd",
-		"",
+		"e,m,u",
 		{},
 		&cmd_cd,
-		"",
+		"/etc",
 	},
 };
 
