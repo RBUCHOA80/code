@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/03/14 19:20:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:06:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_struct(t_fractol *exec)
 	exec->fx = 1.0;
 	exec->palette = NULL;
 	exec->color_pattern = -1;
-	exec->color = 0;
+	exec->color = 0x9400D3;
 	get_complex_layout(exec);
 	color_shift(exec);
 }

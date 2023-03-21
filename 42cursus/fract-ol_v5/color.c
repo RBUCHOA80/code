@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:41:59 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/16 21:23:31 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:12:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,10 @@ static void	color_shift_striped(t_fractol *exec)
 */
 void	color_shift(t_fractol *exec)
 {
-	int	alt_color;
+	static int	alt_color;
 
 	exec->color_pattern = (exec->color_pattern + 1) % 9;
 	reinit_img(exec);
-	if (exec->color == 0x000000)
-		alt_color = 0x333333;
-	else
-		alt_color = exec->color;
 	if (exec->color_pattern == 0)
 		set_color_mono(exec, alt_color);
 	else if (exec->color_pattern == 1)

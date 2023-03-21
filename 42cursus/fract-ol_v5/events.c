@@ -6,20 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/02/27 19:31:18 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/21 18:56:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-/* zoom:
-*	Zooms the view of the fractal in or out by adjusting
-*	the complex number edge values by a zoom multiplier.
-*	The fractal can then be generated again at a different resolution,
-*	giving the appearance of zooming in or out.
-*	If the zoom multiplier is small, like 0.5, the view will
-*	zoom in, if it is big, like 2.0, it will zoom out.
-*/
 static void	zoom(t_fractol *exec, double zoom)
 {
 	double	center_r;
