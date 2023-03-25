@@ -6,7 +6,7 @@
 /*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/22 22:58:15 by egomes-j         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:58:59 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,42 @@ void	ft_print_cmd(t_cmd cmd_list)
 
 int	ft_echo(void)
 {
-	ft_print_cmd(g_cmd_list[0]);
+	t_cmd	var;
+	var = g_cmd_list[0];
+	ft_print_cmd(var);
 	return (EXIT_SUCCESS);
 }
 
 int	ft_cd(void)
 {
 	char buff[256];
+	t_cmd	var;
+	var = g_cmd_list[1];
 	
-	ft_print_cmd(g_cmd_list[1]);
-	if(g_cmd_list[1].argc == 2)
+	ft_print_cmd(var);
+	if(var.argc == 1)
 	{
-		printf("\nA -> %s\n", getcwd(buff, 256));
-		chdir(g_cmd_list[1].argv[1]);
-		printf("B -> %s\n", getcwd(buff, 256));		
-		return (EXIT_SUCCESS);
+		printf("CHDIR %i\n", chdir("~"));
+		printf("%s\n", getcwd(buff, 256));		
+		return (EXIT_SUCCESS);			
 	}
-	printf("Syntax error\n");
+	else if(var.argc == 2)
+	{
+		if(chdir(var.argv[1]) == 0)
+			return (EXIT_SUCCESS);			
+		else
+			printf("minishell: cd: %s: No such file or directory\n", var.argv[1]);
+		return(EXIT_FAILURE);
+	}
+	printf("minishell: cd: too many arguments\n");
 	return(EXIT_FAILURE);
 }
 
-/* int	cmd_cd(t_cmd *cmd_list)
+/* 
+bash: cd: lçkfsadnfnad: No such file or directory
+
+
+int	cmd_cd(t_cmd *cmd_list)
 {
 	char buff[256];
 	
@@ -92,9 +107,13 @@ int	ft_unset(void)
 	return (EXIT_SUCCESS);
 }
 
-int	ft_env(void)
-{
-	ft_print_cmd(g_cmd_list[5]);
+int	ft_env(t_env envs)
+{	
+	t_cmd	var;
+	var = g_cmd_list[5];
+	(void)envs;
+	
+	ft_print_cmd(var);
 	return (EXIT_SUCCESS);
 }
 
@@ -191,10 +210,11 @@ int	ft_execute(char *line)
 void	minishell_loop(void)
 {
 	char	*line;
+	char	buff[256];
 
 	while (1)
 	{
-		line = readline("\e[1;31m>$ \e[0m");
+		line = readline(strcat(getcwd(buff, 256), "\e[1;31m$ \e[0m"));
 		ft_execute(line);
 		if (line == NULL)
 			break ;

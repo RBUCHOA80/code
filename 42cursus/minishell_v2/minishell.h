@@ -6,7 +6,7 @@
 /*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/22 22:44:47 by egomes-j         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:35:12 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 # define BLUE "\e[1;34m"
 # define WHITE "\e[0m"
 
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <sys/types.h> // opendir
-# include <dirent.h> // opendir
-# include <unistd.h>
 # include "../libft/libft.h"
+# include <dirent.h> // opendir
+# include <readline/history.h>
+# include <readline/readline.h>
+# include <stdio.h>
+# include <sys/types.h> // opendir
+# include <unistd.h>
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
 
-typedef int	(*t_ft_ptr)();
+typedef int		(*t_ft_ptr)();
 
 typedef struct s_cmd
 {
@@ -37,61 +37,67 @@ typedef struct s_cmd
 	t_ft_ptr	ft_cmd;
 	int			argc;
 	char		**argv;
-}	t_cmd;
+}				t_cmd;
 
-void	ft_print_cmd(t_cmd cmd_list);
-int		ft_echo(void);
-int		ft_cd(void);
-int		ft_pwd(void);
-int		ft_export(void);
-int		ft_unset(void);
-int		ft_env(void);
-int		ft_exit(void);
-
-t_cmd		g_cmd_list[] = \
+typedef struct s_env
 {
+	char **envs;
+} t_env;
+
+
+void			ft_print_cmd(t_cmd cmd_list);
+int				ft_echo(void);
+int				ft_cd(void);
+int				ft_pwd(void);
+int				ft_export(void);
+int				ft_unset(void);
+int				ft_env(t_env envs);
+int				ft_exit(void);
+
+t_cmd g_cmd_list[] =
 	{
-		"echo",
-		&ft_echo,
-		-1,
-		NULL,
-	},
-	{
-		"cd",
-		&ft_cd,
-		-1,
-		NULL,
-	},
-	{
-		"pwd",
-		&ft_pwd,
-		-1,
-		NULL,
-	},
-	{
-		"export",
-		&ft_export,
-		-1,
-		NULL,
-	},
-	{
-		"unset",
-		&ft_unset,
-		-1,
-		NULL,
-	},
-	{
-		"env",
-		&ft_env,
-		-1,
-		NULL,
-	},
-	{
-		"exit",
-		&ft_exit,
-		-1,
-		NULL,
-	},
+		{
+			"echo",
+			&ft_echo,
+			-1,
+			NULL,
+		},
+		{
+			"cd",
+			&ft_cd,
+			-1,
+			NULL,
+		},
+		{
+			"pwd",
+			&ft_pwd,
+			-1,
+			NULL,
+		},
+		{
+			"export",
+			&ft_export,
+			-1,
+			NULL,
+		},
+		{
+			"unset",
+			&ft_unset,
+			-1,
+			NULL,
+		},
+		{
+			"env",
+			&ft_env,
+			-1,
+			NULL,
+		},
+		{
+			"exit",
+			&ft_exit,
+			-1,
+			NULL,
+		},
 };
 
 #endif
