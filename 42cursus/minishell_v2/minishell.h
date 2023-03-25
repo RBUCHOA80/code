@@ -6,7 +6,7 @@
 /*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/24 20:35:12 by egomes-j         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:19:05 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <dirent.h> // opendir
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <fcntl.h> // open
 # include <stdio.h>
 # include <sys/types.h> // opendir
 # include <unistd.h>
@@ -53,6 +54,7 @@ int				ft_export(void);
 int				ft_unset(void);
 int				ft_env(t_env envs);
 int				ft_exit(void);
+int				ft_env_to_txt(char **arge);
 
 t_cmd g_cmd_list[] =
 	{
@@ -99,5 +101,14 @@ t_cmd g_cmd_list[] =
 			NULL,
 		},
 };
+
+typedef struct s_minishell
+{
+	char **arge;
+	int fd;
+	//t_cmd *cmd_list;
+} t_minishell;
+
+t_minishell g_minishell;
 
 #endif

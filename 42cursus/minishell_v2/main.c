@@ -6,7 +6,7 @@
 /*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/24 20:58:59 by egomes-j         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:23:11 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ void	ft_print_cmd(t_cmd cmd_list)
 	while (cmd_list.argv[argc])
 		argc++;
 	printf("command: %s\n", cmd_list.cmd_name);
-	printf("argc: %i\n", argc);
+	printf("\targc: %i\n", argc);
 	i = 0;
 	while (cmd_list.argv[i])
 	{
-		printf("argv[%i]: %s\n", i, cmd_list.argv[i]);
+		printf("\t\targv[%i]: %s\n", i, cmd_list.argv[i]);
 		i++;		
 	}
+	printf("\n");
 	return ;
 }
 
@@ -51,11 +52,19 @@ int	ft_echo(void)
 
 int	ft_cd(void)
 {
+	int i;
 	char buff[256];
 	t_cmd	var;
 	var = g_cmd_list[1];
 	
 	ft_print_cmd(var);
+	i = 0;
+	while (g_minishell.arge[i])
+	{
+		printf("%s\n", g_minishell.arge[i]);
+		i++;	
+	}
+	
 	if(var.argc == 1)
 	{
 		printf("CHDIR %i\n", chdir("~"));
@@ -73,21 +82,6 @@ int	ft_cd(void)
 	printf("minishell: cd: too many arguments\n");
 	return(EXIT_FAILURE);
 }
-
-/* 
-bash: cd: lçkfsadnfnad: No such file or directory
-
-
-int	cmd_cd(t_cmd *cmd_list)
-{
-	char buff[256];
-	
-	ft_print_cmd(cmd_list);
-	printf("A -> %s\n", getcwd(buff, 256));
-	chdir(cmd_list->c);
-	printf("B -> %s\n", getcwd(buff, 256));	
-	return (EXIT_SUCCESS);
-} */
 
 int	ft_pwd(void)
 {
@@ -155,58 +149,6 @@ int	ft_execute(char *line)
 	return (EXIT_FAILURE);	
 }
 
-/* int	ft_execute(char *line)
-{
-	char	**argv;
-	char	**args;
-	int		argc;
-	int		cmd_index;
-	int		arg;
-	int		arg_index;
-
-	argv = ft_split(line, ' ');
-	argc = ft_get_cmd_len();
-	if (argv[0] == NULL)
-		return (EXIT_SUCCESS);
-	cmd_index = 0;
-	arg = 1;
-	arg_index = 0;
-	while (cmd_index != argc)
-	{
-		if ((ft_strncmp(g_cmd_list[cmd_index].cmd_name, argv[0], ft_strlen(argv[0]))) == 0)
-		{
-			args = ft_split(g_cmd_list[cmd_index].args, ',');
-			while (argv[arg] != NULL)
-			{
-				arg_index = 0;
-				if(argv[arg][0] == '-')
-				{					
-					while (args[arg_index] != NULL)
-					{
-						if ((ft_strncmp(argv[arg], args[arg_index], ft_strlen(argv[arg]))) == 0)
-						{
-							g_cmd_list[cmd_index].c = args[arg_index];
-							g_cmd_list[cmd_index].ft_arg[arg_index](&g_cmd_list[cmd_index]);
-						}
-						arg_index++;
-					}
-				}
-				else
-				{
-					printf("G -> %s\n", argv[arg]);					
-				}
-				arg++;
-			}
-			if (arg_index == 0)
-				g_cmd_list[cmd_index].ft_cmd(&g_cmd_list[cmd_index]);
-			return (EXIT_SUCCESS);
-		}
-		cmd_index++;
-	}
-	printf("command not found: %s\n", argv[0]);
-	return (EXIT_FAILURE);
-} */
-
 void	minishell_loop(void)
 {
 	char	*line;
@@ -214,6 +156,8 @@ void	minishell_loop(void)
 
 	while (1)
 	{
+		printf(BLUE);
+		// REMOVER - strcat
 		line = readline(strcat(getcwd(buff, 256), "\e[1;31m$ \e[0m"));
 		ft_execute(line);
 		if (line == NULL)
@@ -222,10 +166,31 @@ void	minishell_loop(void)
 	return ;
 }
 
-int	main(void)
+int ft_env_to_txt(char **arge)
 {
+	int i;
+	
+	g_minishell.fd = open("env.txt", O_RDWR | O_CREAT | O_TRUNC, 00700);
+	i = 0;
+	while (arge[i])
+	{
+		ft_putendl_fd(arge[i], g_minishell.fd);
+		i++;
+	}
+	return(EXIT_SUCCESS);
+}
+
+int	main(int argc, char **argv, char **arge)
+{
+	(void) argc;
+	(void) argv;
+	(void) arge;
+	
+	g_minishell.arge = arge;
+	ft_env_to_txt(arge);
 	minishell_loop();
 	printf_color();
+	close(g_minishell.fd);
 	return (0);
 }
 
