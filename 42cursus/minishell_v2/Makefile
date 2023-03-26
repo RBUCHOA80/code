@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+         #
+#    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 20:03:26 by egomes-j          #+#    #+#              #
-#    Updated: 2023/03/20 20:13:19 by egomes-j         ###   ########.fr        #
+#    Updated: 2023/03/25 22:24:20 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS			=	--silent
 
-NAME				=	main
+NAME				=	minishell
 
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)

@@ -1,0 +1,14 @@
+# Target labels
+ imgui-sfml-populate
+# Source files and their labels
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate-complete.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-install.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-mkdir.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-download.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-update.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-patch.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-configure.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-build.rule
+/home/ruchoa/code/42cursus/push_swap/visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-test.rule
