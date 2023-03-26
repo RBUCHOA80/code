@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:08 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/26 17:43:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/26 18:48:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_export(void);
 int	ft_unset(void);
 int	ft_env(void);
 int	ft_exit(void);
+int	ft_dollar(void);
 
 /* STRUCTS */
 typedef struct s_cmd
@@ -62,7 +63,7 @@ typedef struct s_minishell
 {
 	char 	**arge;
 	int		fd;
-	t_cmd	cmd_list[7];
+	t_cmd	cmd_list[];
 } t_minishell;
 
 /* GLOBAL */
@@ -109,6 +110,12 @@ t_minishell g_minishell = {
 		{
 			"exit",
 			&ft_exit,
+			-1,
+			NULL,
+		},
+		{
+			"$",
+			&ft_dollar,
 			-1,
 			NULL,
 		},

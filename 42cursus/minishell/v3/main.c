@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/26 18:09:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/26 19:01:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,35 +115,18 @@ int	ft_env(void)
 	ft_print_cmd(var);
 	
 	char	*str;
-	int		i;
 
-	i = 0;
-	while (i < 10)
+	g_minishell.fd = open("./env.txt", O_RDONLY);
+	while (1)
 	{
-		str = get_next_line(g_minishell.fd);
-		printf("str[%i] %s\n", i, str);
-		i++;
-	}	
+		str = get_next_line(3);
+		if (str == NULL)
+			break ;
+		printf("%s", str);
+	}
+	close(g_minishell.fd);
 	return (EXIT_SUCCESS);
 }
-
-/* int	ft_env(void)
-{	
-	t_cmd	var;
-	var = g_minishell.cmd_list[5];
-	
-	ft_print_cmd(var);
-	
-	int	i;
-
-	i = 0;
-	while (g_minishell.arge[i])
-	{
-		printf("%s\n", g_minishell.arge[i]);
-		i++;	
-	}
-	return (EXIT_SUCCESS);
-} */
 
 int	ft_exit(void)
 {
@@ -152,6 +135,17 @@ int	ft_exit(void)
 	
 	ft_print_cmd(var);
 	
+	return (EXIT_SUCCESS);
+}
+
+int	ft_dollar(void)
+{
+	int	i;
+	
+	i = 1;
+	while(g_minishell.cmd_list[7].argv[0][i])
+		printf("%c", g_minishell.cmd_list[7].argv[0][i++]);
+	printf("\n");	
 	return (EXIT_SUCCESS);
 }
 
@@ -177,6 +171,8 @@ int	ft_execute(char *line)
 		}
 		i++;
 	}
+	if('$' == argv[0][0])
+		g_minishell.cmd_list[7].ft_cmd();
 	printf("Command not found: %s\n", argv[0]);
 	return (EXIT_FAILURE);	
 }
@@ -202,10 +198,11 @@ int	ft_env_to_txt(char **arge)
 {
 	int	i;
 	
-	g_minishell.fd = open("env.txt", O_RDWR | O_CREAT | O_TRUNC, 00755);
+	g_minishell.fd = open("./env.txt", O_RDWR | O_CREAT | O_TRUNC, 00777);
 	i = 0;
 	while (arge[i])
 		ft_putendl_fd(arge[i++], g_minishell.fd);
+	close(g_minishell.fd);
 	return (EXIT_SUCCESS);
 }
 
@@ -221,7 +218,7 @@ int	main(int argc, char **argv, char **arge)
 	ft_env_to_txt(arge);
 	minishell_loop();
 	printf_color();
-	//close(g_minishell.fd);
+	close(g_minishell.fd);
 	return (0);
 }
 
