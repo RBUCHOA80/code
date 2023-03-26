@@ -15,8 +15,6 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "IMGUI_SFML_EXPORTS"
-  "IMGUI_SFML_SHARED_LIB"
   "IMGUI_USER_CONFIG=\"imconfig-SFML.h\""
   )
 

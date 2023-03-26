@@ -10,8 +10,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.18.4/CMakeSystem.cmake"
   "CMakeLists.txt"
   "sfml-populate-prefix/tmp/sfml-populate-cfgcmd.txt.in"
+  "/usr/share/cmake-3.18/Modules/CMakeDetermineSystem.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeGenericSystem.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeInitializeConfigs.cmake"
+  "/usr/share/cmake-3.18/Modules/CMakeSystem.cmake.in"
   "/usr/share/cmake-3.18/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/share/cmake-3.18/Modules/CMakeSystemSpecificInitialize.cmake"
   "/usr/share/cmake-3.18/Modules/ExternalProject-download.cmake.in"
@@ -29,6 +31,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "CMakeFiles/3.18.4/CMakeSystem.cmake"
   "sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-urlinfo.txt"
   "sfml-populate-prefix/src/sfml-populate-stamp/download-sfml-populate.cmake"
   "sfml-populate-prefix/tmp/sfml-populate-cfgcmd.txt"

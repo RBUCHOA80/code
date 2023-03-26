@@ -1,3 +1,0 @@
-/home/ruchoa/code/42cursus/push_swap/visualizer/_deps/catch2-subbuild/CMakeFiles/rebuild_cache.dir
-/home/ruchoa/code/42cursus/push_swap/visualizer/_deps/catch2-subbuild/CMakeFiles/edit_cache.dir
-/home/ruchoa/code/42cursus/push_swap/visualizer/_deps/catch2-subbuild/CMakeFiles/catch2-populate.dir
