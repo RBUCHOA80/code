@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/26 18:01:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/03/26 18:09:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,15 +115,15 @@ int	ft_env(void)
 	ft_print_cmd(var);
 	
 	char	*str;
-	
-	while (1)
+	int		i;
+
+	i = 0;
+	while (i < 10)
 	{
 		str = get_next_line(g_minishell.fd);
-		printf("(A) %s\n", str);
-		if(!str)
-			break ;
-	}
-	
+		printf("str[%i] %s\n", i, str);
+		i++;
+	}	
 	return (EXIT_SUCCESS);
 }
 
@@ -206,7 +206,6 @@ int	ft_env_to_txt(char **arge)
 	i = 0;
 	while (arge[i])
 		ft_putendl_fd(arge[i++], g_minishell.fd);
-	printf("%s", get_next_line(g_minishell.fd));
 	return (EXIT_SUCCESS);
 }
 
