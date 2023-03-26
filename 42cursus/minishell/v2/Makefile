@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 20:03:26 by egomes-j          #+#    #+#              #
-#    Updated: 2023/03/25 22:24:20 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/03/26 15:11:00 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME				=	minishell
 
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
-LIBS_PATH			=	../
+LIBS_PATH			=	../../
 LIBS				=	get_next_line \
 						libft \
 

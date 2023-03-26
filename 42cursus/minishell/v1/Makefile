@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+         #
+#    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 20:03:26 by egomes-j          #+#    #+#              #
-#    Updated: 2023/03/20 20:13:19 by egomes-j         ###   ########.fr        #
+#    Updated: 2023/03/26 15:10:52 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME				=	main
 
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
-LIBS_PATH			=	../
+LIBS_PATH			=	../../
 LIBS				=	get_next_line \
 						libft \
 

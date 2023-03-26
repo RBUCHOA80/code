@@ -5,41 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/12 15:03:32 by ruchoa           ###   ########.fr        #
+#    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
+#    Updated: 2023/03/26 15:10:01 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ifeq ($(shell uname), Darwin) # MacOS
-	SYSTEM			=	printf "\e[1;33mMacOS detected.\n\e[m"
+ifeq ($(shell uname), Darwin)	#MacOS
+	SYSTEM			=	@printf "\e[1;33mMacOS detected.\n\e[m"
 	MLX_PATH		=	$(LIBS_PATH)libmlx/_macos/
-	MLX_INCLUDE		=	-I $(MLX_PATH)
-	MLX_LIBRAY		=	-L $(MLX_PATH)
 	MLX_FLAGS		=	-lmlx -framework AppKit -framework OpenGL
 	INTALL			=	Brew install Xquartz ; reboot
-else 
-	SYSTEM			=	printf "\e[1;33mLinux detected.\n\e[m"
+else							#Linux
+	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
 	MLX_PATH		=	$(LIBS_PATH)libmlx/_linux/
-	MLX_INCLUDE		=	-I $(MLX_PATH)
-	MLX_LIBRAY		=	-L $(MLX_PATH)
-	MLX_FLAGS		=	-O3 -lmlx -lXext -lX11 -lm -lz
+	MLX_FLAGS		=	-lXext -lX11 -lm
 	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
 
-#MAKEFLAGS			=	--silent
+#MAKEFLAGS	=	--silent
 
 NAME				=	fractol
 
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
-LIBS_PATH			=	../
-LIBS				=	libftprintf \
+LIBS_PATH			=	../../
+LIBS				=	libft \
 
 #-I <dir>				Add directory to include search path
-INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
+INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/) \
+						-I $(MLX_PATH) \
 
 #-L <dir>				Add directory to library search path
-LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/)
+LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/) \
+						-L $(MLX_PATH) \
+
+MLX					=	$(MLX_PATH)$(MLX_NAME)
+MLX_NAME			=	libmlx.a
 
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror
@@ -50,12 +51,27 @@ AFLAGS				=	rc
 REMOVE				=	rm
 RFLAGS				=	-drf
 
-SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
-SRCS_OBJS			= 	$(SRCS:.c=.o)
+SRCS				=	$(addprefix $(SRCS_PATH), $(SRC_LIST))
+SRCS_OBJS			=	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	events.c \
+SRC_LIST			=	color_schemes_interpolated.c \
+						color_schemes_special.c \
+						color_schemes_striped.c \
+						color.c \
+						events.c \
+						fractal_sets_mandelbrot.c \
+						fractal_sets_julia.c \
+						fractal_sets_burning_ship.c \
+						fractal_sets_tricorn.c \
+						fractal_sets_mandelbox.c \
 						fractol.c \
-						my_mlx_pixel_put.c \
+						ft_ishexdigit.c \
+						ft_isspace.c \
+						help_msg.c \
+						initialization.c \
+						parse_args.c \
+						render.c \
+						utils.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -64,14 +80,14 @@ SRCS_LIST			=	events.c \
 #						$(shell echo '$* <- Nome do arquivo sem sufixo.')
 
 .c.o:
-						$(COMPILER) $(CFLAGS) $(INCLUDE_DIR) $(MLX_INCLUDE) -c $< -o $@
+						$(COMPILER) $(CFLAGS) $(INCLUDE_DIR) -c $< -o $@
 
 all:					$(NAME)
 
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib))
-						make all -sC $(MLX_PATH)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
+						make -sC $(MLX_PATH)
+						$(COMPILER) $(CFLAGS) -o $(NAME) $(SRCS_OBJS) $(MLX) $(LIBS_A) $(INCLUDE_DIR) $(MLX_FLAGS) $(LIBRARY_DIR)
 						$(SYSTEM)
 
 bonus:					all
@@ -83,7 +99,6 @@ clean:
 
 fclean:					clean
 						$(foreach lib, $(LIBS_DIR), make fclean -sC $(lib))
-						make fclean -sC $(MLX_PATH)
 						$(REMOVE) $(RFLAGS) $(NAME)
 
 re:						fclean all
@@ -101,11 +116,10 @@ install:
 						$(INSTALL)
 
 run:					$(NAME)
-						$(SYSTEM)
-						./$(NAME)
+						./$(NAME) M
 
 vrun:					$(NAME)
-						valgrind --leak-check=full -s -v ./$(NAME)
+						valgrind --leak-check=full -s -v ./$(NAME) M
 
 rerun:					re run
 

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/12 15:03:15 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/03/26 15:10:11 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME				=	fractol
 
-LIBFT_PATH			=	../libft/
+LIBFT_PATH			=	../../libft/
 LIBFT_NAME			=	libft.a
 LIBFT				=	$(LIBFT_PATH)$(LIBFT_NAME)
 
