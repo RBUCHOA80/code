@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/03/26 19:01:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/04/03 22:07:48 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_cd(void)
 		if(chdir(var.argv[1]) == 0)
 			return (EXIT_SUCCESS);			
 		else
-			printf("minishell: cd: %s: No such file or directory\n", var.argv[1]);
+			printf("minishell: cd: %s: no such file or directory\n", var.argv[1]);
 		return(EXIT_FAILURE);
 	}
 	printf("minishell: cd: too many arguments\n");
@@ -99,11 +99,84 @@ int	ft_export(void)
 
 int	ft_unset(void)
 {
+	// print test group
 	t_cmd	var;
+	char *v_env;
 	var = g_minishell.cmd_list[4];
-	
 	ft_print_cmd(var);
-	
+	// function
+	int line;
+	int len;
+	int col;
+	char buff[256];
+	line = 1;
+	v_env = "LSCOLORS=";
+	g_minishell.fd = open("./env.txt", O_RDWR);
+	while(1)
+	{
+		col = 0;
+		while (1)
+		{
+			read(g_minishell.fd, &buff[col], 1);
+			if(buff[col] == '=')
+			{
+				buff[col + 1] = '\0';				
+				break;				
+			}
+			col++;
+		}
+		if(ft_strncmp(buff, v_env, ft_strlen(buff)) == 0)
+			break;
+		else
+			while (1)
+			{
+				read(g_minishell.fd, &buff[col], 1);
+				if(buff[col] == '\n')
+					break;				
+				col++;
+			}
+		line++;
+	}
+ 	len = 0;
+	while (1)
+	{
+		read(g_minishell.fd, &buff[col], 1);
+		if(buff[col] == '\n')
+			break;				
+		len++;
+		col++;
+	}
+	printf("len -> %d\n", len);
+	close(g_minishell.fd);
+	g_minishell.fd = open("./env.txt", O_RDWR);
+	while(1)
+	{
+		col = 0;
+		while (1)
+		{
+			read(g_minishell.fd, &buff[col], 1);
+			if(buff[col] == '=')
+			{
+				buff[col + 1] = '\0';				
+				break;				
+			}
+			col++;
+		}
+		if(ft_strncmp(buff, v_env, ft_strlen(buff)) == 0)
+			break;
+		else
+			while (1)
+			{
+				read(g_minishell.fd, &buff[col], 1);
+				if(buff[col] == '\n')
+					break;				
+				col++;
+			}
+		line++;
+	}
+	while (len--)
+		write(g_minishell.fd, "_", 1);
+	close(g_minishell.fd);
 	return (EXIT_SUCCESS);
 }
 
@@ -145,7 +218,7 @@ int	ft_dollar(void)
 	i = 1;
 	while(g_minishell.cmd_list[7].argv[0][i])
 		printf("%c", g_minishell.cmd_list[7].argv[0][i++]);
-	printf("\n");	
+	printf("A ->\n");	
 	return (EXIT_SUCCESS);
 }
 
@@ -173,7 +246,7 @@ int	ft_execute(char *line)
 	}
 	if('$' == argv[0][0])
 		g_minishell.cmd_list[7].ft_cmd();
-	printf("Command not found: %s\n", argv[0]);
+	printf("command not found: %s\n", argv[0]);
 	return (EXIT_FAILURE);	
 }
 
@@ -205,9 +278,6 @@ int	ft_env_to_txt(char **arge)
 	close(g_minishell.fd);
 	return (EXIT_SUCCESS);
 }
-
-#include <stdio.h>
-#include <stdlib.h>
 
 int	main(int argc, char **argv, char **arge)
 {
