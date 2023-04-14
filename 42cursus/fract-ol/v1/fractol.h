@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/01/08 09:26:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/04/12 19:17:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # endif
 
 # define WINDOW_TITTLE "42|RIO - fract-ol"
-# define WINDOW_WIDTH  768
-# define WINDOW_HEIGHT 432
+# define WINDOW_WIDTH  900
+# define WINDOW_HEIGHT 900
 # define BITS_PER_PIXEL 32
 
 enum
