@@ -1,24 +1,22 @@
-#include <stdio.h>
 #include <stdlib.h>
-
-void record(char **str)
-{
-	*str = "text 2 ";
-}
+#include <stdio.h>
 
 int	main(void)
 {
-	char	*str_heap;
-	char	*str_stack;
+	char	*str;
 
-	str_stack = "sample text";
-	printf("str_stack => %s\n", str_stack);
-	record(&str_stack);
-	printf("str_stack => %s\n", str_stack);
-
-	str_heap = NULL;
-	printf("str_heap => %s\n", str_heap);
-	record(&str_heap);
-	printf("str_heap => %s\n", str_heap);
+	//str = (char *)malloc(9);
+	str[0] = 'a';
+	str[1] = 'b';
+	str[2] = 'c';
+	str[3] = 'd';
+	str[4] = 'e';
+	str[5] = 'f';
+	str[6] = 'g';
+	str[7] = 'h';
+	str[8] = 'i';
+	str[9] = '\0';
+	printf("%p ", str);
+	printf("str => %s\n", str);
 	return (0);
 }
