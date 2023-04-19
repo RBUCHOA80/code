@@ -22,8 +22,9 @@ int	main(void)
 	exec.win = mlx_new_window(exec.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITTLE);
 	exec.img = mlx_new_image(exec.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	exec.addr = mlx_get_data_addr(exec.img, &exec.bits_per_pixel, &exec.line_length, &exec.endian);
-	mlx_hook(exec.win, ON_KEYUP, (1L << 1), &events, &exec);
-	mlx_hook(exec.win, ON_DESTROY, 0L, &mlx_close, &exec);
+	mlx_hook(exec.win, ON_KEYUP, 3, &events, &exec);
+	mlx_hook(exec.win, ON_DESTROY, 0, &mlx_close, &exec);
+	mlx_hook(exec.win, ON_DESTROY, 0, &mlx_close, &exec);
 	x = 0;
 	while (x < WINDOW_WIDTH)
 	{
