@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/10 09:27:54 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/05/23 19:27:14 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/05/24 20:02:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-int	events(int keycode, t_data *exec)
+int	ft_hooks(t_data *exec)
 {
-	if (keycode == KEY_ESC || keycode == X_BTN)
-		mlx_close(exec);
-	else
-		print_keycode(keycode);
-	return (0);
-}
-
-int	mlx_close(t_data *exec)
-{
-	mlx_destroy_image(exec->mlx, exec->img);
-	mlx_destroy_window(exec->mlx, exec->win);
-	exit (0);
-}
-
-void	print_keycode(int keycode)
-{
-	ft_printf("keycode = %i\n", keycode);
+	mlx_hook(exec->win, ON_KEYUP, 3, &ft_events, exec);
+	mlx_hook(exec->win, ON_DESTROY, 0, &ft_mlx_close, exec);
+	mlx_hook(exec->win, ON_DESTROY, 0, &ft_mlx_close, exec);
+	return (EXIT_SUCCESS);
 }

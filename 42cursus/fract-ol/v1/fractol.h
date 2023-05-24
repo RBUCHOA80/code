@@ -6,19 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/04/12 19:17:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/05/24 20:14:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-/*  Includes  */
+/*  INCLUDES  */
 # include <mlx.h> //libmlx
 # include <stdlib.h> //exit
 # include <libftprintf.h> //ft_printf
 
-/*  Keys  */
+/*  KEYS  */
 # if __APPLE__ /*  MacOS Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			53
@@ -65,30 +65,32 @@
 #  define X_BTN				65307
 # endif
 
-/*  Dimensions  */
+/*  DIMENSIONS  */
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		900
 # define WINDOW_HEIGHT		900
 # define BITS_PER_PIXEL		32
 # define MAX_ITERATIONS		60
 
-/*  Fractal sets  */
+/*  FRACTAL SETS  */
 # define MANDELBROT			1
 # define JULIA				2
 # define BURNING_SHIP		3
 # define TRICORN			4
 
-/* enum
+/*  ENUMS  */
+enum
 {
-	ON_KEYDOWN		= 2,	//int (*f)(int keycode, void *param)
-	ON_KEYUP		= 3,	//int (*f)(int keycode, void *param)
-	ON_MOUSEDOWN	= 4,	//int (*f)(int button, int x, int y, void *param)
-	ON_MOUSEUP		= 5,	//int (*f)(int button, int x, int y, void *param)
-	ON_MOUSEMOVE	= 6,	//int (*f)(int x, int y, void *param)
-	ON_EXPOSE		= 12,	//int (*f)(void *param)
-	ON_DESTROY		= 17,	//int (*f)(void *param)
-}; */
+	ON_KEYDOWN		= 2,
+	ON_KEYUP		= 3,
+	ON_MOUSEDOWN	= 4,
+	ON_MOUSEUP		= 5,
+	ON_MOUSEMOVE	= 6,
+	ON_EXPOSE		= 12,
+	ON_DESTROY		= 17,
+};
 
+/*  TYPEDEFS  */
 typedef struct s_data
 {
 	void	*mlx;
@@ -100,10 +102,13 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+/*  PROTOTYPES  */
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-int		events(int keycode, t_data *exec);
-int		mlx_close(t_data *exec);
-void	print_keycode(int keycode);
+int		ft_init(t_data *exec);
+int		ft_hooks(t_data *exec);
+int		ft_events(int keycode, t_data *exec);
+int		ft_mlx_close(t_data *exec);
+void	ft_print_keycode(int keycode);
 
 #endif

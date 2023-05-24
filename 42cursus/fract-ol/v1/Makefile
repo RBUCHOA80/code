@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/03/26 15:10:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/05/24 19:41:55 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,9 +53,11 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	events.c \
-						fractol.c \
-						my_mlx_pixel_put.c \
+SRCS_LIST			=	fractol.c \
+						ft_events.c \
+						ft_hooks.c \
+						ft_init.c \
+						ft_mlx_pixel_put.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -73,6 +75,13 @@ $(NAME):				$(SRCS_OBJS)
 						make all -sC $(MLX_PATH)
 						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
+
+debug:					$(SRCS)
+						$(foreach lib, $(LIBS_DIR), make all -sC $(lib))
+						make all -sC $(MLX_PATH)
+						$(COMPILER) -g $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
+						$(SYSTEM)
+						lldb ./$(NAME)
 
 bonus:					all
 
@@ -101,7 +110,6 @@ install:
 						$(INSTALL)
 
 run:					$(NAME)
-						$(SYSTEM)
 						./$(NAME)
 
 vrun:					$(NAME)
