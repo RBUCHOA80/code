@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/05/24 20:14:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/05/24 21:07:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@
 #  define KEY_TWO			19
 #  define KEY_THREE			20
 #  define KEY_FOUR			21
+#  define MOUSE_LEFT_BTN	1
+#  define MOUSE_MIDDLE_BTN	3
+#  define MOUSE_RIGHT_BTN	2
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
-#  define MOUSE_BTN			1
-#  define X_BTN				65307
 # else /*  Linux Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			65307
@@ -59,10 +60,11 @@
 #  define KEY_TWO			50
 #  define KEY_THREE			51
 #  define KEY_FOUR			52
+#  define MOUSE_LEFT_BTN	1
+#  define MOUSE_MIDDLE_BTN	2
+#  define MOUSE_RIGHT_BTN	3
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
-#  define MOUSE_BTN			1
-#  define X_BTN				65307
 # endif
 
 /*  DIMENSIONS  */
