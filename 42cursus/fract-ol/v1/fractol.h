@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/05/24 21:07:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/05/24 21:25:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 int		ft_init(t_data *exec);
 int		ft_hooks(t_data *exec);
-int		ft_events(int keycode, t_data *exec);
+int		ft_key_events(int keycode, t_data *exec);
+int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 int		ft_mlx_close(t_data *exec);
-void	ft_print_keycode(int keycode);
 
 #endif
