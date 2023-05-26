@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   ft_check_fractol                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 20:59:52 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/05/25 22:09:13 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/05/25 21:34:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary)
 {
-	char	*dst;
+	int	nb_iter;
 
-	dst = data->buf + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	if (exec->set == MANDELBROT)
+		nb_iter = mandelbrot(nbr_real, nbr_imaginary);
+	else if (exec->set == JULIA)
+		nb_iter = julia(exec, nbr_real, nbr_imaginary);
+	else if (exec->set == BURNING_SHIP)
+		nb_iter = burning_ship(nbr_real, nbr_imaginary);
+	else if (exec->set == TRICORN)
+		nb_iter = tricorn(nbr_real, nbr_imaginary);
+	return (nb_iter);
 }

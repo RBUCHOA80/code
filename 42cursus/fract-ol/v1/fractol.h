@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/05/24 21:25:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/05/25 22:09:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	void	*img;
-	char	*addr;
+	char	*buf;
+	int		set;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -111,6 +112,8 @@ int		ft_init(t_data *exec);
 int		ft_hooks(t_data *exec);
 int		ft_key_events(int keycode, t_data *exec);
 int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
+void	ft_draw(t_data *exec);
+void	ft_pixel_color(t_data *exec, int x, int y, int color);
 int		ft_mlx_close(t_data *exec);
 
 #endif
