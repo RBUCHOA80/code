@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:33:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/05/25 21:53:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/05/26 23:09:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_draw(t_data *exec)
 	double	nbr_real;
 	double	nbr_imaginary;
 
+	(void)nbr_real;
+	(void)nbr_imaginary;
 	y = -1;
 	while (++y < WINDOW_HEIGHT)
 	{
@@ -30,6 +32,7 @@ void	ft_draw(t_data *exec)
 			ft_pixel_color(exec, x, y, 0xFF0000);
 		}
 	}
+	mlx_put_image_to_window(exec->mlx, exec->win, exec->img, 0, 0);
 }
 
 /* void	ft_draw(t_data *exec)
