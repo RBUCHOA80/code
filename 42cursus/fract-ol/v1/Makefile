@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/05/25 21:24:37 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/06/03 18:42:21 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,12 +54,12 @@ SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	fractol.c \
+						ft_check_fractol.c \
 						ft_draw.c \
 						ft_events.c \
 						ft_hooks.c \
 						ft_init.c \
 						ft_mlx_pixel_put.c \
-						ft_pixel_color.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')

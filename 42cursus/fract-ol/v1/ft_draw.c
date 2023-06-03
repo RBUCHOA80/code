@@ -6,30 +6,38 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:33:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/05/26 23:09:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/03 18:39:33 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
+static void	ft_pixel_color(t_data *exec, int x, int y, int color)
+{
+	exec->buf[x * 4 + y * WINDOW_WIDTH * 4 + 0] = color >> 0;
+	exec->buf[x * 4 + y * WINDOW_WIDTH * 4 + 1] = color >> 8;
+	exec->buf[x * 4 + y * WINDOW_WIDTH * 4 + 2] = color >> 16;
+	exec->buf[x * 4 + y * WINDOW_WIDTH * 4 + 3] = color >> 24;
+}
+
 void	ft_draw(t_data *exec)
 {
 	int		x;
 	int		y;
+	int		nbr_iter;
 	double	nbr_real;
 	double	nbr_imaginary;
 
-	(void)nbr_real;
-	(void)nbr_imaginary;
 	y = -1;
 	while (++y < WINDOW_HEIGHT)
 	{
 		x = -1;
 		while (++x < WINDOW_WIDTH)
 		{
-			nbr_real = 0;
-			nbr_imaginary = 0;
-			ft_pixel_color(exec, x, y, 0xFF0000);
+			nbr_real = 1.0;
+			nbr_imaginary = 2.0;
+			nbr_iter = ft_check_fractal(exec, nbr_real, nbr_imaginary);
+			ft_pixel_color(exec, x, y, exec->palette[nbr_iter]);
 		}
 	}
 	mlx_put_image_to_window(exec->mlx, exec->win, exec->img, 0, 0);
