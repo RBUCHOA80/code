@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/06/03 18:42:21 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/06/03 21:58:31 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ NAME				=	fractol
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
 LIBS_PATH			=	../../
-LIBS				=	libftprintf \
+LIBS				=	libft \
+						libftprintf \
 
 #-I <dir>				Add directory to include search path
 INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
@@ -73,13 +74,13 @@ SRCS_LIST			=	fractol.c \
 all:					$(NAME)
 
 $(NAME):				$(SRCS_OBJS)
-						$(foreach lib, $(LIBS_DIR), make all -sC $(lib))
+						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
 						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
 
 debug:					$(SRCS)
-						$(foreach lib, $(LIBS_DIR), make all -sC $(lib))
+						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
 						$(COMPILER) -g $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
@@ -88,12 +89,12 @@ debug:					$(SRCS)
 bonus:					all
 
 clean:
-						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib))
+						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib);)
 						make clean -sC $(MLX_PATH)
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
 
 fclean:					clean
-						$(foreach lib, $(LIBS_DIR), make fclean -sC $(lib))
+						$(foreach lib, $(LIBS_DIR), make fclean -sC $(lib);)
 						make fclean -sC $(MLX_PATH)
 						$(REMOVE) $(RFLAGS) $(NAME)
 

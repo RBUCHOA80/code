@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/03 18:40:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/03 22:15:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 /*  INCLUDES  */
 # include <mlx.h> //libmlx
+# include <libft.h> //libft
 # include <stdlib.h> //exit
 # include <libftprintf.h> //ft_printf
+# include <stdio.h> //printf <<<<------------------REMOVER
 
 /*  KEYS  */
 # if __APPLE__ /*  MacOS Keys  */

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/03 18:47:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/03 22:15:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	mandelbrot(double c_real, double c_imaginary)
 		z_imaginary = temp;
 		nbr_iter++;
 	}
+	printf("%i %f %f %f\n", nbr_iter, z_real, z_imaginary, temp);
 	return (nbr_iter);
 }
 
