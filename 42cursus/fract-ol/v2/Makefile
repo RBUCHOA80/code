@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 22:35:12 by ruchoa            #+#    #+#              #
-#    Updated: 2023/03/26 15:10:11 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/06/10 11:18:44 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,12 +56,12 @@ OBJS				=	$(addprefix $(OBJ_PATH), $(OBJ))
 
 ifeq ($(shell uname), Darwin)	#MacOS
 	SYSTEM			=	@printf "\e[1;33mMacOS detected.\n\e[m"
-	MLX_PATH		=	../libmlx/_macos/
+	MLX_PATH		=	../../libmlx/_macos/
 	MLX_LIB			=	-lmlx -framework AppKit -framework OpenGL
 	INTALL			=	Brew install Xquartz ; reboot
 else							#Linux
 	SYSTEM			=	@printf "\e[1;33mLinux detected.\n\e[m"
-	MLX_PATH		=	../libmlx/_linux/
+	MLX_PATH		=	../../libmlx/_linux/
 	MLX_LIB			=	-lXext -lX11 -lm
 	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
