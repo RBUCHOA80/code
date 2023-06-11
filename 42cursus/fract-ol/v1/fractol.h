@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 18:16:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/11 18:21:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	void	*img;
-	char	*buf;
+	char	*pixels;
 	int		set;
 	double	min_x_coord;
 	double	max_x_coord;
