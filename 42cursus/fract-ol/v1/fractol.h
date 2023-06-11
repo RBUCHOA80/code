@@ -6,20 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 17:58:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/11 18:16:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-/*  INCLUDES  */
+/*        INCLUDES  */
 # include <mlx.h> //libmlx
 # include <libft.h> //libft
 # include <libftprintf.h> //ft_printf
-# include <stdio.h> //printf <<<<------------------REMOVER
 
-/*  KEYS  */
+/*     KEYS  */
 # if __APPLE__ /*  MacOS Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			53
@@ -68,20 +67,20 @@
 #  define MOUSE_WHEEL_DOWN	5
 # endif
 
-/*  DIMENSIONS  */
+/*       DIMENSIONS  */
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		1000
 # define WINDOW_HEIGHT		1000
 # define MAX_ITERATIONS		60
 
-/*  FRACTAL SETS  */
+/*       FRACTAL SETS  */
 # define JULIA				1
 # define BURNING_SHIP		2
 # define TRICORN			3
 # define MANDELBOX			4
 # define MANDELBROT			5
 
-/*  STRUCTS  */
+/*      STRUCTS  */
 typedef struct s_data
 {
 	void	*mlx;
@@ -98,30 +97,19 @@ typedef struct s_data
 	int		color;
 }	t_data;
 
-/*  ENUMS  */
-enum
-{
-	ON_KEYDOWN		= 2,
-	ON_KEYUP		= 3,
-	ON_MOUSEDOWN	= 4,
-	ON_MOUSEUP		= 5,
-	ON_MOUSEMOVE	= 6,
-	ON_EXPOSE		= 12,
-	ON_DESTROY		= 17,
-};
-
-/*  PROTOTYPES  */
+/*      PROTOTYPES  */
 void	ft_init(t_data *exec);
 void	ft_draw(t_data *exec);
 int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
 
+/*      HOOKS  */
 int		ft_hooks(t_data *exec);
 int		ft_key_events(int keycode, t_data *exec);
 int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 
 int		ft_mlx_close(t_data *exec);
 
-/*  PROTOTYPES  */
+/*      SETS  */
 int		julia(t_data *exec, double nbr_real, double nbr_imaginary);
 int		burning_ship(double nbr_real, double nbr_imaginary);
 int		tricorn(double nbr_real, double nbr_imaginary);
