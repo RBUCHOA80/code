@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 00:56:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/11 01:02:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	set_color_mono(t_data *f, int color)
 		while (j < MAX_ITERATIONS / 2)
 		{
 			fraction = (double)j / (MAX_ITERATIONS / 2);
-			//f->palette[i + j] = interpolate(color1, color2, fraction);
-			f->palette[i + j] = 0xFF0000;
+			f->palette[i + j] = interpolate(color1, color2, fraction);
 			j++;
 		}
 		color1 = color2;
