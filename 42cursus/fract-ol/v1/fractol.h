@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/03 22:15:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/10 18:39:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*  INCLUDES  */
 # include <mlx.h> //libmlx
 # include <libft.h> //libft
-# include <stdlib.h> //exit
 # include <libftprintf.h> //ft_printf
 # include <stdio.h> //printf <<<<------------------REMOVER
 
@@ -71,16 +70,33 @@
 
 /*  DIMENSIONS  */
 # define WINDOW_TITTLE "42|RIO - fract-ol"
-# define WINDOW_WIDTH		900
-# define WINDOW_HEIGHT		900
-# define BITS_PER_PIXEL		32
+# define WINDOW_WIDTH		1000
+# define WINDOW_HEIGHT		1000
 # define MAX_ITERATIONS		60
 
 /*  FRACTAL SETS  */
-# define MANDELBROT			1
-# define JULIA				2
-# define BURNING_SHIP		3
-# define TRICORN			4
+# define JULIA				1
+# define BURNING_SHIP		2
+# define TRICORN			3
+# define MANDELBOX			4
+# define MANDELBROT			5
+
+/*  STRUCTS  */
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*buf;
+	int		set;
+	double	min_x_coord;
+	double	max_x_coord;
+	double	min_y_coord;
+	double	max_y_coord;
+	int		*palette;
+	int		change_color;
+	int		color;
+}	t_data;
 
 /*  ENUMS  */
 enum
@@ -94,29 +110,15 @@ enum
 	ON_DESTROY		= 17,
 };
 
-/*  TYPEDEFS  */
-typedef struct s_data
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*buf;
-	int		set;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		*palette;
-}	t_data;
-
 /*  PROTOTYPES  */
-void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
-
-int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
-void	ft_draw(t_data *exec);
-int		ft_hooks(t_data *exec);
 void	ft_init(t_data *exec);
+void	ft_draw(t_data *exec);
+int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
+
+int		ft_hooks(t_data *exec);
 int		ft_key_events(int keycode, t_data *exec);
 int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
+
 int		ft_mlx_close(t_data *exec);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:42:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/03/04 21:29:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/10 11:43:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	render(t_fractol *f)
 {
 	int		x;
 	int		y;
+	int		nb_iter;
 	double	pr;
 	double	pi;
-	int		nb_iter;
 
 	mlx_clear_window(f->mlx, f->win);
 	y = -1;
