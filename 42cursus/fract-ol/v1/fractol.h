@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/10 18:39:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/11 17:58:48 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_data
 	double	max_x_coord;
 	double	min_y_coord;
 	double	max_y_coord;
-	int		*palette;
+	int		*color_table;
 	int		change_color;
 	int		color;
 }	t_data;
@@ -120,5 +120,12 @@ int		ft_key_events(int keycode, t_data *exec);
 int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 
 int		ft_mlx_close(t_data *exec);
+
+/*  PROTOTYPES  */
+int		julia(t_data *exec, double nbr_real, double nbr_imaginary);
+int		burning_ship(double nbr_real, double nbr_imaginary);
+int		tricorn(double nbr_real, double nbr_imaginary);
+int		mandelbox(double nbr_real, double nbr_imaginary);
+int		mandelbrot(double c_real, double c_imaginary);
 
 #endif

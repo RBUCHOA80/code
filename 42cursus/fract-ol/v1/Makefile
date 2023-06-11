@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/06/10 13:29:37 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/06/11 17:52:57 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRCS_LIST			=	fractol.c \
 						ft_events.c \
 						ft_hooks.c \
 						ft_init.c \
+						ft_stes.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')

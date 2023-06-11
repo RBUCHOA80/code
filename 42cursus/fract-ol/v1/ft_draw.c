@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:33:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 00:51:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/11 17:59:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_draw(t_data *exec)
 			pixel_x_coord = exec->min_x_coord + (double)x * (exec->max_x_coord - exec->min_x_coord) / WINDOW_WIDTH;
 			pixel_y_coord = exec->max_y_coord + (double)y * (exec->min_y_coord - exec->max_y_coord) / WINDOW_HEIGHT;
 			nbr = ft_check_fractal(exec, pixel_x_coord, pixel_y_coord);
-			ft_pixel_color(exec, x, y, exec->palette[nbr]);
+			ft_pixel_color(exec, x, y, exec->color_table[nbr]);
 		}
 	}
 	mlx_put_image_to_window(exec->mlx, exec->win, exec->img, 0, 0);

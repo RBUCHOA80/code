@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 01:02:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/06/11 18:10:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_window_limits(t_data *exec)
 	}
 }
 
-int	interpolate(int startcolor, int endcolor, double fraction)
+int	ft_interpolate(int startcolor, int endcolor, double fraction)
 {
 	int	start_rgb[3];
 	int	end_rgb[3];
@@ -54,7 +54,7 @@ int	interpolate(int startcolor, int endcolor, double fraction)
 	return (0xFF << 24 | start_rgb[0] << 16 | start_rgb[1] << 8 | start_rgb[2]);
 }
 
-void	set_color_mono(t_data *f, int color)
+void	ft_set_color_mono(t_data *f, int color)
 {
 	int		i;
 	int		j;
@@ -71,29 +71,32 @@ void	set_color_mono(t_data *f, int color)
 		while (j < MAX_ITERATIONS / 2)
 		{
 			fraction = (double)j / (MAX_ITERATIONS / 2);
-			f->palette[i + j] = interpolate(color1, color2, fraction);
+			f->color_table[i + j] = ft_interpolate(color1, color2, fraction);
 			j++;
 		}
 		color1 = color2;
 		color2 = 0xFFFFFF;
-		(void)fraction;
-		(void)color1;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS -1] = 0;
+	f->color_table[MAX_ITERATIONS -1] = 0;
 }
 
-void	ft_change_color(t_data *exec)
+void	ft_set_color(t_data *exec)
+{
+	ft_set_color_mono(exec, 0xFFFFFF);
+}
+
+/* void	ft_set_color(t_data *exec)
 {
 	int	alt_color;
 
-	exec->change_color = (exec->change_color + 1) % 8;
+	exec->change_color = (exec->change_color + 1) % 9;
 	if (exec->color == 0x000000)
 		alt_color = 0x333333;
 	else
 		alt_color = exec->color;
-	set_color_mono(exec, alt_color);
-}
+	ft_set_color_mono(exec, alt_color);
+} */
 
 void	ft_init(t_data *exec)
 {
@@ -105,8 +108,8 @@ void	ft_init(t_data *exec)
 	exec->win = mlx_new_window(exec->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITTLE);
 	exec->img = mlx_new_image(exec->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	exec->buf = mlx_get_data_addr(exec->img, &bits_per_pixel, &line_length, &endian);
-	exec->palette = ft_calloc((MAX_ITERATIONS + 1), sizeof(int));
+	exec->color_table = ft_calloc((MAX_ITERATIONS + 1), sizeof(int));
 	exec->set = MANDELBROT;
 	ft_window_limits(exec);
-	ft_change_color(exec);
+	ft_set_color(exec);
 }
