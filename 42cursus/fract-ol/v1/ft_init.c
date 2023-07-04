@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 18:25:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/03 21:31:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 void	ft_window_limits(t_data *exec)
 {
-	if (exec->set == MANDELBOX)
-	{
-		exec->min_x_coord = -4.0;
-		exec->max_x_coord = 4.0;
-		exec->min_y_coord = -4.0;
-		exec->max_y_coord = exec->min_y_coord + (exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
-	}
-	else if (exec->set == JULIA)
+	if (exec->set == JULIA)
 	{
 		exec->min_x_coord = -2.0;
 		exec->max_x_coord = 2.0;
@@ -110,6 +103,8 @@ void	ft_init(t_data *exec)
 	exec->pixels = mlx_get_data_addr(exec->img, &bits_per_pixel, &line_length, &endian);
 	exec->color_table = ft_calloc((MAX_ITERATIONS + 1), sizeof(int));
 	exec->set = MANDELBROT;
+	exec->const_x = 0.0;
+	exec->const_y = 0.0;
 	ft_window_limits(exec);
 	ft_set_color(exec);
 }

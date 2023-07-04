@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/06/11 18:21:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/03 21:31:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@
 # define JULIA				1
 # define BURNING_SHIP		2
 # define TRICORN			3
-# define MANDELBOX			4
-# define MANDELBROT			5
+# define MANDELBROT			4
 
 /*      STRUCTS  */
 typedef struct s_data
@@ -92,6 +91,8 @@ typedef struct s_data
 	double	max_x_coord;
 	double	min_y_coord;
 	double	max_y_coord;
+	double	const_x;
+	double	const_y;
 	int		*color_table;
 	int		change_color;
 	int		color;
@@ -110,10 +111,10 @@ int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 int		ft_mlx_close(t_data *exec);
 
 /*      SETS  */
-int		julia(t_data *exec, double nbr_real, double nbr_imaginary);
-int		burning_ship(double nbr_real, double nbr_imaginary);
-int		tricorn(double nbr_real, double nbr_imaginary);
-int		mandelbox(double nbr_real, double nbr_imaginary);
-int		mandelbrot(double c_real, double c_imaginary);
+int		julia_shift(int x, int y, t_data *exec);
+int		set_julia(t_data *exec, double nbr_real, double nbr_imaginary);
+int		set_burning_ship(double nbr_real, double nbr_imaginary);
+int		set_tricorn(double nbr_real, double nbr_imaginary);
+int		set_mandelbrot(double c_real, double c_imaginary);
 
 #endif
