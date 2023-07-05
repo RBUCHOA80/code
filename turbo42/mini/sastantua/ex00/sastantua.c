@@ -6,16 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 09:57:43 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/04/03 19:50:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/04 23:21:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 int	ft_width(int size)
 {
@@ -39,7 +34,7 @@ int	ft_offset(int col, int size, int row)
 {
 	while (col < ((((2 * ft_width(size)) - 1) / 2) - row))
 	{
-		ft_putchar(' ');
+		write(1, " ", 1);
 		col++;
 	}
 	return (col);
@@ -47,7 +42,7 @@ int	ft_offset(int col, int size, int row)
 
 int	ft_fill(int col, int size, int row, int tier)
 {
-	ft_putchar('/');
+	write(1, "/", 1);
 	while (col < (((2 * ft_width(size)) - 1) / 2) - 1 + row)
 	{
 		if (tier == size
@@ -61,15 +56,15 @@ int	ft_fill(int col, int size, int row, int tier)
 				&& row + tier - ((tier + 1) % 2) == (ft_width(tier))
 				+ ((tier - ((tier + 1) % 2)) / 2)
 				&& size >= 5)
-				ft_putchar('$');
+				write(1, "$", 1);
 		else
-			ft_putchar('|');
+			write(1, "|", 1);
 		else
-			ft_putchar('*');
+			write(1, "*", 1);
 		col++;
 	}
-	ft_putchar('\\');
-	ft_putchar('\n');
+	write(1, "\\", 1);
+	write(1, "\n", 1);
 	return (col);
 }
 
@@ -99,4 +94,25 @@ void	sastantua(int size)
 		increase += (tier % 2);
 		tier++;
 	}
+}
+
+int	main(int argc, char **argv)
+{
+	int	size;
+	int	i;
+
+	if (argc != 2)
+	{
+		write(1, "Wrong number of arguments.\n", 27);
+		return (1);
+	}
+	size = 0;
+	i = 0;
+	while (argv[1][i])
+	{
+		size = size + argv[1][i] - 48;
+		i++;
+	}
+	sastantua(size);
+	return (0);
 }
