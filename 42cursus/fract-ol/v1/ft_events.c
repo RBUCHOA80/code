@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/03 21:05:21 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/04 21:52:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ void	ft_move(t_data *exec, double distance, char direction)
 
 	center_r = exec->max_x_coord - exec->min_x_coord;
 	center_i = exec->max_y_coord - exec->min_y_coord;
-	if (direction == 'R')
-	{
-		exec->min_x_coord += center_r * distance;
-		exec->max_x_coord += center_r * distance;
-	}
-	else if (direction == 'L')
+	if (direction == 'L')
 	{
 		exec->min_x_coord -= center_r * distance;
 		exec->max_x_coord -= center_r * distance;
 	}
-	else if (direction == 'D')
+	else if (direction == 'R')
 	{
-		exec->min_y_coord -= center_i * distance;
-		exec->max_y_coord -= center_i * distance;
+		exec->min_x_coord += center_r * distance;
+		exec->max_x_coord += center_r * distance;
 	}
 	else if (direction == 'U')
 	{
 		exec->min_y_coord += center_i * distance;
 		exec->max_y_coord += center_i * distance;
+	}
+	else if (direction == 'D')
+	{
+		exec->min_y_coord -= center_i * distance;
+		exec->max_y_coord -= center_i * distance;
 	}
 }
 
@@ -84,7 +84,7 @@ int	ft_mouse_events(int keycode, int x, int y, t_data *exec)
 	else if (keycode == MOUSE_LEFT_BTN)
 	{
 		if (exec->set == JULIA)
-			julia_shift(x, y, exec);
+			ft_julia_shift(x, y, exec);
 	}
 	else
 		return (0);

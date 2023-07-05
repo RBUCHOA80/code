@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/03 21:32:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/04 21:40:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-int	julia_shift(int x, int y, t_data *exec)
+int	ft_julia_shift(int x, int y, t_data *exec)
 {
 	exec->const_x = exec->min_x_coord + (double)x * (exec->max_x_coord - exec->min_x_coord) / WINDOW_WIDTH;
 	exec->const_y = exec->max_y_coord + (double)y * (exec->min_y_coord - exec->max_y_coord) / WINDOW_HEIGHT;
@@ -28,6 +28,7 @@ int	set_julia(t_data *exec, double nbr_real, double nbr_imaginary)
 	(void)nbr_real;
 	(void)nbr_imaginary;
 	nbr_iter = 1;
+	ft_printf("set julia pressed\n");
 	return (nbr_iter);
 }
 
@@ -38,6 +39,7 @@ int	set_burning_ship(double nbr_real, double nbr_imaginary)
 	(void)nbr_real;
 	(void)nbr_imaginary;
 	nbr_iter = 1;
+	ft_printf("set burning pressed\n");
 	return (nbr_iter);
 }
 
@@ -48,6 +50,7 @@ int	set_tricorn(double nbr_real, double nbr_imaginary)
 	(void)nbr_real;
 	(void)nbr_imaginary;
 	nbr_iter = 1;
+	ft_printf("set tricorn pressed\n");
 	return (nbr_iter);
 }
 

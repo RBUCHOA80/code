@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/03 21:31:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/04 21:50:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		1000
 # define WINDOW_HEIGHT		1000
-# define MAX_ITERATIONS		60
+# define MAX_ITERATIONS		80
 
 /*       FRACTAL SETS  */
 # define JULIA				1
@@ -111,7 +111,7 @@ int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 int		ft_mlx_close(t_data *exec);
 
 /*      SETS  */
-int		julia_shift(int x, int y, t_data *exec);
+int		ft_julia_shift(int x, int y, t_data *exec);
 int		set_julia(t_data *exec, double nbr_real, double nbr_imaginary);
 int		set_burning_ship(double nbr_real, double nbr_imaginary);
 int		set_tricorn(double nbr_real, double nbr_imaginary);
