@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 19:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/04 21:50:56 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/07/29 12:41:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-/*        INCLUDES  */
+/*		INCLUDES  */
 # include <mlx.h> //libmlx
 # include <libft.h> //libft
 # include <libftprintf.h> //ft_printf
 
-/*     KEYS  */
+/*		KEYS  */
 # if __APPLE__ /*  MacOS Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			53
@@ -67,19 +67,19 @@
 #  define MOUSE_WHEEL_DOWN	5
 # endif
 
-/*       DIMENSIONS  */
+/*		 DIMENSIONS  */
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		1000
 # define WINDOW_HEIGHT		1000
-# define MAX_ITERATIONS		80
+# define MAX_ITERATIONS		50
 
-/*       FRACTAL SETS  */
-# define JULIA				1
-# define BURNING_SHIP		2
-# define TRICORN			3
-# define MANDELBROT			4
+/*		 FRACTAL SETS  */
+# define MANDELBROT			1
+# define JULIA				2
+# define BURNING_SHIP		3
+# define TRICORN			4
 
-/*      STRUCTS  */
+/*		STRUCTS  */
 typedef struct s_data
 {
 	void	*mlx;
@@ -98,19 +98,22 @@ typedef struct s_data
 	int		color;
 }	t_data;
 
-/*      PROTOTYPES  */
+/*		PROTOTYPES  */
 void	ft_init(t_data *exec);
 void	ft_draw(t_data *exec);
 int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
 
-/*      HOOKS  */
+/*		EVENTS  */
 int		ft_hooks(t_data *exec);
 int		ft_key_events(int keycode, t_data *exec);
 int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 
-int		ft_mlx_close(t_data *exec);
+/*		ACTIONS  */
+void	ft_zoom(t_data *exec, double ft_zoom);
+void	ft_move(t_data *exec, double distance, char direction);
+int		ft_close(t_data *exec);
 
-/*      SETS  */
+/*		SETS  */
 int		ft_julia_shift(int x, int y, t_data *exec);
 int		set_julia(t_data *exec, double nbr_real, double nbr_imaginary);
 int		set_burning_ship(double nbr_real, double nbr_imaginary);

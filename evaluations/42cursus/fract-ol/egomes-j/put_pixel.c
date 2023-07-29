@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hooks.c                                         :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: egomes-j <egomes-j@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 19:27:14 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 10:33:44 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/01/01 10:59:44 by egomes-j          #+#    #+#             */
+/*   Updated: 2023/02/04 10:12:14 by egomes-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./fractol.h"
+#include "fractol.h"
 
-int	ft_hooks(t_data *exec)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	mlx_key_hook(exec->win, &ft_key_events, exec);
-	mlx_mouse_hook(exec->win, &ft_mouse_events, exec);
-	mlx_hook(exec->win, 17, 0, &ft_close, exec);
-	return (EXIT_SUCCESS);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bit_per_pixel / 8));
+	*(unsigned int *) dst = color;
 }

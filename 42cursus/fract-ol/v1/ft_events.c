@@ -6,60 +6,39 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/04 22:09:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 12:13:52 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
 
-void	ft_zoom(t_data *exec, double ft_zoom)
-{
-	double	center_r;
-	double	center_i;
-
-	center_r = exec->min_x_coord - exec->max_x_coord;
-	center_i = exec->max_y_coord - exec->min_y_coord;
-	exec->max_x_coord = exec->max_x_coord + (center_r - ft_zoom * center_r) / 2;
-	exec->min_x_coord = exec->max_x_coord + ft_zoom * center_r;
-	exec->min_y_coord = exec->min_y_coord + (center_i - ft_zoom * center_i) / 2;
-	exec->max_y_coord = exec->min_y_coord + ft_zoom * center_i;
-}
-
-void	ft_move(t_data *exec, double distance, char direction)
-{
-	double	center_r;
-	double	center_i;
-
-	center_r = exec->max_x_coord - exec->min_x_coord;
-	center_i = exec->max_y_coord - exec->min_y_coord;
-	if (direction == 'L')
-	{
-		exec->min_x_coord -= center_r * distance;
-		exec->max_x_coord -= center_r * distance;
-	}
-	else if (direction == 'R')
-	{
-		exec->min_x_coord += center_r * distance;
-		exec->max_x_coord += center_r * distance;
-	}
-	else if (direction == 'U')
-	{
-		exec->min_y_coord += center_i * distance;
-		exec->max_y_coord += center_i * distance;
-	}
-	else if (direction == 'D')
-	{
-		exec->min_y_coord -= center_i * distance;
-		exec->max_y_coord -= center_i * distance;
-	}
-}
-
 int	ft_key_events(int keycode, t_data *exec)
 {
 	if (keycode == KEY_ESC)
-		ft_mlx_close(exec);
+		ft_close(exec);
+	else if (keycode == KEY_PLUS)
+		ft_zoom(exec, 0.5);
+	else if (keycode == KEY_MINUS)
+		ft_zoom(exec, 2.0);
+	else if (keycode == KEY_LEFT || keycode == KEY_A)
+		ft_move(exec, 0.2, 'L');
+	else if (keycode == KEY_RIGHT || keycode == KEY_D)
+		ft_move(exec, 0.2, 'R');
+	else if (keycode == KEY_UP || keycode == KEY_W)
+		ft_move(exec, 0.2, 'U');
+	else if (keycode == KEY_DOWN || keycode == KEY_S)
+		ft_move(exec, 0.2, 'D');
+	else if (keycode == KEY_ONE)
+		exec->set = MANDELBROT;
+	else if (keycode == KEY_TWO)
+		exec->set = JULIA;
+	else if (keycode == KEY_THREE)
+		exec->set = BURNING_SHIP;
+	else if (keycode == KEY_FOUR)
+		exec->set = TRICORN;
 	else
 		ft_printf("keycode = %i\n", keycode);
+	ft_draw(exec);
 	return (EXIT_SUCCESS);
 }
 
@@ -80,7 +59,7 @@ int	ft_mouse_events(int keycode, int x, int y, t_data *exec)
 			ft_move(exec, (double)y / WINDOW_HEIGHT, 'D');
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
-		ft_zoom(exec, 2);
+		ft_zoom(exec, 1.5);
 	else if (keycode == MOUSE_LEFT_BTN)
 	{
 		if (exec->set == JULIA)
@@ -90,11 +69,4 @@ int	ft_mouse_events(int keycode, int x, int y, t_data *exec)
 		return (0);
 	ft_draw(exec);
 	return (EXIT_SUCCESS);
-}
-
-int	ft_mlx_close(t_data *exec)
-{
-	mlx_destroy_image(exec->mlx, exec->img);
-	mlx_destroy_window(exec->mlx, exec->win);
-	exit (0);
 }
