@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/29 10:28:35 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/29 15:24:54 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS_PATH			=	./
 SRCS_LIST			=	fractol.c \
 						ft_actions.c \
 						ft_check_fractol.c \
+						ft_color.c \
 						ft_draw.c \
 						ft_events.c \
 						ft_hooks.c \

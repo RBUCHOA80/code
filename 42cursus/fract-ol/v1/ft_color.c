@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 13:57:34 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 14:04:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 15:27:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ void	ft_set_color_mono(t_data *f, int color)
 
 void	ft_set_color(t_data *exec)
 {
-	if (exec->color_pattern == 0)
-		ft_set_color_mono(exec, 0xFFFFFF);
+	ft_set_color_mono(exec, 0xFFFFFF);
 }
 
 /* void	ft_set_color(t_data *exec)

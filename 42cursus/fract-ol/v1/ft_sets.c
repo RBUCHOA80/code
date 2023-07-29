@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 13:49:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 15:30:30 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ int	set_mandelbrot(double c_real, double c_imaginary)
 		z_imaginary = temp;
 		nbr_iter++;
 	}
-	return (50);
+	return (nbr_iter);
 }

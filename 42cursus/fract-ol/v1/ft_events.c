@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 13:56:19 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 15:43:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	ft_key_events(int keycode, t_data *exec)
 	else if (keycode == KEY_MINUS)
 		ft_zoom(exec, 2.0);
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		ft_move(exec, 0.2, 'L');
+		ft_move(exec, 0.05, 'L');
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		ft_move(exec, 0.2, 'R');
+		ft_move(exec, 0.05, 'R');
 	else if (keycode == KEY_UP || keycode == KEY_W)
-		ft_move(exec, 0.2, 'U');
+		ft_move(exec, 0.05, 'U');
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		ft_move(exec, 0.2, 'D');
+		ft_move(exec, 0.05, 'D');
 	else if (keycode == KEY_ONE)
 		exec->set = MANDELBROT;
 	else if (keycode == KEY_TWO)
@@ -37,7 +37,7 @@ int	ft_key_events(int keycode, t_data *exec)
 	else if (keycode == KEY_FOUR)
 		exec->set = TRICORN;
 	else if (keycode == KEY_SPACE)
-		color_shift(exec);
+		ft_set_color(exec);
 	else
 		ft_printf("keycode = %i\n", keycode);
 	ft_draw(exec);
@@ -52,13 +52,13 @@ int	ft_mouse_events(int keycode, int x, int y, t_data *exec)
 		x -= WINDOW_WIDTH / 2;
 		y -= WINDOW_HEIGHT / 2;
 		if (x < 0)
-			ft_move(exec, (double)x * -1 / WINDOW_WIDTH, 'L');
+			ft_move(exec, ((double)x * -1 / WINDOW_WIDTH), 'L');
 		else if (x > 0)
-			ft_move(exec, (double)x / WINDOW_WIDTH, 'R');
+			ft_move(exec, ((double)x * +1 / WINDOW_WIDTH), 'R');
 		if (y < 0)
-			ft_move(exec, (double)y * -1 / WINDOW_HEIGHT, 'U');
+			ft_move(exec, ((double)y * -1 / WINDOW_HEIGHT), 'U');
 		else if (y > 0)
-			ft_move(exec, (double)y / WINDOW_HEIGHT, 'D');
+			ft_move(exec, ((double)y * +1 / WINDOW_HEIGHT), 'D');
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		ft_zoom(exec, 1.5);
