@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/29 15:53:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/29 18:49:40 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
 LIBS_PATH			=	../../
 LIBS				=	libft \
-						libftprintf \
 
 #-I <dir>				Add directory to include search path
 INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
@@ -122,8 +121,3 @@ vrun:					$(NAME)
 						valgrind --leak-check=full -s -v ./$(NAME)
 
 rerun:					re run
-
-rgb:
-						gcc create_trgb.c -I ../libftprintf/ -L ../libftprintf/ -lftprintf -o a.out
-						./a.out
-						rm a.out

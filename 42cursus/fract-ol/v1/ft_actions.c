@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 11:14:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 18:46:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	ft_zoom(t_data *exec, double zoom_factor)
 
 	center_r = exec->min_x_coord - exec->max_x_coord;
 	center_i = exec->max_y_coord - exec->min_y_coord;
-	exec->max_x_coord = exec->max_x_coord + (center_r - zoom_factor * center_r) / 2;
+	exec->max_x_coord = exec->max_x_coord + \
+		(center_r - zoom_factor * center_r) / 2;
 	exec->min_x_coord = exec->max_x_coord + zoom_factor * center_r;
-	exec->min_y_coord = exec->min_y_coord + (center_i - zoom_factor * center_i) / 2;
+	exec->min_y_coord = exec->min_y_coord + \
+		(center_i - zoom_factor * center_i) / 2;
 	exec->max_y_coord = exec->min_y_coord + zoom_factor * center_i;
 }
 

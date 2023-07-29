@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 16:41:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 18:59:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*		INCLUDES  */
 # include <mlx.h> //libmlx
 # include <libft.h> //libft
-# include <libftprintf.h> //ft_printf
 
 /*		KEYS  */
 # if __APPLE__ /*  MacOS Keys  */
@@ -121,6 +120,7 @@ void	ft_set_color_mono(t_data *f, int color);
 void	ft_set_color(t_data *exec);
 
 /*		SETS  */
+void	ft_change_set(int keycode, t_data *exec);
 int		ft_julia_shift(int x, int y, t_data *exec);
 int		set_julia(t_data *exec, double nbr_real, double nbr_imaginary);
 int		set_burning_ship(double nbr_real, double nbr_imaginary);

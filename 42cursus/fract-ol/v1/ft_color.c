@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 13:57:34 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 17:58:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 18:50:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_set_color_mono(t_data *f, int color)
 	int		color1;
 	int		color2;
 
-	color1 = 0x000000;
+	color1 = 0x870a28;
 	color2 = color;
 	i = 0;
 	while (i < MAX_ITERATIONS)
@@ -50,7 +50,7 @@ void	ft_set_color_mono(t_data *f, int color)
 			j++;
 		}
 		color1 = color2;
-		color2 = 0xFFFFFF;
+		color2 = 0x00613c;
 		i += j;
 	}
 	f->color_table[MAX_ITERATIONS -1] = 0;
@@ -58,17 +58,14 @@ void	ft_set_color_mono(t_data *f, int color)
 
 void	ft_set_color(t_data *exec)
 {
-	ft_set_color_mono(exec, 0xFFFFF2);
-}
-
-/* void	ft_set_color(t_data *exec)
-{
-	int	alt_color;
-
-	exec->change_color = (exec->change_color + 1) % 9;
-	if (exec->color == 0x000000)
-		alt_color = 0x333333;
+	if (exec->color == 0)
+	{
+		ft_set_color_mono(exec, 0x000000);
+		exec->color = 1;
+	}
 	else
-		alt_color = exec->color;
-	ft_set_color_mono(exec, alt_color);
-} */
+	{
+		ft_set_color_mono(exec, 0xFFFFFF);
+		exec->color = 0;
+	}
+}

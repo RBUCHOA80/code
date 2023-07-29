@@ -6,12 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 17:52:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 19:13:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
-#include <stdio.h>
 
 int	ft_key_events(int keycode, t_data *exec)
 {
@@ -29,7 +28,16 @@ int	ft_key_events(int keycode, t_data *exec)
 		ft_move(exec, 0.05, 'U');
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
 		ft_move(exec, 0.05, 'D');
-	else if (keycode == KEY_ONE)
+	else if (keycode == KEY_SPACE)
+		ft_set_color(exec);
+	ft_change_set(keycode, exec);
+	ft_draw(exec);
+	return (EXIT_SUCCESS);
+}
+
+void	ft_change_set(int keycode, t_data *exec)
+{
+	if (keycode == KEY_ONE)
 	{
 		exec->set = MANDELBROT;
 		ft_window_limits(exec);
@@ -49,12 +57,6 @@ int	ft_key_events(int keycode, t_data *exec)
 		exec->set = TRICORN;
 		ft_window_limits(exec);
 	}
-	else if (keycode == KEY_SPACE)
-		ft_set_color(exec);
-	else
-		ft_printf("keycode = %i\n", keycode);
-	ft_draw(exec);
-	return (EXIT_SUCCESS);
 }
 
 int	ft_mouse_events(int keycode, int x, int y, t_data *exec)

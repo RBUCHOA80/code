@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:33:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 16:42:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 18:51:10 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	ft_draw(t_data *exec)
 		x = -1;
 		while (++x < WINDOW_WIDTH)
 		{
-			pixel_x_coord = exec->min_x_coord + (double)x * (exec->max_x_coord - exec->min_x_coord) / WINDOW_WIDTH;
-			pixel_y_coord = exec->max_y_coord + (double)y * (exec->min_y_coord - exec->max_y_coord) / WINDOW_HEIGHT;
+			pixel_x_coord = exec->min_x_coord + (double)x * \
+				(exec->max_x_coord - exec->min_x_coord) / WINDOW_WIDTH;
+			pixel_y_coord = exec->max_y_coord + (double)y * \
+				(exec->min_y_coord - exec->max_y_coord) / WINDOW_HEIGHT;
 			nbr = ft_check_fractal(exec, pixel_x_coord, pixel_y_coord);
 			ft_set_pixel_color(exec, x, y, exec->color_table[nbr]);
 		}

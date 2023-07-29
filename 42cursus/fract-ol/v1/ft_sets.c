@@ -6,12 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 17:32:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 18:47:59 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
-#include <stdio.h>
 
 int	set_mandelbrot(double c_real, double c_imaginary)
 {
@@ -37,8 +36,10 @@ int	set_mandelbrot(double c_real, double c_imaginary)
 
 int	ft_julia_shift(int x, int y, t_data *exec)
 {
-	exec->const_x = exec->min_x_coord + (double)x * (exec->max_x_coord - exec->min_x_coord) / WINDOW_WIDTH;
-	exec->const_y = exec->max_y_coord + (double)y * (exec->min_y_coord - exec->max_y_coord) / WINDOW_HEIGHT;
+	exec->const_x = exec->min_x_coord + (double)x * \
+		(exec->max_x_coord - exec->min_x_coord) / WINDOW_WIDTH;
+	exec->const_y = exec->max_y_coord + (double)y * \
+		(exec->min_y_coord - exec->max_y_coord) / WINDOW_HEIGHT;
 	ft_draw(exec);
 	return (0);
 }
