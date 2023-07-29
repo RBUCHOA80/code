@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 15:54:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 16:41:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_data
 double	ft_abs(double c);
 void	ft_init(t_data *exec);
 void	ft_draw(t_data *exec);
+void	ft_window_limits(t_data *exec);
 int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
 
 /*		EVENTS  */

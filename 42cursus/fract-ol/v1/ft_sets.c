@@ -6,11 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 16:07:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 17:32:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
+#include <stdio.h>
 
 int	set_mandelbrot(double c_real, double c_imaginary)
 {
@@ -42,7 +43,7 @@ int	ft_julia_shift(int x, int y, t_data *exec)
 	return (0);
 }
 
-int	set_julia(t_data *exec, double nbr_real, double nbr_imaginary)
+int	set_julia(t_data *exec, double x, double nbr_imaginary)
 {
 	int		nbr_iter;
 	double	tmp;
@@ -50,57 +51,57 @@ int	set_julia(t_data *exec, double nbr_real, double nbr_imaginary)
 	nbr_iter = 0;
 	while (nbr_iter < MAX_ITERATIONS)
 	{
-		if ((nbr_imaginary * nbr_imaginary + nbr_real * nbr_real) > 4.0)
+		if ((nbr_imaginary * nbr_imaginary + x * x) > 4.0)
 			break ;
-		tmp = 2 * nbr_real * nbr_imaginary + exec->const_y;
-		nbr_real = nbr_real * nbr_real - nbr_imaginary * nbr_imaginary + exec->const_x;
+		tmp = 2 * x * nbr_imaginary + exec->const_y;
+		x = x * x - nbr_imaginary * nbr_imaginary + exec->const_x;
 		nbr_imaginary = tmp;
 		nbr_iter++;
 	}
 	return (nbr_iter);
 }
 
-int	set_burning_ship(double nbr_real, double nbr_imaginary)
+int	set_burning_ship(double x, double nbr_imaginary)
 {
 	int		nbr_iter;
-	double	zr;
-	double	zi;
+	double	z_real;
+	double	z_imaginary;
 	double	tmp;
 
-	zr = 0;
-	zi = 0;
+	z_real = 0;
+	z_imaginary = 0;
 	nbr_iter = 0;
 	while (nbr_iter < MAX_ITERATIONS)
 	{
-		if ((zr * zr + zi * zi) > 4.0)
+		if ((z_real * z_real + z_imaginary * z_imaginary) > 4.0)
 			break ;
-		zr = ft_abs(zr);
-		zi = ft_abs(zi);
-		tmp = -2 * zr * zi + nbr_imaginary;
-		zr = zr * zr - zi * zi + nbr_real;
-		zi = tmp;
+		z_real = ft_abs(z_real);
+		z_imaginary = ft_abs(z_imaginary);
+		tmp = -2 * z_real * z_imaginary + nbr_imaginary;
+		z_real = z_real * z_real - z_imaginary * z_imaginary + x;
+		z_imaginary = tmp;
 		nbr_iter++;
 	}
 	return (nbr_iter);
 }
 
-int	set_tricorn(double nbr_real, double nbr_imaginary)
+int	set_tricorn(double x, double nbr_imaginary)
 {
 	int		nbr_iter;
-	double	zr;
-	double	zi;
+	double	z_real;
+	double	z_imaginary;
 	double	tmp;
 
-	zr = nbr_real;
-	zi = nbr_imaginary;
+	z_real = x;
+	z_imaginary = nbr_imaginary;
 	nbr_iter = 0;
 	while (nbr_iter < MAX_ITERATIONS)
 	{
-		if ((zr * zr + zi * zi) > 4.0)
+		if ((z_real * z_real + z_imaginary * z_imaginary) > 4.0)
 			break ;
-		tmp = -2 * zr * zi + nbr_imaginary;
-		zr = zr * zr - zi * zi + nbr_real;
-		zi = tmp;
+		tmp = -2 * z_real * z_imaginary + nbr_imaginary;
+		z_real = z_real * z_real - z_imaginary * z_imaginary + x;
+		z_imaginary = tmp;
 		nbr_iter++;
 	}
 	return (nbr_iter);

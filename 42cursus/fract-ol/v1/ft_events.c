@@ -6,11 +6,12 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 15:47:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 17:52:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
+#include <stdio.h>
 
 int	ft_key_events(int keycode, t_data *exec)
 {
@@ -29,13 +30,25 @@ int	ft_key_events(int keycode, t_data *exec)
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
 		ft_move(exec, 0.05, 'D');
 	else if (keycode == KEY_ONE)
+	{
 		exec->set = MANDELBROT;
+		ft_window_limits(exec);
+	}
 	else if (keycode == KEY_TWO)
+	{
 		exec->set = JULIA;
+		ft_window_limits(exec);
+	}
 	else if (keycode == KEY_THREE)
+	{
 		exec->set = BURNING_SHIP;
+		ft_window_limits(exec);
+	}
 	else if (keycode == KEY_FOUR)
+	{
 		exec->set = TRICORN;
+		ft_window_limits(exec);
+	}
 	else if (keycode == KEY_SPACE)
 		ft_set_color(exec);
 	else
