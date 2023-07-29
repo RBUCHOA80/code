@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/29 15:24:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/29 15:53:38 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	fractol.c \
+						ft_abs.c \
 						ft_actions.c \
 						ft_check_fractol.c \
 						ft_color.c \
