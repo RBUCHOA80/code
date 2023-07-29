@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 12:41:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 13:59:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		1000
 # define WINDOW_HEIGHT		1000
-# define MAX_ITERATIONS		50
+# define MAX_ITERATIONS		10
 
 /*		 FRACTAL SETS  */
 # define MANDELBROT			1
@@ -112,6 +112,11 @@ int		ft_mouse_events(int keycode, int x, int y, t_data *exec);
 void	ft_zoom(t_data *exec, double ft_zoom);
 void	ft_move(t_data *exec, double distance, char direction);
 int		ft_close(t_data *exec);
+
+/*		COLOR  */
+int		ft_interpolate(int startcolor, int endcolor, double fraction);
+void	ft_set_color_mono(t_data *f, int color);
+void	ft_set_color(t_data *exec);
 
 /*		SETS  */
 int		ft_julia_shift(int x, int y, t_data *exec);

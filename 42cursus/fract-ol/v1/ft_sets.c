@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/04 21:40:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 13:49:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ int	set_tricorn(double nbr_real, double nbr_imaginary)
 
 int	set_mandelbrot(double c_real, double c_imaginary)
 {
-	int		nbr;
+	int		nbr_iter;
 	double	z_real;
 	double	z_imaginary;
 	double	temp;
 
 	z_real = 0;
 	z_imaginary = 0;
-	nbr = 0;
-	while (nbr < MAX_ITERATIONS)
+	nbr_iter = 0;
+	while (nbr_iter < MAX_ITERATIONS)
 	{
 		if ((z_real * z_real + z_imaginary * z_imaginary) > 4.0)
 			break ;
 		temp = 2 * z_real * z_imaginary + c_imaginary;
 		z_real = z_real * z_real - z_imaginary * z_imaginary + c_real;
 		z_imaginary = temp;
-		nbr++;
+		nbr_iter++;
 	}
-	return (nbr);
+	return (50);
 }

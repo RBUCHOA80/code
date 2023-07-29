@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 12:13:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 13:56:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ft_key_events(int keycode, t_data *exec)
 		exec->set = BURNING_SHIP;
 	else if (keycode == KEY_FOUR)
 		exec->set = TRICORN;
+	else if (keycode == KEY_SPACE)
+		color_shift(exec);
 	else
 		ft_printf("keycode = %i\n", keycode);
 	ft_draw(exec);
