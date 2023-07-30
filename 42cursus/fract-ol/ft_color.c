@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 13:57:34 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 14:34:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 14:50:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_change_color(t_data *f, int color)
 			j++;
 		}
 		color1 = color2;
-		color2 = 0x00613c;
+		color2 = 0x870a28;
 		i += j;
 	}
 	f->color_table[MAX_ITERATIONS -1] = 0;

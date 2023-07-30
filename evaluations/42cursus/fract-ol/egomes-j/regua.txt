@@ -97,3 +97,104 @@ MiniLibX images
 Take a look at the code and check whether the student uses the images from
 the MLX to draw the image instead of putting pixels one by one. ;)
 
+###############################################################################################################
+
+Introdução
+Por favor, cumpra as seguintes regras:
+
+- Manter-se educado, cortês, respeitoso e construtivo durante todo o
+Processo de avaliação. O bem-estar da comunidade depende disso.
+
+- Identificar com o aluno ou grupo cujo trabalho é avaliado as possíveis
+disfunções em seu projeto. Aproveite o tempo para discutir e debater o
+problemas que possam ter sido identificados.
+
+- Você deve considerar que pode haver algumas diferenças em como seus colegas
+poderia ter entendido as instruções do projeto e o escopo de sua
+funcionalidades. Sempre mantenha a mente aberta e avalie-os da forma mais honesta possível.
+possível. A pedagogia é útil apenas e somente se a avaliação pelos pares for
+feito a sério.
+
+Diretrizes
+- Avaliar apenas o trabalho que foi entregue no repositório Git do avaliado
+aluno ou grupo.
+
+- Verifique novamente se o repositório Git pertence ao(s) aluno(s). Garanta que
+o projeto é o esperado. Além disso, verifique se 'git clone' é usado em um
+pasta vazia.
+
+- Verifique cuidadosamente se nenhum alias malicioso foi usado para enganá-lo e torná-lo
+avaliar algo que não é o conteúdo do repositório oficial.
+
+- Para evitar surpresas e, se aplicável, revise juntos os scripts usados
+para facilitar a classificação (scripts para teste ou automação).
+
+- Se você não concluiu o trabalho que vai avaliar, você
+ler toda a matéria antes de iniciar o processo de avaliação.
+
+- Use os sinalizadores disponíveis para relatar um repositório vazio, um não funcionamento
+programa, um erro de norma, trapaça e assim por diante.
+Nestes casos, o processo de avaliação termina e a nota final é 0,
+ou -42 em caso de trapaça. No entanto, exceto por trapaça, o aluno é
+fortemente encorajados a revisar juntos o trabalho que foi entregue, a fim de
+para identificar erros que não devem ser repetidos no futuro.
+
+- Você também deve verificar a ausência de vazamentos de memória. Qualquer memória alocada em
+o heap deve ser devidamente liberado antes do final da execução.
+Você tem permissão para usar qualquer uma das diferentes ferramentas disponíveis no computador,
+como vazamentos, valgrind ou e_fence. Em caso de vazamentos de memória, marque o
+bandeira apropriada.
+
+testes preliminares
+Pesquise os conjuntos de Julia e Mandelbrot na Wikipedia ou assista aos vídeos de e-learning para ter uma ideia de como deve ser a renderização.
+
+Requisitos mínimos
+A tarefa atende aos requisitos mínimos?
+
+O repositório não está vazio.
+Norminette não apresenta erros.
+Sem trapaça.
+Nenhuma função/biblioteca proibida.
+Não há variável global.
+O código compila com as opções necessárias.
+O executável é nomeado conforme o esperado.
+Durante a execução, não há travamento brutal ou não gerenciado (segfault, erro de barramento e assim por diante).
+Sem vazamentos de memória.
+
+parte obrigatória
+Avalie os seguintes pontos.
+
+gestão gráfica
+A gestão gráfica é funcional?
+
+Quando o programa é executado, há pelo menos uma janela gráfica aberta.
+Pressionando a tecla ESC sai do programa corretamente (sem vazamentos).
+Há uma mudança visual ao usar a roda do mouse (mesmo que errado, esta parte trata apenas de verificar o gerenciamento de eventos).
+
+
+Júlia
+Como o conjunto Julia se comporta?
+
+Parece que deveria? Pesquise o conjunto fractal de Julia na internet se não tiver certeza.
+É possível aumentar e diminuir o zoom e repetir o padrão básico?
+Procure alguns conjuntos diferentes de Julia. Você deve ser capaz de recriá-los passando diferentes parâmetros para o programa.
+Existem cores para representar a profundidade do fractal?
+
+
+Mandelbrot
+Como o conjunto de Mandelbrot se comporta?
+
+Parece que deveria?
+É possível aumentar e diminuir o zoom e repetir o padrão básico?
+Compare o resultado com algumas fotos de referência: todas são parecidas, você não pode errar.
+Existem cores para representar a profundidade do fractal?
+
+
+Gerenciamento de parâmetros
+A gestão dos parâmetros é implementada de acordo com o assunto?
+Os parâmetros errados são tratados corretamente?
+(Alguns parâmetros opcionais podem ser manipulados, por exemplo, para a parte bônus.)
+
+imagens MiniLibX
+Dê uma olhada no código e verifique se o aluno utiliza as imagens do
+o MLX para desenhar a imagem ao invés de colocar os pixels um a um. ;)
