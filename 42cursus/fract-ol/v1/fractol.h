@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 18:59:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 20:43:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*		INCLUDES  */
 # include <mlx.h> //libmlx
 # include <libft.h> //libft
+# include <libftprintf.h> //libft
 
 /*		KEYS  */
 # if __APPLE__ /*  MacOS Keys  */
@@ -73,10 +74,10 @@
 # define MAX_ITERATIONS		50
 
 /*		 FRACTAL SETS  */
-# define MANDELBROT			1
-# define JULIA				2
-# define BURNING_SHIP		3
-# define TRICORN			4
+# define MANDELBROT			'm'
+# define JULIA				'j'
+# define BURNING_SHIP		'b'
+# define TRICORN			't'
 
 /*		STRUCTS  */
 typedef struct s_data
@@ -116,7 +117,7 @@ int		ft_close(t_data *exec);
 
 /*		COLOR  */
 int		ft_interpolate(int startcolor, int endcolor, double fraction);
-void	ft_set_color_mono(t_data *f, int color);
+void	ft_change_color(t_data *f, int color);
 void	ft_set_color(t_data *exec);
 
 /*		SETS  */

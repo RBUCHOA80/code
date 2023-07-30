@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 13:57:34 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 18:50:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 20:15:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_interpolate(int startcolor, int endcolor, double fraction)
 	return (0xFF << 24 | start_rgb[0] << 16 | start_rgb[1] << 8 | start_rgb[2]);
 }
 
-void	ft_set_color_mono(t_data *f, int color)
+void	ft_change_color(t_data *f, int color)
 {
 	int		i;
 	int		j;
@@ -37,7 +37,7 @@ void	ft_set_color_mono(t_data *f, int color)
 	int		color1;
 	int		color2;
 
-	color1 = 0x870a28;
+	color1 = 0;
 	color2 = color;
 	i = 0;
 	while (i < MAX_ITERATIONS)
@@ -60,12 +60,12 @@ void	ft_set_color(t_data *exec)
 {
 	if (exec->color == 0)
 	{
-		ft_set_color_mono(exec, 0x000000);
+		ft_change_color(exec, 0x870a28);
 		exec->color = 1;
 	}
 	else
 	{
-		ft_set_color_mono(exec, 0xFFFFFF);
+		ft_change_color(exec, 0xFFFFFF);
 		exec->color = 0;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/29 18:49:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/29 21:42:42 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ else
 	MLX_PATH		=	$(LIBS_PATH)libmlx/_linux/
 	MLX_INCLUDE		=	-I $(MLX_PATH)
 	MLX_LIBRAY		=	-L $(MLX_PATH)
-	MLX_FLAGS		=	-O3 -lmlx -lXext -lX11 -lm -lz
+	MLX_FLAGS		=	-O3 -lmlx -lXext -lX11 -lz
 	INSTALL			=	sudo apt install -y make gcc xorg libxext-dev libbsd-dev zlib1g-dev
 endif
 
@@ -34,6 +34,7 @@ LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
 LIBS_PATH			=	../../
 LIBS				=	libft \
+						libftprintf \
 
 #-I <dir>				Add directory to include search path
 INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
@@ -115,7 +116,7 @@ install:
 						$(INSTALL)
 
 run:					$(NAME)
-						./$(NAME)
+						./$(NAME) j 2
 
 vrun:					$(NAME)
 						valgrind --leak-check=full -s -v ./$(NAME)
