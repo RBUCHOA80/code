@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 20:43:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 22:42:18 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		1000
 # define WINDOW_HEIGHT		1000
-# define MAX_ITERATIONS		50
+# define MAX_ITERATIONS		100
 
 /*		 FRACTAL SETS  */
 # define MANDELBROT			'm'
@@ -87,6 +87,7 @@ typedef struct s_data
 	void	*img;
 	char	*pixels;
 	int		set;
+	int		type;
 	double	min_x_coord;
 	double	max_x_coord;
 	double	min_y_coord;
@@ -100,9 +101,12 @@ typedef struct s_data
 
 /*		PROTOTYPES  */
 double	ft_abs(double c);
+void	ft_check_args(int argc, char **argv, t_data *exec);
+void	ft_msg(void);
 void	ft_init(t_data *exec);
 void	ft_draw(t_data *exec);
 void	ft_window_limits(t_data *exec);
+void	ft_change_set(int keycode, t_data *exec);
 int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
 
 /*		EVENTS  */
@@ -116,12 +120,13 @@ void	ft_move(t_data *exec, double distance, char direction);
 int		ft_close(t_data *exec);
 
 /*		COLOR  */
-int		ft_interpolate(int startcolor, int endcolor, double fraction);
 void	ft_change_color(t_data *f, int color);
 void	ft_set_color(t_data *exec);
+void	ft_set_pixel_color(t_data *exec, int x, int y, int color);
+int		ft_interpolate(int startcolor, int endcolor, double fraction);
 
 /*		SETS  */
-void	ft_change_set(int keycode, t_data *exec);
+void	ft_julia_limits(t_data *exec);
 int		ft_julia_shift(int x, int y, t_data *exec);
 int		set_julia(t_data *exec, double nbr_real, double nbr_imaginary);
 int		set_burning_ship(double nbr_real, double nbr_imaginary);

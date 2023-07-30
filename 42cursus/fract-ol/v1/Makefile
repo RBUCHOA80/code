@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/29 21:42:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/29 22:40:48 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,6 @@ SRCS_LIST			=	fractol.c \
 						ft_color.c \
 						ft_draw.c \
 						ft_events.c \
-						ft_hooks.c \
 						ft_init.c \
 						ft_sets.c \
 
@@ -116,7 +115,7 @@ install:
 						$(INSTALL)
 
 run:					$(NAME)
-						./$(NAME) j 2
+						./$(NAME) m
 
 vrun:					$(NAME)
 						valgrind --leak-check=full -s -v ./$(NAME)

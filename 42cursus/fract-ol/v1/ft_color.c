@@ -6,11 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 13:57:34 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 22:07:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 22:37:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
+
+void	ft_set_pixel_color(t_data *exec, int x, int y, int color)
+{
+	exec->pixels[x * 4 + y * WINDOW_WIDTH * 4 + 0] = color >> 0;
+	exec->pixels[x * 4 + y * WINDOW_WIDTH * 4 + 1] = color >> 8;
+	exec->pixels[x * 4 + y * WINDOW_WIDTH * 4 + 2] = color >> 16;
+	exec->pixels[x * 4 + y * WINDOW_WIDTH * 4 + 3] = color >> 24;
+}
 
 int	ft_interpolate(int startcolor, int endcolor, double fraction)
 {
@@ -45,7 +53,7 @@ void	ft_change_color(t_data *f, int color)
 		j = 0;
 		while (j < MAX_ITERATIONS / 2)
 		{
-			fraction = (double)j / (MAX_ITERATIONS * 2) * 100;
+			fraction = (double)j / (MAX_ITERATIONS * 2) * 20;
 			f->color_table[i + j] = ft_interpolate(color1, color2, fraction);
 			j++;
 		}
@@ -65,7 +73,7 @@ void	ft_set_color(t_data *exec)
 	}
 	else
 	{
-		ft_change_color(exec, 0xFFFFFF);
+		ft_change_color(exec, 0x666666);
 		exec->color = 0;
 	}
 }

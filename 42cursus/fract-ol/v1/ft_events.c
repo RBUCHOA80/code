@@ -6,11 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 21:56:01 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 22:38:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol.h"
+
+int	ft_hooks(t_data *exec)
+{
+	mlx_key_hook(exec->win, &ft_key_events, exec);
+	mlx_mouse_hook(exec->win, &ft_mouse_events, exec);
+	mlx_hook(exec->win, 17, 0, &ft_close, exec);
+	return (EXIT_SUCCESS);
+}
 
 int	ft_key_events(int keycode, t_data *exec)
 {

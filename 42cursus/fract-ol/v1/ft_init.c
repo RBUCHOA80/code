@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 21:54:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 22:39:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,11 @@ void	ft_init(t_data *exec)
 	ft_set_color(exec);
 }
 
-void	ft_continue(t_data *exec)
-{
-	exec->const_x = 0.0;
-	exec->const_y = 0.0;
-	exec->max_y_coord = exec->min_y_coord + \
-	(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
-	if (exec->set == 2)
-	{
-		exec->const_x = -0.792;
-		exec->const_y = 0.148;
-		exec->min_x_coord = -2.0;
-		exec->max_x_coord = 2.0;
-		exec->min_y_coord = -2.0;
-		exec->max_y_coord = exec->min_y_coord + \
-		(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
-		exec->set = JULIA;
-	}
-}
-
 void	ft_window_limits(t_data *exec)
 {
 	if (exec->set == JULIA)
 	{
-		exec->const_x = 0.312;
-		exec->const_y = 0.496;
-		exec->min_x_coord = -2.0;
-		exec->max_x_coord = 2.0;
-		exec->min_y_coord = -2.0;
-		exec->max_y_coord = exec->min_y_coord + \
-		(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
+		ft_julia_limits(exec);
 		return ;
 	}
 	else if (exec->set == BURNING_SHIP)
@@ -74,5 +49,25 @@ void	ft_window_limits(t_data *exec)
 		exec->max_x_coord = 1.0;
 		exec->min_y_coord = -1.5;
 	}
-	ft_continue(exec);
+	exec->const_x = 0.0;
+	exec->const_y = 0.0;
+	exec->max_y_coord = exec->min_y_coord + \
+	(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
+}
+
+void	ft_julia_limits(t_data *exec)
+{
+	exec->const_x = 0.312;
+	exec->const_y = 0.496;
+	if (exec->type == 2)
+	{
+		exec->const_x = -0.792;
+		exec->const_y = 0.148;
+	}
+	exec->min_x_coord = -2.0;
+	exec->max_x_coord = 2.0;
+	exec->min_y_coord = -2.0;
+	exec->max_y_coord = exec->min_y_coord + \
+	(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
+	return ;
 }
