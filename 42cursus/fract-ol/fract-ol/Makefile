@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/30 13:12:24 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/29 22:40:48 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME				=	fractol
 
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
-LIBS_PATH			=	../
+LIBS_PATH			=	../../
 LIBS				=	libft \
 						libftprintf \
 
@@ -64,19 +64,6 @@ SRCS_LIST			=	fractol.c \
 						ft_init.c \
 						ft_sets.c \
 
-SRCS_BONUS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST_BONUS))
-SRCS_OBJS_BONUS		= 	$(SRCS_BONUS:.c=.o)
-SRCS_PATH_BONUS		=	./
-SRCS_LIST_BONUS		=	fractol_bonus.c \
-						ft_abs_bonus.c \
-						ft_actions_bonus.c \
-						ft_check_fractol_bonus.c \
-						ft_color_bonus.c \
-						ft_draw_bonus.c \
-						ft_events_bonus.c \
-						ft_init_bonus.c \
-						ft_sets_bonus.c \
-
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
 #						$(shell echo '$^ <- Lista de dependências.')
@@ -91,13 +78,7 @@ all:					$(NAME)
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
-						$(SYSTEM)
-
-bonus:					$(SRCS_OBJS_BONUS)
-						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
-						make all -sC $(MLX_PATH)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
+						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
 
 debug:					$(SRCS)
@@ -107,10 +88,12 @@ debug:					$(SRCS)
 						$(SYSTEM)
 						lldb ./$(NAME)
 
+bonus:					all
+
 clean:
 						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib);)
 						make clean -sC $(MLX_PATH)
-						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(SRCS_OBJS_BONUS)
+						$(REMOVE) $(RFLAGS) $(SRCS_OBJS)
 
 fclean:					clean
 						$(foreach lib, $(LIBS_DIR), make fclean -sC $(lib);)
@@ -127,7 +110,6 @@ show:
 						@printf "COMPILER	: $(COMPILER)\n"
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
-						@printf "SRC_BONUS	: $(SRCS_BONUS)\n"
 
 install:
 						$(INSTALL)
