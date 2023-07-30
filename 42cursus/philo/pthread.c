@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pthread.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:21:04 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 15:19:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 15:24:27 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,39 @@
 
 struct s_exec
 {
-	pthread_t	*pthread;
-	int			pthread_i;
+	pthread_t	*tn;
+	int			id;
 };
 
-void	*ft_routine(void *pthread)
+void	*ft_routine(void *tn)
 {
-	struct s_exec	laranja;
-	static int	pthread_i;
-	int			rand;
+	struct s_exec	thread;
+	static int		id;
+	int				rand = 3;
 
-	laranja.pthread = pthread;
-	laranja.pthread_i = pthread_i++;
-	rand = 3;
-	printf("pthread[%i] ", laranja.pthread_i);
-	printf("%p ", &laranja.pthread);
+	thread.tn = tn;
+	thread.id = id++;
+	printf("t[%i] ", thread.id);
+	printf("%p ", &thread.tn);
 	printf("Starting...\n\n");
 	sleep(rand);
-	printf("pthread[%i] ", laranja.pthread_i);
-	printf("%p ", &laranja.pthread);
+	printf("t[%i] ", thread.id);
+	printf("%p ", &thread.tn);
 	printf("...Waiting...\n\n");
 	sleep(rand);
-	printf("pthread[%i] ", laranja.pthread_i);
-	printf("%p ", &laranja.pthread);
+	printf("t[%i] ", thread.id);
+	printf("%p ", &thread.tn);
 	printf("...Ended!\n\n");
 }
 
 int	main(void)
 {
-	pthread_t	thread1;
-	pthread_t	thread2;
+	pthread_t	t1;
+	pthread_t	t2;
 
-	pthread_create(&thread1, NULL, &ft_routine, NULL);
-	pthread_create(&thread2, NULL, &ft_routine, NULL);
-	pthread_join(thread1, NULL);
-	pthread_join(thread2, NULL);
+	pthread_create(&t1, NULL, &ft_routine, NULL);
+	pthread_create(&t2, NULL, &ft_routine, NULL);
+	pthread_join(t1, NULL);
+	pthread_join(t2, NULL);
 	return (0);
 }
