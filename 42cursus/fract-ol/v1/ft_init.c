@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 21:48:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 21:54:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_continue(t_data *exec)
 	(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
 	if (exec->set == 2)
 	{
-		exec->const_x = 0.800;
-		exec->const_y = 0.156;
+		exec->const_x = -0.792;
+		exec->const_y = 0.148;
 		exec->min_x_coord = -2.0;
 		exec->max_x_coord = 2.0;
 		exec->min_y_coord = -2.0;
