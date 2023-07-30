@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 13:07:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 13:30:30 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	ft_julia_limits(t_data *exec)
 	exec->min_y_coord = -2.0;
 	exec->max_y_coord = exec->min_y_coord + \
 	(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
-	return ;
 }

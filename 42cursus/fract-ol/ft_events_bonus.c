@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 13:07:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 14:37:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	ft_key_events(int keycode, t_data *exec)
 		ft_zoom(exec, 0.5);
 	else if (keycode == KEY_MINUS)
 		ft_zoom(exec, 2.0);
-	else if (keycode == KEY_LEFT || keycode == KEY_A)
+	else if (keycode == KEY_LEFT)
 		ft_move(exec, 0.05, 'L');
-	else if (keycode == KEY_RIGHT || keycode == KEY_D)
+	else if (keycode == KEY_RIGHT)
 		ft_move(exec, 0.05, 'R');
-	else if (keycode == KEY_UP || keycode == KEY_W)
+	else if (keycode == KEY_UP)
 		ft_move(exec, 0.05, 'U');
-	else if (keycode == KEY_DOWN || keycode == KEY_S)
+	else if (keycode == KEY_DOWN)
 		ft_move(exec, 0.05, 'D');
 	else if (keycode == KEY_SPACE)
 		ft_set_color(exec);

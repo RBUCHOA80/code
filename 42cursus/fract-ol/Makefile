@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/30 13:12:24 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/07/30 13:22:55 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ endif
 #MAKEFLAGS			=	--silent
 
 NAME				=	fractol
+
+NAME_BONUS			=	fractol_bonus
 
 LIBS_A				=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/$(lib).a)
 LIBS_DIR			=	$(foreach lib, $(LIBS),$(LIBS_PATH)$(lib)/)
@@ -91,20 +93,20 @@ all:					$(NAME)
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
+						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 
 bonus:					$(SRCS_OBJS_BONUS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
+						$(COMPILER) $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME_BONUS)
 
 debug:					$(SRCS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
-						$(COMPILER) -g $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						$(SYSTEM)
+						$(COMPILER) -g $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						lldb ./$(NAME)
 
 clean:
@@ -115,7 +117,7 @@ clean:
 fclean:					clean
 						$(foreach lib, $(LIBS_DIR), make fclean -sC $(lib);)
 						make fclean -sC $(MLX_PATH)
-						$(REMOVE) $(RFLAGS) $(NAME)
+						$(REMOVE) $(RFLAGS) $(NAME) $(NAME_BONUS)
 
 re:						fclean all
 

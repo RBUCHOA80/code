@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 13:57:34 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 22:37:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 14:34:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_change_color(t_data *f, int color)
 	int		color1;
 	int		color2;
 
-	color1 = 0x870a28;
+	color1 = 0x00613c;
 	color2 = color;
 	i = 0;
 	while (i < MAX_ITERATIONS)
@@ -53,7 +53,7 @@ void	ft_change_color(t_data *f, int color)
 		j = 0;
 		while (j < MAX_ITERATIONS / 2)
 		{
-			fraction = (double)j / (MAX_ITERATIONS * 2) * 20;
+			fraction = (double)j / (MAX_ITERATIONS * 2);
 			f->color_table[i + j] = ft_interpolate(color1, color2, fraction);
 			j++;
 		}

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 22:55:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 14:37:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 /*		INCLUDES  */
 # include <mlx.h> //libmlx
@@ -22,10 +22,6 @@
 # if __APPLE__ /*  MacOS Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			53
-#  define KEY_W				13
-#  define KEY_A				0
-#  define KEY_S				1
-#  define KEY_D				2
 #  define KEY_UP			126
 #  define KEY_DOWN			125
 #  define KEY_LEFT			123
@@ -38,17 +34,11 @@
 #  define KEY_THREE			20
 #  define KEY_FOUR			21
 #  define MOUSE_LEFT_BTN	1
-#  define MOUSE_MIDDLE_BTN	3
-#  define MOUSE_RIGHT_BTN	2
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
 # else /*  Linux Keys  */
 #  define EVENT_CLOSE_BTN	17
 #  define KEY_ESC			65307
-#  define KEY_W				119
-#  define KEY_A				97
-#  define KEY_S				115
-#  define KEY_D				100
 #  define KEY_UP			65362
 #  define KEY_DOWN			65364
 #  define KEY_LEFT			65361
@@ -61,8 +51,6 @@
 #  define KEY_THREE			51
 #  define KEY_FOUR			52
 #  define MOUSE_LEFT_BTN	1
-#  define MOUSE_MIDDLE_BTN	2
-#  define MOUSE_RIGHT_BTN	3
 #  define MOUSE_WHEEL_UP	4
 #  define MOUSE_WHEEL_DOWN	5
 # endif
@@ -74,10 +62,10 @@
 # define MAX_ITERATIONS		50
 
 /*		 FRACTAL SETS  */
-# define MANDELBROT			'm'
-# define JULIA				'j'
-# define BURNING_SHIP		'b'
-# define TRICORN			't'
+# define MANDELBROT			109
+# define JULIA				106
+# define BURNING_SHIP		98
+# define TRICORN			116
 
 /*		STRUCTS  */
 typedef struct s_data
@@ -129,8 +117,8 @@ int		ft_interpolate(int startcolor, int endcolor, double fraction);
 void	ft_julia_limits(t_data *exec);
 int		ft_julia_shift(int x, int y, t_data *exec);
 int		set_julia(t_data *exec, double nbr_real, double nbr_imaginary);
+int		set_mandelbrot(double c_real, double c_imaginary);
 int		set_burning_ship(double nbr_real, double nbr_imaginary);
 int		set_tricorn(double nbr_real, double nbr_imaginary);
-int		set_mandelbrot(double c_real, double c_imaginary);
 
 #endif

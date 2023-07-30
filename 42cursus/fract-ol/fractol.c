@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 22:16:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 13:29:18 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	ft_msg(void)
 	ft_printf("\t\t./fractol m -> for Mandelbrot fract-ol Set\n");
 	ft_printf("\t\t./fractol j -> for Julia fract-ol Set Type 1\n");
 	ft_printf("\t\t./fractol j 2 -> for Julia fract-ol Set Type 2\n");
-	ft_printf("\t\t./fractol b -> for Burning Ship fract-ol Set\n");
-	ft_printf("\t\t./fractol t -> for Tricorn fract-ol Set\n");
 	exit(1);
 }
 
@@ -31,9 +29,7 @@ void	ft_check_args(int argc, char **argv, t_data *exec)
 	else if (argc == 2)
 	{
 		if (ft_strncmp(argv[1], "m", 2) && \
-			ft_strncmp(argv[1], "j", 2) && \
-			ft_strncmp(argv[1], "b", 2) && \
-			ft_strncmp(argv[1], "t", 2))
+			ft_strncmp(argv[1], "j", 2))
 			ft_msg();
 		exec->type = 1;
 	}

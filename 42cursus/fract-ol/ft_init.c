@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 22:39:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/30 13:30:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ void	ft_window_limits(t_data *exec)
 		ft_julia_limits(exec);
 		return ;
 	}
-	else if (exec->set == BURNING_SHIP)
-	{
-		exec->min_x_coord = -1.815;
-		exec->max_x_coord = -1.705;
-		exec->min_y_coord = -0.025;
-	}
 	else
 	{
 		exec->min_x_coord = -2.0;
@@ -69,5 +63,4 @@ void	ft_julia_limits(t_data *exec)
 	exec->min_y_coord = -2.0;
 	exec->max_y_coord = exec->min_y_coord + \
 	(exec->max_x_coord - exec->min_x_coord) * WINDOW_HEIGHT / WINDOW_WIDTH;
-	return ;
 }
