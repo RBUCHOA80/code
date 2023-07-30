@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:20:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 21:52:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 21:56:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	ft_change_set(int keycode, t_data *exec)
 	}
 }
 
-#include <stdio.h>
-
 int	ft_mouse_events(int keycode, int x, int y, t_data *exec)
 {
 	if (keycode == MOUSE_WHEEL_UP)
@@ -86,8 +84,6 @@ int	ft_mouse_events(int keycode, int x, int y, t_data *exec)
 	}
 	else
 		return (0);
-	printf("x: %f\t",exec->const_x);
-	printf("y: %f\n",exec->const_y);
 	ft_draw(exec);
 	return (EXIT_SUCCESS);
 }
