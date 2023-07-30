@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/29 22:42:18 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/07/29 22:55:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define WINDOW_TITTLE "42|RIO - fract-ol"
 # define WINDOW_WIDTH		1000
 # define WINDOW_HEIGHT		1000
-# define MAX_ITERATIONS		100
+# define MAX_ITERATIONS		50
 
 /*		 FRACTAL SETS  */
 # define MANDELBROT			'm'
