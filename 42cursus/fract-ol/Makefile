@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/07/30 14:56:54 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/01 20:33:09 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRCS_LIST			=	fractol.c \
 						ft_draw.c \
 						ft_events.c \
 						ft_init.c \
+						ft_msg.c \
 						ft_sets.c \
 
 SRCS_BONUS			=	$(addprefix $(SRCS_PATH), $(SRCS_LIST_BONUS))
@@ -77,6 +78,7 @@ SRCS_LIST_BONUS		=	fractol_bonus.c \
 						ft_draw_bonus.c \
 						ft_events_bonus.c \
 						ft_init_bonus.c \
+						ft_msg_bonus.c \
 						ft_sets_bonus.c \
 
 #						$(shell echo '$@ <- Nome da regra.')

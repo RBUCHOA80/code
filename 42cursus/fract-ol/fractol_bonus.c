@@ -6,23 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 13:06:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/01 19:40:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fractol_bonus.h"
-
-void	ft_msg(void)
-{
-	ft_printf("Incorrect fract-ol's name or number of parameters.\n");
-	ft_printf("\tValid options:\n");
-	ft_printf("\t\t./fractol m -> for Mandelbrot fract-ol Set\n");
-	ft_printf("\t\t./fractol j -> for Julia fract-ol Set Type 1\n");
-	ft_printf("\t\t./fractol j 2 -> for Julia fract-ol Set Type 2\n");
-	ft_printf("\t\t./fractol b -> for Burning Ship fract-ol Set\n");
-	ft_printf("\t\t./fractol t -> for Tricorn fract-ol Set\n");
-	exit(1);
-}
 
 void	ft_check_args(int argc, char **argv, t_data *exec)
 {

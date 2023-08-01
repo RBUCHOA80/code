@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 14:36:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/01 20:24:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ typedef struct s_data
 
 /*		PROTOTYPES  */
 double	ft_abs(double c);
+double	ft_atof(char *argv);
 void	ft_check_args(int argc, char **argv, t_data *exec);
 void	ft_msg(void);
 void	ft_init(t_data *exec);
 void	ft_draw(t_data *exec);
 void	ft_window_limits(t_data *exec);
 void	ft_change_set(int keycode, t_data *exec);
+int		ft_iterative_power(int nb, int power);
 int		ft_check_fractal(t_data *exec, double nbr_real, double nbr_imaginary);
 
 /*		EVENTS  */
