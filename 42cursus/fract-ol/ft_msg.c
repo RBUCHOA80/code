@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:38:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/01 19:38:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 19:18:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_msg(void)
 {
-	ft_printf("Incorrect fract-ol's name or number of parameters.\n");
+	ft_printf("Incorrect fract-ol's set or number of parameters.\n");
 	ft_printf("\tValid options:\n");
 	ft_printf("\t\t./fractol m -> for Mandelbrot fract-ol Set\n");
-	ft_printf("\t\t./fractol j -> for Julia fract-ol Set Type 1\n");
-	ft_printf("\t\t./fractol j 2 -> for Julia fract-ol Set Type 2\n");
+	ft_printf("\t\t./fractol j x.x y.y -> for Julia fract-ol Set\n");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:55:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 13:07:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 20:23:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_check_fractal(t_data *exec, double pixel_x_coord, double pixel_y_coord)
 {
 	int	nbr_iter;
 
+	nbr_iter = 0;
 	if (exec->set == MANDELBROT)
 		nbr_iter = set_mandelbrot(pixel_x_coord, pixel_y_coord);
 	else if (exec->set == JULIA)

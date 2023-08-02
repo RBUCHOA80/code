@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:47:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/07/30 13:30:30 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 20:45:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,8 @@ void	ft_window_limits(t_data *exec)
 
 void	ft_julia_limits(t_data *exec)
 {
-	exec->const_x = 0.312;
-	exec->const_y = 0.496;
-	if (exec->type == 2)
-	{
-		exec->const_x = -0.792;
-		exec->const_y = 0.148;
-	}
+	exec->const_x = exec->start_const_x;
+	exec->const_y = exec->start_const_y;
 	exec->min_x_coord = -2.0;
 	exec->max_x_coord = 2.0;
 	exec->min_y_coord = -2.0;

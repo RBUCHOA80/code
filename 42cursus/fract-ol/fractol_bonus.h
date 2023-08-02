@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:30:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/01 20:24:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 20:37:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,12 @@ typedef struct s_data
 	void	*img;
 	char	*pixels;
 	int		set;
-	int		type;
 	double	min_x_coord;
 	double	max_x_coord;
 	double	min_y_coord;
 	double	max_y_coord;
+	double	start_const_x;
+	double	start_const_y;
 	double	const_x;
 	double	const_y;
 	int		*color_table;

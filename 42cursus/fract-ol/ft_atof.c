@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 21:31:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/01 20:16:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 20:43:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ double	ft_atof(char *argv)
 	if (!ft_strchr(argv, '.'))
 		ft_msg();
 	i = 0;
+	nbr = 0;
 	if (argv[i] == '-')
 		i++;
 	while (ft_isdigit(argv[i]))
@@ -52,5 +53,7 @@ double	ft_atof(char *argv)
 		nbr = nbr + ((argv[i++] - 48.0) / ft_iterative_power(10, j++));
 	if (argv[0] == '-')
 		nbr = nbr * -1;
-	return (nbr);
+	if (nbr == 0.0)
+		ft_msg();
+	(nbr);
 }

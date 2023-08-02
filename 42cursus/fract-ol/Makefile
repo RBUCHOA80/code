@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/01 20:33:09 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/02 20:26:46 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCS_PATH			=	./
 SRCS_LIST			=	fractol.c \
 						ft_abs.c \
 						ft_actions.c \
+						ft_atof.c \
 						ft_check_fractol.c \
 						ft_color.c \
 						ft_draw.c \
@@ -73,6 +74,7 @@ SRCS_PATH_BONUS		=	./
 SRCS_LIST_BONUS		=	fractol_bonus.c \
 						ft_abs_bonus.c \
 						ft_actions_bonus.c \
+						ft_atof_bonus.c \
 						ft_check_fractol_bonus.c \
 						ft_color_bonus.c \
 						ft_draw_bonus.c \
@@ -102,13 +104,13 @@ bonus:					$(SRCS_OBJS_BONUS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
 						$(SYSTEM)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME_BONUS)
+						$(COMPILER) -g $(CFLAGS) $(SRCS_OBJS_BONUS) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME_BONUS)
 
 debug:					$(SRCS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						make all -sC $(MLX_PATH)
 						$(SYSTEM)
-						$(COMPILER) -g $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
+						$(COMPILER) $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
 						lldb ./$(NAME)
 
 clean:

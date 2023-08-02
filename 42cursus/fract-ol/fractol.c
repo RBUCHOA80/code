@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/01 20:30:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 19:19:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	ft_check_args(int argc, char **argv, t_data *exec)
 	}
 	exec->set = argv[1][0];
 }
-
-
 
 int	main(int argc, char **argv)
 {
