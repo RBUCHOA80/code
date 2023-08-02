@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 21:31:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/02 20:43:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/02 20:50:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ double	ft_atof(char *argv)
 		nbr = nbr * -1;
 	if (nbr == 0.0)
 		ft_msg();
-	(nbr);
+	return (nbr);
 }
