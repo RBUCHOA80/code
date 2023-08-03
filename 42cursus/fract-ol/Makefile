@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 19:51:15 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/02 20:47:58 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/02 20:58:53 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,7 @@ debug:					$(SRCS)
 						make all -sC $(MLX_PATH)
 						$(SYSTEM)
 						$(COMPILER) $(CFLAGS) $(SRCS) $(INCLUDE_DIR) $(MLX_INCLUDE) $(LIBS_A) $(LIBRARY_DIR) $(MLX_LIBRAY) $(MLX_FLAGS) -o $(NAME)
-						lldb ./$(NAME)
+						lldb ./$(NAME) m
 
 clean:
 						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib);)
@@ -147,9 +147,9 @@ brun:					$(NAME_BONUS)
 						./$(NAME_BONUS) m
 
 vrun:					$(NAME)
-						valgrind --leak-check=full -s -v ./$(NAME) j 2
+						valgrind --leak-check=full -s -v ./$(NAME) j
 
 vbrun:					bonus
-						valgrind --leak-check=full -s -v ./$(NAME_BONUS) j 2
+						valgrind --leak-check=full -s -v ./$(NAME_BONUS) j
 
 rerun:					re run
