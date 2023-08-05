@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/04 23:59:17 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/05 00:14:10 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(NAME):				$(SRCS_OBJS)
 debug:					$(SRCS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						$(COMPILER) $(CFLAGS) -g $(SRCS) $(INCLUDE_DIR) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
-						lldb ./$(NAME) 4 310 2147483647 100 7
+						lldb ./$(NAME) 4 310 200 100 7
 
 clean:
 						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib);)
