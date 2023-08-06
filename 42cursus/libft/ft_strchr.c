@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 21:38:59 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/30 22:19:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/06 02:58:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strchr(const char *s, int c)
 	if (!s)
 		return (NULL);
 	while (1)
-	{	
+	{
 		if (*s == (unsigned char) c)
 			return ((char *)s);
 		if (*s == '\0')
