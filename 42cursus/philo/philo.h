@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/05 21:27:13 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/05 21:33:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 /*		INCLUDES  */
 int			philo(char **argv);
+int			routine(void);
 static int	ft_isspace(char c);
 static int	ft_issimbol(char c);
 static int	ft_isdigit(int c);
@@ -31,16 +32,16 @@ char		*ft_itoa(int n);
 void		ft_msg(void);
 int			ft_strcmp(char *s1, char *s2);
 
-typedef struct  s_argv
+typedef struct s_argv
 {
-	int number_of_philosophers;
-	time_t time_to_die;
-	time_t time_to_eat;
-	time_t time_to_sleep;
-	int number_of_times_each_philosopher_must_eat;
+	int		number_of_philosophers;
+	time_t	time_to_die;
+	time_t	time_to_eat;
+	time_t	time_to_sleep;
+	int		number_of_times_each_philosopher_must_eat;
 }	t_argv;
 
-typedef struct  s_philo
+typedef struct s_philo
 {
 	void	*content;
 }	t_philo;

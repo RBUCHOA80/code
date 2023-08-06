@@ -6,17 +6,21 @@
 /*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/05 21:17:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/05 21:30:59 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	routine();
-
-int philo(char **argv)
+int	routine(void)
 {
+	return (0);
+}
+
 	//pthread_create;
 	//pthread_join;
+
+int	philo(char **argv)
+{
 	return (0);
 }
