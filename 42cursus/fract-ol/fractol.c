@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/02 21:02:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/05 22:28:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_check_args(int argc, char **argv, t_data *exec)
 	else
 		ft_msg();
 }
+
 int	main(int argc, char **argv)
 {
 	t_data	exec;
