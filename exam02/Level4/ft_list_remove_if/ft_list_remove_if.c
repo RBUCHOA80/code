@@ -6,12 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:27:32 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/10 22:03:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/11 20:16:10 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h> //printf
-#include <stdlib.h> //malloc
+#include <stdlib.h> //malloc | free
+#include <string.h> //strcpm
 
 typedef struct s_list
 {
@@ -21,9 +22,20 @@ typedef struct s_list
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
-	(void)begin_list;
-	(void)data_ref;
-	(void)cmp;
+	t_list	*temp;
+
+	if (!begin_list || !*begin_list)
+		return ;
+	while ((*begin_list)->next)
+	{
+		if (cmp(data_ref, (*begin_list)->data))
+		{
+			temp = (*begin_list);
+			(*begin_list) = (*begin_list)->data;
+			free(temp);
+		}
+		(*begin_list) = (*begin_list)->next;
+	}
 	return ;
 }
 
@@ -44,8 +56,6 @@ void	ft_printf_list(t_list *lst)
 	return ;
 }
 
-int		(*cmp)(void *data_ref, void *data_ref2);
-
 int	main(void)
 {
 	t_list	**begin_list;
@@ -55,19 +65,14 @@ int	main(void)
 	char	*str1;
 	char	*str2;
 	char	*str3;
-	char	*looking;
-	void	*data_ref;
 
-	str1 = "Put your sample text 1 here!";
-	str2 = "Put your sample text 2 here!";
-	str3 = "Put your sample text 3 here!";
-	looking = "Put your sample text 2 here!";
-	begin_list = malloc(sizeof(t_list *));
+	str1 = "Put your";
+	str2 = "sample text";
+	str3 = "inside here!";
 	nod1 = malloc(sizeof(t_list));
 	nod2 = malloc(sizeof(t_list));
 	nod3 = malloc(sizeof(t_list));
 	begin_list = &nod1;
-	data_ref = looking;
 	nod1->data = str1;
 	nod2->data = str2;
 	nod3->data = str3;
@@ -75,7 +80,7 @@ int	main(void)
 	nod2->next = nod3;
 	nod3->next = NULL;
 	ft_printf_list(*begin_list);
-	ft_list_remove_if(begin_list, data_ref, cmp);
+	ft_list_remove_if(begin_list, "asdf", strcmp);
 	ft_printf_list(*begin_list);
 	return (0);
 }
