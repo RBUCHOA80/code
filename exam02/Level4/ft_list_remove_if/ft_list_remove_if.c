@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:27:32 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/10 22:03:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/10 22:03:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 
 void	ft_printf_list(t_list *lst)
 {
+	int	i;
+
 	if (!lst || !lst->data)
 		return ;
+	i = 0;
 	while (1)
 	{
-		printf("%s\n", (char *)lst->data);
+		printf("node[%i]=%s\n", i++, (char *)lst->data);
 		if (lst->next == NULL)
 			break ;
 		lst = lst->next;
