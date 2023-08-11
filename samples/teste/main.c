@@ -5,34 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 21:31:36 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/05 21:31:37 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/08/05 21:32:53 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/08/05 21:33:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
-
-/* 
-timestamp_in_ms X has taken a fork
-timestamp_in_ms X is eating
-timestamp_in_ms X is sleeping
-timestamp_in_ms X is thinking
-timestamp_in_ms X died
- */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include "../../libft/libft.h"
 
 int	main(int argc, char **argv)
 {
-	if (argc != 5 && argc != 6)
+	int	i;
+
+	(void)argc;
+	i = 0;
+	while (argv[++i] != NULL)
 	{
-		ft_msg();
-		return (1);
+		printf("char *argv[%i] = \"%s\"\n", i, argv[i]);
+		printf("int atoi      =  %i\n", atoi(argv[i]));
+		printf("char *ft_itoa = \"%s\"\n", ft_itoa(atoi(argv[i])));
+		printf("\"%s\" = = \"%s\"\n", ft_itoa(atoi(argv[i])), argv[i]);
+		printf("int strcmp    = %i\n", strcmp(ft_itoa(atoi(argv[i])), argv[i]));
 	}
-	if (ft_check_arg(argv))
-	{
-		ft_msg();
-		return (1);
-	}
-	ft_create_rules(argv);
-	ft_philo(argv);
 	return (0);
 }

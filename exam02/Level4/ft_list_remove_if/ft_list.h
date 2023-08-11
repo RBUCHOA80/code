@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 21:31:36 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/05 21:31:37 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/08/09 13:02:09 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/08/09 13:08:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-/* 
-timestamp_in_ms X has taken a fork
-timestamp_in_ms X is eating
-timestamp_in_ms X is sleeping
-timestamp_in_ms X is thinking
-timestamp_in_ms X died
- */
-
-int	main(int argc, char **argv)
+struct s_list
 {
-	if (argc != 5 && argc != 6)
-	{
-		ft_msg();
-		return (1);
-	}
-	if (ft_check_arg(argv))
-	{
-		ft_msg();
-		return (1);
-	}
-	ft_create_rules(argv);
-	ft_philo(argv);
-	return (0);
-}
+	void			*data;
+	struct s_list	*next;
+}					t_list;
+
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:26:49 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/02 21:02:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/05 22:44:52 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ void	ft_check_args(int argc, char **argv, t_data *exec)
 	}
 	else if (argc == 4 && !ft_strncmp(argv[1], "j", 2))
 	{
-			exec->set = JULIA;
-			exec->start_const_x = ft_atof(argv[2]);
-			exec->start_const_y = ft_atof(argv[3]);
+		exec->set = JULIA;
+		exec->start_const_x = ft_atof(argv[2]);
+		exec->start_const_y = ft_atof(argv[3]);
 	}
 	else
 		ft_msg();
 }
+
 int	main(int argc, char **argv)
 {
 	t_data	exec;
