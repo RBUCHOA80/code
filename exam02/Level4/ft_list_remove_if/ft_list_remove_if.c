@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:27:32 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/11 20:17:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/11 20:18:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,21 @@ int	main(void)
 	t_list	*nod1;
 	t_list	*nod2;
 	t_list	*nod3;
+	t_list	*nod4;
 
 	nod1 = malloc(sizeof(t_list));
 	nod2 = malloc(sizeof(t_list));
 	nod3 = malloc(sizeof(t_list));
+	nod4 = malloc(sizeof(t_list));
 	begin_list = &nod1;
 	nod1->data = "Put your";
 	nod2->data = "sample text";
 	nod3->data = "inside here!";
+	nod4->data = "Another sample text";
 	nod1->next = nod2;
 	nod2->next = nod3;
-	nod3->next = NULL;
+	nod3->next = nod4;
+	nod4->next = NULL;
 	ft_printf_list(*begin_list);
 	ft_list_remove_if(begin_list, "asdf", strcmp);
 	ft_printf_list(*begin_list);
