@@ -3,83 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_remove_if.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 13:01:21 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/09 13:13:01 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/08/10 21:27:32 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/08/12 22:28:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "ft_list.h"
+#include <stdio.h> //printf
+#include <stdlib.h> //malloc
+#include <string.h> //strcpm
+
+typedef struct s_list
+{
+	void			*data;
+	struct s_list	*next;
+}	t_list;
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
-	if (begin_list == NULL || *begin_list == NULL)
+	t_list	*current;
+	t_list	*temp;
+
+	current = (*begin_list);
+	while (current)
+	{
+		if (!cmp(data_ref, (*begin_list)->data))
+			(*begin_list) = (*begin_list)->next;
+		else if (!cmp(data_ref, current->data))
+			temp->next = current->next;
+		temp = current;
+		current = current->next;
+	}
+	return ;
+}
+
+void	ft_printf_list(t_list *lst)
+{
+	int	i;
+
+	if (!lst || !lst->data)
 		return ;
-
-	t_list *cur = *begin_list;
-
-	if (cmp(cur->data, data_ref) == 0)
+	i = 0;
+	while (1)
 	{
-		*begin_list = cur->next;
-		free(cur);
-		ft_list_remove_if(begin_list, data_ref, cmp);
+		printf("node[%i]=%s\n", i++, (char *)lst->data);
+		if (lst->next == NULL)
+			break ;
+		lst = lst->next;
 	}
-	cur = *begin_list;
-	ft_list_remove_if(&cur->next, data_ref, cmp);
+	printf("\n");
+	return ;
 }
 
---------------------------------------------------------------------
-#include <stdio.h>
-#include <string.h>
-
-void	print_list(t_list **begin_list)
+int	main(void)
 {
-	t_list *cur = *begin_list;
-	while (cur != 0)
-	{
-		printf("%s\n", cur->data);
-		cur = cur->next;
-	}
-}
+	t_list	**begin_list;
+	t_list	*nod1;
+	t_list	*nod2;
+	t_list	*nod3;
+	t_list	*nod4;
 
-int		main(void)
-{
-	t_list **begin_list;
-	t_list *aa;
-	t_list *bb;
-	t_list *cc;
-	t_list *dd;
-	char straa[] = "String aa";
-	char strbb[] = "String bb";
-	char strcc[] = "String cc";
-	char strdd[] = "String dd";
-	
-	aa = malloc(sizeof(t_list));
-	aa->next = 0;
-	aa->data = straa;
-
-	bb = malloc(sizeof(t_list));
-	bb->next = 0;
-	bb->data = strbb;
-
-	cc = malloc(sizeof(t_list));
-	cc->next = 0;
-	cc->data = strcc;
-
-	dd = malloc(sizeof(t_list));
-	dd->next = 0;
-	dd->data = strdd;
-
-	aa->next = bb;
-	bb->next = cc;
-	cc->next = dd;
-
-	begin_list = &aa;
-
-	print_list(begin_list);
-	printf("----------\n");
-	ft_list_remove_if(begin_list, straa, strcmp);
-	print_list(begin_list);
+	nod1 = malloc(sizeof(t_list));
+	nod2 = malloc(sizeof(t_list));
+	nod3 = malloc(sizeof(t_list));
+	nod4 = malloc(sizeof(t_list));
+	begin_list = &nod1;
+	nod1->data = "Put";
+	nod2->data = "your";
+	nod3->data = "sample";
+	nod4->data = "text";
+	nod1->next = nod2;
+	nod2->next = nod3;
+	nod3->next = nod4;
+	nod4->next = NULL;
+	ft_printf_list(*begin_list);
+	ft_list_remove_if(begin_list, "your", strcmp);
+	ft_printf_list(*begin_list);
+	return (0);
 }

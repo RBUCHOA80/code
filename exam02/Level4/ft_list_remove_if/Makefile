@@ -1,6 +1,6 @@
-NAME		=	ft_list_remove_if
+NAME	=	ft_list_remove_if
 
-OBJS		=	ft_list_remove_if.c \
-
-$(NAME):		
-				gcc -Wall -Wextra -Werror $(OBJS) -o $(NAME)
+run:
+			gcc -g -Wall -Wextra -Werror $(NAME).c -o $(NAME)
+			./$(NAME)
+			rm $(NAME)
