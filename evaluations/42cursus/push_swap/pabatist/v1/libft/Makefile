@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 16:57:31 by pabatist          #+#    #+#              #
-#    Updated: 2023/08/16 17:03:32 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/16 18:13:18 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,4 +74,4 @@ re:	fclean all
 .PHONY: all clean fclean re
 
 debug:
-	$(AR_RC) $(NAME) $(BONUS_SOURCES)
+	$(AR_RC) $(NAME) $(OBJECTS) $(BONUS_OBJECTS)

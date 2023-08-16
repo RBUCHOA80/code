@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 16:57:57 by pabatist          #+#    #+#              #
-#    Updated: 2023/08/16 17:04:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/16 18:14:48 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ $(NAME):	$(OBJECTS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 	@echo 'Push_swap done'
 
-
 clean:
 	@$(RM) $(OBJECTS)
 	@$(MAKE) $(LIBFTPATH) clean
@@ -56,5 +55,5 @@ re:	fclean
 	make
 
 debug:
-	$(MAKE) $(LIBFTPATH)
+	make -C $(LIBFTPATH)
 	$(CC) $(CFLAGS) $(SOURCE) $(LIBFT) -o $(NAME)
