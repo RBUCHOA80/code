@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:11:13 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/07/07 12:43:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/16 17:05:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	if (!s)
 		return (NULL);
 	while (1)
-	{	
+	{
 		if (*s == (unsigned char) c)
 			return ((char *)s);
 		if (*s == '\0')

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pabatist <pabatist@student.42.rio>         +#+  +:+       +#+         #
+#    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 16:57:31 by pabatist          #+#    #+#              #
-#    Updated: 2023/08/14 16:57:33 by pabatist         ###   ########.fr        #
+#    Updated: 2023/08/16 17:03:32 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,3 +72,6 @@ fclean:	clean
 re:	fclean all
 
 .PHONY: all clean fclean re
+
+debug:
+	$(AR_RC) $(NAME) $(BONUS_SOURCES)
