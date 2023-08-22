@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/05 00:14:10 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/21 23:46:49 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,11 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	main.c \
+SRCS_LIST			=	philo.c \
 						ft_atoi.c \
+						ft_check_arg.c \
+						ft_create_rules.c \
+						ft_free_rules.c \
 						ft_itoa.c \
 						ft_msg.c \
 						ft_strcmp.c \
@@ -86,6 +89,6 @@ run:					$(NAME)
 						./$(NAME) 4 310 2147483647 100 7
 
 vrun:					$(NAME)
-						valgrind --leak-check=full -s -v ./$(NAME)
+						valgrind --leak-check=full -s -v ./$(NAME) 4 310 2147483647 100 7
 
 rerun:					re run
