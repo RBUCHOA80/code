@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/21 23:46:49 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/21 23:57:56 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRCS_LIST			=	philo.c \
 						ft_atoi.c \
 						ft_check_arg.c \
 						ft_create_rules.c \
-						ft_free_rules.c \
+						ft_free.c \
 						ft_itoa.c \
 						ft_msg.c \
 						ft_strcmp.c \
@@ -89,6 +89,6 @@ run:					$(NAME)
 						./$(NAME) 4 310 2147483647 100 7
 
 vrun:					$(NAME)
-						valgrind --leak-check=full -s -v ./$(NAME) 4 310 2147483647 100 7
+						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) 4 310 2147483647 100 7
 
 rerun:					re run
