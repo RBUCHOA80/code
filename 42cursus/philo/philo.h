@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/21 23:51:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/22 21:46:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*		INCLUDES  */
 # include <stdio.h> //printf
 # include <stdlib.h> //malloc | free
+# include <pthread.h> //pthread_lib
 # include <time.h>
 
 /* 
@@ -42,11 +43,11 @@ typedef struct s_philo
 
 /*		PROTOTYPES  */
 int		philo(t_argv *rules);
-int		routine(void);
+void	*ft_routine(void *var);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
 t_argv	*ft_create_rules(char **argv);
-int		ft_free(t_argv *rules);
+int		ft_free_rule(t_argv *rules);
 char	*ft_itoa(int n);
 void	ft_msg(void);
 int		ft_strcmp(char *s1, char *s2);

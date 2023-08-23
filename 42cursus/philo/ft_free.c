@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:46:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/21 23:52:16 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/22 21:43:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_free(t_argv *rules)
+int	ft_free_rule(t_argv *rules)
 {
 	free(rules);
 	return (0);

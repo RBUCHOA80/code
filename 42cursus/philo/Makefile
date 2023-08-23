@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/21 23:57:56 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/22 22:38:19 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,10 +85,12 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
+ARG					=	5 310 400 100 7
+
 run:					$(NAME)
-						./$(NAME) 4 310 2147483647 100 7
+						./$(NAME) $(ARG)
 
 vrun:					$(NAME)
-						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) 4 310 2147483647 100 7
+						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
 
 rerun:					re run
