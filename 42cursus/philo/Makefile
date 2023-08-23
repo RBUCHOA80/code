@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/22 22:38:19 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/23 20:09:55 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ $(NAME):				$(SRCS_OBJS)
 debug:					$(SRCS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						$(COMPILER) $(CFLAGS) -g $(SRCS) $(INCLUDE_DIR) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
-						lldb ./$(NAME) 4 310 200 100 7
+						gdb --args ./$(NAME) $(ARG)
 
 clean:
 						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib);)
@@ -85,7 +85,7 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-ARG					=	5 310 400 100 7
+ARG					=	3 310 400 100 7
 
 run:					$(NAME)
 						./$(NAME) $(ARG)

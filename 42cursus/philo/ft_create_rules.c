@@ -6,15 +6,15 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/21 23:56:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/23 19:59:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-t_argv	*ft_create_rules(char **argv)
+t_rules	*ft_create_rules(char **argv)
 {
-	t_argv	*rules;
+	t_rules	*rules;
 
 	rules = malloc(sizeof(*rules));
 	rules->nop = ft_atoi(argv[1]);
