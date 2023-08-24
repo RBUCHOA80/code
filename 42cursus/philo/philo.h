@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/23 20:07:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/23 22:04:49 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_rules
 	time_t			tte;
 	time_t			tts;
 	int				pme;
-	pthread_mutex_t	mutex;
 }	t_rules;
 
 typedef struct s_philo
