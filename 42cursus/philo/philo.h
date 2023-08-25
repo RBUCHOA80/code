@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/23 22:04:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 00:03:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,24 @@ tts -> time_to_sleep;
 pme -> number_of_times_each_philosopher_must_eat;
  */
 
+typedef struct s_philo	t_philo;
+
 typedef struct s_rules
 {
-	int				nop;
+	unsigned int	nop;
 	time_t			ttd;
 	time_t			tte;
 	time_t			tts;
-	int				pme;
+	unsigned int	pme;
+	t_philo			**philos;
 }	t_rules;
 
 typedef struct s_philo
 {
-	t_rules	*rules;
-	void	*content;
+	pthread_t		thread;
+	pthread_mutex_t	mutex;
+	unsigned int	id;
+	t_rules			*rules;
 }	t_philo;
 
 /*		PROTOTYPES  */

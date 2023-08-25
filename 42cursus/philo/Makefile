@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/23 20:09:55 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/24 22:09:31 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-ARG					=	3 310 400 100 7
+ARG						=	5 310 400 100 7
 
 run:					$(NAME)
 						./$(NAME) $(ARG)
