@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 22:30:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 22:57:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_rules
 typedef struct s_philo
 {
 	pthread_t		thread;
+	unsigned int	id;
 	t_rules			*rules;
 }	t_philo;
 

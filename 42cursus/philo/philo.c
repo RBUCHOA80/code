@@ -6,25 +6,26 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 22:36:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 23:11:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-
-void	*ft_routine(void *philo)
+void	*ft_routine(void *data)
 {
 	static int		count;
 	t_rules			*rules;
+	t_philo			*philo;
 	unsigned int	i;
 
-	rules = ((t_philo *)philo)->rules;
-	printf("timestamp_in_ms X has taken a fork\n");
-	printf("timestamp_in_ms X is eating\n");
-	printf("timestamp_in_ms X is sleeping\n");
-	printf("timestamp_in_ms X is thinking\n");
-	printf("timestamp_in_ms X died\n");
+	philo = (t_philo *)data;
+	rules = philo->rules;
+	printf("timestamp_in_ms %i has taken a fork\n", philo->id);
+	printf("timestamp_in_ms %i is eating\n", philo->id);
+	printf("timestamp_in_ms %i is sleeping\n", philo->id);
+	printf("timestamp_in_ms %i is thinking\n", philo->id);
+	printf("timestamp_in_ms %i died\n", philo->id);
 	i = 0;
 	while (i++ < 10000)
 	{

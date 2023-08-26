@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 22:36:07 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 23:11:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_rules	*ft_create_rules(char **argv)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
 		rules->philos[i]->rules = rules;
+		rules->philos[i]->id = i + 1;
 		i++;
 	}
 	return (rules);
