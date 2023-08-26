@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/26 00:00:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/26 12:01:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <sys/time.h> //gettimeofday
 
 /* 
-nop -> number_of_philosophers;
-ttd -> time_to_die;
-tte -> time_to_eat;
-tts -> time_to_sleep;
-pme -> number_of_times_each_philosopher_must_eat;
+nop <- number_of_philosophers;
+ttd <- time_to_die;
+tte <- time_to_eat;
+tts <- time_to_sleep;
+pme <- number_of_times_each_philosopher_must_eat;
  */
 
 typedef struct s_philo	t_philo;
