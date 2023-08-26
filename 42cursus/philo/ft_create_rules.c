@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 22:04:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 22:36:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_rules	*ft_create_rules(char **argv)
 	while (i < rules->nop)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
-		printf("C -> %p\n", rules);
 		rules->philos[i]->rules = rules;
 		i++;
 	}

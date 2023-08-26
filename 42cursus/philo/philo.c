@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 22:14:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 22:36:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,21 @@
 void	*ft_routine(void *philo)
 {
 	static int		count;
-	//t_rules			*rules;
+	t_rules			*rules;
 	unsigned int	i;
 
-	//rules = ((t_philo *)philo)->rules;
+	rules = ((t_philo *)philo)->rules;
 	printf("timestamp_in_ms X has taken a fork\n");
 	printf("timestamp_in_ms X is eating\n");
 	printf("timestamp_in_ms X is sleeping\n");
 	printf("timestamp_in_ms X is thinking\n");
 	printf("timestamp_in_ms X died\n");
-	printf("B -> %p\n", ((t_philo *)philo)->rules);
 	i = 0;
 	while (i++ < 10000)
 	{
-		//pthread_mutex_lock(&rules->mutex);
+		pthread_mutex_lock(&rules->mutex);
 		count++;
-		//pthread_mutex_unlock(&rules->mutex);
+		pthread_mutex_unlock(&rules->mutex);
 	}
 	printf("\e[1;31m%p count = %i\e[0m\n", &count, count);
 	return (0);
@@ -49,12 +48,11 @@ int	philo(t_rules *rules)
 		printf("pme = %i \t<- number_of_times_each_philosopher_must_eat\n", \
 			rules->pme);
 	pthread_mutex_init(&rules->mutex, NULL);
-	printf("A -> %p\n", rules);
 	i = 0;
 	while (i < rules->nop)
 	{
 		pthread_create(&rules->philos[i]->thread, NULL, \
-			&ft_routine, &rules->philos[i]);
+			&ft_routine, rules->philos[i]);
 		i++;
 	}
 	i = 0;
@@ -80,7 +78,6 @@ int	main(int argc, char **argv)
 	if (ft_check_arg(argc, argv))
 		return (1);
 	rules = ft_create_rules(argv);
-	printf("D -> %p\n", rules);
 	philo(rules);
 	return (0);
 }
