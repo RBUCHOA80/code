@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 00:01:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 22:04:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 t_rules	*ft_create_rules(char **argv)
 {
-	t_rules	*rules;
+	t_rules			*rules;
+	unsigned int	i;
 
-	rules = malloc(sizeof(*rules));
+	rules = malloc(sizeof(t_rules));
 	rules->nop = ft_atoi(argv[1]);
 	rules->ttd = ft_atoi(argv[2]);
 	rules->tte = ft_atoi(argv[3]);
@@ -25,5 +26,14 @@ t_rules	*ft_create_rules(char **argv)
 		rules->pme = ft_atoi(argv[5]);
 	else
 		rules->pme = -1;
+	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
+	i = 0;
+	while (i < rules->nop)
+	{
+		rules->philos[i] = malloc(sizeof(t_philo));
+		printf("C -> %p\n", rules);
+		rules->philos[i]->rules = rules;
+		i++;
+	}
 	return (rules);
 }

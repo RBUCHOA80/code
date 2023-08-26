@@ -6,28 +6,34 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 00:03:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 22:14:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
+
 void	*ft_routine(void *philo)
 {
-	int				i;
+	static int		count;
+	//t_rules			*rules;
+	unsigned int	i;
 
-	(void)philo;
+	//rules = ((t_philo *)philo)->rules;
 	printf("timestamp_in_ms X has taken a fork\n");
 	printf("timestamp_in_ms X is eating\n");
 	printf("timestamp_in_ms X is sleeping\n");
 	printf("timestamp_in_ms X is thinking\n");
 	printf("timestamp_in_ms X died\n");
-	pthread_mutex_lock(&((t_philo *)philo)->mutex);
+	printf("B -> %p\n", ((t_philo *)philo)->rules);
 	i = 0;
-	while (i < 100)
-		i++;
-	pthread_mutex_lock(&((t_philo *)philo)->mutex);
-	printf("\e[1;31mcount = %i\e[0m\n", i);
+	while (i++ < 10000)
+	{
+		//pthread_mutex_lock(&rules->mutex);
+		count++;
+		//pthread_mutex_unlock(&rules->mutex);
+	}
+	printf("\e[1;31m%p count = %i\e[0m\n", &count, count);
 	return (0);
 }
 
@@ -42,6 +48,8 @@ int	philo(t_rules *rules)
 	if (rules->pme > 0)
 		printf("pme = %i \t<- number_of_times_each_philosopher_must_eat\n", \
 			rules->pme);
+	pthread_mutex_init(&rules->mutex, NULL);
+	printf("A -> %p\n", rules);
 	i = 0;
 	while (i < rules->nop)
 	{
@@ -49,11 +57,10 @@ int	philo(t_rules *rules)
 			&ft_routine, &rules->philos[i]);
 		i++;
 	}
-	pthread_mutex_init(&rules->philos[0]->mutex, NULL);
 	i = 0;
 	while (i < rules->nop)
 		pthread_join(rules->philos[i++]->thread, NULL);
-	pthread_mutex_destroy(&rules->philos[0]->mutex);
+	pthread_mutex_destroy(&rules->mutex);
 	ft_free_rule(rules);
 	return (0);
 }
@@ -73,6 +80,7 @@ int	main(int argc, char **argv)
 	if (ft_check_arg(argc, argv))
 		return (1);
 	rules = ft_create_rules(argv);
+	printf("D -> %p\n", rules);
 	philo(rules);
 	return (0);
 }
