@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 22:57:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 23:58:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h> //printf
 # include <stdlib.h> //malloc | free
 # include <pthread.h> //pthread_lib
-# include <time.h>
+# include <sys/time.h>
 
 /* 
 nop -> number_of_philosophers;
@@ -36,6 +36,7 @@ typedef struct s_rules
 	time_t			tte;
 	time_t			tts;
 	unsigned int	pme;
+	time_t			start_time;
 	t_philo			**philos;
 	pthread_mutex_t	mutex;
 }	t_rules;
@@ -57,5 +58,6 @@ int		ft_free_rule(t_rules *rules);
 char	*ft_itoa(int n);
 void	ft_msg(void);
 int		ft_strcmp(char *s1, char *s2);
+time_t	ft_get_time(void);
 
 #endif

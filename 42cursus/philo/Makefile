@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/25 22:53:12 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/25 23:43:53 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS_LIST			=	philo.c \
 						ft_check_arg.c \
 						ft_create_rules.c \
 						ft_free.c \
+						ft_get_time.c \
 						ft_itoa.c \
 						ft_msg.c \
 						ft_strcmp.c \
@@ -85,7 +86,7 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-ARG						=	6 310 200 100 7
+ARG						=	5 310 200 100 7
 
 run:					$(NAME)
 						./$(NAME) $(ARG)

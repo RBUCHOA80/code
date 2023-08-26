@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 23:11:15 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/25 23:58:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	*ft_routine(void *data)
 
 	philo = (t_philo *)data;
 	rules = philo->rules;
-	printf("timestamp_in_ms %i has taken a fork\n", philo->id);
-	printf("timestamp_in_ms %i is eating\n", philo->id);
-	printf("timestamp_in_ms %i is sleeping\n", philo->id);
-	printf("timestamp_in_ms %i is thinking\n", philo->id);
-	printf("timestamp_in_ms %i died\n", philo->id);
+	printf("%li %i has taken a fork\n", (ft_get_time() - rules->start_time), philo->id);
+	printf("%li %i is eating\n", (ft_get_time() - rules->start_time), philo->id);
+	printf("%li %i is sleeping\n", (ft_get_time() - rules->start_time), philo->id);
+	printf("%li %i is thinking\n", (ft_get_time() - rules->start_time), philo->id);
+	printf("%li %i died\n", (ft_get_time() - rules->start_time), philo->id);
 	i = 0;
 	while (i++ < 10000)
 	{
