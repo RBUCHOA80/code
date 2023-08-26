@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/25 23:43:53 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/26 11:49:58 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	philo.c \
+SRCS_LIST			=	main.c \
+						philo.c \
 						ft_atoi.c \
 						ft_check_arg.c \
 						ft_create_rules.c \
@@ -45,6 +46,7 @@ SRCS_LIST			=	philo.c \
 						ft_get_time.c \
 						ft_itoa.c \
 						ft_msg.c \
+						ft_routine.c \
 						ft_strcmp.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
