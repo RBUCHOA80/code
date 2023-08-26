@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/25 23:58:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/26 00:00:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h> //printf
 # include <stdlib.h> //malloc | free
 # include <pthread.h> //pthread_lib
-# include <sys/time.h>
+# include <sys/time.h> //gettimeofday
 
 /* 
 nop -> number_of_philosophers;
