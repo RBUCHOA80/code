@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/26 16:03:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/26 23:30:35 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_routine(void *data)
 {
 	static int		count;
-	t_rules			*rules;
 	t_philo			*philo;
+	t_rules			*rules;
 	unsigned int	i;
 
 	philo = (t_philo *)data;
@@ -27,7 +27,7 @@ void	*ft_routine(void *data)
 	printf("%li %i is thinking\n", (ft_get_time() - rules->start_time), philo->id);
 	printf("%li %i died\n", (ft_get_time() - rules->start_time), philo->id);
 	i = 0;
-	while (i++ < 100000)
+	while (i++ < 10000)
 	{
 		pthread_mutex_lock(&rules->mutex);
 		count++;
