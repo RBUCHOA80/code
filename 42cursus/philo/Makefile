@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/27 17:40:38 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/27 19:35:37 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,13 +89,18 @@ show:
 						@printf "CFLAGS		: $(CFLAGS)\n"
 						@printf "SRC		: $(SRCS)\n"
 
-#                       +------------------ <- nop <- number_of_philosophers;
-#                       | +---------------- <- ttd <- time_to_die;
-#                       | |   +------------ <- tte <- time_to_eat;
-#                       | |   |   +-------- <- tts <- time_to_sleep;
-#                       | |   |   |   +---- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
-#                       | |   |   |   |
-ARG					=	5 310 200 100 7
+#                           +------------------ <- nop <- number_of_philosophers;
+#                           | +---------------- <- ttd <- time_to_die;
+#                           | |   +------------ <- tte <- time_to_eat;
+#                           | |   |   +-------- <- tts <- time_to_sleep;
+#                           | |   |   |   +---- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
+#                           | |   |   |   |
+#ARG					=	5 800 200 200   # No philosopher should die.
+#ARG					=	5 800 200 200 7 # No philosopher should die.
+#ARG					=	4 410 200 200   # No philosopher should die.
+ARG						=	4 310 200 100   # One philosopher should die.
+#ARG					=	1 800 200 200   # The philosopher should not eat and should die
+#ARG					=	5 410 200 100 7
 
 run:					$(NAME)
 						./$(NAME) $(ARG)

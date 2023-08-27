@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 17:54:30 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 19:30:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_take_eat_sleep(t_philo *philo)
 	pthread_mutex_lock(philo->fork[0]);
 	ft_write(philo, "has taken a fork\n");
 	pthread_mutex_lock(philo->fork[1]);
-	if (philo->last_meal >= rules->ttd)
-		ft_write(philo, "\e[1;32mdied\e[m\n");
 	ft_write(philo, "has taken a fork\n");
+	if ((ft_get_time() - philo->last_meal) >= rules->ttd)
+		ft_write(philo, "\e[1;32mdied\e[m\n");
 	ft_write(philo, "is eating\n");
 	usleep(philo->rules->tte * 1000);
+	philo->last_meal = ft_get_time();
 	pthread_mutex_unlock(philo->fork[0]);
 	pthread_mutex_unlock(philo->fork[1]);
-	philo->last_meal = (ft_get_time() - rules->start_time) - philo->last_meal;
 	ft_write(philo, "is sleeping\n");
 	usleep(philo->rules->tts * 1000);
 	ft_write(philo, "is thinking\n");
@@ -39,7 +39,6 @@ void	ft_take_eat_sleep(t_philo *philo)
 		rules->test_count++;
 		pthread_mutex_unlock(&rules->test_mutex);
 	}
-	printf("philo[%i]->last_meal = %li\n", philo->index, philo->last_meal);
 }
 
 void	*ft_routine(void *data)
