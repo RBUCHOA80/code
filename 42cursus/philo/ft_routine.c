@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 09:07:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:12:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 
 void	*ft_routine(void *data)
 {
-	static int		count;
 	t_philo			*philo;
 	t_rules			*rules;
 	unsigned int	i;
 
 	philo = (t_philo *)data;
 	rules = philo->rules;
-		pthread_mutex_lock(rules->forks[0]);
-	printf("%li %i has taken a fork\n", (ft_get_time() - rules->start_time), philo->index);
-	sleep(2);
-		pthread_mutex_unlock(rules->forks[0]);
-	printf("%li %i is eating\n", (ft_get_time() - rules->start_time), philo->index);
-	printf("%li %i is sleeping\n", (ft_get_time() - rules->start_time), philo->index);
-	printf("%li %i is thinking\n", (ft_get_time() - rules->start_time), philo->index);
-	printf("%li %i died\n", (ft_get_time() - rules->start_time), philo->index);
+	pthread_mutex_lock(rules->forks[0]);
+	//pthread_mutex_lock(rules->forks[0]);
+	ft_write(philo, "has taken a fork\n");
+	ft_write(philo, "is eating\n");
+	usleep(rules->tte);
 	i = 0;
 	while (i++ < 10000)
 	{
-		pthread_mutex_lock(rules->forks[0]);
-		count++;
-		pthread_mutex_unlock(rules->forks[0]);
+		rules->test_count++;
 	}
-	printf("\e[1;31m%p %i count = %i\e[0m\n", &count, philo->index, count);
+	pthread_mutex_unlock(rules->forks[0]);
+	ft_write(philo, "is sleeping\n");
+	usleep(rules->tts);
+	ft_write(philo, "is thinking\n");
+	ft_write(philo, "died\n");
 	return (0);
 }
