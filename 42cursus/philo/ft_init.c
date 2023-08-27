@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 15:25:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 17:44:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void	ft_init_forks(t_rules *rules)
 
 void	ft_init_philos(t_rules *rules)
 {
-	unsigned int	i;
+	static unsigned int	i = -1;
 
 	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
-	i = -1;
 	while (++i < rules->nop)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
 		rules->philos[i]->rules = rules;
 		rules->philos[i]->index = i + 1;
+		rules->philos[i]->last_meal = (ft_get_time() - rules->start_time);
 		if (i == 0)
 		{
 			rules->philos[i]->fork[0] = rules->forks[i];
