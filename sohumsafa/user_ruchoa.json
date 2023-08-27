@@ -1,0 +1,1359 @@
+{
+	"id": 105887,
+	"email": "ruchoa@student.42.rio",
+	"login": "ruchoa",
+	"first_name": "Rodrigo",
+	"last_name": "Uchoa",
+	"usual_full_name": "Rodrigo Uchoa",
+	"usual_first_name": null,
+	"url": "https://api.intra.42.fr/v2/users/ruchoa",
+	"phone": "hidden",
+	"displayname": "Rodrigo Uchoa",
+	"kind": "student",
+	"image": {
+		"link": "https://cdn.intra.42.fr/users/7d5e9e7bcbccac2408a99d509a259eeb/ruchoa.jpg",
+		"versions": {
+			"large": "https://cdn.intra.42.fr/users/ca95c220b16e3f6112a56afd6cca0238/large_ruchoa.jpg",
+			"medium": "https://cdn.intra.42.fr/users/bb7a72f82c41d3bd225a99eca5979b54/medium_ruchoa.jpg",
+			"small": "https://cdn.intra.42.fr/users/27db28c17b701573101e93cdda3932fb/small_ruchoa.jpg",
+			"micro": "https://cdn.intra.42.fr/users/d08b4cf23f934cb20106e5eb535554ad/micro_ruchoa.jpg"
+		}
+	},
+	"staff?": false,
+	"correction_point": 4,
+	"pool_month": "january",
+	"pool_year": "2022",
+	"location": null,
+	"wallet": 145,
+	"anonymize_date": "2026-08-23T00:00:00.000-03:00",
+	"data_erasure_date": "2026-08-23T00:00:00.000-03:00",
+	"created_at": "2022-01-21T23:11:01.202Z",
+	"updated_at": "2023-08-23T23:18:39.302Z",
+	"alumnized_at": null,
+	"alumni?": false,
+	"active?": true,
+	"groups": [],
+	"cursus_users": [
+		{
+			"grade": "Learner",
+			"level": 3.29,
+			"skills": [
+				{
+					"id": 1,
+					"name": "Algorithms \u0026 AI",
+					"level": 3.24
+				},
+				{
+					"id": 3,
+					"name": "Rigor",
+					"level": 3.04
+				},
+				{
+					"id": 4,
+					"name": "Unix",
+					"level": 2.19
+				},
+				{
+					"id": 2,
+					"name": "Imperative programming",
+					"level": 2.01
+				},
+				{
+					"id": 5,
+					"name": "Graphics",
+					"level": 1.63
+				},
+				{
+					"id": 10,
+					"name": "Network \u0026 system administration",
+					"level": 1.47
+				}
+			],
+			"blackholed_at": "2023-09-10T12:42:00.000Z",
+			"id": 167420,
+			"begin_at": "2022-05-02T12:42:00.000Z",
+			"end_at": "2025-05-02T13:42:00.000Z",
+			"cursus_id": 21,
+			"has_coalition": true,
+			"created_at": "2022-05-01T22:51:50.236Z",
+			"updated_at": "2023-08-21T12:59:33.942Z",
+			"user": {
+				"id": 105887,
+				"email": "ruchoa@student.42.rio",
+				"login": "ruchoa",
+				"first_name": "Rodrigo",
+				"last_name": "Uchoa",
+				"usual_full_name": "Rodrigo Uchoa",
+				"usual_first_name": null,
+				"url": "https://api.intra.42.fr/v2/users/ruchoa",
+				"phone": "hidden",
+				"displayname": "Rodrigo Uchoa",
+				"kind": "student",
+				"image": {
+					"link": "https://cdn.intra.42.fr/users/7d5e9e7bcbccac2408a99d509a259eeb/ruchoa.jpg",
+					"versions": {
+						"large": "https://cdn.intra.42.fr/users/ca95c220b16e3f6112a56afd6cca0238/large_ruchoa.jpg",
+						"medium": "https://cdn.intra.42.fr/users/bb7a72f82c41d3bd225a99eca5979b54/medium_ruchoa.jpg",
+						"small": "https://cdn.intra.42.fr/users/27db28c17b701573101e93cdda3932fb/small_ruchoa.jpg",
+						"micro": "https://cdn.intra.42.fr/users/d08b4cf23f934cb20106e5eb535554ad/micro_ruchoa.jpg"
+					}
+				},
+				"staff?": false,
+				"correction_point": 4,
+				"pool_month": "january",
+				"pool_year": "2022",
+				"location": null,
+				"wallet": 145,
+				"anonymize_date": "2026-08-23T00:00:00.000-03:00",
+				"data_erasure_date": "2026-08-23T00:00:00.000-03:00",
+				"created_at": "2022-01-21T23:11:01.202Z",
+				"updated_at": "2023-08-23T23:18:39.302Z",
+				"alumnized_at": null,
+				"alumni?": false,
+				"active?": true
+			},
+			"cursus": {
+				"id": 21,
+				"created_at": "2019-07-29T08:45:17.896Z",
+				"name": "42cursus",
+				"slug": "42cursus",
+				"kind": "main"
+			}
+		},
+		{
+			"grade": null,
+			"level": 5.63,
+			"skills": [],
+			"blackholed_at": null,
+			"id": 158200,
+			"begin_at": "2022-01-31T13:42:00.000Z",
+			"end_at": "2022-02-19T00:30:00.000Z",
+			"cursus_id": 36,
+			"has_coalition": false,
+			"created_at": "2022-01-31T05:51:36.321Z",
+			"updated_at": "2022-02-19T01:35:27.001Z",
+			"user": {
+				"id": 105887,
+				"email": "ruchoa@student.42.rio",
+				"login": "ruchoa",
+				"first_name": "Rodrigo",
+				"last_name": "Uchoa",
+				"usual_full_name": "Rodrigo Uchoa",
+				"usual_first_name": null,
+				"url": "https://api.intra.42.fr/v2/users/ruchoa",
+				"phone": "hidden",
+				"displayname": "Rodrigo Uchoa",
+				"kind": "student",
+				"image": {
+					"link": "https://cdn.intra.42.fr/users/7d5e9e7bcbccac2408a99d509a259eeb/ruchoa.jpg",
+					"versions": {
+						"large": "https://cdn.intra.42.fr/users/ca95c220b16e3f6112a56afd6cca0238/large_ruchoa.jpg",
+						"medium": "https://cdn.intra.42.fr/users/bb7a72f82c41d3bd225a99eca5979b54/medium_ruchoa.jpg",
+						"small": "https://cdn.intra.42.fr/users/27db28c17b701573101e93cdda3932fb/small_ruchoa.jpg",
+						"micro": "https://cdn.intra.42.fr/users/d08b4cf23f934cb20106e5eb535554ad/micro_ruchoa.jpg"
+					}
+				},
+				"staff?": false,
+				"correction_point": 4,
+				"pool_month": "january",
+				"pool_year": "2022",
+				"location": null,
+				"wallet": 145,
+				"anonymize_date": "2026-08-23T00:00:00.000-03:00",
+				"data_erasure_date": "2026-08-23T00:00:00.000-03:00",
+				"created_at": "2022-01-21T23:11:01.202Z",
+				"updated_at": "2023-08-23T23:18:39.302Z",
+				"alumnized_at": null,
+				"alumni?": false,
+				"active?": true
+			},
+			"cursus": {
+				"id": 36,
+				"created_at": "2020-09-28T20:18:44.438Z",
+				"name": "Basecamp",
+				"slug": "basecamp",
+				"kind": "piscine_community"
+			}
+		},
+		{
+			"grade": null,
+			"level": 0.08,
+			"skills": [],
+			"blackholed_at": null,
+			"id": 155285,
+			"begin_at": "2022-01-25T13:42:00.000Z",
+			"end_at": "2022-01-31T13:42:00.000Z",
+			"cursus_id": 38,
+			"has_coalition": false,
+			"created_at": "2022-01-21T23:11:03.692Z",
+			"updated_at": "2022-01-25T16:39:38.967Z",
+			"user": {
+				"id": 105887,
+				"email": "ruchoa@student.42.rio",
+				"login": "ruchoa",
+				"first_name": "Rodrigo",
+				"last_name": "Uchoa",
+				"usual_full_name": "Rodrigo Uchoa",
+				"usual_first_name": null,
+				"url": "https://api.intra.42.fr/v2/users/ruchoa",
+				"phone": "hidden",
+				"displayname": "Rodrigo Uchoa",
+				"kind": "student",
+				"image": {
+					"link": "https://cdn.intra.42.fr/users/7d5e9e7bcbccac2408a99d509a259eeb/ruchoa.jpg",
+					"versions": {
+						"large": "https://cdn.intra.42.fr/users/ca95c220b16e3f6112a56afd6cca0238/large_ruchoa.jpg",
+						"medium": "https://cdn.intra.42.fr/users/bb7a72f82c41d3bd225a99eca5979b54/medium_ruchoa.jpg",
+						"small": "https://cdn.intra.42.fr/users/27db28c17b701573101e93cdda3932fb/small_ruchoa.jpg",
+						"micro": "https://cdn.intra.42.fr/users/d08b4cf23f934cb20106e5eb535554ad/micro_ruchoa.jpg"
+					}
+				},
+				"staff?": false,
+				"correction_point": 4,
+				"pool_month": "january",
+				"pool_year": "2022",
+				"location": null,
+				"wallet": 145,
+				"anonymize_date": "2026-08-23T00:00:00.000-03:00",
+				"data_erasure_date": "2026-08-23T00:00:00.000-03:00",
+				"created_at": "2022-01-21T23:11:01.202Z",
+				"updated_at": "2023-08-23T23:18:39.302Z",
+				"alumnized_at": null,
+				"alumni?": false,
+				"active?": true
+			},
+			"cursus": {
+				"id": 38,
+				"created_at": "2020-10-19T20:19:23.526Z",
+				"name": "Basecamp WarmUp",
+				"slug": "basecamp-warmup",
+				"kind": "piscine_community"
+			}
+		},
+		{
+			"grade": null,
+			"level": 1.03,
+			"skills": [
+				{
+					"id": 4,
+					"name": "Unix",
+					"level": 1.03
+				},
+				{
+					"id": 3,
+					"name": "Rigor",
+					"level": 1.01
+				}
+			],
+			"blackholed_at": null,
+			"id": 164112,
+			"begin_at": "2022-03-25T11:42:00.000Z",
+			"end_at": "2022-05-01T23:42:00.000Z",
+			"cursus_id": 59,
+			"has_coalition": false,
+			"created_at": "2022-03-24T04:12:39.793Z",
+			"updated_at": "2022-05-02T01:01:57.194Z",
+			"user": {
+				"id": 105887,
+				"email": "ruchoa@student.42.rio",
+				"login": "ruchoa",
+				"first_name": "Rodrigo",
+				"last_name": "Uchoa",
+				"usual_full_name": "Rodrigo Uchoa",
+				"usual_first_name": null,
+				"url": "https://api.intra.42.fr/v2/users/ruchoa",
+				"phone": "hidden",
+				"displayname": "Rodrigo Uchoa",
+				"kind": "student",
+				"image": {
+					"link": "https://cdn.intra.42.fr/users/7d5e9e7bcbccac2408a99d509a259eeb/ruchoa.jpg",
+					"versions": {
+						"large": "https://cdn.intra.42.fr/users/ca95c220b16e3f6112a56afd6cca0238/large_ruchoa.jpg",
+						"medium": "https://cdn.intra.42.fr/users/bb7a72f82c41d3bd225a99eca5979b54/medium_ruchoa.jpg",
+						"small": "https://cdn.intra.42.fr/users/27db28c17b701573101e93cdda3932fb/small_ruchoa.jpg",
+						"micro": "https://cdn.intra.42.fr/users/d08b4cf23f934cb20106e5eb535554ad/micro_ruchoa.jpg"
+					}
+				},
+				"staff?": false,
+				"correction_point": 4,
+				"pool_month": "january",
+				"pool_year": "2022",
+				"location": null,
+				"wallet": 145,
+				"anonymize_date": "2026-08-23T00:00:00.000-03:00",
+				"data_erasure_date": "2026-08-23T00:00:00.000-03:00",
+				"created_at": "2022-01-21T23:11:01.202Z",
+				"updated_at": "2023-08-23T23:18:39.302Z",
+				"alumnized_at": null,
+				"alumni?": false,
+				"active?": true
+			},
+			"cursus": {
+				"id": 59,
+				"created_at": "2022-03-14T17:33:32.942Z",
+				"name": "Turbo 4.2",
+				"slug": "turbo-4-2",
+				"kind": "external"
+			}
+		}
+	],
+	"projects_users": [
+		{
+			"id": 3256116,
+			"occurrence": 0,
+			"final_mark": null,
+			"status": "in_progress",
+			"validated?": null,
+			"current_team_id": 5084071,
+			"project": {
+				"id": 1321,
+				"name": "Exam Rank 03",
+				"slug": "exam-rank-03",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": null,
+			"marked": false,
+			"retriable_at": null,
+			"created_at": "2023-08-22T00:27:55.991Z",
+			"updated_at": "2023-08-22T00:27:56.110Z"
+		},
+		{
+			"id": 3256112,
+			"occurrence": 0,
+			"final_mark": null,
+			"status": "in_progress",
+			"validated?": null,
+			"current_team_id": 5084068,
+			"project": {
+				"id": 1334,
+				"name": "Philosophers",
+				"slug": "42cursus-philosophers",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": null,
+			"marked": false,
+			"retriable_at": null,
+			"created_at": "2023-08-22T00:25:42.043Z",
+			"updated_at": "2023-08-22T00:27:21.632Z"
+		},
+		{
+			"id": 3256115,
+			"occurrence": 0,
+			"final_mark": null,
+			"status": "creating_group",
+			"validated?": null,
+			"current_team_id": 5094116,
+			"project": {
+				"id": 1331,
+				"name": "minishell",
+				"slug": "42cursus-minishell",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": null,
+			"marked": false,
+			"retriable_at": null,
+			"created_at": "2023-08-22T00:26:57.692Z",
+			"updated_at": "2023-08-22T00:26:57.692Z"
+		},
+		{
+			"id": 2901833,
+			"occurrence": 3,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 5063420,
+			"project": {
+				"id": 1320,
+				"name": "Exam Rank 02",
+				"slug": "exam-rank-02",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2023-08-16T19:05:00.719Z",
+			"marked": true,
+			"retriable_at": "2023-08-16T19:05:00.788Z",
+			"created_at": "2022-11-30T15:04:32.754Z",
+			"updated_at": "2023-08-16T19:05:24.989Z"
+		},
+		{
+			"id": 3207773,
+			"occurrence": 0,
+			"final_mark": 125,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 5010124,
+			"project": {
+				"id": 1476,
+				"name": "fract-ol",
+				"slug": "42cursus-fract-ol",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2023-08-06T05:57:55.568Z",
+			"marked": true,
+			"retriable_at": "2023-08-07T05:57:55.681Z",
+			"created_at": "2023-07-30T20:51:49.684Z",
+			"updated_at": "2023-08-06T05:57:55.694Z"
+		},
+		{
+			"id": 3014932,
+			"occurrence": 0,
+			"final_mark": 90,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4737396,
+			"project": {
+				"id": 1471,
+				"name": "push_swap",
+				"slug": "42cursus-push_swap",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2023-03-04T23:35:06.518Z",
+			"marked": true,
+			"retriable_at": "2023-03-05T23:35:06.635Z",
+			"created_at": "2023-03-04T15:00:02.618Z",
+			"updated_at": "2023-03-04T23:35:06.649Z"
+		},
+		{
+			"id": 2897083,
+			"occurrence": 0,
+			"final_mark": 125,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4570933,
+			"project": {
+				"id": 2005,
+				"name": "minitalk",
+				"slug": "minitalk",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2022-11-27T03:11:02.608Z",
+			"marked": true,
+			"retriable_at": "2022-11-28T03:11:02.752Z",
+			"created_at": "2022-11-26T19:02:52.601Z",
+			"updated_at": "2022-11-27T03:11:02.784Z"
+		},
+		{
+			"id": 2790302,
+			"occurrence": 1,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4441327,
+			"project": {
+				"id": 2217,
+				"name": "Cursus Eu Aceito Rio",
+				"slug": "cursus-eu-aceito-rio",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2022-09-24T14:30:13.080Z",
+			"marked": true,
+			"retriable_at": "2022-09-24T14:30:13.101Z",
+			"created_at": "2022-09-16T13:15:40.531Z",
+			"updated_at": "2022-09-24T14:30:59.832Z"
+		},
+		{
+			"id": 2719129,
+			"occurrence": 0,
+			"final_mark": 125,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4316328,
+			"project": {
+				"id": 1994,
+				"name": "Born2beroot",
+				"slug": "born2beroot",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2022-08-12T20:43:10.147Z",
+			"marked": true,
+			"retriable_at": "2022-08-13T20:43:10.252Z",
+			"created_at": "2022-08-11T10:48:16.469Z",
+			"updated_at": "2022-08-12T20:43:10.266Z"
+		},
+		{
+			"id": 2697883,
+			"occurrence": 0,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4284945,
+			"project": {
+				"id": 1316,
+				"name": "ft_printf",
+				"slug": "42cursus-ft_printf",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2022-07-31T00:15:42.819Z",
+			"marked": true,
+			"retriable_at": "2022-08-01T00:15:42.878Z",
+			"created_at": "2022-07-30T19:27:13.522Z",
+			"updated_at": "2022-07-31T00:15:42.890Z"
+		},
+		{
+			"id": 2697841,
+			"occurrence": 0,
+			"final_mark": 125,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4284873,
+			"project": {
+				"id": 1327,
+				"name": "get_next_line",
+				"slug": "42cursus-get_next_line",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2022-07-30T21:45:26.115Z",
+			"marked": true,
+			"retriable_at": "2022-07-31T21:45:26.186Z",
+			"created_at": "2022-07-30T18:29:15.440Z",
+			"updated_at": "2022-07-30T21:45:26.199Z"
+		},
+		{
+			"id": 2580319,
+			"occurrence": 1,
+			"final_mark": 125,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4180838,
+			"project": {
+				"id": 1314,
+				"name": "Libft",
+				"slug": "42cursus-libft",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				21
+			],
+			"marked_at": "2022-06-16T22:24:04.182Z",
+			"marked": true,
+			"retriable_at": "2022-06-17T22:24:04.308Z",
+			"created_at": "2022-05-02T21:18:41.678Z",
+			"updated_at": "2022-06-16T22:24:04.333Z"
+		},
+		{
+			"id": 2559631,
+			"occurrence": 0,
+			"final_mark": 0,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4092919,
+			"project": {
+				"id": 173,
+				"name": "EvalExpr",
+				"slug": "piscine-c-evalexpr",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				59
+			],
+			"marked_at": "2022-04-25T11:44:20.632Z",
+			"marked": true,
+			"retriable_at": "2022-04-25T11:44:20.900Z",
+			"created_at": "2022-04-13T03:20:21.325Z",
+			"updated_at": "2022-04-25T11:44:21.061Z"
+		},
+		{
+			"id": 2554192,
+			"occurrence": 0,
+			"final_mark": 60,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4085404,
+			"project": {
+				"id": 172,
+				"name": "Match-N-Match",
+				"slug": "piscine-c-match-n-match",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				59
+			],
+			"marked_at": "2022-04-13T17:40:44.885Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-04-07T00:40:12.252Z",
+			"updated_at": "2022-04-13T17:50:06.768Z"
+		},
+		{
+			"id": 2503520,
+			"occurrence": 3,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4077264,
+			"project": {
+				"id": 1823,
+				"name": "Basecamp C 03",
+				"slug": "basecamp-c-03",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-06T04:30:41.844Z",
+			"marked": true,
+			"retriable_at": "2022-02-19T01:34:58.029Z",
+			"created_at": "2022-02-17T04:38:14.858Z",
+			"updated_at": "2022-04-06T04:30:41.918Z"
+		},
+		{
+			"id": 2502140,
+			"occurrence": 0,
+			"final_mark": 0,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4009917,
+			"project": {
+				"id": 1839,
+				"name": "Basecamp Final Exam",
+				"slug": "basecamp-final-exam",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-19T01:16:33.304Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-02-16T14:12:43.239Z",
+			"updated_at": "2022-02-22T07:14:36.670Z"
+		},
+		{
+			"id": 2495436,
+			"occurrence": 0,
+			"final_mark": 77,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3999340,
+			"project": {
+				"id": 1820,
+				"name": "Basecamp C 00",
+				"slug": "basecamp-c-00",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-16T04:15:47.784Z",
+			"marked": true,
+			"retriable_at": "2022-02-16T04:35:47.868Z",
+			"created_at": "2022-02-11T20:23:37.324Z",
+			"updated_at": "2022-02-16T04:15:47.883Z"
+		},
+		{
+			"id": 2494032,
+			"occurrence": 0,
+			"final_mark": 70,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3997472,
+			"project": {
+				"id": 1818,
+				"name": "Basecamp Shell 01",
+				"slug": "basecamp-shell-01",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-16T04:07:49.863Z",
+			"marked": true,
+			"retriable_at": "2022-02-16T04:27:49.943Z",
+			"created_at": "2022-02-10T20:03:32.587Z",
+			"updated_at": "2022-02-16T04:07:49.962Z"
+		},
+		{
+			"id": 2494031,
+			"occurrence": 0,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3997471,
+			"project": {
+				"id": 1817,
+				"name": "Basecamp Shell 00",
+				"slug": "basecamp-shell-00",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-11T00:17:34.261Z",
+			"marked": true,
+			"retriable_at": "2022-02-11T00:37:34.314Z",
+			"created_at": "2022-02-10T20:03:28.439Z",
+			"updated_at": "2022-02-11T00:17:34.328Z"
+		},
+		{
+			"id": 2490723,
+			"occurrence": 0,
+			"final_mark": 0,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 3999427,
+			"project": {
+				"id": 1835,
+				"name": "Basecamp Rush 01",
+				"slug": "basecamp-rush-01",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-14T14:29:53.204Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-02-09T15:49:48.267Z",
+			"updated_at": "2022-02-14T14:29:53.298Z"
+		},
+		{
+			"id": 2490308,
+			"occurrence": 0,
+			"final_mark": 28,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3992870,
+			"project": {
+				"id": 1838,
+				"name": "Basecamp Exam 01",
+				"slug": "basecamp-exam-01",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-17T00:07:30.737Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-02-09T13:34:40.564Z",
+			"updated_at": "2022-02-17T00:07:30.783Z"
+		},
+		{
+			"id": 2479782,
+			"occurrence": 0,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3983248,
+			"project": {
+				"id": 1834,
+				"name": "Basecamp Rush 00",
+				"slug": "basecamp-rush-00",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-07T17:10:44.691Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-02-02T16:06:01.869Z",
+			"updated_at": "2022-02-07T17:10:44.928Z"
+		},
+		{
+			"id": 2479777,
+			"occurrence": 0,
+			"final_mark": 68,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3977908,
+			"project": {
+				"id": 1837,
+				"name": "Basecamp Exam 00",
+				"slug": "basecamp-exam-00",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36
+			],
+			"marked_at": "2022-02-09T18:58:21.828Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-02-02T16:05:46.616Z",
+			"updated_at": "2022-02-09T18:58:21.882Z"
+		},
+		{
+			"id": 2468607,
+			"occurrence": 0,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 3962555,
+			"project": {
+				"id": 2085,
+				"name": "Eu Aceito!!",
+				"slug": "basecamp-rio-eu-aceito",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				38
+			],
+			"marked_at": "2022-01-25T23:05:46.525Z",
+			"marked": true,
+			"retriable_at": "2022-01-25T23:25:46.618Z",
+			"created_at": "2022-01-25T18:52:53.921Z",
+			"updated_at": "2022-01-25T23:05:46.637Z"
+		},
+		{
+			"id": 2563726,
+			"occurrence": 0,
+			"final_mark": 60,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4098109,
+			"project": {
+				"id": 1829,
+				"name": "Basecamp C 09",
+				"slug": "basecamp-c-09",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-21T19:54:13.852Z",
+			"marked": true,
+			"retriable_at": "2022-04-21T20:14:13.874Z",
+			"created_at": "2022-04-16T17:42:48.468Z",
+			"updated_at": "2022-04-21T19:54:13.889Z"
+		},
+		{
+			"id": 2562417,
+			"occurrence": 0,
+			"final_mark": 11,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4096316,
+			"project": {
+				"id": 1828,
+				"name": "Basecamp C 08",
+				"slug": "basecamp-c-08",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-20T01:43:43.510Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-04-15T02:45:12.858Z",
+			"updated_at": "2022-04-20T01:43:43.539Z"
+		},
+		{
+			"id": 2566242,
+			"occurrence": 0,
+			"final_mark": null,
+			"status": "searching_a_group",
+			"validated?": null,
+			"current_team_id": null,
+			"project": {
+				"id": 174,
+				"name": "BSQ",
+				"slug": "bsq",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				59
+			],
+			"marked_at": null,
+			"marked": false,
+			"retriable_at": null,
+			"created_at": "2022-04-19T14:27:15.223Z",
+			"updated_at": "2022-04-19T14:27:15.223Z"
+		},
+		{
+			"id": 2556912,
+			"occurrence": 0,
+			"final_mark": 45,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4089110,
+			"project": {
+				"id": 1827,
+				"name": "Basecamp C 07",
+				"slug": "basecamp-c-07",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-18T21:57:36.048Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-04-10T14:59:45.446Z",
+			"updated_at": "2022-04-18T21:57:36.069Z"
+		},
+		{
+			"id": 2555855,
+			"occurrence": 0,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4087549,
+			"project": {
+				"id": 1826,
+				"name": "Basecamp C 06",
+				"slug": "basecamp-c-06",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-14T05:16:39.978Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-04-08T14:53:34.395Z",
+			"updated_at": "2022-04-14T05:16:40.058Z"
+		},
+		{
+			"id": 2506954,
+			"occurrence": 1,
+			"final_mark": 60,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4080478,
+			"project": {
+				"id": 1825,
+				"name": "Basecamp C 05",
+				"slug": "basecamp-c-05",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-10T03:12:32.902Z",
+			"marked": true,
+			"retriable_at": "2022-02-19T01:02:42.469Z",
+			"created_at": "2022-02-18T22:13:10.094Z",
+			"updated_at": "2022-04-10T03:12:32.960Z"
+		},
+		{
+			"id": 2503522,
+			"occurrence": 2,
+			"final_mark": 50,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4078635,
+			"project": {
+				"id": 1824,
+				"name": "Basecamp C 04",
+				"slug": "basecamp-c-04",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-02-18T22:01:39.033Z",
+			"marked": true,
+			"retriable_at": "2022-02-18T22:41:39.084Z",
+			"created_at": "2022-02-17T04:38:34.547Z",
+			"updated_at": "2022-04-08T06:01:27.275Z"
+		},
+		{
+			"id": 2547451,
+			"occurrence": 0,
+			"final_mark": 0,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4075536,
+			"project": {
+				"id": 171,
+				"name": "Sastantua",
+				"slug": "piscine-c-sastantua",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				59
+			],
+			"marked_at": "2022-04-05T21:40:20.402Z",
+			"marked": true,
+			"retriable_at": null,
+			"created_at": "2022-03-30T22:35:01.064Z",
+			"updated_at": "2022-04-05T21:40:20.432Z"
+		},
+		{
+			"id": 2502221,
+			"occurrence": 1,
+			"final_mark": 5,
+			"status": "finished",
+			"validated?": false,
+			"current_team_id": 4070115,
+			"project": {
+				"id": 1822,
+				"name": "Basecamp C 02",
+				"slug": "basecamp-c-02",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-04-01T23:15:56.050Z",
+			"marked": true,
+			"retriable_at": "2022-02-17T04:15:03.645Z",
+			"created_at": "2022-02-16T14:25:27.825Z",
+			"updated_at": "2022-04-01T23:15:56.086Z"
+		},
+		{
+			"id": 2502220,
+			"occurrence": 2,
+			"final_mark": 100,
+			"status": "finished",
+			"validated?": true,
+			"current_team_id": 4070111,
+			"project": {
+				"id": 1821,
+				"name": "Basecamp C 01",
+				"slug": "basecamp-c-01",
+				"parent_id": null
+			},
+			"cursus_ids": [
+				36,
+				59
+			],
+			"marked_at": "2022-03-31T04:12:33.997Z",
+			"marked": true,
+			"retriable_at": "2022-04-03T04:12:34.116Z",
+			"created_at": "2022-02-16T14:25:25.586Z",
+			"updated_at": "2022-03-31T04:12:34.135Z"
+		}
+	],
+	"languages_users": [
+		{
+			"id": 487998,
+			"language_id": 17,
+			"user_id": 105887,
+			"position": 1,
+			"created_at": "2022-01-25T20:05:50.693Z"
+		},
+		{
+			"id": 487999,
+			"language_id": 9,
+			"user_id": 105887,
+			"position": 2,
+			"created_at": "2022-01-25T20:05:50.736Z"
+		},
+		{
+			"id": 488000,
+			"language_id": 2,
+			"user_id": 105887,
+			"position": 3,
+			"created_at": "2022-01-25T20:05:50.769Z"
+		}
+	],
+	"achievements": [
+		{
+			"id": 41,
+			"name": "All work and no play makes Jack a dull boy",
+			"description": "Logged for a total of 90 hours over a week.",
+			"tier": "none",
+			"kind": "scolarity",
+			"visible": true,
+			"image": "/uploads/achievement/image/41/SCO001.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/41/users"
+		},
+		{
+			"id": 17,
+			"name": "Bonus Hunter",
+			"description": "Validated 1 project with the maximum score.",
+			"tier": "easy",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/17/PRO005.svg",
+			"nbr_of_success": 1,
+			"users_url": "https://api.intra.42.fr/v2/achievements/17/users"
+		},
+		{
+			"id": 18,
+			"name": "Bonus Hunter",
+			"description": "Validated 3 projects with the maximum score.",
+			"tier": "medium",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/18/PRO005.svg",
+			"nbr_of_success": 3,
+			"users_url": "https://api.intra.42.fr/v2/achievements/18/users"
+		},
+		{
+			"id": 19,
+			"name": "Bonus Hunter",
+			"description": "Validated 10 projects with the maximum score.",
+			"tier": "hard",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/19/PRO005.svg",
+			"nbr_of_success": 10,
+			"users_url": "https://api.intra.42.fr/v2/achievements/19/users"
+		},
+		{
+			"id": 4,
+			"name": "Code Explorer",
+			"description": "Valided your first project.",
+			"tier": "none",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/4/PRO002.svg",
+			"nbr_of_success": 1,
+			"users_url": "https://api.intra.42.fr/v2/achievements/4/users"
+		},
+		{
+			"id": 5,
+			"name": "Code Explorer",
+			"description": "Validated 3 projects",
+			"tier": "none",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/5/PRO002.svg",
+			"nbr_of_success": 3,
+			"users_url": "https://api.intra.42.fr/v2/achievements/5/users"
+		},
+		{
+			"id": 340,
+			"name": "Comunidade I",
+			"description": "Participou da maioria dos eventos da primeira semana do Basecamp.",
+			"tier": "easy",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/340/Comunidade_I.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/340/users"
+		},
+		{
+			"id": 341,
+			"name": "Comunidade II",
+			"description": "Participou da maioria dos eventos da segunda semana do Basecamp.",
+			"tier": "medium",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/341/Comunidade_II.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/341/users"
+		},
+		{
+			"id": 333,
+			"name": "Foco I",
+			"description": "Atingir na segunda semana o número de pontos conquistados da primeira semana do Basecamp.",
+			"tier": "medium",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/333/Foco_I.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/333/users"
+		},
+		{
+			"id": 336,
+			"name": "Helper I",
+			"description": "Receber uma certa quantidade de votos no Voxotron da primeira semana do Basecamp.",
+			"tier": "easy",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/336/Helper_I.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/336/users"
+		},
+		{
+			"id": 337,
+			"name": "Helper II",
+			"description": "Receber uma certa quantidade de votos no Voxotron da segunda semana do Basecamp.",
+			"tier": "medium",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/337/Helper_II.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/337/users"
+		},
+		{
+			"id": 45,
+			"name": "Home is where the code is",
+			"description": "Logged into the same cluster for a month in a row",
+			"tier": "none",
+			"kind": "scolarity",
+			"visible": true,
+			"image": "/uploads/achievement/image/45/SCO002.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/45/users"
+		},
+		{
+			"id": 82,
+			"name": "I have no idea what I'm doing",
+			"description": "Made a defense without having validated the project.",
+			"tier": "none",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/82/PED011.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/82/users"
+		},
+		{
+			"id": 84,
+			"name": "I'm reliable !",
+			"description": "Participated in 21 defenses in a row without missing any.",
+			"tier": "easy",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/84/PED009.svg",
+			"nbr_of_success": 21,
+			"users_url": "https://api.intra.42.fr/v2/achievements/84/users"
+		},
+		{
+			"id": 36,
+			"name": "It's a rich man's world",
+			"description": "Collected 100 wallet points.",
+			"tier": "none",
+			"kind": "social",
+			"visible": true,
+			"image": "/uploads/achievement/image/36/SOC004.svg",
+			"nbr_of_success": 100,
+			"users_url": "https://api.intra.42.fr/v2/achievements/36/users"
+		},
+		{
+			"id": 331,
+			"name": "Primeiras Trilhas",
+			"description": "Ativo 5/7 dias da segunda semana do Basecamp.\r\n",
+			"tier": "medium",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/331/Primeiras_Trilhas.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/331/users"
+		},
+		{
+			"id": 330,
+			"name": "Reconhecimento de Campo",
+			"description": "Ativo 5/7 dias da primeira semana do Basecamp.\r\n",
+			"tier": "easy",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/330/Reconhecimento_de_Campo.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/330/users"
+		},
+		{
+			"id": 25,
+			"name": "Rigorous Basterd",
+			"description": "Validated 3 projects in a row (Piscine days included).",
+			"tier": "none",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/25/PRO010.svg",
+			"nbr_of_success": 3,
+			"users_url": "https://api.intra.42.fr/v2/achievements/25/users"
+		},
+		{
+			"id": 1,
+			"name": "Welcome, Cadet !",
+			"description": "You have passed the C Piscine! Welcome to 42!",
+			"tier": "none",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/1/PRO001.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/1/users"
+		},
+		{
+			"id": 218,
+			"name": "Welcome, Learner !",
+			"description": "You passed the C Piscine. Welcome at 42!",
+			"tier": "none",
+			"kind": "project",
+			"visible": true,
+			"image": "/uploads/achievement/image/218/PRO001-2.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/218/users"
+		},
+		{
+			"id": 77,
+			"name": "Writer's soul",
+			"description": "Wrote 42 comments with more than 180 characters in corrections. Make sure you put in a constructive feedback.",
+			"tier": "none",
+			"kind": "pedagogy",
+			"visible": true,
+			"image": "/uploads/achievement/image/77/PED013.svg",
+			"nbr_of_success": null,
+			"users_url": "https://api.intra.42.fr/v2/achievements/77/users"
+		}
+	],
+	"titles": [],
+	"titles_users": [],
+	"partnerships": [],
+	"patroned": [],
+	"patroning": [],
+	"expertises_users": [],
+	"roles": [],
+	"campus": [
+		{
+			"id": 28,
+			"name": "Rio de Janeiro",
+			"time_zone": "America/Sao_Paulo",
+			"language": {
+				"id": 9,
+				"name": "Portuguese",
+				"identifier": "pt",
+				"created_at": "2019-01-29T15:17:48.227Z",
+				"updated_at": "2023-08-23T11:18:26.917Z"
+			},
+			"users_count": 785,
+			"vogsphere_id": 40,
+			"country": "Brazil",
+			"address": "Via Binario do Porto, 299 / 4th floor",
+			"zip": "20000-000",
+			"city": "Rio de Janeiro",
+			"website": "https://42.rio",
+			"facebook": "",
+			"twitter": "@Escola42Rio",
+			"active": true,
+			"public": true,
+			"email_extension": "42.rio",
+			"default_hidden_phone": false
+		}
+	],
+	"campus_users": [
+		{
+			"id": 97129,
+			"user_id": 105887,
+			"campus_id": 28,
+			"is_primary": true,
+			"created_at": "2022-01-21T23:11:01.230Z",
+			"updated_at": "2022-01-21T23:11:01.230Z"
+		}
+	]
+}
