@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/27 19:35:37 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/27 19:40:42 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,9 @@ ARG						=	4 310 200 100   # One philosopher should die.
 
 run:					$(NAME)
 						./$(NAME) $(ARG)
+
+grep:					$(NAME)
+						./$(NAME) $(ARG) | grep 'died'
 
 vrun:					$(NAME)
 						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
