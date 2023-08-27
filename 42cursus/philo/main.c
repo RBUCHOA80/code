@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 11:20:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:21:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 		printf("pme = %i \t<- number_of_times_each_philosopher_must_eat\n", \
 			rules->pme);
 	philo(rules);
-	printf("\e[1;31m%i test_count = %i\e[0m\n", (ft_get_time()-rules->start_time), rules->test_count);
+	printf("\e[1;31m%li test_count = %i\e[0m\n", \
+		(ft_get_time()-rules->start_time), rules->test_count);
 	return (0);
 }
