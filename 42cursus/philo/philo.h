@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/26 23:32:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 08:09:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ typedef struct s_rules
 	time_t			tte;
 	time_t			tts;
 	unsigned int	pme;
-	time_t			start_time;
+	time_t			time;
 	t_philo			**philos;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	**forks;
 }	t_rules;
 
 typedef struct s_philo
@@ -53,7 +53,7 @@ int		philo(t_rules *rules);
 void	*ft_routine(void *rules);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
-t_rules	*ft_create_rules(char **argv);
+t_rules	*ft_init(char **argv);
 int		ft_free_rule(t_rules *rules);
 char	*ft_itoa(int n);
 void	ft_msg(void);
