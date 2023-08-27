@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/27 11:17:29 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/27 12:32:32 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ show:
 #                       | |   |    	  +----- <- tts <- time_to_sleep;
 #                       | |   |    	  |   +- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
 #                       | |   |    	  |   |
-ARG					=	4 310 2000000 100 7
+ARG					=	7 310 2000000 100 7
 
 run:					$(NAME)
 						./$(NAME) $(ARG)

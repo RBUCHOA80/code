@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 09:07:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 12:40:25 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,6 @@ void	ft_init_rules(t_rules *rules, char **argv)
 		rules->pme = -1;
 }
 
-void	ft_init_philos(t_rules *rules)
-{
-	unsigned int	i;
-
-	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
-	i = 0;
-	while (i < rules->nop)
-	{
-		rules->philos[i] = malloc(sizeof(t_philo));
-		rules->philos[i]->rules = rules;
-		rules->philos[i]->index = i + 1;
-		i++;
-	}
-}
-
 void	ft_init_forks(t_rules *rules)
 {
 	unsigned int	i;
@@ -53,13 +38,42 @@ void	ft_init_forks(t_rules *rules)
 	}
 }
 
+void	ft_init_philos(t_rules *rules)
+{
+	unsigned int	i;
+
+	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
+	i = -1;
+	while (++i < rules->nop)
+	{
+		rules->philos[i] = malloc(sizeof(t_philo));
+		rules->philos[i]->rules = rules;
+		rules->philos[i]->index = i + 1;
+		if (i == 0)
+		{
+			rules->philos[i]->fork[0] = rules->forks[i];
+			rules->philos[i]->fork[1] = rules->forks[rules->nop - 1];
+		}
+		else if (i % 2 != 0)
+		{
+			rules->philos[i]->fork[0] = rules->forks[i - 1];
+			rules->philos[i]->fork[1] = rules->forks[i];
+		}
+		else if (i % 2 == 0)
+		{
+			rules->philos[i]->fork[0] = rules->forks[i];
+			rules->philos[i]->fork[1] = rules->forks[i - 1];
+		}
+	}
+}
+
 t_rules	*ft_init(char **argv)
 {
 	t_rules			*rules;
 
 	rules = malloc(sizeof(t_rules));
 	ft_init_rules(rules, argv);
-	ft_init_philos(rules);
 	ft_init_forks(rules);
+	ft_init_philos(rules);
 	return (rules);
 }
