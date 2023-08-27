@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:53:31 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/04 23:53:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 09:09:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-void	ft_msg(void)
+void	ft_error_msg(void)
 {
 	printf("\e[1;31mERROR!\e[m\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 08:17:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/27 09:07:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_rules(t_rules *rules, char **argv)
 	rules->ttd = ft_atoi(argv[2]);
 	rules->tte = ft_atoi(argv[3]);
 	rules->tts = ft_atoi(argv[4]);
-	rules->time = ft_get_time();
+	rules->start_time = ft_get_time();
 	if (argv[5])
 		rules->pme = ft_atoi(argv[5]);
 	else
@@ -35,7 +35,7 @@ void	ft_init_philos(t_rules *rules)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
 		rules->philos[i]->rules = rules;
-		rules->philos[i]->id = i + 1;
+		rules->philos[i]->index = i + 1;
 		i++;
 	}
 }

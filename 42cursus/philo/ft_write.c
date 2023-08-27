@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 21:17:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 09:15:12 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/08/27 09:05:20 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/08/27 09:17:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	philo(t_rules *rules)
+int	ft_write(t_philo *philo, char *str)
 {
-	unsigned int	i;
+	int	ret;
 
-	pthread_mutex_init(rules->forks[0], NULL);
-	i = 0;
-	while (i < rules->nop)
-	{
-		pthread_create(&rules->philos[i]->thread, NULL, \
-			&ft_routine, rules->philos[i]);
-		i++;
-	}
-	i = 0;
-	while (i < rules->nop)
-		pthread_join(rules->philos[i++]->thread, NULL);
-	pthread_mutex_destroy(rules->forks[0]);
-	ft_free_rules(rules);
-	return (0);
+	ret = printf("%li %i %s", \
+		(ft_get_time() - philo->rules->start_time), \
+		philo->index, \
+		str);
+	return (ret);
 }

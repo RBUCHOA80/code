@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/27 08:10:33 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/27 09:11:44 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,14 @@ SRCS_LIST			=	main.c \
 						philo.c \
 						ft_atoi.c \
 						ft_check_arg.c \
-						ft_free.c \
+						ft_error_msg.c \
+						ft_free_rules.c \
 						ft_get_time.c \
 						ft_init.c \
 						ft_itoa.c \
-						ft_msg.c \
 						ft_routine.c \
 						ft_strcmp.c \
+						ft_write.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
