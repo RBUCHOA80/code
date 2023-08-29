@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/28 19:58:16 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/28 23:10:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_take_eat_sleep(t_philo *philo)
 	pthread_mutex_lock(philo->fork[1]);
 	ft_msg(philo, "has taken a fork\n");
 	ft_msg(philo, "is eating\n");
+	philo->last_meal = ft_get_time();
 	usleep(philo->rules->tte * 1000);
 	philo->last_meal = ft_get_time();
 	pthread_mutex_unlock(philo->fork[0]);

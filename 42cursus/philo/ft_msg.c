@@ -16,6 +16,8 @@ int	ft_msg(t_philo *philo, char *str)
 {
 	int	ret;
 
+	if (philo->dead)
+		return (-1);
 	ret = printf("%li %i %s", \
 		(ft_get_time() - philo->rules->start_time), \
 		philo->index, \
