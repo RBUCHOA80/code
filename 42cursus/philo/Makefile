@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/28 20:40:35 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/28 22:44:14 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,7 +99,7 @@ show:
 #ARG					=	5 800 200 200   # No philosopher should die.
 #ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
-ARG						=	4 310 200 100 7 # One philosopher should die.
+ARG						=	8 310 200 100 7 # One philosopher should die.
 #ARG					=	1 800 200 200   # The philosopher should not eat and should die
 #ARG					=	5 410 200 100 7
 #ARG					=	5 120 80 80 #Moana tolds all will die
