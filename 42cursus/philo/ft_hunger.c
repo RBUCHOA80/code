@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_hunger.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/27 09:05:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 09:17:19 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/08/28 20:54:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_write(t_philo *philo, char *str)
+void	*ft_hunger(void *data)
 {
-	int	ret;
+	t_rules			*rules;
+	t_philo			**philos;
+	unsigned int	i;
 
-	ret = printf("%li %i %s", \
-		(ft_get_time() - philo->rules->start_time), \
-		philo->index, \
-		str);
-	return (ret);
+	rules = (t_rules *)data;
+	philos = rules->philos;
+	i = 0;
+	while (1)
+	{
+		if ((ft_get_time() - philos[i]->last_meal) >= rules->ttd)
+		{
+			ft_msg(philos[i], "\e[1;32mdied\e[m\n");
+			i = 0;
+			while (i < rules->nop)
+				philos[i++]->dead = 1;
+			return (NULL);
+		}
+		if (i == rules->nop - 1)
+			i = 0;
+		else
+			i++;
+	}
+	return (NULL);
 }

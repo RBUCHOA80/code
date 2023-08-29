@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 18:55:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/28 20:12:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_init_rules(t_rules *rules, char **argv)
 		rules->pme = ft_atoi(argv[5]);
 	else
 		rules->pme = -1;
+	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
 }
 
 void	ft_init_forks(t_rules *rules)
@@ -42,12 +43,12 @@ void	ft_init_philos(t_rules *rules)
 {
 	static unsigned int	i = -1;
 
-	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
 	while (++i < rules->nop)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
 		rules->philos[i]->rules = rules;
 		rules->philos[i]->index = i + 1;
+		rules->philos[i]->dead = 0;
 		rules->philos[i]->last_meal = ft_get_time();
 		if (i == 0)
 		{

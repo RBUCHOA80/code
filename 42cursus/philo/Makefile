@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/27 19:40:42 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/28 20:40:35 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,12 @@ SRCS_LIST			=	main.c \
 						ft_error_msg.c \
 						ft_free_rules.c \
 						ft_get_time.c \
+						ft_hunger.c \
 						ft_init.c \
 						ft_itoa.c \
+						ft_msg.c \
 						ft_routine.c \
 						ft_strcmp.c \
-						ft_write.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -98,9 +99,10 @@ show:
 #ARG					=	5 800 200 200   # No philosopher should die.
 #ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
-ARG						=	4 310 200 100   # One philosopher should die.
+ARG						=	4 310 200 100 7 # One philosopher should die.
 #ARG					=	1 800 200 200   # The philosopher should not eat and should die
 #ARG					=	5 410 200 100 7
+#ARG					=	5 120 80 80 #Moana tolds all will die
 
 run:					$(NAME)
 						./$(NAME) $(ARG)
@@ -110,5 +112,10 @@ grep:					$(NAME)
 
 vrun:					$(NAME)
 						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
+
+sanitize:				$(SRCS_OBJS)
+						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
+						$(COMPILER) $(CFLAGS) -fsanitize=address $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
+						./$(NAME) $(ARG)
 
 rerun:					re run
