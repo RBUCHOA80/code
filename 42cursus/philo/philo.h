@@ -6,14 +6,14 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/28 22:45:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/28 23:02:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-/*		INCLUDES  */
+/*		INCLUDES		*/
 # include <stdio.h> //printf
 # include <unistd.h> //sleep
 # include <stdlib.h> //malloc | free
@@ -28,6 +28,7 @@ tts <- time_to_sleep;
 pme <- number_of_times_each_philosopher_must_eat;
  */
 
+/*		STRUCS		*/
 typedef struct s_philo	t_philo;
 
 typedef struct s_rules
@@ -54,7 +55,7 @@ typedef struct s_philo
 	t_rules			*rules;
 }	t_philo;
 
-/*		PROTOTYPES  */
+/*		PROTOTYPES		*/
 int		philo(t_rules *rules);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
