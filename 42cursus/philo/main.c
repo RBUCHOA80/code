@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 17:18:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/29 22:41:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,7 @@ int	main(int argc, char **argv)
 	if (ft_check_arg(argc, argv))
 		return (1);
 	rules = ft_init(argv);
-	printf("\e[1;33m");
-	printf("nop = %i \t<- number_of_philosophers\n", rules->nop);
-	printf("ttd = %li\t<- time_to_die\n", rules->ttd);
-	printf("tte = %li\t<- time_to_eat\n", rules->tte);
-	printf("tts = %li\t<- time_to_sleep\n", rules->tts);
-	if (rules->pme > 0)
-		printf("pme = %i \t<- number_of_times_each_philosopher_must_eat\n", \
-			rules->pme);
-	printf("\e[0m");
 	philo(rules);
-	printf("\e[1;31m%li test_count = %i\e[0m\n", \
-		(ft_get_time() - rules->start_time), rules->test_count);
+	ft_free(rules);
 	return (0);
 }

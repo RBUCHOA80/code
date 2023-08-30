@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/28 22:42:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/29 22:27:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	*ft_hunger(void *data)
 	i = 0;
 	while (1)
 	{
-		if ((ft_get_time() - philos[i]->last_meal) >= rules->ttd)
+		if ((ft_get_time() - philos[i]->last_meal) > rules->ttd)
 		{
-			ft_msg(philos[i], "\e[1;32mdied\e[m\n");
+			ft_msg(philos[i], "died\n");
 			i = 0;
 			while (i < rules->nop)
 				philos[i++]->dead = 1;
@@ -36,5 +36,4 @@ void	*ft_hunger(void *data)
 		else
 			i++;
 	}
-	return (NULL);
 }

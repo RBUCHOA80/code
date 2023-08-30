@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/28 23:03:34 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/29 22:45:26 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRCS_LIST			=	main.c \
 						ft_atoi.c \
 						ft_check_arg.c \
 						ft_error_msg.c \
-						ft_free_rules.c \
+						ft_free.c \
 						ft_get_time.c \
 						ft_hunger.c \
 						ft_init.c \
@@ -110,10 +110,13 @@ run:					$(NAME)
 grep:					$(NAME)
 						./$(NAME) $(ARG) | grep 'died'
 
-vrun:					$(NAME)
+valgrind:				$(NAME)
 						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
 
-sanitize:				$(SRCS_OBJS)
+helgrind:				$(NAME)
+						valgrind --tool=helgrind ./$(NAME) $(ARG)
+
+fsanitize:				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						$(COMPILER) $(CFLAGS) -fsanitize=address $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
 						./$(NAME) $(ARG)
