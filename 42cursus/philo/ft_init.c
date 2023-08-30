@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/28 20:12:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/29 23:45:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ void	ft_init_forks(t_rules *rules)
 {
 	unsigned int	i;
 
-	rules->forks = malloc(sizeof(pthread_mutex_t *) * rules->nop);
+	rules->forks = malloc(sizeof(pthread_mutex_t) * rules->nop);
 	i = 0;
 	while (i < rules->nop)
 	{
 		rules->forks[i] = malloc(sizeof(pthread_mutex_t));
+		pthread_mutex_init(rules->forks[i], NULL);
 		i++;
 	}
 }
@@ -50,6 +51,7 @@ void	ft_init_philos(t_rules *rules)
 		rules->philos[i]->index = i + 1;
 		rules->philos[i]->dead = 0;
 		rules->philos[i]->last_meal = ft_get_time();
+		pthread_mutex_init(&rules->philos[i]->last_meal_mutex, NULL);
 		if (i == 0)
 		{
 			rules->philos[i]->fork[0] = rules->forks[i];

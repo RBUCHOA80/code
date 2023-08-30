@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:46:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/29 22:42:27 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/29 23:46:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	ft_free_philos(t_rules *rules)
 	philos = rules->philos;
 	i = rules->nop;
 	while (i--)
+	{
+		pthread_mutex_destroy(&rules->philos[i]->last_meal_mutex);
 		free(philos[i]);
+	}
 	free(rules->philos);
 	return (0);
 }
@@ -31,7 +34,10 @@ int	ft_free_forks(t_rules *rules)
 
 	i = rules->nop;
 	while (i--)
+	{
+		pthread_mutex_destroy(rules->forks[i]);
 		free(rules->forks[i]);
+	}
 	free(rules->forks);
 	return (0);
 }
