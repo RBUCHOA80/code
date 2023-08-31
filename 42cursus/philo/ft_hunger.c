@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/30 23:19:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/31 00:11:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,22 @@ void	*ft_hunger(void *data)
 			if (rules->philos[i]->n_meals < rules->pme)
 			{
 				pthread_mutex_unlock(&rules->philos[i]->mutex);
-				ft_msg(rules->philos[i], "died\n");
-				pthread_mutex_lock(&rules->philos[i]->mutex);
+				pthread_mutex_lock(&rules->mutex);
 				rules->dead = 1;
-				pthread_mutex_unlock(&rules->philos[i]->mutex);
+				pthread_mutex_unlock(&rules->mutex);
+				ft_msg(rules->philos[i], "died\n");
 				return (NULL);
 			}
-			pthread_mutex_unlock(&rules->philos[i]->mutex);
-			if (i == rules->nop - 1)
-				i = 0;
-			else
-				i++;
 		}
-		pthread_mutex_unlock(&rules->philos[i]->mutex);
+				pthread_mutex_unlock(&rules->philos[i]->mutex);
+			if (i == rules->nop - 1)
+			{
+				i = 0;
+			}
+			else
+			{
+		//		pthread_mutex_unlock(&rules->philos[i]->mutex);
+				i++;
+			}
 	}
 }

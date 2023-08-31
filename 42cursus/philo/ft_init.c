@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/30 23:29:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/31 00:14:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_init_rules(t_rules *rules, char **argv)
 		rules->pme = -1;
 	rules->dead = 0;
 	rules->philos = malloc(sizeof(t_philo *) * rules->nop);
+	pthread_mutex_init(&rules->mutex, NULL);
 }
 
 void	ft_init_forks(t_rules *rules)

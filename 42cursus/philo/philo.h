@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/30 23:17:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/31 00:10:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_rules
 	time_t			tte;
 	time_t			tts;
 	unsigned int	pme;
+	pthread_mutex_t	mutex;
 	unsigned int	dead;
 	time_t			start_time;
 	t_philo			**philos;

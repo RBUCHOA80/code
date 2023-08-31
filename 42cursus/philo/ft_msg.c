@@ -14,18 +14,20 @@
 
 int	ft_msg(t_philo *philo, char *str)
 {
-	int	ret;
+	t_rules	*rules;
+	int		ret;
 
-	pthread_mutex_lock(&philo->mutex);
+	rules = philo->rules;
+	pthread_mutex_lock(&rules->mutex);
 	if (philo->rules->dead)
 	{
-		pthread_mutex_unlock(&philo->mutex);
+		pthread_mutex_unlock(&rules->mutex);
 		return (-1);
 	}
 	ret = printf("%li %i %s", \
 		(ft_get_time() - philo->rules->start_time), \
 		philo->index, \
 		str);
-	pthread_mutex_unlock(&philo->mutex);
+	pthread_mutex_unlock(&rules->mutex);
 	return (ret);
 }
