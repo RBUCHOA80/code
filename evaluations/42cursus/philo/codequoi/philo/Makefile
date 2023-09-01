@@ -55,9 +55,9 @@ re: fclean all
 #                           | |   |   |   +---- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
 #                           | |   |   |   |
 #ARG					=	5 800 200 200   # No philosopher should die.
-ARG					=	5 800 200 200 7 # No philosopher should die.
+#ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
-#ARG						=	4 310 200 100 7 # One philosopher should die.
+ARG						=	4 310 200 100 7 # One philosopher should die.
 #ARG					=	1 800 200 200   # The philosopher should not eat and should die
 #ARG					=	5 410 200 100 7
 #ARG					=	5 120 80 80 #Moana tolds all will die
@@ -65,13 +65,13 @@ ARG					=	5 800 200 200 7 # No philosopher should die.
 run:					$(NAME)
 						./$(NAME) $(ARG)
 
-grep:					$(NAME)
+grep:					re
 						./$(NAME) $(ARG) | grep 'died'
 
-valgrind:				$(NAME)
+valgrind:				re
 						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
 
-helgrind:				$(NAME)
+helgrind:				re
 						valgrind --tool=helgrind ./$(NAME) $(ARG)
 
 fsanitize: 				$(OBJS)

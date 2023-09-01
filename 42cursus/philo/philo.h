@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/31 00:10:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/31 21:16:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_rules
 	time_t			tte;
 	time_t			tts;
 	unsigned int	pme;
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	r_mutex;
 	unsigned int	dead;
 	time_t			start_time;
 	t_philo			**philos;
@@ -51,7 +51,7 @@ typedef struct s_philo
 	unsigned int	index;
 	unsigned int	n_meals;
 	pthread_mutex_t	*fork[2];
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	p_mutex;
 	time_t			last_meal;
 	t_rules			*rules;
 }	t_philo;
@@ -69,5 +69,6 @@ char	*ft_itoa(int n);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine(void *rules);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_take_eat_sleep_think(t_philo *philo);
 
 #endif

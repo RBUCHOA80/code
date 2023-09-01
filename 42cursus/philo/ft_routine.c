@@ -6,33 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/30 23:30:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/08/31 21:13:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
-
-void	ft_take_eat_sleep_think(t_philo *philo)
-{
-	pthread_mutex_lock(philo->fork[0]);
-	ft_msg(philo, "has taken a fork\n");
-	pthread_mutex_lock(philo->fork[1]);
-	ft_msg(philo, "has taken a fork\n");
-	ft_msg(philo, "is eating\n");
-	pthread_mutex_lock(&philo->mutex);
-	philo->last_meal = ft_get_time();
-	pthread_mutex_unlock(&philo->mutex);
-	philo->n_meals++;
-	usleep(philo->rules->tte * 1000);
-	pthread_mutex_unlock(philo->fork[0]);
-	pthread_mutex_unlock(philo->fork[1]);
-	ft_msg(philo, "is sleeping\n");
-	usleep(philo->rules->tts * 1000);
-	ft_msg(philo, "is thinking\n");
-	pthread_mutex_lock(&philo->mutex);
-	philo->last_meal = ft_get_time();
-	pthread_mutex_unlock(&philo->mutex);
-}
 
 void	*ft_routine(void *data)
 {

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/08/31 00:04:13 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/08/31 21:14:53 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS_LIST			=	main.c \
 						ft_msg.c \
 						ft_routine.c \
 						ft_strcmp.c \
+						ft_take_eat_sleep_think.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -97,9 +98,9 @@ show:
 #                           | |   |   |   +---- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
 #                           | |   |   |   |
 #ARG					=	5 800 200 200   # No philosopher should die.
-ARG					=	5 800 200 200 7 # No philosopher should die.
+#ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
-#ARG						=	4 310 200 100 7 # One philosopher should die.
+ARG						=	4 310 200 100 7 # One philosopher should die.
 #ARG					=	1 800 200 200   # The philosopher should not eat and should die
 #ARG					=	5 410 200 100 7
 #ARG					=	5 120 80 80 #Moana tolds all will die
@@ -107,13 +108,13 @@ ARG					=	5 800 200 200 7 # No philosopher should die.
 run:					$(NAME)
 						./$(NAME) $(ARG)
 
-grep:					$(NAME)
+grep:					re
 						./$(NAME) $(ARG) | grep 'died'
 
-valgrind:				$(NAME)
+valgrind:				re
 						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
 
-helgrind:				$(NAME)
+helgrind:				re
 						valgrind --tool=helgrind ./$(NAME) $(ARG)
 
 fsanitize:				$(SRCS_OBJS)
