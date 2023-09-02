@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_arg.c                                     :+:      :+:    :+:   */
+/*   ft_usleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 21:31:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 18:48:54 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/01 19:48:23 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/02 20:13:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_check_arg(int argc, char **argv)
+void	ft_usleep(t_rules *rules, unsigned int usec)
 {
-	int	i;
+	unsigned int	nbr;
+	unsigned int	i;
 
-	if (argc == 5 || argc == 6)
-	{
-		i = 0;
-		while (argv[++i] != NULL)
-		{
-			if (ft_strcmp(ft_itoa(ft_atoi(argv[i])), argv[i]))
-				return (ft_error_msg());
-			if (ft_atoi(argv[i]) <= 0)
-				return (ft_error_msg());
-		}
-		return (0);
-	}
-	return (ft_error_msg());
+	nbr = 100;
+	i = 0;
+	while (i++ < (usec / nbr) && rules->dead == 0)
+		usleep(nbr * 1000);
+	usleep((usec * 1000) % nbr);
 }

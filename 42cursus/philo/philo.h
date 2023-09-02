@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/31 21:45:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 20:13:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_rules
 	time_t			tte;
 	time_t			tts;
 	unsigned int	pme;
-	pthread_mutex_t	m_dead;
 	unsigned int	dead;
 	time_t			start_time;
 	t_philo			**philos;
@@ -51,7 +50,6 @@ typedef struct s_philo
 	unsigned int	index;
 	unsigned int	n_meals;
 	pthread_mutex_t	*fork[2];
-	pthread_mutex_t	m_last_meal;
 	time_t			last_meal;
 	t_rules			*rules;
 }	t_philo;
@@ -60,7 +58,7 @@ typedef struct s_philo
 int		philo(t_rules *rules);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
-void	ft_error_msg(void);
+int		ft_error_msg(void);
 int		ft_free(t_rules *rules);
 time_t	ft_get_time(void);
 void	*ft_hunger(void *rules);
@@ -69,6 +67,6 @@ char	*ft_itoa(int n);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine(void *rules);
 int		ft_strcmp(char *s1, char *s2);
-void	ft_take_eat_sleep_think(t_philo *philo);
+void	ft_usleep(t_rules *rules, unsigned int usec);
 
 #endif

@@ -18,9 +18,11 @@ int	ft_msg(t_philo *philo, char *str)
 	int		ret;
 
 	rules = philo->rules;
+	if (rules->dead)
+		return (-1);
 	ret = printf("%li %i %s", \
-		(ft_get_time() - rules->start_time), \
-		philo->index, \
-		str);
+			(ft_get_time() - rules->start_time), \
+			philo->index, \
+			str);
 	return (ret);
 }

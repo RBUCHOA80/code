@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/31 21:45:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 19:38:16 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,16 @@ void	*ft_hunger(void *data)
 
 	rules = (t_rules *)data;
 	i = 0;
-	while (1)
+	while (rules->dead == 0)
 	{
-		pthread_mutex_lock(&rules->philos[i]->m_last_meal);
 		if ((ft_get_time() - rules->philos[i]->last_meal) >= rules->ttd)
 		{
-			pthread_mutex_unlock(&rules->philos[i]->m_last_meal);
-			pthread_mutex_lock(&rules->m_dead);
+			ft_msg(rules->philos[i], "\e[1;31mdied\e[m\n");
 			rules->dead = 1;
-			pthread_mutex_unlock(&rules->m_dead);
-			ft_msg(rules->philos[i], "died\n");
 			return (NULL);
 		}
-		pthread_mutex_unlock(&rules->philos[i]->m_last_meal);
 		if (i++ == (rules->nop - 1))
 			i = 0;
 	}
+	return (NULL);
 }

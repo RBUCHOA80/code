@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:11:43 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/04 23:26:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 18:46:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 static int	ft_isspace(char c)
 {
 	if (c == ' ' || ('\t' <= c && c <= '\r'))
-		return (1);
+		return (-1);
 	return (0);
 }
 
 static int	ft_issimbol(char c)
 {
 	if (c == '+' || c == '-')
-		return (1);
+		return (-1);
 	return (0);
 }
 
 static int	ft_isdigit(int c)
 {
 	if ('0' <= c && c <= '9')
-		return (1);
+		return (-1);
 	return (0);
 }
 
