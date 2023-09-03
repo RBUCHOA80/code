@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 14:08:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 15:44:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	*ft_routine(void *data)
 {
 	t_rules			*rules;
 	t_philo			*philo;
-	unsigned int	i;
+	int				i;
 
 	philo = (t_philo *)data;
 	rules = philo->rules;

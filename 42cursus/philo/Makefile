@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/03 15:31:37 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/03 15:34:49 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS_LIST			=	main.c \
 						ft_check_arg.c \
 						ft_check_dead.c \
 						ft_check_last_meal.c \
+						ft_check_meals.c \
 						ft_eat.c \
 						ft_error_msg.c \
 						ft_free.c \
