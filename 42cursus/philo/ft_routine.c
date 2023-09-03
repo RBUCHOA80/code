@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 20:07:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 21:32:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_eat(t_philo *philo)
 {
 	ft_msg(philo, "is eating\n");
 	philo->last_meal = ft_get_time();
-	ft_usleep(philo->rules, philo->rules->tte);
+	ft_sleep_ms(philo->rules, philo->rules->tte);
 	pthread_mutex_unlock(philo->fork[0]);
 	pthread_mutex_unlock(philo->fork[1]);
 	philo->n_meals++;
@@ -35,7 +35,7 @@ int	ft_eat(t_philo *philo)
 int	ft_sleep(t_philo *philo)
 {
 	ft_msg(philo, "is sleeping\n");
-	ft_usleep(philo->rules, philo->rules->tts);
+	ft_sleep_ms(philo->rules, philo->rules->tts);
 	return (0);
 }
 

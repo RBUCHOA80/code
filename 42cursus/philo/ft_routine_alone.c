@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usleep.c                                        :+:      :+:    :+:   */
+/*   ft_routine_alone.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 19:48:23 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 20:13:06 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/02 20:42:42 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/02 21:32:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-void	ft_usleep(t_rules *rules, unsigned int usec)
+void	*ft_routine_alone(void *data)
 {
-	unsigned int	nbr;
-	unsigned int	i;
+	t_rules	*rules;
+	t_philo	*philo;
 
-	nbr = 100;
-	i = 0;
-	while (i++ < (usec / nbr) && rules->dead == 0)
-		usleep(nbr * 1000);
-	usleep((usec * 1000) % nbr);
+	philo = (t_philo *)data;
+	rules = philo->rules;
+	pthread_mutex_lock(philo->fork[0]);
+	ft_msg(philo, "has taken a fork\n");
+	ft_sleep_ms(rules, rules->ttd);
+	ft_msg(philo, "died\n");
+	philo->rules->dead = 1;
+	pthread_mutex_unlock(philo->fork[0]);
+	return (NULL);
 }

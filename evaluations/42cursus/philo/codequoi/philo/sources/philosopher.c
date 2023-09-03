@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 15:12:00 by mcombeau          #+#    #+#             */
-/*   Updated: 2023/08/29 23:33:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 20:38:35 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	eat_sleep_routine(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->fork_locks[philo->fork[0]]);
 	write_status(philo, false, GOT_FORK_1);
+	printf("(A)\n");
 	pthread_mutex_lock(&philo->table->fork_locks[philo->fork[1]]);
+	printf("(B)\n");
 	write_status(philo, false, GOT_FORK_2);
 	write_status(philo, false, EATING);
 	pthread_mutex_lock(&philo->meal_time_lock);

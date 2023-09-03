@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 20:13:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 21:32:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_philo
 
 /*		PROTOTYPES		*/
 int		philo(t_rules *rules);
+void	*ft_routine_alone(void *data);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
 int		ft_error_msg(void);
@@ -67,6 +68,6 @@ char	*ft_itoa(int n);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine(void *rules);
 int		ft_strcmp(char *s1, char *s2);
-void	ft_usleep(t_rules *rules, unsigned int usec);
+void	ft_sleep_ms(t_rules *rules, unsigned int usec);
 
 #endif

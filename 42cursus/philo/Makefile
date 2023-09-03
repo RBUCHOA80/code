@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/02 18:35:40 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/02 21:33:48 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,11 @@ SRCS_LIST			=	main.c \
 						ft_hunger.c \
 						ft_init.c \
 						ft_itoa.c \
+						ft_sleep_ms.c \
 						ft_msg.c \
+						ft_routine_alone.c \
 						ft_routine.c \
 						ft_strcmp.c \
-						ft_usleep.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -101,9 +102,9 @@ show:
 #ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
 #ARG					=	4 310 200 100 7 # One philosopher should die.
-ARG					=	1 800 200 200   # The philosopher should not eat and should die
+#ARG					=	1 800 200 200   # The philosopher should not eat and should die
 #ARG					=	5 410 200 100 7
-#ARG					=	5 120 80 80 #Moana tolds all will die
+#ARG					=	5 120 80 80 	# Moana tolds all will die
 
 run:					$(NAME)
 						./$(NAME) $(ARG)
