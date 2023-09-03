@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_msg.c                                           :+:      :+:    :+:   */
+/*   ft_eat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/27 09:05:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 22:17:38 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/02 22:23:56 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/02 22:24:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_msg(t_philo *philo, char *str)
+int	ft_eat(t_philo *philo)
 {
-	t_rules	*rules;
-	int		ret;
-
-	rules = philo->rules;
-	if (ft_check_dead(philo))
-		return (-1);
-	ret = printf("%li %i %s", \
-			(ft_get_time() - rules->start_time), \
-			philo->index, \
-			str);
-	return (ret);
+	ft_msg(philo, "is eating\n");
+	philo->last_meal = ft_get_time();
+	ft_sleep_ms(philo, philo->rules->tte);
+	pthread_mutex_unlock(philo->fork[0]);
+	pthread_mutex_unlock(philo->fork[1]);
+	philo->meals++;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 21:32:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/02 22:44:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,10 @@ int	ft_take(t_philo *philo)
 	return (0);
 }
 
-int	ft_eat(t_philo *philo)
-{
-	ft_msg(philo, "is eating\n");
-	philo->last_meal = ft_get_time();
-	ft_sleep_ms(philo->rules, philo->rules->tte);
-	pthread_mutex_unlock(philo->fork[0]);
-	pthread_mutex_unlock(philo->fork[1]);
-	philo->n_meals++;
-	return (0);
-}
-
 int	ft_sleep(t_philo *philo)
 {
 	ft_msg(philo, "is sleeping\n");
-	ft_sleep_ms(philo->rules, philo->rules->tts);
+	ft_sleep_ms(philo, philo->rules->tts);
 	return (0);
 }
 
@@ -54,7 +43,7 @@ void	*ft_routine(void *data)
 	philo = (t_philo *)data;
 	rules = philo->rules;
 	i = 0;
-	while (i++ < rules->pme && rules->dead == 0)
+	while (i++ < rules->pme && ft_check_dead(philo) == 0)
 	{
 		if (ft_take(philo))
 			break ;
