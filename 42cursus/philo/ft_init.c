@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 14:26:15 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:29:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ void	ft_init_forks(t_rules *rules)
 	}
 }
 
+void	ft_init_philos_forks(t_rules *rules, unsigned int i)
+{
+	if (i == 0)
+	{
+		rules->philos[i]->fork[0] = rules->forks[i];
+		rules->philos[i]->fork[1] = rules->forks[rules->nop - 1];
+	}
+	else if (i % 2 != 0)
+	{
+		rules->philos[i]->fork[0] = rules->forks[i - 1];
+		rules->philos[i]->fork[1] = rules->forks[i];
+	}
+	else if (i % 2 == 0)
+	{
+		rules->philos[i]->fork[0] = rules->forks[i];
+		rules->philos[i]->fork[1] = rules->forks[i - 1];
+	}
+}
+
 void	ft_init_philos(t_rules *rules)
 {
 	static unsigned int	i = -1;
@@ -48,21 +67,7 @@ void	ft_init_philos(t_rules *rules)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
 		rules->philos[i]->index = i + 1;
-		if (i == 0)
-		{
-			rules->philos[i]->fork[0] = rules->forks[i];
-			rules->philos[i]->fork[1] = rules->forks[rules->nop - 1];
-		}
-		else if (i % 2 != 0)
-		{
-			rules->philos[i]->fork[0] = rules->forks[i - 1];
-			rules->philos[i]->fork[1] = rules->forks[i];
-		}
-		else if (i % 2 == 0)
-		{
-			rules->philos[i]->fork[0] = rules->forks[i];
-			rules->philos[i]->fork[1] = rules->forks[i - 1];
-		}
+		ft_init_philos_forks(rules, i);
 		pthread_mutex_init(&rules->philos[i]->m_last_meal, NULL);
 		rules->philos[i]->last_meal = ft_get_time();
 		pthread_mutex_init(&rules->philos[i]->m_meals, NULL);
