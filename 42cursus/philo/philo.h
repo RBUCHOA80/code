@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 22:55:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 09:35:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	*ft_routine_alone(void *data);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
 int		ft_check_dead(t_philo *philo);
+int		ft_check_last_meal(t_philo *philo);
 int		ft_eat(t_philo *philo);
 int		ft_error_msg(void);
 int		ft_free(t_rules *rules);
@@ -72,7 +73,7 @@ t_rules	*ft_init(char **argv);
 char	*ft_itoa(int n);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine(void *rules);
-void	ft_set_dead(t_philo *philo);
+void	ft_set_dead(t_philo **philo);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_sleep_ms(t_philo *philo, unsigned int usec);
 

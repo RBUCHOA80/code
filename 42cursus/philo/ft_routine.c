@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 22:44:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 14:08:10 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,25 @@ int	ft_take(t_philo *philo)
 
 int	ft_sleep(t_philo *philo)
 {
+	t_rules	*rules;
+	time_t	to_sleep;
+
+	rules = philo->rules;
+	to_sleep = (rules->tts);
 	ft_msg(philo, "is sleeping\n");
-	ft_sleep_ms(philo, philo->rules->tts);
+	ft_sleep_ms(philo, to_sleep);
 	return (0);
 }
 
 int	ft_think(t_philo *philo)
 {
+	t_rules	*rules;
+	time_t	to_think;
+
+	rules = philo->rules;
+	to_think = ((rules->ttd - rules->tte - rules->tts) / rules->nop);
 	ft_msg(philo, "is thinking\n");
+	ft_sleep_ms(philo, to_think);
 	return (0);
 }
 

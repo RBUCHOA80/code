@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hunger.c                                        :+:      :+:    :+:   */
+/*   ft_check_last_meal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 09:01:01 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/03 08:53:54 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/03 09:00:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-void	*ft_hunger(void *data)
+int	ft_check_last_meal(t_philo *philo)
 {
-	t_rules			*rules;
-	t_philo			**philos;
-	unsigned int	i;
-
-	rules = (t_rules *)data;
-	philos = rules->philos;
-	i = 0;
-	while (1)
+	pthread_mutex_lock(&philo->m_last_meal);
+	if ((ft_get_time() - philo->last_meal) >= philo->rules->ttd)
 	{
-		if (ft_check_last_meal(philos[i]))
-		{
-			ft_msg(rules->philos[i], "\e[1;31mdied\e[m\n");
-			ft_set_dead(philos);
-			return (NULL);
-		}
-		if (i++ == (rules->nop - 1))
-			i = 0;
+		pthread_mutex_unlock(&philo->m_last_meal);
+		return (1);
 	}
-	return (NULL);
+	pthread_mutex_unlock(&philo->m_last_meal);
+	return (0);
 }

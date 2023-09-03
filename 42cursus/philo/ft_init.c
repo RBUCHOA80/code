@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:31:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/02 23:12:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 14:26:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void	ft_init_philos(t_rules *rules)
 	{
 		rules->philos[i] = malloc(sizeof(t_philo));
 		rules->philos[i]->index = i + 1;
-		rules->philos[i]->meals = 0;
-		rules->philos[i]->dead = 0;
-		rules->philos[i]->last_meal = ft_get_time();
 		if (i == 0)
 		{
 			rules->philos[i]->fork[0] = rules->forks[i];
@@ -66,6 +63,12 @@ void	ft_init_philos(t_rules *rules)
 			rules->philos[i]->fork[0] = rules->forks[i];
 			rules->philos[i]->fork[1] = rules->forks[i - 1];
 		}
+		pthread_mutex_init(&rules->philos[i]->m_last_meal, NULL);
+		rules->philos[i]->last_meal = ft_get_time();
+		pthread_mutex_init(&rules->philos[i]->m_meals, NULL);
+		rules->philos[i]->meals = 0;
+		pthread_mutex_init(&rules->philos[i]->m_dead, NULL);
+		rules->philos[i]->dead = 0;
 		rules->philos[i]->rules = rules;
 	}
 }
