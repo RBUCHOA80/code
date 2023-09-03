@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/03 14:18:00 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/03 15:31:37 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,8 @@ SRCS_LIST			=	main.c \
 						ft_routine_alone.c \
 						ft_routine.c \
 						ft_set_dead.c \
+						ft_set_last_meal.c \
+						ft_set_meals.c \
 						ft_strcmp.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
@@ -114,7 +116,7 @@ run:					$(NAME)
 						./$(NAME) $(ARG)
 
 valgrind:				re
-						valgrind --leak-check=full -s --track-origins=yes ./$(NAME) $(ARG)
+						valgrind --leak-check=full -s -v --track-origins=yes ./$(NAME) $(ARG)
 
 helgrind:				re
 						valgrind --tool=helgrind ./$(NAME) $(ARG)

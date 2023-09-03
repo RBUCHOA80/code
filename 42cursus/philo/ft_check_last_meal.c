@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 08:53:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 09:00:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 15:14:19 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	ft_check_last_meal(t_philo *philo)
 		pthread_mutex_unlock(&philo->m_last_meal);
 		return (1);
 	}
-	pthread_mutex_unlock(&philo->m_last_meal);
-	return (0);
+	else
+	{
+		pthread_mutex_unlock(&philo->m_last_meal);
+		return (0);
+	}
 }
