@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 08:53:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 15:38:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 19:12:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_check_meals(t_philo *philo)
 
 	rules = philo->rules;
 	pthread_mutex_lock(&philo->m_meals);
-	if (philo->meals <= rules->pme)
+	if (philo->meals == rules->pme)
 	{
 		pthread_mutex_unlock(&philo->m_meals);
 		return (1);

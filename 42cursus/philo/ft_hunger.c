@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 18:16:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 19:14:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	*ft_hunger(void *data)
 	i = 0;
 	while (1)
 	{
-		if (ft_check_last_meal(philos[i]) && ft_check_meals(philos[i]) == 0)
+		if (ft_check_last_meal(philos[i]))
 		{
-			ft_msg(rules->philos[i], "\e[1;31mdied\e[m\n");
+			ft_msg(rules->philos[i], "died\n");
 			ft_set_dead(philos);
 			return (NULL);
 		}

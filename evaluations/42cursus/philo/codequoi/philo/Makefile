@@ -58,8 +58,8 @@ re: fclean all
 #ARG					=	5 800 200 200 7	# No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
 #ARG					=	4 310 200 100 7 # One philosopher should die.
-ARG					=	1 800 200 200   # The philosopher should not eat and should die
-#ARG					=	5 410 200 100 7
+#ARG					=	1 800 200 200   # The philosopher should not eat and should die
+\e[1;31mARG					=	5 410 200 100 7
 #ARG					=	5 120 80 80 	# Moana tolds all will die
 
 run:					$(NAME)

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 15:44:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:46:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ int	ft_think(t_philo *philo)
 
 void	*ft_routine(void *data)
 {
-	t_rules			*rules;
-	t_philo			*philo;
-	int				i;
+	t_rules	*rules;
+	t_philo	*philo;
+	int		i;
 
 	philo = (t_philo *)data;
 	rules = philo->rules;
 	i = 0;
-	while (i++ < rules->pme && ft_check_dead(philo) == 0)
+	while (i != rules->pme && ft_check_dead(philo) == 0)
 	{
-		if (ft_take(philo))
-			break ;
+		ft_take(philo);
 		ft_eat(philo);
 		ft_sleep(philo);
 		ft_think(philo);
+		i++;
 	}
 	return (NULL);
 }
