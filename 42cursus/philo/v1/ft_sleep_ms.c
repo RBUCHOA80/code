@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 19:48:23 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 08:03:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 16:31:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_sleep_ms(t_philo *philo, unsigned int usec)
 	while (i++ < (usec / 100))
 	{
 		(void) philo;
-		//if (ft_check_dead(philo))
-		//	break ;
+		if (ft_check_dead(philo))
+			break ;
 		usleep(100 * 1000);
 	}
 	return ;

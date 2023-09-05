@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_set_last_meal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/26 11:43:11 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 19:53:20 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/03 08:53:54 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/03 15:18:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	main(int argc, char **argv)
+int	ft_set_last_meal(t_philo *philo)
 {
-	t_rules	*rules;
-
-	if (ft_check_arg(argc, argv))
-		return (1);
-	rules = ft_init(argv);
-	philo(rules);
-	ft_free(rules);
+	pthread_mutex_lock(&philo->m_last_meal);
+	philo->last_meal = ft_get_time();
+	pthread_mutex_unlock(&philo->m_last_meal);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 08:00:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 20:25:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ tts <- time_to_sleep;
 pme <- number_of_times_each_philosopher_must_eat;
  */
 
+/*		STRUCS		*/
 typedef struct s_philo	t_philo;
 
 typedef struct s_rules
@@ -40,8 +41,6 @@ typedef struct s_rules
 	time_t			start_time;
 	t_philo			**philos;
 	pthread_mutex_t	**forks;
-	pthread_mutex_t	test_mutex;
-	unsigned int	test_count;
 }	t_rules;
 
 typedef struct s_philo
@@ -49,20 +48,30 @@ typedef struct s_philo
 	pthread_t		thread;
 	unsigned int	index;
 	pthread_mutex_t	*fork[2];
+	pthread_mutex_t	m_last_meal;
 	time_t			last_meal;
+	pthread_mutex_t	m_meals;
+	int				meals;
+	pthread_mutex_t	m_dead;
+	unsigned int	dead;
 	t_rules			*rules;
 }	t_philo;
 
 /*		PROTOTYPES  */
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
-int		ft_free_rules(t_rules *rules);
+int		ft_check_dead(t_philo *philo);
+int		ft_free(t_rules *rules);
 time_t	ft_get_time(void);
+void	*ft_hunger(void *rules);
 t_rules	*ft_init(char **argv);
 char	*ft_itoa(int n);
 void	ft_msg_error(void);
 int		ft_msg(t_philo *philo, char *str);
+void	*ft_routine_alone(void *data);
 void	*ft_routine(void *rules);
+int		ft_set_last_meal(t_philo *philo);
+int		ft_set_meals(t_philo *philo);
 void	ft_sleep_ms(t_philo *philo, unsigned int usec);
 int		ft_strcmp(char *s1, char *s2);
 int		philo(t_rules *rules);

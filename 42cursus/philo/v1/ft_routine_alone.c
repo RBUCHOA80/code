@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_dead.c                                      :+:      :+:    :+:   */
+/*   ft_routine_alone.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 05:18:33 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 05:26:43 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/02 20:42:42 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/02 22:18:10 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_set_dead(void)
+void	*ft_routine_alone(void *data)
 {
-	if ((ft_get_time() - philo->last_meal) >= rules->ttd)
-	ft_msg(philo, "\e[1;32mdied\e[m\n");
+	t_rules	*rules;
+	t_philo	*philo;
+
+	philo = (t_philo *)data;
+	rules = philo->rules;
+	pthread_mutex_lock(philo->fork[0]);
+	ft_msg(philo, "has taken a fork\n");
+	ft_sleep_ms(philo, rules->ttd);
+	ft_msg(philo, "died\n");
+	philo->dead = 1;
+	pthread_mutex_unlock(philo->fork[0]);
+	return (NULL);
 }

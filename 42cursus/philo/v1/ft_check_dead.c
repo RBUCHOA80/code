@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_check_dead.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:46:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 09:10:41 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/02 21:35:41 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/03 15:44:03 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_free_rules(t_rules *rules)
+int	ft_check_dead(t_philo *philo)
 {
-	free(rules);
-	return (0);
+	int	ret;
+
+	pthread_mutex_lock(&philo->m_dead);
+	ret = philo->dead;
+	pthread_mutex_unlock(&philo->m_dead);
+	return (ret);
 }

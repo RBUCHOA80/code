@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 08:02:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 19:51:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ void	ft_eat(t_philo *philo)
 
 	rules = philo->rules;
 	to_eat = (rules->tte);
+	ft_set_last_meal(philo);
 	ft_msg(philo, "is eating\n");
 	ft_sleep_ms(philo, to_eat);
 	pthread_mutex_unlock(philo->fork[0]);
 	pthread_mutex_unlock(philo->fork[1]);
+	ft_set_meals(philo);
 }
 
 void	ft_sleep(t_philo *philo)
@@ -71,13 +73,6 @@ void	*ft_routine(void *data)
 		ft_sleep(philo);
 		ft_think(philo);
 		i++;
-	}
-	i = 0;
-	while (i++ < 1000)
-	{
-		pthread_mutex_lock(&rules->test_mutex);
-		rules->test_count++;
-		pthread_mutex_unlock(&rules->test_mutex);
 	}
 	return (0);
 }
