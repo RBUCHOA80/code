@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 05:30:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 07:31:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_rules
 
 typedef struct s_philo
 {
-	unsigned int	index;
 	pthread_t		thread;
+	unsigned int	index;
 	pthread_mutex_t	*fork[2];
 	pthread_mutex_t	m_last_meal;
 	time_t			last_meal;

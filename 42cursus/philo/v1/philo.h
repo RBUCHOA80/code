@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 05:31:15 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 07:38:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_rules
 	time_t			ttd;
 	time_t			tte;
 	time_t			tts;
-	unsigned int	pme;
+	int				pme;
 	time_t			start_time;
 	t_philo			**philos;
 	pthread_mutex_t	**forks;
@@ -65,5 +65,29 @@ void	ft_msg_error(void);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine(void *rules);
 int		ft_strcmp(char *s1, char *s2);
+
+/* 		ft_atoi.c	*/
+int		ft_isspace(char c);
+int		ft_issimbol(char c);
+int		ft_isdigit(int c);
+
+/* 		ft_free.c	*/
+int		ft_free_philos(t_rules *rules);
+int		ft_free_forks(t_rules *rules);
+
+/* 		ft_init.c	*/
+void	ft_init_rules(t_rules *rules, char **argv);
+void	ft_init_forks(t_rules *rules);
+void	ft_init_philos_forks(t_rules *rules, unsigned int i);
+void	ft_init_philos(t_rules *rules);
+
+/* 		ft_itoa.c	*/
+int		ft_nbrlen(int n);
+
+/* 		ft_routine.c	*/
+void	ft_take(t_philo *philo);
+void	ft_eat(t_philo *philo);
+void	ft_sleep(t_philo *philo);
+void	ft_think(t_philo *philo);
 
 #endif
