@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:11:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/04 23:15:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/04 22:21:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-static int	ft_nbrlen(int n)
+int	ft_nbrlen(int n)
 {
 	int	len;
 

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/04 20:49:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/04 22:14:25 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,24 @@
 
 void	*ft_hunger(void *data)
 {
-	t_rules			*rules;
-	t_philo			**philos;
 	unsigned int	i;
 	unsigned int	j;
 
-	rules = (t_rules *)data;
-	philos = rules->philos;
 	j = 0;
 	i = 0;
 	while (1)
 	{
-		if (ft_check_last_meal(philos[i]))
+		if (ft_check_last_meal(((t_rules *)data)->philos[i]))
 		{
-			ft_msg(rules->philos[i], "died\n");
-			ft_set_dead(philos);
+			ft_msg(((t_rules *)data)->philos[i], "died\n");
+			ft_set_dead(((t_rules *)data)->philos);
 			return (NULL);
 		}
-		if (ft_check_meals(philos[i]))
+		if (ft_check_meals(((t_rules *)data)->philos[i]))
 			j++;
-		if (j >= rules->nop)
+		if (j >= ((t_rules *)data)->nop)
 			break ;
-		if (i++ == (rules->nop - 1))
+		if (i++ == (((t_rules *)data)->nop - 1))
 		{
 			i = 0;
 			j = 0;
