@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pabatist <pabatist@student.42.rio>         +#+  +:+       +#+        */
+/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:17:40 by pabatist          #+#    #+#             */
-/*   Updated: 2023/08/14 16:17:41 by pabatist         ###   ########.fr       */
+/*   Updated: 2023/09/05 05:26:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	size_t	ft_strlcat_nonnull(char *dest, const char *src, size_t maxlen)
 	return (ft_strlen(dest) + ft_strlen(&src[index]));
 }
 
-static	void	ft_writenbr(unsigned int nb, char *strnbr, size_t maxsize)
+static	void	ft_msgnbr(unsigned int nb, char *strnbr, size_t maxsize)
 {
 	char	character;
 
@@ -40,8 +40,8 @@ static	void	ft_writenbr(unsigned int nb, char *strnbr, size_t maxsize)
 		return ;
 	}
 	else
-		ft_writenbr(nb / 10, strnbr, maxsize);
-	ft_writenbr(nb % 10, strnbr, maxsize);
+		ft_msgnbr(nb / 10, strnbr, maxsize);
+	ft_msgnbr(nb % 10, strnbr, maxsize);
 	strnbr[maxsize] = '\0';
 }
 
@@ -91,6 +91,6 @@ char	*ft_itoa(int n)
 		ret = (char *)ft_calloc(ret_lenght + 1, sizeof(char));
 	if (!ret)
 		return (NULL);
-	ft_writenbr(nbr, ret, ret_lenght + 1);
+	ft_msgnbr(nbr, ret, ret_lenght + 1);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/04 22:21:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 05:30:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ int		ft_check_arg(int argc, char **argv);
 int		ft_check_dead(t_philo *philo);
 int		ft_check_last_meal(t_philo *philo);
 int		ft_check_meals(t_philo *philo);
-int		ft_error_msg(void);
 int		ft_free(t_rules *rules);
 time_t	ft_get_time(void);
 void	*ft_hunger(void *rules);
 t_rules	*ft_init(char **argv);
 char	*ft_itoa(int n);
+int		ft_msg_error(void);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine_alone(void *data);
 void	*ft_routine(void *rules);
@@ -98,9 +98,9 @@ void	ft_init_philos(t_rules *rules);
 int		ft_nbrlen(int n);
 
 /* 		ft_routine.c	*/
-int		ft_take(t_philo *philo);
-int		ft_eat(t_philo *philo);
-int		ft_sleep(t_philo *philo);
-int		ft_think(t_philo *philo);
+void	ft_take(t_philo *philo);
+void	ft_eat(t_philo *philo);
+void	ft_sleep(t_philo *philo);
+void	ft_think(t_philo *philo);
 
 #endif

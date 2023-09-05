@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:17:30 by pabatist          #+#    #+#             */
-/*   Updated: 2023/08/15 19:52:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 05:26:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static	void	ft_writenbr(unsigned long long int nb, char *strnbr, \
+static	void	ft_msgnbr(unsigned long long int nb, char *strnbr, \
 					size_t maxsize, char *base)
 {
 	char	character;
@@ -25,8 +25,8 @@ static	void	ft_writenbr(unsigned long long int nb, char *strnbr, \
 		return ;
 	}
 	else
-		ft_writenbr(nb / ft_strlen(base), strnbr, maxsize, base);
-	ft_writenbr(nb % ft_strlen(base), strnbr, maxsize, base);
+		ft_msgnbr(nb / ft_strlen(base), strnbr, maxsize, base);
+	ft_msgnbr(nb % ft_strlen(base), strnbr, maxsize, base);
 }
 
 static	unsigned int	set_nbr(long long int n)
@@ -62,6 +62,6 @@ char	*ft_itoa_base(long long int n, char *base)
 		ret = (char *)ft_calloc(ret_lenght + 1, sizeof(char));
 	if (!ret)
 		return (NULL);
-	ft_writenbr(nbr, ret, ret_lenght + 1, base);
+	ft_msgnbr(nbr, ret, ret_lenght + 1, base);
 	return (ret);
 }

@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_set_dead.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/27 09:05:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/08/27 09:17:19 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/05 05:18:33 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/05 05:26:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-int	ft_write(t_philo *philo, char *str)
+int	ft_set_dead(void)
 {
-	int	ret;
-
-	ret = printf("%li %i %s", \
-		(ft_get_time() - philo->rules->start_time), \
-		philo->index, \
-		str);
-	return (ret);
+	if ((ft_get_time() - philo->last_meal) >= rules->ttd)
+	ft_msg(philo, "\e[1;32mdied\e[m\n");
 }

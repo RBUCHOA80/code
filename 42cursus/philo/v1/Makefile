@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/05 05:14:44 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/05 05:30:04 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,14 +41,14 @@ SRCS_LIST			=	main.c \
 						philo.c \
 						ft_atoi.c \
 						ft_check_arg.c \
-						ft_error_msg.c \
 						ft_free_rules.c \
 						ft_get_time.c \
 						ft_init.c \
 						ft_itoa.c \
+						ft_msg_error.c \
+						ft_msg.c \
 						ft_routine.c \
 						ft_strcmp.c \
-						ft_write.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
@@ -96,11 +96,12 @@ show:
 #                           | |   |   |   +---- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
 #                           | |   |   |   |
 #ARG					=	5 800 200 200   # No philosopher should die.
-#ARG					=	5 800 200 200 7 # No philosopher should die.
+ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
-ARG						=	4 310 200 100   # One philosopher should die.
+#ARG					=	4 310 200 100   # One philosopher should die.
 #ARG					=	1 800 200 200   # The philosopher should not eat and should die
-#ARG					=	5 410 200 100 7
+#ARG					=	5 410 200 100 7 # One philosopher should die.
+#ARG					=	5 120 80 80 	# Moana tolds all will die
 
 run:					$(NAME)
 						./$(NAME) $(ARG)
