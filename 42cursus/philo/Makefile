@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/04 20:50:12 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/04 21:16:40 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,8 +105,8 @@ show:
 #                           | |   |   +-------- <- tts <- time_to_sleep;
 #                           | |   |   |   +---- <- pme <- [optional] number_of_times_each_philosopher_must_eat;
 #                           | |   |   |   |
-ARG					=	5 800 200 200   # No philosopher should die.
-#ARG					=	5 800 200 200 7 # No philosopher should die.
+#ARG					=	5 800 200 200   # No philosopher should die.
+ARG					=	5 800 200 200 7 # No philosopher should die.
 #ARG					=	4 410 200 200   # No philosopher should die.
 #ARG					=	4 310 200 100 7 # One philosopher should die.
 #ARG					=	1 800 200 200   # The philosopher should not eat and should die
