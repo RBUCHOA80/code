@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/05 08:01:14 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/05 20:35:41 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,7 +123,8 @@ helgrind:				re
 
 fsanitize:				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
-						$(COMPILER) $(CFLAGS) -fsanitize=thread $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
+#						$(COMPILER) $(CFLAGS) -fsanitize=thread $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
+						$(COMPILER) $(CFLAGS) -fsanitize=address $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
 						./$(NAME) $(ARG)
 
 rerun:					re run
