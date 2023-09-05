@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 21:17:20 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 07:38:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 08:00:26 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_philo
 }	t_philo;
 
 /*		PROTOTYPES  */
-int		philo(t_rules *rules);
 int		ft_atoi(const char *str);
 int		ft_check_arg(int argc, char **argv);
 int		ft_free_rules(t_rules *rules);
@@ -64,7 +63,9 @@ char	*ft_itoa(int n);
 void	ft_msg_error(void);
 int		ft_msg(t_philo *philo, char *str);
 void	*ft_routine(void *rules);
+void	ft_sleep_ms(t_philo *philo, unsigned int usec);
 int		ft_strcmp(char *s1, char *s2);
+int		philo(t_rules *rules);
 
 /* 		ft_atoi.c	*/
 int		ft_isspace(char c);

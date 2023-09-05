@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/05 05:30:04 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/05 08:01:18 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS_LIST			=	main.c \
 						ft_msg_error.c \
 						ft_msg.c \
 						ft_routine.c \
+						ft_sleep_ms.c \
 						ft_strcmp.c \
 
 #						$(shell echo '$@ <- Nome da regra.')

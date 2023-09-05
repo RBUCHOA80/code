@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/05 05:30:20 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/05 08:01:14 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRCS_LIST			=	main.c \
 						ft_hunger.c \
 						ft_init.c \
 						ft_itoa.c \
-						ft_sleep_ms.c \
 						ft_msg_error.c \
 						ft_msg.c \
 						ft_routine_alone.c \
@@ -57,6 +56,7 @@ SRCS_LIST			=	main.c \
 						ft_set_dead.c \
 						ft_set_last_meal.c \
 						ft_set_meals.c \
+						ft_sleep_ms.c \
 						ft_strcmp.c \
 
 #						$(shell echo '$@ <- Nome da regra.')

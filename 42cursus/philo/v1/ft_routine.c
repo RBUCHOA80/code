@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:43:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 07:37:41 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/05 08:02:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,37 @@ void	ft_take(t_philo *philo)
 
 void	ft_eat(t_philo *philo)
 {
+	t_rules	*rules;
+	time_t	to_eat;
+
+	rules = philo->rules;
+	to_eat = (rules->tte);
 	ft_msg(philo, "is eating\n");
-	usleep(philo->rules->tte * 1000);
-	philo->last_meal = ft_get_time();
+	ft_sleep_ms(philo, to_eat);
 	pthread_mutex_unlock(philo->fork[0]);
 	pthread_mutex_unlock(philo->fork[1]);
 }
 
 void	ft_sleep(t_philo *philo)
 {
+	t_rules	*rules;
+	time_t	to_sleep;
+
+	rules = philo->rules;
+	to_sleep = (rules->tts);
 	ft_msg(philo, "is sleeping\n");
-	usleep(philo->rules->tts * 1000);
+	ft_sleep_ms(philo, to_sleep);
 }
 
 void	ft_think(t_philo *philo)
 {
+	t_rules	*rules;
+	time_t	to_think;
+
+	rules = philo->rules;
+	to_think = ((rules->ttd - rules->tte - rules->tts) / rules->nop);
 	ft_msg(philo, "is thinking\n");
-	usleep(((philo->rules->ttd - philo->rules->tte - philo->rules->tts) / philo->rules->nop )* 1000);
+	ft_sleep_ms(philo, to_think);
 }
 
 void	*ft_routine(void *data)
