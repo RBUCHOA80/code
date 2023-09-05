@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:30:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/03 19:14:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/04 20:49:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void	*ft_hunger(void *data)
 		if (j >= rules->nop)
 			break ;
 		if (i++ == (rules->nop - 1))
+		{
 			i = 0;
+			j = 0;
+		}
 	}
 	return (NULL);
 }
