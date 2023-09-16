@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:46:54 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/05 20:01:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/16 00:07:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_free_philos(t_rules *rules)
 
 	philos = rules->philos;
 	i = rules->nop;
+	pthread_mutex_destroy(&rules->m_printf);
 	while (i--)
 	{
 		pthread_mutex_destroy(&philos[i]->m_dead);
