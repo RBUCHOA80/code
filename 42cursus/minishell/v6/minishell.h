@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/07 22:23:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:39:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@
 
 typedef struct s_input
 {
+	struct s_input	*prev;
 	char			*str;
 	int				type;
-	struct s_input	*prev;
 	struct s_input	*next;
 }	t_input;
 

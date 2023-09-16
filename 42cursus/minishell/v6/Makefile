@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/07 21:56:09 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/12 20:42:37 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ show:
 
 run:					$(NAME)
 						./$(NAME)
+						echo $$?
 
 valgrind:				re
 						valgrind --leak-check=full --show-leak-kinds=all -s -v --track-origins=yes ./$(NAME)
