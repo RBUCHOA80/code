@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 19:41:37 by cclaude           #+#    #+#             */
-/*   Updated: 2023/09/17 09:31:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/17 09:45:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	parse(t_mini *mini)
 	signal(SIGINT, &sig_int);
 	signal(SIGQUIT, &sig_quit);
 	mini->ret ? ft_putstr_fd("🤬 ", STDERR) : ft_putstr_fd("😎 ", STDERR);
-	ft_putstr_fd("\033[0;36m\033[1mminishell ▸ \033[0m", STDERR);
+	ft_putstr_fd("\e[0;36m\e[1mminishell ▸ \e[0m", STDERR);
 	if (get_next_line(0, &line) == -2 && (mini->exit = 1))
 		ft_putendl_fd("exit", STDERR);
 	mini->ret = (g_sig.sigint == 1) ? g_sig.exit_status : mini->ret;

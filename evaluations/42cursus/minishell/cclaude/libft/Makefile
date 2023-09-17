@@ -45,13 +45,13 @@ all: $(NAME)
 
 
 $(NAME): $(OBJ)
-	@echo "\n\n\033[0;32mCompiling libft..."
+	@echo "\n\n\e[0;32mCompiling libft..."
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
-	@echo "\033[0m"
+	@echo "\e[0m"
 
 %.o: %.c
-	@printf "\033[0;33mGenerating libft objects... %-33.33s\r" $@
+	@printf "\e[0;33mGenerating libft objects... %-33.33s\r" $@
 	@${CC} ${CFLAGS} -c $< -o $@
 
 clean:

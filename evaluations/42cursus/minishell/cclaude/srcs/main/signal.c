@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 16:04:10 by macrespo          #+#    #+#             */
-/*   Updated: 2023/09/17 09:31:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/17 09:45:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sig_int(int code)
 	{
 		ft_putstr_fd("\b\b  ", STDERR);
 		ft_putstr_fd("\n", STDERR);
-		ft_putstr_fd("\033[0;36m\033[1m🤬 minishell ▸ \033[0m", STDERR);
+		ft_putstr_fd("\e[0;36m\e[1m🤬 minishell ▸ \e[0m", STDERR);
 		g_sig.exit_status = 1;
 	}
 	else
