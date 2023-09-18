@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/12 20:39:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:55:35 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 # define MINISHELL_H
 
 /* INCLUDES */
-# include "../../libft/libft.h" //libft
 # include <stdio.h> //printf
-# include <unistd.h> //dup | pid
+# include <unistd.h> //dup
 # include <signal.h> //signal
+# include <readline/readline.h> //readline
+# include "../../libft/libft.h" //libft
+
+/* COLORS */
+# define GREY	"\e[1;30m"
+# define RED	"\e[1;31m"
+# define GREEN	"\e[1;32m"
+# define YELLOW	"\e[1;33m"
+# define BLUE	"\e[1;34m"
+# define WHITE	"\e[0m"
 
 # define EMPTY 0
 # define CMD 1
@@ -51,14 +60,6 @@ typedef struct s_minishell
 	t_list	*env;
 	t_input	*token;
 }	t_minishell;
-
-typedef struct s_sig
-{
-	int		sigint;
-	int		sigquit;
-	int		exit_status;
-	pid_t	pid;
-}	t_sig;
 
 int	ft_init(t_minishell *data, char **arge);
 int	minishell(void);
