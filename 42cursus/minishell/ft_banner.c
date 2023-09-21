@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:29:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 19:36:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:46:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-void	ft_banner(void)
+int	ft_banner(void)
 {
 	printf("             _         _       _            _  _ \n");
 	printf("            (_)       (_)     | |          | || |\n");
@@ -21,4 +21,5 @@ void	ft_banner(void)
 	printf(" | | | | | || || | | || |\\__ \\| | | ||  __/| || |\n");
 	printf(" |_| |_| |_||_||_| |_||_||___/|_| |_| \\___||_||_|\n");
 	printf(" \n");
+	return (SUCCESS);
 }

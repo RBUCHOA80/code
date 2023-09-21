@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_lst_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 20:45:53 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/09/21 20:46:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-int	minishell(t_minishell *data)
+int	ft_lst_search(t_list *env, char *s1)
 {
-	char	buff[PATH_MAX];
-	char	*line;
+	char	*temp;
+	int		n;
 
-	ft_banner();
-	while (1)
+	while (env && env->content)
 	{
-		printf("%s%s%s%s%s", GREEN, " RUCHOA_@_MINISHELL", WHITE, ":", BLUE);
-		line = readline(strcat(getcwd(buff, PATH_MAX), "\e[0m$ "));
-		ft_lst_search(data->env, line);
-		if (line == NULL)
-			break ;
-		free(line);
+		n = 0;
+		temp = (char *)env->content;
+		while (temp[n] != '=')
+			n++;
+		if (ft_strncmp(temp, s1, n) != 0)
+			env = env->next;
+		else
+		{
+			printf("%s\n", &temp[++n]);
+			return (SUCCESS);
+		}
 	}
-	return (SUCCESS);
+	return (ERROR);
 }

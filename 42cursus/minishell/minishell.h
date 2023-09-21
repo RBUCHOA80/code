@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 19:34:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:27:52 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 /* INCLUDES */
-# include <libft.h>	// libft
+# include "../libft/libft.h"	// libft
 # include <stdio.h> //printf
 # include <limits.h> //PATH_MAX
 # include <readline/readline.h> //readline
@@ -60,12 +60,13 @@ typedef struct s_minishell
 	t_input	*token;
 }	t_minishell;
 
-int	minishell(void);
+int	minishell(t_minishell *data);
 
-void	ft_banner(void);
-int		ft_init(t_minishell *data, char **arge);
+int	ft_banner(void);
+int	ft_init(t_minishell *data, char **arge);
+int	ft_lst_search(t_list *env, char *s1);
 
-int		ft_init_data(t_minishell *data);
-int		ft_init_env(t_minishell *data, char **arge);
+int	ft_init_data(t_minishell *data);
+int	ft_init_env(t_minishell *data, char **arge);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/18 18:03:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:08:03 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv, char **arge)
 	(void)argc;
 	(void)argv;
 	ft_init(&data, arge);
-	minishell();
+	minishell(&data);
 	ft_printf_list(data.env);
 	return (SUCCESS);
 }
