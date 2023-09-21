@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 20:46:22 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:48:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_lst_search(t_list *env, char *s1)
 		temp = (char *)env->content;
 		while (temp[n] != '=')
 			n++;
-		if (ft_strncmp(temp, s1, n) != 0)
+		if (ft_strncmp(temp, s1, n))
 			env = env->next;
 		else
 		{
