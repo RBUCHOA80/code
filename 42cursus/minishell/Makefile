@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/12 20:42:37 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/09/21 19:34:16 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
 #-L <dir>				Add directory to library search path
 LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/)
 
+#-l						Add lib's *.a from directorys on path
+LIBRARY				=	-lreadline
+
 COMPILER			=	cc
 CFLAGS				=	-Wall -Wextra -Werror
 
@@ -39,6 +42,7 @@ SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	main.c \
 						minishell.c \
+						ft_banner.c \
 						ft_init.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
@@ -54,11 +58,11 @@ all:					$(NAME)
 
 $(NAME):				$(SRCS_OBJS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
-						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
+						$(COMPILER) $(CFLAGS) $(SRCS_OBJS) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME) $(LIBRARY)
 
 debug:					$(SRCS)
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
-						$(COMPILER) $(CFLAGS) -g $(SRCS) $(INCLUDE_DIR) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME)
+						$(COMPILER) $(CFLAGS) -g $(SRCS) $(INCLUDE_DIR) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME) $(LIBRARY)
 						gdb --args ./$(NAME)
 
 clean:

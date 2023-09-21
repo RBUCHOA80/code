@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:57:47 by egomes-j          #+#    #+#             */
-/*   Updated: 2023/09/20 19:28:19 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/21 18:21:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,6 @@ void	minishell_loop(void)
 	while (1)
 	{
 		printf("%s%s%s%s%s", GREEN, " @", WHITE, ":", BLUE);
-		// line = readline(ft_strlcat(getcwd(buff, 256), "\e[0m$ ", 256));
 		line = readline(strcat(getcwd(buff, 256), "\e[0m$ "));
 		ft_execute(line);
 		if (line == NULL)
