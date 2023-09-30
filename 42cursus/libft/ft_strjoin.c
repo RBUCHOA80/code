@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:36:16 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/30 22:18:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/25 19:39:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 	return (str);
 } */
 
-char	*ft_strjoin(char const *s1, char const *s2)
+/* char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -57,6 +57,25 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(ret + s1_len, s2, s2_len);
 	ret[s1_len + s2_len] = '\0';
 	free((char *)s1);
+	return (ret);
+} */
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*ret;
+
+	if (!s1 && !s2)
+		return (NULL);
+	s1_len = ft_strlen((char *)s1);
+	s2_len = ft_strlen((char *)s2);
+	ret = (char *)malloc(sizeof(char) * s1_len + s2_len + 1);
+	if (!ret)
+		return (NULL);
+	ft_memcpy(ret, s1, s1_len);
+	ft_memcpy(ret + s1_len, s2, s2_len);
+	ret[s1_len + s2_len] = '\0';
 	return (ret);
 }
 

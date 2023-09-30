@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 20:27:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/09/25 18:55:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 /* INCLUDES */
 # include "../libft/libft.h"	// libft
-# include <stdio.h> //printf
-# include <limits.h> //PATH_MAX
-# include <readline/readline.h> //readline
+# include <stdio.h>				//printf
+# include <linux/limits.h>		//PATH_MAX
+# include <readline/readline.h>	//readline
 
 /* COLORS */
 # define GREY	"\e[1;30m"
