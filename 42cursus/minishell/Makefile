@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/09/30 21:23:05 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/01 14:42:34 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRCS_LIST			=	main.c \
 						minishell.c \
 						ft_banner.c \
 						ft_env_search.c \
+						ft_expand.c \
 						ft_init.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
@@ -87,7 +88,6 @@ show:
 
 run:					$(NAME)
 						./$(NAME)
-						echo $$?
 
 valgrind:				re
 						valgrind --leak-check=full --show-leak-kinds=all -s -v --track-origins=yes ./$(NAME)

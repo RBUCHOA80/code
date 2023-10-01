@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_token.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/01 14:36:23 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/01 15:10:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-int	ft_printf_list(t_list *lst)
+int	ft_token(t_minishell *data, char **line)
 {
-	int	ret;
-	int	i;
-
-	i = 0;
-	ret = 0;
-	while (lst && i < 10)
-	{
-		ret += printf("->%i %s\n", i++, (char *)lst->content);
-		lst = lst->next;
-	}
-	ret += printf("...\n");
-	return (ret);
-}
-
-int	main(int argc, char **argv, char **arge)
-{
-	t_minishell	data;
-
-	(void)argc;
-	(void)argv;
-	ft_init(&data, arge);
-	minishell(&data);
+	free(line);
 	return (SUCCESS);
 }

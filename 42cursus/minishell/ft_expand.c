@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_expand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/01 14:36:23 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/01 15:34:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-int	ft_printf_list(t_list *lst)
+char	*ft_expand(t_minishell *data, char *str)
 {
-	int	ret;
-	int	i;
+	char	**strs;
+	char	*ret;
+	int		i;
 
+	ret = ft_calloc(1, 1);
+	strs = ft_split(str, ' ');
 	i = 0;
-	ret = 0;
-	while (lst && i < 10)
+	while (strs[i])
 	{
-		ret += printf("->%i %s\n", i++, (char *)lst->content);
-		lst = lst->next;
+		if (*strs[i] == '$')
+			ret = ft_strjoin(ft_strjoin(ret, ft_env_search(data->env, &strs[i][1])), " ");
+		else
+			ret = ft_strjoin(ft_strjoin(ret, strs[i]), " ");
+		i++;
 	}
-	ret += printf("...\n");
 	return (ret);
-}
-
-int	main(int argc, char **argv, char **arge)
-{
-	t_minishell	data;
-
-	(void)argc;
-	(void)argv;
-	ft_init(&data, arge);
-	minishell(&data);
-	return (SUCCESS);
 }

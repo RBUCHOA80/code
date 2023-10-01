@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 20:45:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/01 15:02:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ int	minishell(t_minishell *data)
 	while (1)
 	{
 		printf("%s%s%s%s%s", GREEN, " RUCHOA_@_MINISHELL", WHITE, ":", BLUE);
-		line = readline(strcat(getcwd(buff, PATH_MAX), "\e[0m$ "));
-		ft_lst_search(data->env, line);
-		if (line == NULL)
-			break ;
-		free(line);
+		line = readline(ft_strjoin(getcwd(buff, PATH_MAX), "\e[0m$ "));
+		line = ft_expand(data, line);
+		//ft_token(data, line);
+		printf("(A)>%s\n", line);
 	}
 	return (SUCCESS);
 }

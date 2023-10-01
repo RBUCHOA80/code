@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_search.c                                    :+:      :+:    :+:   */
+/*   ft_env_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/09/21 20:48:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/01 14:57:52 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-int	ft_lst_search(t_list *env, char *s1)
+char	*ft_env_search(t_list *env, char *s1)
 {
 	char	*temp;
 	int		n;
@@ -26,10 +26,7 @@ int	ft_lst_search(t_list *env, char *s1)
 		if (ft_strncmp(temp, s1, n))
 			env = env->next;
 		else
-		{
-			printf("%s\n", &temp[++n]);
-			return (SUCCESS);
-		}
+			return (&temp[++n]);
 	}
-	return (ERROR);
+	return (NULL);
 }
