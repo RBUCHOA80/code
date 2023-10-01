@@ -1,2 +1,0 @@
-# libft
-My Libc Implementation 
