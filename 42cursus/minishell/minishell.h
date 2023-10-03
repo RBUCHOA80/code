@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:36:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:47:32 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 /* INCLUDES */
-# include "../libft/libft.h"	// libft
+# include "../libft/libft.h"	//libft
 # include <stdio.h>				//printf
 # include <linux/limits.h>		//PATH_MAX
 # include <readline/readline.h>	//readline
@@ -62,18 +62,18 @@ typedef struct s_minishell
 
 int		minishell(t_minishell *data);
 
-int		ft_banner(void);
 int		ft_cd(t_minishell *data, char *command);
-char	*ft_env_search(t_list *env, char *s1);
+int		ft_env(t_list *lst);
 int		ft_pwd(void);
-int		ft_init(t_minishell *data, char **arge);
+
+int		ft_banner(void);
+char	*ft_env_search(t_list *env, char *s1);
 int		ft_exec_builtin(t_minishell *data, char *command);
+char	*ft_expand(t_minishell *data, char *str);
+int		ft_init(t_minishell *data, char **arge);
 int		ft_is_builtin(char *command);
 
-char	*ft_expand(t_minishell *data, char *str);
-
-int		ft_env(t_list *lst);
-
+int		ft_pwd(void);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data, char **arge);
 

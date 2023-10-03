@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:33:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:40:45 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include "./minishell.h"
 
 char	*ft_env_search(t_list *env, char *s1)
 {
