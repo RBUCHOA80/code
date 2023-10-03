@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/01 14:42:34 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/02 23:37:50 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,11 @@ SRCS_LIST			=	main.c \
 						minishell.c \
 						ft_banner.c \
 						ft_env_search.c \
+						ft_env.c \
+						ft_exec_builtin.c \
 						ft_expand.c \
 						ft_init.c \
+						ft_is_builtin.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')

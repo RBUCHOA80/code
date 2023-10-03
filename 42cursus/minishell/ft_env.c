@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:33:34 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/02 23:37:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-int	main(int argc, char **argv, char **arge)
+int	ft_env(t_list *lst)
 {
-	t_minishell	data;
-
-	(void)argc;
-	(void)argv;
-	ft_init(&data, arge);
-	minishell(&data);
-	return (SUCCESS);
+	while (lst && lst->content)
+	{
+		printf("%s\n", (char *)lst->content);
+		lst = lst->next;
+	}
+	return (0);
 }

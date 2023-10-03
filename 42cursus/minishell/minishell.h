@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/01 15:09:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/02 23:37:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,12 @@ int		minishell(t_minishell *data);
 int		ft_banner(void);
 int		ft_init(t_minishell *data, char **arge);
 char	*ft_env_search(t_list *env, char *s1);
+int		ft_exec_builtin(t_minishell *data, char *command);
+int		ft_is_builtin(char *command);
+
 char	*ft_expand(t_minishell *data, char *str);
+
+int		ft_env(t_list *lst);
 
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data, char **arge);
