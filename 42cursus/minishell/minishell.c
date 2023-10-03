@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:38:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include <minishell.h>
 
 int	minishell(t_minishell *data)
 {
@@ -26,5 +26,5 @@ int	minishell(t_minishell *data)
 		if (ft_is_builtin(line))
 			ft_exec_builtin(data, line);
 	}
-	return (SUCCESS);
+	return (EXIT_SUCCESS);
 }

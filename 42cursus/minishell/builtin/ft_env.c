@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:37:15 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include <minishell.h>
 
 int	ft_env(t_list *lst)
 {
@@ -19,5 +19,5 @@ int	ft_env(t_list *lst)
 		printf("%s\n", (char *)lst->content);
 		lst = lst->next;
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

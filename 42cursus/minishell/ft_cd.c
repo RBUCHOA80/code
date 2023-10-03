@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:41:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include <minishell.h>
 
-int	ft_cd(void)
+/* int	ft_cd(void)
 {
 	t_cmd	var;
 	char	buff[256];
@@ -23,17 +23,25 @@ int	ft_cd(void)
 	{
 		printf("CHDIR %i\n", chdir("~"));
 		printf("%s\n", getcwd(buff, 256));
-		return (SUCCESS);
+		return (EXIT_SUCCESS);
 	}
 	else if (var.argc == 2)
 	{
 		if (chdir(var.argv[1]) == 0)
-			return (SUCCESS);
+			return (EXIT_SUCCESS);
 		else
 			printf("minishell: cd: %s: no such file or directory\n", \
 				var.argv[1]);
-		return (ERROR);
+		return (EXIT_ERROR);
 	}
 	printf("minishell: cd: too many arguments\n");
-	return (ERROR);
+	return (EXIT_ERROR);
+} */
+
+int	ft_cd(t_minishell *data, char *command)
+{
+	(void)data;
+	(void)command;
+	printf("ft_cd()\n");
+	return (EXIT_SUCCESS);
 }

@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:33:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include <minishell.h>
 
 int	main(int argc, char **argv, char **arge)
 {
@@ -20,5 +20,5 @@ int	main(int argc, char **argv, char **arge)
 	(void)argv;
 	ft_init(&data, arge);
 	minishell(&data);
-	return (SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_search.c                                    :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:33:38 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/03 19:56:19 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/03 20:36:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*ft_env_search(t_list *env, char *s1)
+int	ft_pwd(void)
 {
-	char	*temp;
-	int		n;
-
-	while (env && env->content)
-	{
-		n = 0;
-		temp = (char *)env->content;
-		while (temp[n] != '=')
-			n++;
-		if (ft_strncmp(temp, s1, n))
-			env = env->next;
-		else
-			return (&temp[++n]);
-	}
-	return (NULL);
+	printf("ft_pwd()\n");
+	return (EXIT_SUCCESS);
 }

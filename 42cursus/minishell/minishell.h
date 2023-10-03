@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:37:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 # define STDOUT 1
 # define STDERR 2
 
-# define ERROR 1
-# define SUCCESS 0
+# define EXIT_ERROR 1
+# define EXIT_SUCCESS 0
 
 typedef struct s_input
 {
@@ -63,8 +63,10 @@ typedef struct s_minishell
 int		minishell(t_minishell *data);
 
 int		ft_banner(void);
-int		ft_init(t_minishell *data, char **arge);
+int		ft_cd(t_minishell *data, char *command);
 char	*ft_env_search(t_list *env, char *s1);
+int		ft_pwd(void);
+int		ft_init(t_minishell *data, char **arge);
 int		ft_exec_builtin(t_minishell *data, char *command);
 int		ft_is_builtin(char *command);
 

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/02 23:37:50 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/03 20:36:42 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ LIBS_PATH			=	../
 LIBS				=	libft \
 
 #-I <dir>				Add directory to include search path
-INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/)
+INCLUDE_DIR			=	$(foreach lib, $(LIBS),-I $(LIBS_PATH)$(lib)/) \
+						-I ./
 
 #-L <dir>				Add directory to library search path
 LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/)
@@ -29,7 +30,7 @@ LIBRARY_DIR			=	$(foreach lib, $(LIBS),-L $(LIBS_PATH)$(lib)/)
 LIBRARY				=	-lreadline
 
 COMPILER			=	cc
-CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				=	-Wall -Wextra -WEXIT_ERROR
 
 AR					=	ar
 AFLAGS				=	rc
@@ -43,12 +44,14 @@ SRCS_PATH			=	./
 SRCS_LIST			=	main.c \
 						minishell.c \
 						ft_banner.c \
+						ft_cd.c \
 						ft_env_search.c \
-						ft_env.c \
+						builtin/ft_env.c \
 						ft_exec_builtin.c \
 						ft_expand.c \
 						ft_init.c \
 						ft_is_builtin.c \
+						ft_pwd.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')

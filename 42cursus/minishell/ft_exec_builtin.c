@@ -6,31 +6,17 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/02 23:40:27 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include <minishell.h>
 
 int	ft_echo(char *command)
 {
 	(void)command;
 	printf("ft_echo()\n");
-	return (0);
-}
-
-int	ft_cd(t_minishell *data, char *command)
-{
-	(void)data;
-	(void)command;
-	printf("ft_cd()\n");
-	return (0);
-}
-
-int	ft_pwd(void)
-{
-	printf("ft_pwd()\n");
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_export(t_minishell *data, char *command)
@@ -38,7 +24,7 @@ int	ft_export(t_minishell *data, char *command)
 	(void)data;
 	(void)command;
 	printf("ft_export()\n");
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_unset(t_minishell *data, char *command)
@@ -46,7 +32,7 @@ int	ft_unset(t_minishell *data, char *command)
 	(void)data;
 	(void)command;
 	printf("ft_unset()\n");
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_exit(t_minishell *data, char *command)
@@ -54,7 +40,7 @@ int	ft_exit(t_minishell *data, char *command)
 	(void)data;
 	(void)command;
 	printf("ft_exit()\n");
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_exec_builtin(t_minishell *data, char *command)
