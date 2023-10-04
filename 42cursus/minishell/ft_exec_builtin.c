@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 22:46:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 23:04:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_echo(char **command)
 {
-	(void)command;
+	printf("getenv: %s\n", getenv(command[1]));
 	printf("ft_echo()\n");
 	return (EXIT_SUCCESS);
 }
