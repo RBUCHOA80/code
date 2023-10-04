@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:40:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 20:53:44 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	minishell(t_minishell *data)
 		line = ft_expand(data, line);
 		if (ft_is_builtin(line))
 			ft_exec_builtin(data, line);
+		else
+			printf("%s\n", line);
 	}
 	return (EXIT_SUCCESS);
 }

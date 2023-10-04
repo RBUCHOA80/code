@@ -6,42 +6,36 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:47:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 21:37:33 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* int	ft_cd(void)
+int	ft_command_len(char **command)
 {
-	t_cmd	var;
-	char	buff[256];
+	int	i;
 
-	var = g_minishell.cmd_list[1];
-	ft_print_cmd(var);
-	if (var.argc == 1)
+	i = 0;
+	while (command[i])
+		i++;
+	return (i);	
+}
+
+int	ft_cd(t_minishell *data, char **command)
+{
+	if (ft_command_len(command) == 1)
+		if (chdir(ft_expand(data, "$HOME")) == 0)
+			return (EXIT_SUCCESS);
+	if (ft_command_len(command) == 2)
 	{
-		printf("CHDIR %i\n", chdir("~"));
-		printf("%s\n", getcwd(buff, 256));
-		return (EXIT_SUCCESS);
-	}
-	else if (var.argc == 2)
-	{
-		if (chdir(var.argv[1]) == 0)
+		if (chdir(command[1]) == 0)
 			return (EXIT_SUCCESS);
 		else
 			printf("minishell: cd: %s: no such file or directory\n", \
-				var.argv[1]);
+				command[1]);
 		return (EXIT_ERROR);
 	}
 	printf("minishell: cd: too many arguments\n");
 	return (EXIT_ERROR);
-} */
-
-int	ft_cd(t_minishell *data, char *command)
-{
-	(void)data;
-	(void)command;
-	printf("ft_cd()\n");
-	return (EXIT_SUCCESS);
 }
