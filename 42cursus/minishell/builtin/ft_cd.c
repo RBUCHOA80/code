@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 21:37:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:55:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	ft_cd(t_minishell *data, char **command)
 		else
 			printf("minishell: cd: %s: no such file or directory\n", \
 				command[1]);
-		return (EXIT_ERROR);
+		return (EXIT_FAILURE);
 	}
 	printf("minishell: cd: too many arguments\n");
-	return (EXIT_ERROR);
+	return (EXIT_FAILURE);
 }

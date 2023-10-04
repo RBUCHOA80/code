@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 21:29:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:55:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 /* INCLUDES */
 # include "../libft/libft.h"	// libft
-# include <unistd.h>			// getpwd
+# include <unistd.h>			// getpwd | chdir
 # include <stdio.h>				// printf
+# include <stdlib.h>			// exit
+# include <signal.h>			// signal
 # include <linux/limits.h>		// PATH_MAX
 # include <readline/readline.h>	// readline
 
@@ -41,7 +43,7 @@
 # define STDOUT 1
 # define STDERR 2
 
-# define EXIT_ERROR 1
+# define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 
 typedef struct s_input
@@ -66,6 +68,7 @@ int		minishell(t_minishell *data);
 
 int		ft_cd(t_minishell *data, char **command);
 int		ft_env(t_list *lst);
+void		ft_exit(int);
 int		ft_pwd(void);
 
 int		ft_banner(void);

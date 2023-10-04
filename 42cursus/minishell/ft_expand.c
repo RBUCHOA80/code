@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 21:01:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:49:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_expand(t_minishell *data, char *str)
 	char	*ret;
 	int		i;
 
+	if (!data || !str)
+		return (NULL);
 	ret = ft_calloc(1, 1);
 	strs = ft_split(str, ' ');
 	i = 0;

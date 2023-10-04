@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 21:30:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:46:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ int	ft_unset(t_minishell *data, char *command)
 	return (EXIT_SUCCESS);
 }
 
-int	ft_exit(t_minishell *data, char *command)
-{
-	(void)data;
-	(void)command;
-	printf("ft_exit()\n");
-	return (EXIT_SUCCESS);
-}
-
 int	ft_exec_builtin(t_minishell *data, char *line)
 {
 	char **command;
@@ -63,6 +55,6 @@ int	ft_exec_builtin(t_minishell *data, char *line)
 	else if (ft_strncmp(*command, "unset", 6) == 0)
 		ft_unset(data, *command);
 	else if (ft_strncmp(*command, "exit", 5) == 0)
-		ft_exit(data, *command);
+		ft_exit(ret);
 	return (ret);
 }

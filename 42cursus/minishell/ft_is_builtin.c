@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 21:28:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:55:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_is_builtin(char *line)
 {
 	char **command;
 
+	if (!line)
+		return (EXIT_SUCCESS);
 	command = ft_split(line, ' ');	
 	if (ft_strncmp(*command, "echo", 5) == 0)
 		return (1);
@@ -31,5 +33,5 @@ int	ft_is_builtin(char *line)
 		return (1);
 	if (ft_strncmp(*command, "exit", 5) == 0)
 		return (1);
-	return (0);
+	return (EXIT_SUCCESS);
 }
