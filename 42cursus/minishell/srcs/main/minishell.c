@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:53:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/04 22:34:03 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../../include/minishell.h"
 
 int	minishell(t_minishell *data)
 {
@@ -22,6 +22,7 @@ int	minishell(t_minishell *data)
 	{
 		printf("%s%s%s%s%s", GREEN, "42_@_MINISHELL", WHITE, ":", RED);
 		line = readline(ft_strjoin(getcwd(buff, PATH_MAX), "\e[0m$ "));
+		ft_tokenize(data, line);
 		line = ft_expand(data, line);
 		if (ft_is_builtin(line))
 			ft_exec_builtin(data, line);

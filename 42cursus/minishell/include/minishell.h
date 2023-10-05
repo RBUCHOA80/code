@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 22:55:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/04 23:32:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@
 # define EMPTY 0
 # define CMD 1
 # define ARG 2
-# define TRUNC 3
-# define APPEND 4
-# define INPUT 5
-# define PIPE 6
-# define END 7
+# define PARAM 3
+# define TRUNC 4
+# define APPEND 5
+# define INPUT 6
+# define PIPE 7
+# define END 8
 
 # define STDIN 0
 # define STDOUT 1
@@ -68,7 +69,7 @@ int		minishell(t_minishell *data);
 
 int		ft_cd(t_minishell *data, char **command);
 int		ft_env(t_list *lst);
-void		ft_exit(int);
+void	ft_exit(int status);
 int		ft_pwd(void);
 
 int		ft_banner(void);
@@ -81,5 +82,7 @@ int		ft_is_builtin(char *command);
 int		ft_pwd(void);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data, char **arge);
+
+int		ft_tokenize(t_minishell *data, char *line);
 
 #endif

@@ -6,19 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 22:55:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/04 23:34:15 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../../include/minishell.h"
 
 int	ft_is_builtin(char *line)
 {
-	char **command;
+	char	**command;
 
 	if (!line)
 		return (EXIT_SUCCESS);
-	command = ft_split(line, ' ');	
+	command = ft_split(line, ' ');
 	if (ft_strncmp(*command, "echo", 5) == 0)
 		return (1);
 	if (ft_strncmp(*command, "cd", 3) == 0)

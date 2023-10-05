@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 23:04:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/04 23:34:59 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../../include/minishell.h"
 
 int	ft_echo(char **command)
 {
@@ -37,10 +37,10 @@ int	ft_unset(t_minishell *data, char *command)
 
 int	ft_exec_builtin(t_minishell *data, char *line)
 {
-	char **command;
-	int	ret;
+	char	**command;
+	int		ret;
 
-	command = ft_split(line, ' ');	
+	command = ft_split(line, ' ');
 	ret = 0;
 	if (ft_strncmp(*command, "echo", 5) == 0)
 		ret = ft_echo(command);

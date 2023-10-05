@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token.c                                         :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 20:40:45 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/03 19:56:19 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/04 22:33:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../../include/minishell.h"
 
-int	ft_token(t_minishell *data, char **line)
+int	ft_pwd(void)
 {
-	free(line);
+	char	buf[PATH_MAX];
+
+	getcwd(buf, PATH_MAX);
+	printf("%s\n", buf);
 	return (EXIT_SUCCESS);
 }

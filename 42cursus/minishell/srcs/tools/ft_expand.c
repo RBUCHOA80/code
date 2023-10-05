@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 22:49:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/04 22:37:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../../include/minishell.h"
 
 char	*ft_expand(t_minishell *data, char *str)
 {

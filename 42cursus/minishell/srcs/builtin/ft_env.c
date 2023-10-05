@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 19:56:19 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 21:06:01 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/04 22:33:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../include/minishell.h"
 
-int	ft_pwd(void)
+int	ft_env(t_list *lst)
 {
-	char	buf[PATH_MAX];
-
-	getcwd(buf, PATH_MAX);
-	printf("%s\n", buf);
+	while (lst && lst->content)
+	{
+		printf("%s\n", (char *)lst->content);
+		lst = lst->next;
+	}
 	return (EXIT_SUCCESS);
 }

@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/03 22:55:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/04 23:34:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../include/minishell.h"
 
 int	ft_command_len(char **command)
 {
@@ -19,7 +19,7 @@ int	ft_command_len(char **command)
 	i = 0;
 	while (command[i])
 		i++;
-	return (i);	
+	return (i);
 }
 
 int	ft_cd(t_minishell *data, char **command)

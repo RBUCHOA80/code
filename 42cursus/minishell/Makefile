@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/03 22:55:30 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/04 22:59:51 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,18 +40,19 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	main.c \
-						minishell.c \
-						builtin/ft_cd.c \
-						builtin/ft_env.c \
-						builtin/ft_exit.c \
-						builtin/ft_pwd.c \
-						ft_banner.c \
-						ft_env_search.c \
-						ft_exec_builtin.c \
-						ft_expand.c \
-						ft_init.c \
-						ft_is_builtin.c \
+SRCS_LIST			=	srcs/main/main.c \
+						srcs/main/minishell.c \
+						srcs/builtin/ft_cd.c \
+						srcs/builtin/ft_env.c \
+						srcs/builtin/ft_exec_builtin.c \
+						srcs/builtin/ft_exit.c \
+						srcs/builtin/ft_is_builtin.c \
+						srcs/builtin/ft_pwd.c \
+						srcs/env/ft_env_search.c \
+						srcs/main/ft_banner.c \
+						srcs/main/ft_init.c \
+						srcs/tools/ft_expand.c \
+						srcs/tools/ft_tokenize.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
