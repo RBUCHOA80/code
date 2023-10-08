@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/04 23:32:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/07 21:28:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@
 # define EMPTY 0
 # define CMD 1
 # define ARG 2
-# define PARAM 3
-# define TRUNC 4
-# define APPEND 5
-# define INPUT 6
-# define PIPE 7
-# define END 8
+# define TRUNC 3
+# define APPEND 4
+# define INPUT 5
+# define PIPE 6
+# define END 7
 
 # define STDIN 0
 # define STDOUT 1
@@ -50,7 +49,7 @@
 typedef struct s_input
 {
 	struct s_input	*prev;
-	char			*str;
+	char			*content;
 	int				type;
 	struct s_input	*next;
 }	t_input;
@@ -67,17 +66,17 @@ typedef struct s_minishell
 
 int		minishell(t_minishell *data);
 
-int		ft_cd(t_minishell *data, char **command);
+int		ft_cd(t_minishell *data);
 int		ft_env(t_list *lst);
 void	ft_exit(int status);
 int		ft_pwd(void);
 
 int		ft_banner(void);
 char	*ft_env_search(t_list *env, char *s1);
-int		ft_exec_builtin(t_minishell *data, char *command);
+int		ft_exec_builtin(t_minishell *data);
 char	*ft_expand(t_minishell *data, char *str);
 int		ft_init(t_minishell *data, char **arge);
-int		ft_is_builtin(char *command);
+int		ft_is_builtin(t_input *token);
 
 int		ft_pwd(void);
 int		ft_init_data(t_minishell *data);

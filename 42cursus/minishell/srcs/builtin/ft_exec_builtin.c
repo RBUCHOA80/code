@@ -6,55 +6,53 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/04 23:34:59 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/07 21:28:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_echo(char **command)
+int	ft_echo(t_input *token)
 {
-	printf("getenv: %s\n", getenv(command[1]));
+	(void)token;
 	printf("ft_echo()\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_export(t_minishell *data, char *command)
+int	ft_export(t_input *token)
 {
-	(void)data;
-	(void)command;
+	(void)token;
 	printf("ft_export()\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_unset(t_minishell *data, char *command)
+int	ft_unset(t_input *token)
 {
-	(void)data;
-	(void)command;
+	(void)token;
 	printf("ft_unset()\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_exec_builtin(t_minishell *data, char *line)
+int	ft_exec_builtin(t_minishell *data)
 {
-	char	**command;
+	t_input	*token;
 	int		ret;
 
-	command = ft_split(line, ' ');
+	token = data->token;
 	ret = 0;
-	if (ft_strncmp(*command, "echo", 5) == 0)
-		ret = ft_echo(command);
-	else if (ft_strncmp(*command, "cd", 3) == 0)
-		ret = ft_cd(data, command);
-	else if (ft_strncmp(*command, "pwd", 4) == 0)
+	if (ft_strncmp(token->content, "echo", 5) == 0)
+		ret = ft_echo(token);
+	else if (ft_strncmp(token->content, "cd", 3) == 0)
+		ret = ft_cd(data);
+	else if (ft_strncmp(token->content, "pwd", 4) == 0)
 		ret = ft_pwd();
-	else if (ft_strncmp(*command, "env", 4) == 0)
+	else if (ft_strncmp(token->content, "env", 4) == 0)
 		ft_env(data->env);
-	else if (ft_strncmp(*command, "export", 7) == 0)
-		ft_export(data, *command);
-	else if (ft_strncmp(*command, "unset", 6) == 0)
-		ft_unset(data, *command);
-	else if (ft_strncmp(*command, "exit", 5) == 0)
+	else if (ft_strncmp(token->content, "export", 7) == 0)
+		ft_export(token);
+	else if (ft_strncmp(token->content, "unset", 6) == 0)
+		ft_unset(token);
+	else if (ft_strncmp(token->content, "exit", 5) == 0)
 		ft_exit(ret);
 	return (ret);
 }

@@ -6,11 +6,28 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/04 22:34:03 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/07 21:39:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+int	ft_print_tokens(t_minishell *data)
+{
+	t_input	*token;
+
+	token = data->token;
+	while (token && token->content && token->type)
+	{
+		printf("prev: %p ", token->prev);
+		printf("addr: %p ", token);
+		printf("content: %s ", token->content);
+		printf("type: %i ", token->type);
+		printf("next: %p\n", token->next);
+		token = token->next;
+	}
+	return (EXIT_SUCCESS);
+}
 
 int	minishell(t_minishell *data)
 {
@@ -23,11 +40,12 @@ int	minishell(t_minishell *data)
 		printf("%s%s%s%s%s", GREEN, "42_@_MINISHELL", WHITE, ":", RED);
 		line = readline(ft_strjoin(getcwd(buff, PATH_MAX), "\e[0m$ "));
 		ft_tokenize(data, line);
-		line = ft_expand(data, line);
-		if (ft_is_builtin(line))
-			ft_exec_builtin(data, line);
-		else
-			printf("%s\n", line);
+		while (data->token)
+		{
+			if (ft_is_builtin(data->token))
+				ft_exec_builtin(data);
+			data->token = data->token->next;
+		}
 	}
 	return (EXIT_SUCCESS);
 }
