@@ -6,29 +6,29 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/07 21:28:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/08 20:52:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_echo(t_input *token)
+int	ft_echo(t_minishell *data)
 {
-	(void)token;
+	data->token = data->token->next;
 	printf("ft_echo()\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_export(t_input *token)
+int	ft_export(t_minishell *data)
 {
-	(void)token;
+	data->token = data->token->next;
 	printf("ft_export()\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_unset(t_input *token)
+int	ft_unset(t_minishell *data)
 {
-	(void)token;
+	data->token = data->token->next;
 	printf("ft_unset()\n");
 	return (EXIT_SUCCESS);
 }
@@ -41,18 +41,18 @@ int	ft_exec_builtin(t_minishell *data)
 	token = data->token;
 	ret = 0;
 	if (ft_strncmp(token->content, "echo", 5) == 0)
-		ret = ft_echo(token);
+		ret = ft_echo(data);
 	else if (ft_strncmp(token->content, "cd", 3) == 0)
 		ret = ft_cd(data);
 	else if (ft_strncmp(token->content, "pwd", 4) == 0)
-		ret = ft_pwd();
+		ret = ft_pwd(data);
 	else if (ft_strncmp(token->content, "env", 4) == 0)
-		ft_env(data->env);
+		ret = ft_env(data);
 	else if (ft_strncmp(token->content, "export", 7) == 0)
-		ft_export(token);
+		ret = ft_export(data);
 	else if (ft_strncmp(token->content, "unset", 6) == 0)
-		ft_unset(token);
+		ret = ft_unset(data);
 	else if (ft_strncmp(token->content, "exit", 5) == 0)
-		ft_exit(ret);
+		ret = ft_exit(ret);
 	return (ret);
 }

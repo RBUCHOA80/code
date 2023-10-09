@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/07 21:39:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:38:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,10 @@ int	minishell(t_minishell *data)
 		printf("%s%s%s%s%s", GREEN, "42_@_MINISHELL", WHITE, ":", RED);
 		line = readline(ft_strjoin(getcwd(buff, PATH_MAX), "\e[0m$ "));
 		ft_tokenize(data, line);
-		while (data->token)
+		while (data && data->token)
 		{
 			if (ft_is_builtin(data->token))
 				ft_exec_builtin(data);
-			data->token = data->token->next;
 		}
 	}
 	return (EXIT_SUCCESS);
