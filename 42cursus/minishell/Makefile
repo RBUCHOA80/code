@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/09 22:39:24 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/09 22:50:23 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS_PATH			=	./
 SRCS_LIST			=	srcs/main/main.c \
 						srcs/main/minishell.c \
 						srcs/builtin/ft_cd.c \
+						srcs/builtin/ft_echo.c \
 						srcs/builtin/ft_env.c \
 						srcs/builtin/ft_exec_builtin.c \
 						srcs/builtin/ft_exit.c \

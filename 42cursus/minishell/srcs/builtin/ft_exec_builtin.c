@@ -6,18 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/08 20:52:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/09 22:47:03 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-int	ft_echo(t_minishell *data)
-{
-	data->token = data->token->next;
-	printf("ft_echo()\n");
-	return (EXIT_SUCCESS);
-}
 
 int	ft_export(t_minishell *data)
 {
