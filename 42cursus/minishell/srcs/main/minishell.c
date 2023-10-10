@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/08 21:38:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/09 22:27:25 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,30 @@ int	ft_print_tokens(t_minishell *data)
 	return (EXIT_SUCCESS);
 }
 
+int	ft_print_error(t_minishell *data)
+{
+	printf("minishell: %s: command not found\n", data->token->content);
+	while (data && data->token)
+		data->token = data->token->next;
+	return (EXIT_SUCCESS);
+}
+
 int	minishell(t_minishell *data)
 {
 	char	buff[PATH_MAX];
 	char	*line;
 
-	ft_banner();
 	while (1)
 	{
-		printf("%s%s%s%s%s", GREEN, "42_@_MINISHELL", WHITE, ":", RED);
+		printf("%s%s%s%s%s", GREEN, "42@MINISHELL", WHITE, ":", RED);
 		line = readline(ft_strjoin(getcwd(buff, PATH_MAX), "\e[0m$ "));
 		ft_tokenize(data, line);
 		while (data && data->token)
 		{
 			if (ft_is_builtin(data->token))
 				ft_exec_builtin(data);
+			else
+				ft_print_error(data);
 		}
 	}
 	return (EXIT_SUCCESS);

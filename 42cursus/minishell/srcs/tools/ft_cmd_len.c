@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cmd_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/09 22:05:56 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/09 22:38:30 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/09 22:38:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **arge)
+int	ft_cmd_len(t_minishell *data)
 {
-	t_minishell	data;
+	t_input	*temp;
+	int		len;
 
-	(void)argc;
-	(void)argv;
-	ft_banner();
-	ft_init(&data, arge);
-	minishell(&data);
-	return (EXIT_SUCCESS);
+	temp = data->token;
+	len = 0;
+	while (temp && temp->type == CMD)
+	{
+		temp = temp->next;
+		len++;
+	}
+	return (len);
 }

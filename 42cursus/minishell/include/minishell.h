@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/08 20:52:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/09 22:38:49 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@
 # define BLUE	"\e[1;34m"
 # define WHITE	"\e[0m"
 
+/* DEFINES */
 # define EMPTY 0
 # define CMD 1
-# define ARG 2
-# define TRUNC 3
-# define APPEND 4
-# define INPUT 5
-# define PIPE 6
-# define END 7
+# define TRUNC 2
+# define APPEND 3
+# define INPUT 4
+# define PIPE 5
+# define END 6
 
 # define STDIN 0
 # define STDOUT 1
@@ -46,6 +46,7 @@
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 
+/* STRUCTS */
 typedef struct s_input
 {
 	struct s_input	*prev;
@@ -64,10 +65,12 @@ typedef struct s_minishell
 	t_input	*token;
 }	t_minishell;
 
+/* PROTOTYPES */
 int		minishell(t_minishell *data);
 
 int		ft_banner(void);
 int		ft_cd(t_minishell *data);
+int		ft_cmd_len(t_minishell *data);
 int		ft_env(t_minishell *data);
 char	*ft_env_search(t_list *env, char *s1);
 int		ft_exec_builtin(t_minishell *data);

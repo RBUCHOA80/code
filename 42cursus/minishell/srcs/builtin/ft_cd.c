@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/08 21:42:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/09 22:45:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 
 int	ft_cd(t_minishell *data)
 {
-	char	*path;
-	int		len;
-
 	data->token = data->token->next;
-	path = ft_calloc(1, 1);
-	len = 0;
-	while (data && data->token && data->token->type == CMD)
-	{
-		path = ft_strjoin(path, data->token->content);
-		data->token = data->token->next;
-		len++;
-	}
-	if (len == 1)
-	{
-		if (chdir(path) == 0)
+	if (ft_cmd_len(data) == 0)
+		if (chdir(ft_expand(data, "$HOME")) == 0)
 			return (EXIT_SUCCESS);
+	if (ft_cmd_len(data) == 1)
+	{
+		if (chdir(data->token->content) == 0)
+		{
+			data->token = data->token->next;
+			return (EXIT_SUCCESS);
+		}
 		else
 		{
-			printf("minishell: cd: %s: no such file or directory\n", path);
+			printf("minishell: cd: %s: no such file or directory\n", \
+				data->token->content);
+			data->token = data->token->next;
 			return (EXIT_FAILURE);
 		}
 	}

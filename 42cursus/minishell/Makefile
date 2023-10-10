@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/04 22:59:51 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/09 22:39:24 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS_LIST			=	srcs/main/main.c \
 						srcs/env/ft_env_search.c \
 						srcs/main/ft_banner.c \
 						srcs/main/ft_init.c \
+						srcs/tools/ft_cmd_len.c \
 						srcs/tools/ft_expand.c \
 						srcs/tools/ft_tokenize.c \
 
