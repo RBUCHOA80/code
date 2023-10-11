@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/09 22:50:23 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/10 22:13:58 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,13 @@ SRCS_LIST			=	srcs/main/main.c \
 						srcs/builtin/ft_exit.c \
 						srcs/builtin/ft_is_builtin.c \
 						srcs/builtin/ft_pwd.c \
-						srcs/env/ft_env_search.c \
+						srcs/builtin/ft_unset.c \
+						srcs/env/ft_get_env.c \
 						srcs/main/ft_banner.c \
 						srcs/main/ft_init.c \
 						srcs/tools/ft_cmd_len.c \
 						srcs/tools/ft_expand.c \
+						srcs/tools/ft_get_cmd.c \
 						srcs/tools/ft_tokenize.c \
 
 #						$(shell echo '$@ <- Nome da regra.')

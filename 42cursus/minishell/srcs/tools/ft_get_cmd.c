@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expand.c                                        :+:      :+:    :+:   */
+/*   ft_get_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/10 21:30:41 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/10 22:05:01 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/10 22:11:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*ft_expand(t_minishell *data, char *str)
+char	*ft_get_cmd(t_minishell *data)
 {
-	char	**strs;
-	char	*ret;
-	int		i;
+	char	*str;
 
-	if (!data || !str)
-		return (NULL);
-	ret = ft_calloc(1, 1);
-	strs = ft_split(str, ' ');
-	i = 0;
-	while (strs[i])
+	data->token = data->token->next;
+	str = ft_calloc(1, 1);
+	while (data && data->token && data->token->type == CMD)
 	{
-		if (strs[i][0] == '$')
-			ret = ft_strjoin(ret, ft_get_env(data->env, &strs[i][1]));
-		else
-			ret = ft_strjoin(ret, strs[i]);
-		if (strs[i + 1])
-			ret = ft_strjoin(ret, " ");
-		i++;
+		str = ft_strjoin(str, data->token->content);
+		if (data->token->next && data->token->next->type == CMD)
+			str = ft_strjoin(str, " ");
+		data->token = data->token->next;
 	}
-	return (ret);
+	return (str);
 }

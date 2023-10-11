@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_search.c                                    :+:      :+:    :+:   */
+/*   ft_get_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-char	*ft_env_search(t_list *env, char *s1)
+char	*ft_get_env(t_list *env, char *s1)
 {
 	char	*temp;
 	int		n;

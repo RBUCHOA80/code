@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expand.c                                        :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/10 21:30:41 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/10 21:56:21 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/10 22:47:30 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*ft_expand(t_minishell *data, char *str)
+int	ft_unset(t_minishell *data)
 {
-	char	**strs;
-	char	*ret;
-	int		i;
+	t_list	*env;
+	t_list	*prev;
+	char	*temp;
+	char	*str;
+	int		n;
 
-	if (!data || !str)
-		return (NULL);
-	ret = ft_calloc(1, 1);
-	strs = ft_split(str, ' ');
-	i = 0;
-	while (strs[i])
+	env = data->env;
+	str = ft_get_cmd(data);
+	while (env && env->content)
 	{
-		if (strs[i][0] == '$')
-			ret = ft_strjoin(ret, ft_get_env(data->env, &strs[i][1]));
+		n = 0;
+		temp = (char *)env->content;
+		while (temp[n] != '=')
+			n++;
+		if (ft_strncmp(temp, str, n))
+		{
+			prev = env;
+			env = env->next;
+		}
 		else
-			ret = ft_strjoin(ret, strs[i]);
-		if (strs[i + 1])
-			ret = ft_strjoin(ret, " ");
-		i++;
+		{
+			printf("(A)\n");
+			prev->next = env->next;
+			//ft_lstdelone(env, free);
+			return (0);
+		}
 	}
-	return (ret);
+	return (EXIT_FAILURE);
 }

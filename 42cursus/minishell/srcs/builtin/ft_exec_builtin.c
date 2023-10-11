@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/09 22:47:03 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:56:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ int	ft_export(t_minishell *data)
 {
 	data->token = data->token->next;
 	printf("ft_export()\n");
-	return (EXIT_SUCCESS);
-}
-
-int	ft_unset(t_minishell *data)
-{
-	data->token = data->token->next;
-	printf("ft_unset()\n");
 	return (EXIT_SUCCESS);
 }
 

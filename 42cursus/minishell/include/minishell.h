@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/09 22:50:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/10 22:15:27 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int		ft_cd(t_minishell *data);
 int		ft_cmd_len(t_minishell *data);
 int		ft_echo(t_minishell *data);
 int		ft_env(t_minishell *data);
-char	*ft_env_search(t_list *env, char *s1);
+char	*ft_get_cmd(t_minishell *data);
+char	*ft_get_env(t_list *env, char *s1);
 int		ft_exec_builtin(t_minishell *data);
 char	*ft_expand(t_minishell *data, char *str);
 int		ft_exit(int status);
@@ -82,6 +83,7 @@ int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data, char **arge);
 int		ft_is_builtin(t_input *token);
 int		ft_pwd(t_minishell *data);
+int		ft_unset(t_minishell *data);
 int		ft_tokenize(t_minishell *data, char *line);
 
 #endif
