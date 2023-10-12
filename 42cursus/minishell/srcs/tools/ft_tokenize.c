@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/11 22:22:58 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:42:25 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	ft_check_type(char *str)
 {
-	if (ft_strncmp(str, "", 1) == 0)
+	if (ft_strncmp(str, "", 1) == RETURN_SUCCESS)
 		return (EMPTY);
-	else if (ft_strncmp(str, ">", 2) == 0)
+	else if (ft_strncmp(str, ">", 2) == RETURN_SUCCESS)
 		return (TRUNC);
-	else if (ft_strncmp(str, ">>", 3) == 0)
+	else if (ft_strncmp(str, ">>", 3) == RETURN_SUCCESS)
 		return (APPEND);
-	else if (ft_strncmp(str, "<", 2) == 0)
+	else if (ft_strncmp(str, "<", 2) == RETURN_SUCCESS)
 		return (INPUT);
-	else if (ft_strncmp(str, "|", 2) == 0)
+	else if (ft_strncmp(str, "|", 2) == RETURN_SUCCESS)
 		return (PIPE);
-	else if (ft_strncmp(str, ";", 2) == 0)
+	else if (ft_strncmp(str, ";", 2) == RETURN_SUCCESS)
 		return (END);
 	else
 		return (CMD);
@@ -69,7 +69,7 @@ int	ft_tokenize(t_minishell *data, char *line)
 	int		i;
 
 	if (!line)
-		return (EXIT_FAILURE);
+		return (RETURN_FAILURE);
 	strs = ft_split(ft_expand(data, line), ' ');
 	i = 0;
 	while (strs[i])
@@ -78,5 +78,5 @@ int	ft_tokenize(t_minishell *data, char *line)
 		ft_token_add_back(&data->token, new);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (RETURN_SUCCESS);
 }

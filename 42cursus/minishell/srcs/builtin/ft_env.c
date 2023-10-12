@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/08 20:53:07 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:37:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	ft_env(t_minishell *data)
 		printf("%s\n", (char *)env->content);
 		env = env->next;
 	}
-	return (EXIT_SUCCESS);
+	return (RETURN_SUCCESS);
 }

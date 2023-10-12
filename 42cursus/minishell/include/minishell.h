@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/11 21:33:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:37:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define STDOUT 1
 # define STDERR 2
 
-# define EXIT_FAILURE 1
-# define EXIT_SUCCESS 0
+# define RETURN_FAILURE 1
+# define RETURN_SUCCESS 0
 
 /* STRUCTS */
 typedef struct s_input
@@ -59,7 +59,6 @@ typedef struct s_minishell
 {
 	int		in;
 	int		out;
-	int		exit;
 	int		errno;
 	t_list	*env;
 	t_input	*token;
@@ -77,12 +76,14 @@ char	*ft_get_cmd(t_minishell *data);
 char	*ft_get_env(t_list *env, char *s1);
 int		ft_exec_builtin(t_minishell *data);
 char	*ft_expand(t_minishell *data, char *str);
-void	ft_exit(int status);
+int		ft_exit(int status);
 int		ft_init(t_minishell *data, char **arge);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data, char **arge);
 int		ft_is_builtin(t_input *token);
 int		ft_pwd(t_minishell *data);
+void	ft_sigint(int sig);
+void	ft_sigquit(int sig);
 int		ft_unset(t_minishell *data);
 int		ft_tokenize(t_minishell *data, char *line);
 

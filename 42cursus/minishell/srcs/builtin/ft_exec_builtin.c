@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/11 21:34:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:37:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_export(t_minishell *data)
 {
 	data->token = data->token->next;
 	printf("ft_export()\n");
-	return (EXIT_SUCCESS);
+	return (RETURN_SUCCESS);
 }
 
 int	ft_exec_builtin(t_minishell *data)
@@ -26,19 +26,19 @@ int	ft_exec_builtin(t_minishell *data)
 
 	token = data->token;
 	ret = 0;
-	if (ft_strncmp(token->content, "echo", 5) == 0)
+	if (ft_strncmp(token->content, "echo", 5) == RETURN_SUCCESS)
 		ret = ft_echo(data);
-	else if (ft_strncmp(token->content, "cd", 3) == 0)
+	else if (ft_strncmp(token->content, "cd", 3) == RETURN_SUCCESS)
 		ret = ft_cd(data);
-	else if (ft_strncmp(token->content, "pwd", 4) == 0)
+	else if (ft_strncmp(token->content, "pwd", 4) == RETURN_SUCCESS)
 		ret = ft_pwd(data);
-	else if (ft_strncmp(token->content, "env", 4) == 0)
+	else if (ft_strncmp(token->content, "env", 4) == RETURN_SUCCESS)
 		ret = ft_env(data);
-	else if (ft_strncmp(token->content, "export", 7) == 0)
+	else if (ft_strncmp(token->content, "export", 7) == RETURN_SUCCESS)
 		ret = ft_export(data);
-	else if (ft_strncmp(token->content, "unset", 6) == 0)
+	else if (ft_strncmp(token->content, "unset", 6) == RETURN_SUCCESS)
 		ret = ft_unset(data);
-	else if (ft_strncmp(token->content, "exit", 5) == 0)
-		ft_exit(ret);
+	else if (ft_strncmp(token->content, "exit", 5) == RETURN_SUCCESS)
+		ret = ft_exit(ret);
 	return (ret);
 }

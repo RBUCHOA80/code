@@ -6,14 +6,15 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:18:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/11 21:58:45 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:37:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	ft_exit(int status)
+int	ft_exit(int status)
 {
+	printf("exit\n");
 	exit(status);
-	return;
+	return (RETURN_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:56:21 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/10 22:47:30 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:41:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_unset(t_minishell *data)
 		temp = (char *)env->content;
 		while (temp[n] != '=')
 			n++;
-		if (ft_strncmp(temp, str, n))
+		if (ft_strncmp(temp, str, n) == RETURN_FAILURE)
 		{
 			prev = env;
 			env = env->next;
@@ -41,5 +41,5 @@ int	ft_unset(t_minishell *data)
 			return (0);
 		}
 	}
-	return (EXIT_FAILURE);
+	return (RETURN_FAILURE);
 }
