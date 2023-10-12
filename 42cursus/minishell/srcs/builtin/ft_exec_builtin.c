@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/10 21:56:12 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/11 21:34:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	ft_exec_builtin(t_minishell *data)
 	else if (ft_strncmp(token->content, "unset", 6) == 0)
 		ret = ft_unset(data);
 	else if (ft_strncmp(token->content, "exit", 5) == 0)
-		ret = ft_exit(ret);
+		ft_exit(ret);
 	return (ret);
 }

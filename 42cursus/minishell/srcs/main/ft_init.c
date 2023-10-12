@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/10 21:46:55 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/11 22:04:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,18 @@ int	ft_init_env(t_minishell *data, char **arge)
 	return (EXIT_SUCCESS);
 }
 
+void	ft_exit2(int sig)
+{
+	if (sig == SIGQUIT)
+		printf("(135)%i\n", sig);
+	else
+		printf("(B)%i\n", sig);
+}
+
 int	ft_init_signal(void)
 {
-	signal(SIGINT, &exit);
-	signal(SIGQUIT, &exit);
+	signal(SIGINT, &ft_exit);
+	signal(SIGQUIT, &ft_exit2);
 	return (EXIT_SUCCESS);
 }
 

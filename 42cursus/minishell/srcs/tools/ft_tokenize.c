@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/07 21:08:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/11 22:22:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	ft_tokenize(t_minishell *data, char *line)
 	char	**strs;
 	int		i;
 
+	if (!line)
+		return (EXIT_FAILURE);
 	strs = ft_split(ft_expand(data, line), ' ');
 	i = 0;
 	while (strs[i])
