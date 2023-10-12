@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:37:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_init_data(t_minishell *data)
 {
@@ -19,10 +19,26 @@ int	ft_init_data(t_minishell *data)
 	return (RETURN_SUCCESS);
 }
 
-int	ft_init_env(t_minishell *data, char **arge)
+int	ft_init_env(t_minishell *data)
 {
-	while (*arge)
-		ft_lstadd_back(&data->env, ft_lstnew(ft_strdup(*arge++)));
+	static char	*arge[] = {\
+							"HOME", \
+							"PATH", \
+							"USER", \
+							};
+	char		*str;
+	int			i;
+
+	i = 0;
+	while (arge[i])
+	{
+		str = arge[i];
+		str = getenv(str);
+		str = ft_strjoin("=", str);
+		str = ft_strjoin(arge[i], str);
+		ft_lstadd_back(&data->env, ft_lstnew(str));
+		i++;
+	}
 	return (RETURN_SUCCESS);
 }
 
@@ -36,10 +52,10 @@ int	ft_init_signal(void)
 	return (RETURN_SUCCESS);
 }
 
-int	ft_init(t_minishell *data, char **arge)
+int	ft_init(t_minishell *data)
 {
 	ft_init_data(data);
-	ft_init_env(data, arge);
+	ft_init_env(data);
 	ft_init_signal();
 	return (RETURN_SUCCESS);
 }

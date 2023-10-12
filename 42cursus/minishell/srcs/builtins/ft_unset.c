@@ -6,40 +6,32 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:56:21 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:41:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 19:56:31 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_unset(t_minishell *data)
 {
-	t_list	*env;
 	t_list	*prev;
-	char	*temp;
-	char	*str;
-	int		n;
+	t_list	*temp;
 
-	env = data->env;
-	str = ft_get_cmd(data);
-	while (env && env->content)
+	data->token = data->token->next;
+	if (data->token)
 	{
-		n = 0;
-		temp = (char *)env->content;
-		while (temp[n] != '=')
-			n++;
-		if (ft_strncmp(temp, str, n) == RETURN_FAILURE)
+		prev = data->env;
+		temp = data->env;
+		while (temp && temp->content)
 		{
-			prev = env;
-			env = env->next;
-		}
-		else
-		{
-			printf("(A)\n");
-			prev->next = env->next;
-			//ft_lstdelone(env, free);
-			return (0);
+			if (ft_strcmp(temp->content, data->token->content) == RETURN_SUCCESS)
+				prev->next = temp->next;
+			else
+				prev = temp;
+			temp = temp->next;
 		}
 	}
-	return (RETURN_FAILURE);
+	while (data->token)
+		data->token = data->token->next;
+	return (RETURN_SUCCESS);
 }

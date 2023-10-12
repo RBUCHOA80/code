@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sigquit.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 12:29:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:30:07 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
-//"CTRL+\"
-void	ft_sigquit(int sig)
+int	main(void)
 {
-	(void)sig;
-	printf("\n");
-	return ;
+	t_minishell	data;
+
+	ft_banner();
+	ft_init(&data);
+	minishell(&data);
+	return (RETURN_SUCCESS);
 }

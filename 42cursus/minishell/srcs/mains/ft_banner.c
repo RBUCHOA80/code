@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:29:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:37:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_banner(void)
 {

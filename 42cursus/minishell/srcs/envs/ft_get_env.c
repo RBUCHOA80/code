@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sigint.c                                        :+:      :+:    :+:   */
+/*   ft_get_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 12:29:29 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:29:57 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/04 22:33:49 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
-//"CTRL+C"
-void	ft_sigint(int sig)
+char	*ft_get_env(t_list *env, char *s1)
 {
-	(void)sig;
-	printf("\n");
-	return ;
+	char	*temp;
+	int		n;
+
+	while (env && env->content)
+	{
+		n = 0;
+		temp = (char *)env->content;
+		while (temp[n] != '=')
+			n++;
+		if (ft_strncmp(temp, s1, n) != RETURN_SUCCESS)
+			env = env->next;
+		else
+			return (&temp[++n]);
+	}
+	return (NULL);
 }

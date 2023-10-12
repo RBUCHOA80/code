@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sigint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:37:06 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/12 12:29:29 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
-int	main(int argc, char **argv, char **arge)
+//"CTRL+C"
+void	ft_sigint(int sig)
 {
-	t_minishell	data;
-
-	(void)argc;
-	(void)argv;
-	ft_banner();
-	ft_init(&data, arge);
-	minishell(&data);
-	return (RETURN_SUCCESS);
+	(void)sig;
+	printf("\n");
+	return ;
 }

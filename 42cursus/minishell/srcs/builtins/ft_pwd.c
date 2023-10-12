@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env.c                                    :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/04 22:33:49 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/03 19:56:19 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
-char	*ft_get_env(t_list *env, char *s1)
+int	ft_pwd(t_minishell *data)
 {
-	char	*temp;
-	int		n;
+	char	buf[PATH_MAX];
 
-	while (env && env->content)
-	{
-		n = 0;
-		temp = (char *)env->content;
-		while (temp[n] != '=')
-			n++;
-		if (ft_strncmp(temp, s1, n) != RETURN_SUCCESS)
-			env = env->next;
-		else
-			return (&temp[++n]);
-	}
-	return (NULL);
+	data->token = data->token->next;
+	getcwd(buf, PATH_MAX);
+	printf("%s\n", buf);
+	return (RETURN_SUCCESS);
 }

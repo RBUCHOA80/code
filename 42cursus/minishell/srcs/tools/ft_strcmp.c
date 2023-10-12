@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_cmd.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 22:05:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/12 19:31:37 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/12 19:53:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*ft_get_cmd(t_minishell *data)
+int	ft_strcmp(char *s1, char *s2)
 {
-	char	*str;
+	int	len_s1;
+	int	len_s2;
 
-	data->token = data->token->next;
-	str = ft_calloc(1, 1);
-	while (data && data->token && data->token->type == CMD)
-	{
-		str = ft_strjoin(str, data->token->content);
-		if (data->token->next && data->token->next->type == CMD)
-			str = ft_strjoin(str, " ");
-		data->token = data->token->next;
-	}
-	return (str);
+	if (s1 == NULL || s2 == NULL)
+		return (RETURN_FAILURE);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	if (len_s1 < len_s2)
+		return (ft_strncmp(s1, s2, len_s1));
+	else
+		return (ft_strncmp(s1, s2, len_s2));
 }

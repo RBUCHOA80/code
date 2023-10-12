@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/12 12:31:41 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/12 19:55:03 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,24 +40,26 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	srcs/main/main.c \
-						srcs/main/minishell.c \
-						srcs/builtin/ft_cd.c \
-						srcs/builtin/ft_echo.c \
-						srcs/builtin/ft_env.c \
-						srcs/builtin/ft_exec_builtin.c \
-						srcs/builtin/ft_exit.c \
-						srcs/builtin/ft_is_builtin.c \
-						srcs/builtin/ft_pwd.c \
-						srcs/builtin/ft_unset.c \
-						srcs/env/ft_get_env.c \
-						srcs/main/ft_banner.c \
-						srcs/main/ft_init.c \
-						srcs/signal/ft_sigint.c \
-						srcs/signal/ft_sigquit.c \
+SRCS_LIST			=	srcs/mains/main.c \
+						srcs/mains/minishell.c \
+						srcs/builtins/ft_cd.c \
+						srcs/builtins/ft_echo.c \
+						srcs/builtins/ft_env.c \
+						srcs/builtins/ft_exec_builtin.c \
+						srcs/builtins/ft_exit.c \
+						srcs/builtins/ft_export.c \
+						srcs/builtins/ft_is_builtin.c \
+						srcs/builtins/ft_pwd.c \
+						srcs/builtins/ft_unset.c \
+						srcs/envs/ft_get_env.c \
+						srcs/mains/ft_banner.c \
+						srcs/mains/ft_init.c \
+						srcs/signals/ft_sigint.c \
+						srcs/signals/ft_sigquit.c \
 						srcs/tools/ft_cmd_len.c \
 						srcs/tools/ft_expand.c \
 						srcs/tools/ft_get_cmd.c \
+						srcs/tools/ft_strcmp.c \
 						srcs/tools/ft_tokenize.c \
 
 #						$(shell echo '$@ <- Nome da regra.')

@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:42:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 20:02:53 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_check_type(char *str)
 {

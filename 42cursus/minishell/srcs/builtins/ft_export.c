@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_cmd.c                                       :+:      :+:    :+:   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 22:05:01 by ruchoa            #+#    #+#             */
+/*   Created: 2023/10/12 13:04:02 by ruchoa            #+#    #+#             */
 /*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*ft_get_cmd(t_minishell *data)
+int	ft_export(t_minishell *data)
 {
-	char	*str;
+	char	*cmd;
 
 	data->token = data->token->next;
-	str = ft_calloc(1, 1);
-	while (data && data->token && data->token->type == CMD)
-	{
-		str = ft_strjoin(str, data->token->content);
-		if (data->token->next && data->token->next->type == CMD)
-			str = ft_strjoin(str, " ");
+	cmd = data->token->content;
+	ft_lstadd_back(&data->env, ft_lstnew(cmd));
+	while (data->token)
 		data->token = data->token->next;
-	}
-	return (str);
+	return (RETURN_SUCCESS);
 }

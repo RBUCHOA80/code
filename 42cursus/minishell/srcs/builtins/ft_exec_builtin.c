@@ -6,18 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:37:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-int	ft_export(t_minishell *data)
-{
-	data->token = data->token->next;
-	printf("ft_export()\n");
-	return (RETURN_SUCCESS);
-}
+#include "../../includes/minishell.h"
 
 int	ft_exec_builtin(t_minishell *data)
 {
@@ -39,6 +32,6 @@ int	ft_exec_builtin(t_minishell *data)
 	else if (ft_strncmp(token->content, "unset", 6) == RETURN_SUCCESS)
 		ret = ft_unset(data);
 	else if (ft_strncmp(token->content, "exit", 5) == RETURN_SUCCESS)
-		ret = ft_exit(ret);
+		ret = ft_exit(data);
 	return (ret);
 }

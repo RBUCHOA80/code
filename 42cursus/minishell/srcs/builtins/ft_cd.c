@@ -6,11 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 12:46:35 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_has_space(char *cmd)
 {
@@ -42,28 +42,3 @@ int	ft_cd(t_minishell *data)
 		printf("minishell: cd: %s: no such file or directory\n", cmd);
 	return (RETURN_FAILURE);
 }
-
-/* int	ft_cd(t_minishell *data)
-{
-	data->token = data->token->next;
-	if (ft_cmd_len(data) == RETURN_SUCCESS)
-		if (chdir(ft_expand(data, "$HOME")) == RETURN_SUCCESS)
-			return (RETURN_SUCCESS);
-	if (ft_cmd_len(data) == RETURN_FAILURE)
-	{
-		if (chdir(data->token->content) == RETURN_SUCCESS)
-		{
-			data->token = data->token->next;
-			return (RETURN_SUCCESS);
-		}
-		else
-		{
-			printf("minishell: cd: %s: no such file or directory\n", \
-				data->token->content);
-			data->token = data->token->next;
-			return (RETURN_FAILURE);
-		}
-	}
-	printf("minishell: cd: too many arguments\n");
-	return (RETURN_FAILURE);
-} */
