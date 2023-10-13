@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:18:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 20:11:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 21:44:59 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	ft_exit(t_minishell *data)
 {
 	int	status;
 
-	data->token = data->token->next;
+	if (data->token)
+		data->token = data->token->next;
 	status = RETURN_SUCCESS;
 	printf("exit\n");
 	if (data && data->token && data->token->content)

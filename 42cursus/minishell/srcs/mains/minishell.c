@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 15:52:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 21:39:58 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@ int	ft_print_tokens(t_minishell *data)
 	return (RETURN_SUCCESS);
 }
 
+char	*ft_prompt(char *user)
+{
+	char	buff[PATH_MAX];
+	char	*prompt;
+
+	prompt = ft_strjoin(GREEN, user);
+	prompt = ft_strjoin(prompt, "@minishell");
+	prompt = ft_strjoin(prompt, WHITE);
+	prompt = ft_strjoin(prompt, ":");
+	prompt = ft_strjoin(prompt, RED);
+	prompt = ft_strjoin(prompt, getcwd(buff, PATH_MAX));
+	prompt = ft_strjoin(prompt, "\e[0m$ ");
+	return (prompt);
+}
+
 int	ft_print_error(t_minishell *data)
 {
 	printf("minishell: %s: command not found\n", data->token->content);
@@ -39,16 +54,13 @@ int	ft_print_error(t_minishell *data)
 
 int	minishell(t_minishell *data)
 {
-	char	buff[PATH_MAX];
-	char	*user;
 	char	*line;
+	char	*user;
 
 	user = ft_expand(data, "$USER");
 	while (1)
 	{
-		printf("%s%s%s%s%s%s", \
-			GREEN, user, "@minishell", WHITE, ":", RED);
-		line = readline(ft_strjoin(getcwd(buff, PATH_MAX), "\e[0m$ "));
+		line = readline(ft_prompt(user));
 		if (ft_tokenize(data, line) == RETURN_FAILURE)
 			ft_exit(data);
 		while (data && data->token)
