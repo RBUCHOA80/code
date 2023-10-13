@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:56:21 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 19:56:31 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 20:18:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	ft_unset(t_minishell *data)
 		temp = data->env;
 		while (temp && temp->content)
 		{
-			if (ft_strcmp(temp->content, data->token->content) == RETURN_SUCCESS)
+			if (ft_strcmp(temp->content, data->token->content) == \
+					RETURN_SUCCESS)
 				prev->next = temp->next;
 			else
 				prev = temp;

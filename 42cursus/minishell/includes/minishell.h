@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 19:54:44 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 21:09:04 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@
 # define WHITE	"\e[0m"
 
 /* DEFINES */
-# define EMPTY 0
-# define CMD 1
-# define TRUNC 2
-# define APPEND 3
-# define INPUT 4
-# define PIPE 5
-# define END 6
+# define APPEND 0
+# define TRUNC 1
+# define INPUT 2
+# define PIPE 3
+# define END 4
+# define CMD 5
 
 # define STDIN 0
 # define STDOUT 1

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 20:02:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/12 21:08:43 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 int	ft_check_type(char *str)
 {
-	if (ft_strncmp(str, "", 1) == RETURN_SUCCESS)
-		return (EMPTY);
-	else if (ft_strncmp(str, ">", 2) == RETURN_SUCCESS)
+	if (ft_strcmp(str, ">") == RETURN_SUCCESS)
 		return (TRUNC);
-	else if (ft_strncmp(str, ">>", 3) == RETURN_SUCCESS)
+	else if (ft_strcmp(str, ">>") == RETURN_SUCCESS)
 		return (APPEND);
-	else if (ft_strncmp(str, "<", 2) == RETURN_SUCCESS)
+	else if (ft_strcmp(str, "<") == RETURN_SUCCESS)
 		return (INPUT);
-	else if (ft_strncmp(str, "|", 2) == RETURN_SUCCESS)
+	else if (ft_strcmp(str, "|") == RETURN_SUCCESS)
 		return (PIPE);
-	else if (ft_strncmp(str, ";", 2) == RETURN_SUCCESS)
+	else if (ft_strcmp(str, ";") == RETURN_SUCCESS)
 		return (END);
 	else
 		return (CMD);
