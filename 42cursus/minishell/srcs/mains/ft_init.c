@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 15:41:51 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 15:55:03 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	ft_init_env(t_minishell *data)
 {
 	static char	*arge[] = {\
 							"HOME", \
-							"USER", \
 							"PATH", \
+							"USER", \
 							"VAR", \
 							};
 	char		*str;
@@ -34,7 +34,6 @@ int	ft_init_env(t_minishell *data)
 	while (arge[i])
 	{
 		str = getenv(arge[i]);
-		printf("%s=%s\n", arge[i], str);
 		if (str)
 		{
 			str = ft_strjoin("=", str);

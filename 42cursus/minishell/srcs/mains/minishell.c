@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 15:19:34 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 15:48:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char	**ft_get_arge(t_minishell *data)
 	arge = ft_calloc(sizeof(*arge), arge_count);
 	while (temp)
 	{
-		*arge = ft_strdup(temp->content);
+		*arge++ = ft_strdup(temp->content);
 		temp = temp->next;
 	}
 	return (arge);
@@ -131,8 +131,6 @@ int	ft_exec_external(t_minishell *data)
 		arge = ft_get_arge(data);
 		execve(data->pathname, argv, arge);
 	}
-	else
-		printf("child = %i\n", child);
 	wait(0);
 	return (RETURN_SUCCESS);
 }
