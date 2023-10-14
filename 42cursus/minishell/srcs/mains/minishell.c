@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/13 22:33:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/13 23:57:37 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,28 @@ int	ft_print_error(t_minishell *data)
 	return (RETURN_SUCCESS);
 }
 
-int	minishell(t_minishell *data)
+int	ft_is_executable(t_minishell *data)
+{
+	char		**paths;
+	char		*pathname;
+	struct stat	*buf;
+
+	buf	= malloc(sizeof(buf));
+	paths = ft_split(ft_expand(data, "$PATH"), ':');
+	while (*paths)
+	{
+		pathname = ft_strjoin(*paths++, "/");
+		pathname = ft_strjoin(pathname, data->token->content);
+		if (stat(pathname, buf) == RETURN_SUCCESS)
+		{
+			data->pathname = pathname;
+			return (RETURN_SUCCESS);
+		}
+	}
+	return (RETURN_FAILURE);
+}
+
+int	minishell(t_minishell *data, char **argv, char **arge)
 {
 	char	*line;
 	char	*user;
@@ -67,8 +88,14 @@ int	minishell(t_minishell *data)
 		{
 			if (ft_is_builtin(data->token) == RETURN_SUCCESS)
 				ft_exec_builtin(data);
+			else if (ft_is_executable(data) == RETURN_SUCCESS)
+			{
+				execve(data->pathname, argv, arge);
+			}
 			else
 				ft_print_error(data);
+			while (data->token)
+				data->token = data->token->next;
 		}
 	}
 	return (RETURN_SUCCESS);
