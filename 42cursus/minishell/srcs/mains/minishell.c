@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 15:48:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 16:24:38 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,6 @@ int	ft_is_external(t_minishell *data)
 	return (RETURN_FAILURE);
 }
 
-int	ft_token_count(t_minishell *data)
-{
-	t_input	*token;
-	int		count;
-
-	token = data->token;
-	count = 0;
-	while (token)
-	{
-		token = token->next;
-		count++;
-	}
-	return (count);
-}
-
 char	**ft_get_argv(t_minishell *data)
 {
 	char	**argv;
@@ -92,7 +77,7 @@ int	ft_env_count(t_minishell *data)
 	int		count;
 
 	temp = data->env;
-	count = 0;
+	count = 1;
 	while (temp)
 	{
 		temp = temp->next;
@@ -108,7 +93,7 @@ char	**ft_get_arge(t_minishell *data)
 	int		arge_count;
 
 	temp = data->env;
-	arge_count = ft_token_count(data);
+	arge_count = ft_env_count(data);
 	arge = ft_calloc(sizeof(*arge), arge_count);
 	while (temp)
 	{
@@ -129,7 +114,7 @@ int	ft_exec_external(t_minishell *data)
 	{
 		argv = ft_get_argv(data);
 		arge = ft_get_arge(data);
-		execve(data->pathname, argv, arge);
+		printf("\noutput = %i\n", execve(data->pathname, argv, arge));
 	}
 	wait(0);
 	return (RETURN_SUCCESS);
