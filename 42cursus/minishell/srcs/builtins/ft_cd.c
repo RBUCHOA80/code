@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 21:26:21 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/13 22:33:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_cd(t_minishell *data)
 	cmd = ft_get_cmd(data);
 	if (ft_has_space(cmd) == RETURN_FAILURE)
 		printf("minishell: cd: too many arguments\n");
-	else if ((ft_strncmp(cmd, "", 2) == RETURN_SUCCESS) || \
+	else if ((ft_strcmp(cmd, "") == RETURN_SUCCESS) || \
 			(ft_strcmp(cmd, "~") == RETURN_SUCCESS))
 	{
 		chdir(ft_expand(data, "$HOME"));

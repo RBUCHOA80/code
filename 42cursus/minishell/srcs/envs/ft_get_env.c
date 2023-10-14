@@ -23,7 +23,7 @@ char	*ft_get_env(t_list *env, char *s1)
 		temp = (char *)env->content;
 		while (temp[n] != '=')
 			n++;
-		if (ft_strncmp(temp, s1, n) != RETURN_SUCCESS)
+		if (ft_strcmp(temp, s1) != RETURN_SUCCESS)
 			env = env->next;
 		else
 			return (&temp[++n]);
