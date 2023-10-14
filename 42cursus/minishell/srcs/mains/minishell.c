@@ -6,28 +6,11 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/13 23:57:37 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 12:53:31 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	ft_print_tokens(t_minishell *data)
-{
-	t_input	*token;
-
-	token = data->token;
-	while (token && token->content && token->type)
-	{
-		printf("prev: %p ", token->prev);
-		printf("addr: %p ", token);
-		printf("content: %s ", token->content);
-		printf("type: %i ", token->type);
-		printf("next: %p\n", token->next);
-		token = token->next;
-	}
-	return (RETURN_SUCCESS);
-}
 
 char	*ft_prompt(char *user)
 {
@@ -40,7 +23,8 @@ char	*ft_prompt(char *user)
 	prompt = ft_strjoin(prompt, ":");
 	prompt = ft_strjoin(prompt, RED);
 	prompt = ft_strjoin(prompt, getcwd(buff, PATH_MAX));
-	prompt = ft_strjoin(prompt, "\e[0m$ ");
+	prompt = ft_strjoin(prompt, WHITE);
+	prompt = ft_strjoin(prompt, "$ ");
 	return (prompt);
 }
 
@@ -52,13 +36,13 @@ int	ft_print_error(t_minishell *data)
 	return (RETURN_SUCCESS);
 }
 
-int	ft_is_executable(t_minishell *data)
+int	ft_is_external(t_minishell *data)
 {
 	char		**paths;
 	char		*pathname;
 	struct stat	*buf;
 
-	buf	= malloc(sizeof(buf));
+	buf = ft_calloc(sizeof(buf), 1);
 	paths = ft_split(ft_expand(data, "$PATH"), ':');
 	while (*paths)
 	{
@@ -73,7 +57,80 @@ int	ft_is_executable(t_minishell *data)
 	return (RETURN_FAILURE);
 }
 
-int	minishell(t_minishell *data, char **argv, char **arge)
+int	ft_token_count(t_minishell *data)
+{
+	t_input	*token;
+	int		count;
+
+	token = data->token;
+	count = 0;
+	while (token)
+	{
+		token = token->next;
+		count++;
+	}
+	return (count);
+}
+
+char	**ft_get_argv(t_minishell *data)
+{
+	char	**argv;
+
+	argv = ft_split(ft_get_cmd(data), ' ');
+	return (argv);
+}
+
+int	ft_env_count(t_minishell *data)
+{
+	t_list	*env;
+	int		count;
+
+	env = data->env;
+	count = 0;
+	while (env)
+	{
+		env = env->next;
+		count++;
+	}
+	return (count);
+}
+
+char	**ft_get_arge(t_minishell *data)
+{
+	t_list	*env;
+	char	**arge;
+	int		arge_count;
+
+	env = data->env;
+	arge_count = ft_token_count(data);
+	arge = ft_calloc(sizeof(*arge), arge_count);
+	while (env)
+	{
+		*arge = ft_strdup(env->content);
+		env = env->next;
+	}
+	return (arge);
+}
+
+int	ft_exec_external(t_minishell *data)
+{
+	char	**argv;
+	char	**arge;
+	int		child;
+
+	child = fork();
+	if (child == RETURN_SUCCESS)
+	{
+		argv = ft_get_argv(data);
+		arge = ft_get_arge(data);
+		execve(data->pathname, argv, arge);
+	}
+	else
+		wait(0);
+	return (RETURN_SUCCESS);
+}
+
+int	minishell(t_minishell *data)
 {
 	char	*line;
 	char	*user;
@@ -86,17 +143,16 @@ int	minishell(t_minishell *data, char **argv, char **arge)
 			ft_exit(data);
 		while (data && data->token)
 		{
-			if (ft_is_builtin(data->token) == RETURN_SUCCESS)
+			if (ft_is_builtin(data) == RETURN_SUCCESS)
 				ft_exec_builtin(data);
-			else if (ft_is_executable(data) == RETURN_SUCCESS)
-			{
-				execve(data->pathname, argv, arge);
-			}
+			else if (ft_is_external(data) == RETURN_SUCCESS)
+				ft_exec_external(data);
 			else
 				ft_print_error(data);
 			while (data->token)
 				data->token = data->token->next;
 		}
+		free(line);
 	}
 	return (RETURN_SUCCESS);
 }

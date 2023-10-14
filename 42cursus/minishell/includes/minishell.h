@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/13 23:56:18 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 10:59:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>			// exit
 # include <signal.h>			// signal
 # include <sys/stat.h>			// stat
+# include <sys/wait.h>			// wait
 # include <linux/limits.h>		// PATH_MAX
 # include <readline/readline.h>	// readline
 
@@ -61,12 +62,14 @@ typedef struct s_minishell
 	int		out;
 	int		errno;
 	char	*pathname;
+	char	**argv;
+	char	**arge;
 	t_list	*env;
 	t_input	*token;
 }	t_minishell;
 
 /* PROTOTYPES */
-int		minishell(t_minishell *data, char **argv, char **arge);
+int		minishell(t_minishell *data);
 
 int		ft_banner(void);
 int		ft_cd(t_minishell *data);
@@ -82,7 +85,7 @@ int		ft_exit(t_minishell *data);
 int		ft_init(t_minishell *data);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data);
-int		ft_is_builtin(t_input *token);
+int		ft_is_builtin(t_minishell *data);
 int		ft_pwd(t_minishell *data);
 void	ft_sigint(int sig);
 void	ft_sigquit(int sig);
