@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/12 15:35:07 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 15:18:16 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	ft_env(t_minishell *data)
 {
-	t_list	*env;
+	t_list	*temp;
 
 	data->token = data->token->next;
-	env = data->env;
-	while (env && env->content)
+	temp = data->env;
+	while (temp && temp->content)
 	{
-		printf("%s\n", (char *)env->content);
-		env = env->next;
+		printf("%s\n", (char *)temp->content);
+		temp = temp->next;
 	}
 	return (RETURN_SUCCESS);
 }

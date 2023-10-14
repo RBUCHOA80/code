@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_env.c                                    :+:      :+:    :+:   */
+/*   ft_search_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/04 22:33:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 15:18:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*ft_get_env(t_list *env, char *s1)
+char	*ft_search_env(t_list *env, char *s1)
 {
-	char	*temp;
-	int		n;
+	t_list	*temp;
+	char	**strs;
 
-	while (env && env->content)
+	temp = env;
+	while (temp && temp->content)
 	{
-		n = 0;
-		temp = (char *)env->content;
-		while (temp[n] != '=')
-			n++;
-		if (ft_strcmp(temp, s1) != RETURN_SUCCESS)
-			env = env->next;
+		strs = ft_split(temp->content, '=');
+		if (ft_strcmp(strs[0], s1) == RETURN_SUCCESS)
+			return (strs[1]);
 		else
-			return (&temp[++n]);
+			temp = temp->next;
 	}
 	return (NULL);
 }

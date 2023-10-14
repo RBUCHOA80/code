@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 12:53:31 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 15:19:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ int	ft_is_external(t_minishell *data)
 			return (RETURN_SUCCESS);
 		}
 	}
+	pathname = ft_strjoin("./", data->token->content);
+	if (stat(pathname, buf) == RETURN_SUCCESS)
+	{
+		data->pathname = pathname;
+		return (RETURN_SUCCESS);
+	}
 	return (RETURN_FAILURE);
 }
 
@@ -82,14 +88,14 @@ char	**ft_get_argv(t_minishell *data)
 
 int	ft_env_count(t_minishell *data)
 {
-	t_list	*env;
+	t_list	*temp;
 	int		count;
 
-	env = data->env;
+	temp = data->env;
 	count = 0;
-	while (env)
+	while (temp)
 	{
-		env = env->next;
+		temp = temp->next;
 		count++;
 	}
 	return (count);
@@ -97,17 +103,17 @@ int	ft_env_count(t_minishell *data)
 
 char	**ft_get_arge(t_minishell *data)
 {
-	t_list	*env;
+	t_list	*temp;
 	char	**arge;
 	int		arge_count;
 
-	env = data->env;
+	temp = data->env;
 	arge_count = ft_token_count(data);
 	arge = ft_calloc(sizeof(*arge), arge_count);
-	while (env)
+	while (temp)
 	{
-		*arge = ft_strdup(env->content);
-		env = env->next;
+		*arge = ft_strdup(temp->content);
+		temp = temp->next;
 	}
 	return (arge);
 }
@@ -126,7 +132,8 @@ int	ft_exec_external(t_minishell *data)
 		execve(data->pathname, argv, arge);
 	}
 	else
-		wait(0);
+		printf("child = %i\n", child);
+	wait(0);
 	return (RETURN_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/13 22:33:51 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/14 13:34:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_cd(t_minishell *data)
 {
 	char	*cmd;
 
+	data->token = data->token->next;
 	cmd = ft_get_cmd(data);
 	if (ft_has_space(cmd) == RETURN_FAILURE)
 		printf("minishell: cd: too many arguments\n");

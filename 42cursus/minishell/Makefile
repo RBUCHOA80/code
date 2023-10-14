@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/12 19:55:03 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/14 14:53:25 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ SRCS_LIST			=	srcs/mains/main.c \
 						srcs/builtins/ft_is_builtin.c \
 						srcs/builtins/ft_pwd.c \
 						srcs/builtins/ft_unset.c \
-						srcs/envs/ft_get_env.c \
+						srcs/envs/ft_search_env.c \
 						srcs/mains/ft_banner.c \
 						srcs/mains/ft_init.c \
 						srcs/signals/ft_sigint.c \
