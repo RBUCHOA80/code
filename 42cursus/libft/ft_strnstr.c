@@ -12,32 +12,57 @@
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	needle_len;
+	size_t	s2len;
 	size_t	i;
 	size_t	j;
 
-	if (*needle == '\0')
-		return ((char *)haystack);
-	needle_len = ft_strlen(needle);
+	s2len = ft_strlen(s2);
+	if (s1 == s2 || s2len == 0)
+		return ((char *)s1);
 	i = 0;
-	while (haystack[i] && len)
+	while (i < n && s1[i] != '\0')
 	{
-		if (haystack[i] == needle[0])
+		j = 0;
+		while (s1[i + j] != '\0' && s2[j] != '\0'
+			&& (i + j) < n && s1[i + j] == s2[j])
+		{
+			j++;
+			if ((j == n && j == s2len) || j == s2len)
+				return ((char *)(s1 + i));
+		}
+		i++;
+	}
+	return (0);
+}
+
+/* char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+{
+	size_t	s2len;
+	size_t	i;
+	size_t	j;
+
+	if (*s2 == 0)
+		return ((char *)s1);
+	s2len = ft_strlen(s2);
+	i = 0;
+	while (s1[i] && n)
+	{
+		if (s1[i] == s2[0])
 		{
 			j = 0;
-			while (haystack[i + j] == needle[j] \
-				&& j < needle_len \
-				&& (i + j) < len)
+			while (s1[i + j] == s2[j] \
+				&& j < s2len \
+				&& (i + j) < n)
 				j++;
-			if (j == needle_len)
-				return ((char *)&haystack[i]);
+			if (j == s2len)
+				return ((char *)&s1[i]);
 		}
 		i++;
 	}
 	return (NULL);
-}
+} */
 
 /* #include <stdio.h>
 

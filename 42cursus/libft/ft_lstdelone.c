@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:30:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/10 22:35:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/13 22:10:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst)
 		return ;
-	del(lst->content);
+	if (del)
+		(del)(lst->content);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 static t_list	*ft_newlst(char *str, char sep);
 static void		ft_print_lst(t_list *lst);
@@ -95,4 +96,4 @@ static void	ft_print_lst(t_list *lst)
 		i++;
 	}
 	printf("\n");
-}
+} */
