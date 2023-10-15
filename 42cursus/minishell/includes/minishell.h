@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 14:53:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/15 11:07:59 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,16 @@ int		ft_export(t_minishell *data);
 char	*ft_get_cmd(t_minishell *data);
 char	*ft_search_env(t_list *env, char *s1);
 int		ft_exec_builtin(t_minishell *data);
+int		ft_exec_external(t_minishell *data);
 char	*ft_expand(t_minishell *data, char *str);
 int		ft_exit(t_minishell *data);
+char	**ft_get_arge(t_minishell *data);
+char	**ft_get_argv(t_minishell *data);
 int		ft_init(t_minishell *data);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data);
 int		ft_is_builtin(t_minishell *data);
+int		ft_is_external(t_minishell *data);
 int		ft_pwd(t_minishell *data);
 void	ft_sigint(int sig);
 void	ft_sigquit(int sig);

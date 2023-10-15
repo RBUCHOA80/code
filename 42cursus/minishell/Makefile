@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/14 14:53:25 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/15 12:51:28 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,10 @@ SRCS_LIST			=	srcs/mains/main.c \
 						srcs/builtins/ft_pwd.c \
 						srcs/builtins/ft_unset.c \
 						srcs/envs/ft_search_env.c \
+						srcs/externals/ft_exec_external.c \
+						srcs/externals/ft_get_arge.c \
+						srcs/externals/ft_get_argv.c \
+						srcs/externals/ft_is_external.c \
 						srcs/mains/ft_banner.c \
 						srcs/mains/ft_init.c \
 						srcs/signals/ft_sigint.c \
@@ -80,7 +84,7 @@ $(NAME):				$(SRCS_OBJS)
 debug:
 						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
 						$(COMPILER) $(CFLAGS) -g $(SRCS) $(INCLUDE_DIR) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME) $(LIBRARY)
-						gdb --args ./$(NAME)
+						lldb ./$(NAME)
 
 clean:
 						$(foreach lib, $(LIBS_DIR), make clean -sC $(lib);)
