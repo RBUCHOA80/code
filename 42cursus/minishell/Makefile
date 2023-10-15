@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/15 12:51:28 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/15 16:58:46 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,10 @@ SRCS_LIST			=	srcs/mains/main.c \
 						srcs/externals/ft_get_arge.c \
 						srcs/externals/ft_get_argv.c \
 						srcs/externals/ft_is_external.c \
+						srcs/histories/ft_history.c \
 						srcs/mains/ft_banner.c \
 						srcs/mains/ft_init.c \
-						srcs/signals/ft_sigint.c \
-						srcs/signals/ft_sigquit.c \
+						srcs/signals/ft_signal.c \
 						srcs/tools/ft_cmd_len.c \
 						srcs/tools/ft_expand.c \
 						srcs/tools/ft_get_cmd.c \

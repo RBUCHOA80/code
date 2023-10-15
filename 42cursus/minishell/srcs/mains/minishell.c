@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 12:11:23 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:54:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	minishell(t_minishell *data)
 		line = readline(ft_prompt(user));
 		if (ft_tokenize(data, line) == RETURN_FAILURE)
 			ft_exit(data);
+		ft_history(line);
 		while (data && data->token)
 		{
 			if (ft_is_builtin(data) == RETURN_SUCCESS)

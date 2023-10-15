@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 11:07:59 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:14:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/stat.h>			// stat
 # include <sys/wait.h>			// wait
 # include <linux/limits.h>		// PATH_MAX
+# include <readline/history.h>	// history
 # include <readline/readline.h>	// readline
 
 /* COLORS */
@@ -33,19 +34,19 @@
 # define WHITE	"\e[0m"
 
 /* DEFINES */
-# define APPEND 0
-# define TRUNC 1
-# define INPUT 2
-# define PIPE 3
-# define END 4
-# define CMD 5
+# define APPEND	0
+# define TRUNC	1
+# define INPUT	2
+# define PIPE	3
+# define END	4
+# define CMD	5
 
-# define STDIN 0
-# define STDOUT 1
-# define STDERR 2
+# define STDIN	0
+# define STDOUT	1
+# define STDERR	2
 
-# define RETURN_FAILURE 1
-# define RETURN_SUCCESS 0
+# define RETURN_FAILURE	1
+# define RETURN_SUCCESS	0
 
 /* STRUCTS */
 typedef struct s_input
@@ -61,6 +62,7 @@ typedef struct s_minishell
 	int		in;
 	int		out;
 	int		errno;
+	char	*line;
 	char	*pathname;
 	char	**argv;
 	char	**arge;
@@ -85,72 +87,16 @@ char	*ft_expand(t_minishell *data, char *str);
 int		ft_exit(t_minishell *data);
 char	**ft_get_arge(t_minishell *data);
 char	**ft_get_argv(t_minishell *data);
+int		ft_history(char *line);
 int		ft_init(t_minishell *data);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data);
 int		ft_is_builtin(t_minishell *data);
 int		ft_is_external(t_minishell *data);
 int		ft_pwd(t_minishell *data);
-void	ft_sigint(int sig);
-void	ft_sigquit(int sig);
+void	ft_signal(int sig);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_unset(t_minishell *data);
 int		ft_tokenize(t_minishell *data, char *line);
 
 #endif
-
-/*
-readline
-rl_clear_history
-rl_on_new_line
-rl_replace_line
-rl_redisplay
-add_history
-printf
-malloc
-free
-write
-access
-open
-read
-close
-fork
-wait
-waitpid
-wait3
-wait4
-signal
-sigaction
-sigemptyset
-sigaddset
-kill
-exit
-getcwd
-chdir
-stat
-lstat
-fstat
-unlink
-execve
-dup
-dup2
-pipe
-opendir
-readdir
-closedir
-strerror
-perror
-isatty
-ttyname
-ttyslot
-ioctl
-getenv
-tcsetattr
-tcgetattr
-tgetent
-tgetflag
-tgetnum
-tgetstr
-tgoto
-tputs
-*/
