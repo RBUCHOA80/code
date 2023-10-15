@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 12:48:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/15 13:18:51 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	ft_init(t_minishell *data)
 							"XAUTHORITY", \
 							"VSCODE_GIT_ASKPASS_NODE", \
 							"XDG_GREETER_DATA_DIR", \
-							"HOME", \
 							"LANG", \
 							"LS_COLORS", \
 							"XDG_CURRENT_DESKTOP", \
@@ -95,8 +94,6 @@ int	ft_init(t_minishell *data)
 							"CHROME_DESKTOP", \
 							"VSCODE_GIT_ASKPASS_EXTRA_ARGS", \
 							"XDG_SESSION_CLASS", \
-							"TERM", \
-							"USER", \
 							"VSCODE_GIT_IPC_HANDLE", \
 							"DISPLAY", \
 							"SHLVL", \
@@ -106,7 +103,6 @@ int	ft_init(t_minishell *data)
 							"VSCODE_GIT_ASKPASS_MAIN", \
 							"XDG_DATA_DIRS", \
 							"GDK_BACKEND", \
-							"PATH", \
 							"GDMSESSION", \
 							"ORIGINAL_XDG_CURRENT_DESKTOP", \
 							"DBUS_SESSION_BUS_ADDRESS", \
