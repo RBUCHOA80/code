@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:03:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 11:38:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/16 22:37:40 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_is_external(t_minishell *data)
 	struct stat	*buf;
 	int			i;
 
-	buf = ft_calloc(sizeof(buf), 1);
+	buf = ft_calloc(sizeof(*buf), 1);
 	pathname = (data->token->content);
 	if (stat(pathname, buf) == RETURN_SUCCESS)
 	{

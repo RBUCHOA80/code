@@ -1,11 +1,5 @@
-!/bin/bash
-env
-echo $PATHasdfas
-env
+#!/bin/bash
+echo PATH
+echo $PATHasdfasdf
 echo $PAT
-env
 echo $PATH
-env
-export VAR=asfdasfasfdag hdghdfhdf
-env
-
