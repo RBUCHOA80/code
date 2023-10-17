@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 17:14:08 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/16 21:15:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <signal.h>			// signal
 # include <sys/stat.h>			// stat
 # include <sys/wait.h>			// wait
+# include <sys/ioctl.h>			// ioctl
 # include <linux/limits.h>		// PATH_MAX
 # include <readline/history.h>	// history
 # include <readline/readline.h>	// readline
