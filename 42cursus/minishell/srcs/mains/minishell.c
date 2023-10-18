@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 16:54:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/17 21:28:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_prompt(char *user)
 {
-	char	buff[PATH_MAX];
+	char	buf[PATH_MAX];
 	char	*prompt;
 
 	prompt = ft_strjoin(GREEN, user);
@@ -22,7 +22,7 @@ char	*ft_prompt(char *user)
 	prompt = ft_strjoin(prompt, WHITE);
 	prompt = ft_strjoin(prompt, ":");
 	prompt = ft_strjoin(prompt, RED);
-	prompt = ft_strjoin(prompt, getcwd(buff, PATH_MAX));
+	prompt = ft_strjoin(prompt, getcwd(buf, PATH_MAX));
 	prompt = ft_strjoin(prompt, WHITE);
 	prompt = ft_strjoin(prompt, "$ ");
 	return (prompt);

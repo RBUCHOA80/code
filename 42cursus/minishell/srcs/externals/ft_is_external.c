@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:03:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/16 22:37:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/17 21:31:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ int	ft_is_external(t_minishell *data)
 {
 	char		**paths;
 	char		*pathname;
-	struct stat	*buf;
+	struct stat	buf;
 	int			i;
 
-	buf = ft_calloc(sizeof(*buf), 1);
 	pathname = (data->token->content);
-	if (stat(pathname, buf) == RETURN_SUCCESS)
+	if (stat(pathname, &buf) == RETURN_SUCCESS)
 	{
 		data->pathname = pathname;
 		return (RETURN_SUCCESS);
@@ -32,7 +31,7 @@ int	ft_is_external(t_minishell *data)
 	{
 		pathname = ft_strjoin(paths[i++], "/");
 		pathname = ft_strjoin(pathname, data->token->content);
-		if (stat(pathname, buf) == RETURN_SUCCESS)
+		if (stat(pathname, &buf) == RETURN_SUCCESS)
 		{
 			data->pathname = pathname;
 			return (RETURN_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 23:11:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/11 23:24:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/17 23:00:36 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_isalpha(int c)
 {
 	if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'))
-		return (TRUE);
-	return (FALSE);
+		return (0);
+	return (1);
 }
 
 /* int		g_chr[] = {\
