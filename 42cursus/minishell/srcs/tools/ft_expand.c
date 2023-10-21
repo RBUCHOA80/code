@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 14:53:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/20 20:51:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char	*ft_expand(t_minishell *data, char *str)
 	i = 0;
 	while (strs[i])
 	{
-		if (strs[i][0] == '$')
+		if (ft_strcmp(strs[i], "$?") == RETURN_SUCCESS)
+			ret = ft_strjoin(ret, ft_itoa(data->ret));
+		else if (strs[i][0] == '$')
 			ret = ft_strjoin(ret, ft_search_env(data->env, &strs[i][1]));
 		else
 			ret = ft_strjoin(ret, strs[i]);

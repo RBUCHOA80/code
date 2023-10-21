@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/16 21:15:29 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/20 20:42:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_minishell
 	int		in;
 	int		out;
 	int		errno;
+	int		ret;
 	char	*line;
 	char	*pathname;
 	char	**argv;

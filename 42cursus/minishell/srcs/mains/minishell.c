@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/17 21:28:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/20 21:11:11 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_print_error(t_minishell *data)
 	printf("minishell: %s: command not found\n", data->token->content);
 	while (data && data->token)
 		data->token = data->token->next;
-	return (RETURN_SUCCESS);
+	return (127);
 }
 
 int	minishell(t_minishell *data)
@@ -51,11 +51,11 @@ int	minishell(t_minishell *data)
 		while (data && data->token)
 		{
 			if (ft_is_builtin(data) == RETURN_SUCCESS)
-				ft_exec_builtin(data);
+				data->ret = ft_exec_builtin(data);
 			else if (ft_is_external(data) == RETURN_SUCCESS)
-				ft_exec_external(data);
+				data->ret = ft_exec_external(data);
 			else
-				ft_print_error(data);
+				data->ret = ft_print_error(data);
 			while (data->token)
 				data->token = data->token->next;
 		}
