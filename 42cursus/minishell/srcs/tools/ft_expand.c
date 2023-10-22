@@ -6,17 +6,19 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 12:24:10 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/20 20:51:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/21 17:37:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+extern int	g_ret;
+
 char	*ft_expand(t_minishell *data, char *str)
 {
-	char	**strs;
-	char	*ret;
-	int		i;
+	char		**strs;
+	char		*ret;
+	int			i;
 
 	if (!data || !str)
 		return (NULL);
@@ -26,7 +28,7 @@ char	*ft_expand(t_minishell *data, char *str)
 	while (strs[i])
 	{
 		if (ft_strcmp(strs[i], "$?") == RETURN_SUCCESS)
-			ret = ft_strjoin(ret, ft_itoa(data->ret));
+			ret = ft_strjoin(ret, ft_itoa(g_ret));
 		else if (strs[i][0] == '$')
 			ret = ft_strjoin(ret, ft_search_env(data->env, &strs[i][1]));
 		else

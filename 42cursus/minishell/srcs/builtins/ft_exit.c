@@ -6,11 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:18:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/20 21:24:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/21 17:41:03 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+extern int	g_ret;
 
 int	ft_exit(t_minishell *data)
 {
@@ -29,6 +31,7 @@ int	ft_exit(t_minishell *data)
 		else
 			status = ft_atoi(data->token->content);
 	}
+	g_ret = status;
 	exit(status);
 	return (RETURN_SUCCESS);
 }

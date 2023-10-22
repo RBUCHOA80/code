@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/15 12:46:27 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/21 20:46:10 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ int	ft_has_space(char *cmd)
 	return (RETURN_SUCCESS);
 }
 
-/*
-erros conhecidos
-	cd ~/code/42cursus/minishell
-*/
-
 int	ft_cd(t_minishell *data)
 {
 	char	*cmd;
@@ -39,7 +34,8 @@ int	ft_cd(t_minishell *data)
 	else if ((ft_strcmp(cmd, "") == RETURN_SUCCESS) || \
 			(ft_strcmp(cmd, "~") == RETURN_SUCCESS))
 	{
-		chdir(ft_expand(data, "$HOME"));
+		if (chdir(ft_expand(data, "$HOME")) != RETURN_SUCCESS)
+			return (RETURN_FAILURE);
 		return (RETURN_SUCCESS);
 	}
 	else if (chdir(cmd) == RETURN_SUCCESS)

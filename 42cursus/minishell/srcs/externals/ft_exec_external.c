@@ -6,11 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:05:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/20 21:55:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/21 17:37:16 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+extern int	g_ret;
 
 int	ft_exec_external(t_minishell *data)
 {
@@ -23,9 +25,12 @@ int	ft_exec_external(t_minishell *data)
 	{
 		argv = ft_get_argv(data);
 		arge = ft_get_arge(data);
-		data->ret = execve(data->pathname, argv, arge);
+		execve(data->pathname, argv, arge);
 	}
 	else
-		waitpid(0, &data->ret, 0);
+	{
+		waitpid(0, &g_ret, 0);
+		printf("return(%i)\n", g_ret / 256);
+	}
 	return (RETURN_SUCCESS);
 }

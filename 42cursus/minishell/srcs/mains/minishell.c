@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/20 21:11:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/21 17:37:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ft_print_error(t_minishell *data)
 	return (127);
 }
 
+extern int	g_ret;
+
 int	minishell(t_minishell *data)
 {
 	char	*line;
@@ -51,11 +53,11 @@ int	minishell(t_minishell *data)
 		while (data && data->token)
 		{
 			if (ft_is_builtin(data) == RETURN_SUCCESS)
-				data->ret = ft_exec_builtin(data);
+				g_ret = ft_exec_builtin(data);
 			else if (ft_is_external(data) == RETURN_SUCCESS)
-				data->ret = ft_exec_external(data);
+				g_ret = ft_exec_external(data);
 			else
-				data->ret = ft_print_error(data);
+				g_ret = ft_print_error(data);
 			while (data->token)
 				data->token = data->token->next;
 		}
