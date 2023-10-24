@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/22 00:05:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/23 23:15:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ int	ft_print_error(t_minishell *data)
 	return (127);
 }
 
+int	ft_pipe_count(char *line)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '|')
+			count++;
+		i++;
+	}	
+	return (count);
+}
+
 int	minishell(t_minishell *data)
 {
 	char	*line;
@@ -48,15 +64,21 @@ int	minishell(t_minishell *data)
 		if (ft_tokenize(data, line) == RETURN_FAILURE)
 			ft_exit(data);
 		ft_history(line);
+		data->pipe_count = ft_pipe_count(line);
 		while (data && data->token)
 		{
+			if (data->token->type == PIPE)
+			{
+				ft_pipe(data);
+				data->token = data->token->next;
+			}
 			if (ft_is_builtin(data) == RETURN_SUCCESS)
 				data->ret = ft_exec_builtin(data);
 			else if (ft_is_external(data) == RETURN_SUCCESS)
 				data->ret = ft_exec_external(data);
 			else
 				data->ret = ft_print_error(data);
-			while (data->token)
+			while (data->token && data->token->type != PIPE)
 				data->token = data->token->next;
 		}
 	}

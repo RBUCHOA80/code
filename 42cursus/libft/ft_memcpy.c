@@ -24,7 +24,9 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-/* char	g_src[] = "Put your text here.";
+/* #include <stdio.h>
+
+char	g_src[] = "Put your text here.";
 
 int	main(void)
 {

@@ -9,20 +9,26 @@ void main(int ac, char **av)
 
 	child = fork();
 	pid = getpid();
-	if (child)
+	if (child) //parent
 	{
 		pid = getpid();
 		printf("parent\t");
 		printf("pid=%i\t", pid);
 		printf("child=%i\t", child);
-		printf("ppid=%i\n", getppid());
-		wait(5);
+		printf("ppid=%i", getppid());
+		if(av[1])
+			printf("\tav=%s", av[1]);
+		printf("\n");
+		wait(0);
 	}
-	else
+	else //child
 	{
 		printf("child\t");
 		printf("pid=%i\t", pid);
 		printf("child=%i\t\t", child);
-		printf("ppid=%i\n", getppid());
+		printf("ppid=%i", getppid());
+		if(av[1])
+			printf("\tav=%s", av[1]);
+		printf("\n");
 	}
 }

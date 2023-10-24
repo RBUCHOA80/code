@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/15 16:58:46 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/23 23:19:00 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCS_LIST			=	srcs/mains/main.c \
 						srcs/histories/ft_history.c \
 						srcs/mains/ft_banner.c \
 						srcs/mains/ft_init.c \
+						srcs/pipe/ft_pipe.c \
 						srcs/signals/ft_signal.c \
 						srcs/tools/ft_cmd_len.c \
 						srcs/tools/ft_expand.c \
