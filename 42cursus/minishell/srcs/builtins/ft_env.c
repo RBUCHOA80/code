@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/14 15:18:16 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:06:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_env(t_minishell *data)
 	temp = data->env;
 	while (temp && temp->content)
 	{
-		printf("%s\n", (char *)temp->content);
+		ft_putstr_fd((char *)temp->content, data->out);
+		ft_putstr_fd("\n", data->out);
 		temp = temp->next;
 	}
 	return (RETURN_SUCCESS);

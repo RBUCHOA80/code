@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 23:40:38 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/21 20:46:10 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/24 21:02:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_cd(t_minishell *data)
 	data->token = data->token->next;
 	cmd = ft_get_cmd(data);
 	if (ft_has_space(cmd) == RETURN_FAILURE)
-		printf("minishell: cd: too many arguments\n");
+		ft_putstr_fd("minishell: cd: too many arguments\n", data->out);
 	else if ((ft_strcmp(cmd, "") == RETURN_SUCCESS) || \
 			(ft_strcmp(cmd, "~") == RETURN_SUCCESS))
 	{
@@ -41,6 +41,10 @@ int	ft_cd(t_minishell *data)
 	else if (chdir(cmd) == RETURN_SUCCESS)
 		return (RETURN_SUCCESS);
 	else
-		printf("minishell: cd: %s: no such file or directory\n", cmd);
+	{
+		ft_putstr_fd("minishell: cd: ", data->out);
+		ft_putstr_fd(cmd, data->out);
+		ft_putstr_fd(": no such file or directory\n", data->out);
+	}
 	return (RETURN_FAILURE);
 }
