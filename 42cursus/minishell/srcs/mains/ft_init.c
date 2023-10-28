@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/24 21:03:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 00:33:29 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_init_signal(void)
 
 int	ft_init(t_minishell *data)
 {
-	//ft_init_data(data);
+	ft_init_data(data);
 	ft_init_env(data);
 	ft_init_signal();
 	return (RETURN_SUCCESS);

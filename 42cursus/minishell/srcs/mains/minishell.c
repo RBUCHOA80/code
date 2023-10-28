@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/23 23:15:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 00:46:55 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ char	*ft_prompt(char *user)
 
 int	ft_print_error(t_minishell *data)
 {
-	printf("minishell: %s: command not found\n", data->token->content);
+	ft_putstr_fd("minishell: ", 1);
+	ft_putstr_fd(data->token->content, 1);
+	ft_putstr_fd(": command not found\n", 1);
 	while (data && data->token)
 		data->token = data->token->next;
 	return (127);
@@ -48,7 +50,7 @@ int	ft_pipe_count(char *line)
 		if (line[i] == '|')
 			count++;
 		i++;
-	}	
+	}
 	return (count);
 }
 

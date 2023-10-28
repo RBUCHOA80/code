@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 22:47:31 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/24 21:22:49 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 00:53:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_pipe(t_minishell *data)
 	printf("addres -> %p\t", &data->pipe_array[1]);
 	printf("file descriptor write -> %i\n", data->pipe_array[1]);
 	printf("%s\n", WHITE);
-	return (0);
+	return (EXIT_SUCCESS);
 }

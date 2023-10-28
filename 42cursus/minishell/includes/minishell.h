@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/24 21:03:43 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 00:58:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /* INCLUDES */
 # include "../libft/libft.h"	// libft
 # include <unistd.h>			// getpwd | chdir | execve | fork
-# include <stdio.h>				// printf
 # include <stdlib.h>			// exit
 # include <signal.h>			// signal
 # include <sys/stat.h>			// stat
@@ -44,7 +43,6 @@
 
 # define STDIN	0
 # define STDOUT	1
-# define STDERR	2
 
 # define RETURN_FAILURE	1
 # define RETURN_SUCCESS	0

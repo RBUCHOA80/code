@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:05:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/22 00:04:04 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 00:27:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_exec_external(t_minishell *data)
 		execve(data->pathname, argv, arge);
 	}
 	else
-		waitpid(0, &data->ret, 0);
-	return (RETURN_SUCCESS);
+		wait(&data->ret);
+	data->ret /= 256;
+	return (data->ret);
 }

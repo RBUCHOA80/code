@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 13:04:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/17 23:02:38 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 00:53:30 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	ft_export(t_minishell *data)
 	if (ft_isalpha(*data->token->content) == RETURN_FAILURE && \
 		*data->token->content != '_')
 	{
-		printf("minishell: export: `%s': not a valid identifier\n",
-			data->token->content);
+		ft_putstr_fd("minishell: export: `", 1);
+		ft_putstr_fd(data->token->content, 1);
+		ft_putstr_fd("': not a valid identifier\n", 1);
 		return (RETURN_FAILURE);
 	}
 	else if (ft_strchr(data->token->content, '=') == NULL)
