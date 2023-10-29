@@ -37,15 +37,15 @@ int	ft_atoi(const char *str)
 static int	ft_isspace(char c)
 {
 	if (c == ' ' || ('\t' <= c && c <= '\r'))
-		return (TRUE);
-	return (FALSE);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 static int	ft_issimbol(char c)
 {
 	if (c == '+' || c == '-')
-		return (TRUE);
-	return (FALSE);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 /* char	g_str[][15] = {\

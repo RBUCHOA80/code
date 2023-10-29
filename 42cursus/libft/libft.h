@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:50:40 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/17 23:00:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 19:30:47 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,8 @@
 # include <stdlib.h> //malloc
 # include <unistd.h> //write
 
-# ifndef TRUE
-#  define TRUE 1
-# endif
-
-# ifndef FALSE
-#  define FALSE 0
-# endif
+# define EXIT_FAILURE	1
+# define EXIT_SUCCESS	0
 
 typedef struct s_list
 {

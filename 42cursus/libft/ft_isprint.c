@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 03:01:04 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/12/18 11:26:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 19:37:13 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 int	ft_isprint(int c)
 {
 	if (32 <= c && c <= 126)
-		return (TRUE);
-	return (FALSE);
+		return (EXIT_FAILURE);
+	else
+		return (EXIT_SUCCESS);
 }
 
 /* int		g_chr[] = {\

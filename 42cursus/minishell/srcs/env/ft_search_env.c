@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pipe.c                                          :+:      :+:    :+:   */
+/*   ft_search_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 22:47:31 by ruchoa            #+#    #+#             */
+/*   Created: 2023/09/21 20:04:26 by ruchoa            #+#    #+#             */
 /*   Updated: 2023/10/28 22:35:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_pipe(t_minishell *data)
+char	*ft_search_env(t_list *env, char *s1)
 {
-	data->pipe_array = ft_calloc(2, sizeof(int));
-	pipe(data->pipe_array);
-	printf("%s\n", YELLOW);
-	printf("addres -> %p\t", &data->pipe_array[0]);
-	printf("file descriptor read -> %i\n", data->pipe_array[0]);
-	printf("addres -> %p\t", &data->pipe_array[1]);
-	printf("file descriptor write -> %i\n", data->pipe_array[1]);
-	printf("%s\n", NONE);
-	return (EXIT_SUCCESS);
+	t_list	*temp;
+	char	**strs;
+
+	temp = env;
+	while (temp && temp->content)
+	{
+		strs = ft_split(temp->content, '=');
+		if (ft_strcmp(strs[0], s1) == EXIT_SUCCESS)
+			return (strs[1]);
+		else
+			temp = temp->next;
+	}
+	return (NULL);
 }

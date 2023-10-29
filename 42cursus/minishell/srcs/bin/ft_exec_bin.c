@@ -1,26 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pipe.c                                          :+:      :+:    :+:   */
+/*   ft_exec_bin.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 22:47:31 by ruchoa            #+#    #+#             */
+/*   Created: 2023/10/15 11:05:18 by ruchoa            #+#    #+#             */
 /*   Updated: 2023/10/28 22:35:24 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_pipe(t_minishell *data)
+void	ft_close(int fd)
 {
-	data->pipe_array = ft_calloc(2, sizeof(int));
-	pipe(data->pipe_array);
-	printf("%s\n", YELLOW);
-	printf("addres -> %p\t", &data->pipe_array[0]);
-	printf("file descriptor read -> %i\n", data->pipe_array[0]);
-	printf("addres -> %p\t", &data->pipe_array[1]);
-	printf("file descriptor write -> %i\n", data->pipe_array[1]);
-	printf("%s\n", NONE);
-	return (EXIT_SUCCESS);
+	if (fd > 0)
+		close(fd);
+}
+
+int	ft_exec_bin(t_minishell *data)
+{
+	//int		pipefd[2];
+	char	**argv;
+	char	**arge;
+	int		child;
+
+	//pipe(pipefd);
+	child = fork();
+	if (child == EXIT_SUCCESS)
+	{
+		//ft_close(pipefd[1]);
+		//data->fdin = dup2(pipefd[0], STDIN);
+		argv = ft_get_argv(data);
+		arge = ft_get_arge(data);
+		execve(data->pathname, argv, arge);
+	}
+	else
+	{
+		//ft_close(pipefd[0]);
+		//data->fdout = dup2(pipefd[1], STDOUT);
+		wait(&data->ret);
+		data->ret /= 256;
+	}
+	return (data->ret);
 }

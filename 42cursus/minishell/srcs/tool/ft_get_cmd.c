@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pipe.c                                          :+:      :+:    :+:   */
+/*   ft_get_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 22:47:31 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/28 22:35:24 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/10 22:05:01 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/29 12:35:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_pipe(t_minishell *data)
+char	*ft_get_cmd(t_minishell *data)
 {
-	data->pipe_array = ft_calloc(2, sizeof(int));
-	pipe(data->pipe_array);
-	printf("%s\n", YELLOW);
-	printf("addres -> %p\t", &data->pipe_array[0]);
-	printf("file descriptor read -> %i\n", data->pipe_array[0]);
-	printf("addres -> %p\t", &data->pipe_array[1]);
-	printf("file descriptor write -> %i\n", data->pipe_array[1]);
-	printf("%s\n", NONE);
-	return (EXIT_SUCCESS);
+	t_input	*token;
+	t_input	*next;
+	char	*str;
+
+	token = data->token;
+	next = data->token->next;
+	if (token == NULL)
+		return (NULL);
+	str = ft_calloc(1, STDOUT);
+	while (data && token && (token->type == CMD || token->type == ARG))
+	{
+		str = ft_strjoin(str, token->content);
+		if (next && (next->type == CMD || next->type == ARG))
+			str = ft_strjoin(str, " ");
+		token = token->next;
+	}
+	return (str);
 }

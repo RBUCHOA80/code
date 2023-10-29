@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 02:31:15 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/11 23:24:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/28 19:30:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_isascii(int c)
 {
 	if (0 <= c && c <= 127)
-		return (TRUE);
-	return (FALSE);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 /* int		g_chr[] = {\

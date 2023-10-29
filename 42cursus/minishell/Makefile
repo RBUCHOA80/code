@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/23 23:19:00 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/28 23:47:52 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,32 +40,33 @@ RFLAGS				=	-drf
 SRCS				=	$(addprefix $(SRCS_PATH), $(SRCS_LIST))
 SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
-SRCS_LIST			=	srcs/mains/main.c \
-						srcs/mains/minishell.c \
-						srcs/builtins/ft_cd.c \
-						srcs/builtins/ft_echo.c \
-						srcs/builtins/ft_env.c \
-						srcs/builtins/ft_exec_builtin.c \
-						srcs/builtins/ft_exit.c \
-						srcs/builtins/ft_export.c \
-						srcs/builtins/ft_is_builtin.c \
-						srcs/builtins/ft_pwd.c \
-						srcs/builtins/ft_unset.c \
-						srcs/envs/ft_search_env.c \
-						srcs/externals/ft_exec_external.c \
-						srcs/externals/ft_get_arge.c \
-						srcs/externals/ft_get_argv.c \
-						srcs/externals/ft_is_external.c \
-						srcs/histories/ft_history.c \
-						srcs/mains/ft_banner.c \
-						srcs/mains/ft_init.c \
+SRCS_LIST			=	srcs/main/main.c \
+						srcs/main/minishell.c \
+						srcs/bin/ft_exec_bin.c \
+						srcs/bin/ft_get_arge.c \
+						srcs/bin/ft_get_argv.c \
+						srcs/bin/ft_is_bin.c \
+						srcs/builtin/ft_cd.c \
+						srcs/builtin/ft_echo.c \
+						srcs/builtin/ft_env.c \
+						srcs/builtin/ft_exec_builtin.c \
+						srcs/builtin/ft_exit.c \
+						srcs/builtin/ft_export.c \
+						srcs/builtin/ft_is_builtin.c \
+						srcs/builtin/ft_pwd.c \
+						srcs/builtin/ft_unset.c \
+						srcs/env/ft_search_env.c \
+						srcs/history/ft_history.c \
+						srcs/main/ft_banner.c \
+						srcs/main/ft_init.c \
 						srcs/pipe/ft_pipe.c \
-						srcs/signals/ft_signal.c \
-						srcs/tools/ft_cmd_len.c \
-						srcs/tools/ft_expand.c \
-						srcs/tools/ft_get_cmd.c \
-						srcs/tools/ft_strcmp.c \
-						srcs/tools/ft_tokenize.c \
+						srcs/signal/ft_signal.c \
+						srcs/tool/ft_expand.c \
+						srcs/tool/ft_get_cmd.c \
+						srcs/tool/ft_parse.c \
+						srcs/tool/ft_prepare_data.c \
+						srcs/tool/ft_strcmp.c \
+						srcs/tool/ft_tokenize.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')
