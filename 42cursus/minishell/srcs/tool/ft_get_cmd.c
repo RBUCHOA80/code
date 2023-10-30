@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 22:05:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 12:35:39 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/29 21:38:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_get_cmd(t_minishell *data)
 	next = data->token->next;
 	if (token == NULL)
 		return (NULL);
-	str = ft_calloc(1, STDOUT);
+	str = ft_calloc(1, 1);
 	while (data && token && (token->type == CMD || token->type == ARG))
 	{
 		str = ft_strjoin(str, token->content);

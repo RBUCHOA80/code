@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_puthex_upper_fd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:24:34 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/07/12 19:32:48 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/29 20:58:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libftfprintf.h"
 
-int	ft_env(t_minishell *data)
+void	ft_puthex_upper_fd(unsigned int nb, int fd)
 {
-	t_list	*temp;
+	char	*vhex;
 
-	data->token = data->token->next;
-	temp = data->env;
-	while (temp && temp->content)
+	vhex = "0123456789ABCDEF";
+	if (nb < 16)
 	{
-		ft_fprintf(data->fdout, "%s\n", (char *)temp->content);
-		temp = temp->next;
+		write(fd, &(vhex[nb]), 1);
+		return ;
 	}
-	return (EXIT_SUCCESS);
+	else
+		ft_puthex_upper_fd((nb / 16), fd);
+	nb = ((nb % 16));
+	write(fd, &(vhex[nb]), 1);
 }

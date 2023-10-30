@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 11:23:14 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/29 21:18:28 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define MINISHELL_H
 
 /* INCLUDES */
-# include "../libft/libft.h"	// libft
+# include <libft.h>				// libft
+# include <libftfprintf.h>		// libftfprintf
 # include <unistd.h>			// getpwd | chdir | execve | fork
 # include <stdlib.h>			// exit
 # include <signal.h>			// signal

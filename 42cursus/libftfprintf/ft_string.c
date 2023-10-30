@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_string.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:24:34 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/07/12 19:32:57 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/29 20:58:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libftfprintf.h"
 
-int	ft_env(t_minishell *data)
+int	string_output(va_list var, int fd)
 {
-	t_list	*temp;
+	char	*string;
+	int		len;
 
-	data->token = data->token->next;
-	temp = data->env;
-	while (temp && temp->content)
+	string = va_arg(var, char *);
+	if (!string)
 	{
-		ft_fprintf(data->fdout, "%s\n", (char *)temp->content);
-		temp = temp->next;
+		len = ft_strlength(STR_ERROR);
+		write(fd, STR_ERROR, len);
+		return (len);
 	}
-	return (EXIT_SUCCESS);
+	len = ft_strlength(string);
+	write(fd, string, len);
+	return (len);
 }

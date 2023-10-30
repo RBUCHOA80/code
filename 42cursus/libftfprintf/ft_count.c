@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:24:34 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/07/12 19:31:58 by ruchoa            #+#    #+#             */
+/*   Updated: 2022/07/12 19:55:10 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-int	ft_env(t_minishell *data)
+int	ft_count(long nbr, int base)
 {
-	t_list	*temp;
+	int	count;
 
-	data->token = data->token->next;
-	temp = data->env;
-	while (temp && temp->content)
+	if (nbr == 0)
+		return (1);
+	count = 0;
+	while (nbr)
 	{
-		ft_fprintf(data->fdout, "%s\n", (char *)temp->content);
-		temp = temp->next;
+		nbr = (nbr / base);
+		count++;
 	}
-	return (EXIT_SUCCESS);
+	return (count);
 }

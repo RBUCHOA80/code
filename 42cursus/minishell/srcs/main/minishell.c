@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 12:34:17 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/29 21:50:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_print_error(t_minishell *data)
 {
-	ft_putstr_fd("minishell: ", STDOUT);
-	ft_putstr_fd(data->token->content, STDOUT);
-	ft_putstr_fd(": command not found\n", STDOUT);
+	ft_fprintf(data->fdout, \
+		"minishell: %s: command not found\n", \
+			data->token->content);
 	while (data && data->token)
 		data->token = data->token->next;
 	return (UNKNOWN_COMMAND);
@@ -29,17 +29,14 @@ int	ft_construct_pipe(t_minishell *data)
 	temp = *data;
 	while ((&temp)->token)
 	{
-		ft_putstr_fd(WHITE, STDOUT);
 		if ((&temp)->token->type == CMD)
-			ft_putstr_fd((&temp)->token->content, STDOUT);
-		ft_putstr_fd(YELLOW, STDOUT);
+			ft_fprintf(data->fdout, "%s%s", WHITE, (&temp)->token->content);
 		if ((&temp)->token->type == PIPE)
-			ft_putstr_fd(" | ", STDOUT);
-		ft_putstr_fd(" ", STDOUT);
+			ft_fprintf(data->fdout, "%s | ", YELLOW);
+		ft_fprintf(data->fdout, " ");
 		(&temp)->token = (&temp)->token->next;
 	}
-	ft_putstr_fd("\n", STDOUT);
-	ft_putstr_fd(NONE, STDOUT);
+	ft_fprintf(data->fdout, "%s\n", NONE);
 	return (EXIT_SUCCESS);
 }
 

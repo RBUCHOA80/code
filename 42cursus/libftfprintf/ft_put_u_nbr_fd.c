@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_put_u_nbr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:24:34 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/07/12 19:32:33 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/10/29 20:58:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libftfprintf.h"
 
-int	ft_env(t_minishell *data)
+void	ft_put_u_nbr_fd(unsigned int n, int fd)
 {
-	t_list	*temp;
-
-	data->token = data->token->next;
-	temp = data->env;
-	while (temp && temp->content)
+	if (n < 10)
 	{
-		ft_fprintf(data->fdout, "%s\n", (char *)temp->content);
-		temp = temp->next;
+		n = (n + '0');
+		write(fd, &n, 1);
+		return ;
 	}
-	return (EXIT_SUCCESS);
+	else
+		ft_put_u_nbr_fd((n / 10), fd);
+	n = ((n % 10) + '0');
+	write(fd, &n, 1);
 }
