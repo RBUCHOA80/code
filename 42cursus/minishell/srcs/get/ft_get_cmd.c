@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 22:05:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:38:00 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/29 22:44:46 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_get_cmd(t_minishell *data)
 	char	*str;
 
 	token = data->token;
-	next = data->token->next;
+	if (token)
+		next = data->token->next;
 	if (token == NULL)
 		return (NULL);
 	str = ft_calloc(1, 1);

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:50:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/29 23:14:30 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,24 @@ int	ft_construct_pipe(t_minishell *data)
 			ft_fprintf(data->fdout, "%s%s", WHITE, (&temp)->token->content);
 		if ((&temp)->token->type == PIPE)
 			ft_fprintf(data->fdout, "%s | ", YELLOW);
-		ft_fprintf(data->fdout, " ");
+		ft_fprintf(data->fdout, "%s ", NONE);
 		(&temp)->token = (&temp)->token->next;
 	}
-	ft_fprintf(data->fdout, "%s\n", NONE);
+	ft_fprintf(data->fdout, "\n");
 	return (EXIT_SUCCESS);
 }
 
 int	ft_redirect(t_minishell *data)
 {
-	ft_construct_pipe(data);
+	t_minishell	temp;
+
+	temp = *data;
+	while ((&temp)->token->next)
+	{
+		if ((&temp)->token->type == PIPE)
+			ft_construct_pipe(data);
+		(&temp)->token = (&temp)->token->next;
+	}
 	return (EXIT_FAILURE);
 }
 

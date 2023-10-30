@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/29 21:07:45 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/29 23:20:24 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,27 +43,27 @@ SRCS_OBJS			= 	$(SRCS:.c=.o)
 SRCS_PATH			=	./
 SRCS_LIST			=	srcs/main/main.c \
 						srcs/main/minishell.c \
-						srcs/bin/ft_exec_bin.c \
-						srcs/bin/ft_get_arge.c \
-						srcs/bin/ft_get_argv.c \
-						srcs/bin/ft_is_bin.c \
 						srcs/builtin/ft_cd.c \
 						srcs/builtin/ft_echo.c \
 						srcs/builtin/ft_env.c \
-						srcs/builtin/ft_exec_builtin.c \
 						srcs/builtin/ft_exit.c \
 						srcs/builtin/ft_export.c \
-						srcs/builtin/ft_is_builtin.c \
 						srcs/builtin/ft_pwd.c \
 						srcs/builtin/ft_unset.c \
+						srcs/check/ft_is_bin.c \
+						srcs/check/ft_is_builtin.c \
 						srcs/env/ft_search_env.c \
+						srcs/exec/ft_exec_bin.c \
+						srcs/exec/ft_exec_builtin.c \
+						srcs/get/ft_get_arge.c \
+						srcs/get/ft_get_argv.c \
+						srcs/get/ft_get_cmd.c \
 						srcs/history/ft_history.c \
 						srcs/main/ft_banner.c \
 						srcs/main/ft_init.c \
 						srcs/pipe/ft_pipe.c \
 						srcs/signal/ft_signal.c \
 						srcs/tool/ft_expand.c \
-						srcs/tool/ft_get_cmd.c \
 						srcs/tool/ft_parse.c \
 						srcs/tool/ft_prepare_data.c \
 						srcs/tool/ft_strcmp.c \
