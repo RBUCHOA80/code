@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 23:31:32 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/28 23:33:40 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/30 22:06:20 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_prompt(char *user)
 	return (prompt);
 }
 
-int	ft_prepare_data(t_minishell *data, char *user)
+int	ft_readline(t_minishell *data, char *user)
 {
 	char	*line;
 

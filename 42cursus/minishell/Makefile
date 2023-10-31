@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/29 23:20:24 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/10/30 22:06:47 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ SRCS_LIST			=	srcs/main/main.c \
 						srcs/signal/ft_signal.c \
 						srcs/tool/ft_expand.c \
 						srcs/tool/ft_parse.c \
-						srcs/tool/ft_prepare_data.c \
+						srcs/tool/ft_readline.c \
 						srcs/tool/ft_strcmp.c \
 						srcs/tool/ft_tokenize.c \
 

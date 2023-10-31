@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 23:14:30 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/30 22:33:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,38 @@ int	ft_print_error(t_minishell *data)
 	return (UNKNOWN_COMMAND);
 }
 
-int	ft_construct_pipe(t_minishell *data)
+int	ft_construct_pipe(t_input *token)
 {
-	t_minishell	temp;
+	t_input	*temp;
 
-	temp = *data;
-	while ((&temp)->token)
+	temp = token;
+	while (temp)
 	{
-		if ((&temp)->token->type == CMD)
-			ft_fprintf(data->fdout, "%s%s", WHITE, (&temp)->token->content);
-		if ((&temp)->token->type == PIPE)
-			ft_fprintf(data->fdout, "%s | ", YELLOW);
-		ft_fprintf(data->fdout, "%s ", NONE);
-		(&temp)->token = (&temp)->token->next;
+		if (temp->type == PIPE)
+		{
+			token = token->next;
+			ft_fprintf(STDOUT, "%s | ", YELLOW);
+			continue ;
+		}
+		if (temp->type == CMD)
+			ft_fprintf(STDOUT, "%s%s", WHITE, temp->content);
+		ft_fprintf(STDOUT, "%s ", NONE);
+		temp = temp->next;
 	}
-	ft_fprintf(data->fdout, "\n");
+	ft_fprintf(STDOUT, "\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_redirect(t_minishell *data)
+int	ft_redirect(t_input *token)
 {
-	t_minishell	temp;
+	t_input	*temp;
 
-	temp = *data;
-	while ((&temp)->token->next)
+	temp = token;
+	while (temp->next)
 	{
-		if ((&temp)->token->type == PIPE)
-			ft_construct_pipe(data);
-		(&temp)->token = (&temp)->token->next;
+		if (temp->type == PIPE)
+			ft_construct_pipe(token);
+		temp = temp->next;
 	}
 	return (EXIT_FAILURE);
 }
@@ -61,18 +65,18 @@ int	minishell(t_minishell *data)
 	user = ft_expand(data, "$USER");
 	while (1)
 	{
-		if (ft_prepare_data(data, user) == EXIT_FAILURE)
+		if (ft_readline(data, user) == EXIT_FAILURE)
 			continue ;
 		while (data && data->token)
 		{
-			ft_redirect(data);
+			ft_redirect(data->token);
 			if (ft_is_builtin(data) == EXIT_SUCCESS)
 				data->ret = ft_exec_builtin(data);
 			else if (ft_is_bin(data) == EXIT_SUCCESS)
 				data->ret = ft_exec_bin(data);
 			else
 				data->ret = ft_print_error(data);
-			while (data->token && data->token->type != PIPE)
+			while (data->token && data->token->type == ARG)
 				data->token = data->token->next;
 		}
 	}

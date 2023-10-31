@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:18:28 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/10/30 22:07:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		ft_init_env(t_minishell *data);
 int		ft_is_builtin(t_minishell *data);
 int		ft_is_bin(t_minishell *data);
 int		ft_parse(t_minishell *data, char *line);
-int		ft_prepare_data(t_minishell *data, char *user);
+int		ft_readline(t_minishell *data, char *user);
 int		ft_pwd(t_minishell *data);
 void	ft_signal(int sig);
 int		ft_strcmp(char *s1, char *s2);
