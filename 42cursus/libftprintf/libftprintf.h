@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 21:14:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:02:36 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/02 20:39:42 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # include <unistd.h> //write
 
 int		ft_printf(const char *str, ...);
-int		ft_printf_aux(char str, va_list var, int fd);
+int		ft_aux(char str, va_list var, int fd);
 
 int		character_output(va_list var, int fd);
 int		decimal_output(va_list var, int fd);

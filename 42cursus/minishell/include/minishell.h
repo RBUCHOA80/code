@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/30 22:07:05 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/02 21:55:33 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ typedef struct s_minishell
 	char	*pathname;
 	char	**argv;
 	char	**arge;
-	int		*pipe_array;
+	int		**pipe_matrix;
 	int		pipe_count;
+	int		seq;
 	t_list	*env;
 	t_input	*token;
 }	t_minishell;
@@ -108,6 +109,6 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_unset(t_minishell *data);
 int		ft_tokenize(t_minishell *data, char *line);
 
-int		ft_pipe(t_minishell *data);
+int		ft_pipe_init(t_minishell *data);
 
 #endif

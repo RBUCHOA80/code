@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/30 22:57:26 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/02 22:02:50 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,56 +22,101 @@ int	ft_print_error(t_minishell *data)
 	return (UNKNOWN_COMMAND);
 }
 
-int	ft_construct_pipe(t_input *token)
+int	ft_print_token_type(t_input *token)
 {
 	t_input	*temp;
 
 	temp = token;
 	while (temp)
 	{
-		if (temp->type == EMPTY)
-			ft_fprintf(STDOUT, "%s "" ", RED);
 		if (temp->type == APPEND)
-			ft_fprintf(STDOUT, "%s >> ", RED);
+			ft_fprintf(STDOUT, "%s APPEND (>>) ", RED);
 		if (temp->type == TRUNC)
-			ft_fprintf(STDOUT, "%s > ", GREEN);
+			ft_fprintf(STDOUT, "%s TRUNC (>) ", GREEN);
 		if (temp->type == INPUT)
-			ft_fprintf(STDOUT, "%s < ", YELLOW);
+			ft_fprintf(STDOUT, "%s INPUT (<) ", YELLOW);
 		if (temp->type == PIPE)
-			ft_fprintf(STDOUT, "%s | ", BLUE);
+			ft_fprintf(STDOUT, "%s PIPE(|) ", BLUE);
 		if (temp->type == END)
-			ft_fprintf(STDOUT, "%s ; ", PURPLE);
+			ft_fprintf(STDOUT, "%s END (;) ", PURPLE);
 		if (temp->type == ARG)
-			ft_fprintf(STDOUT, "%s%s", LBLUE, temp->content);
+			ft_fprintf(STDOUT, "%sARG(%s)", LBLUE, temp->content);
 		if (temp->type == CMD)
-			ft_fprintf(STDOUT, "%s%s", WHITE, temp->content);
+			ft_fprintf(STDOUT, "%sCMD(%s)", WHITE, temp->content);
 		ft_fprintf(STDOUT, "%s ", NONE);
-		temp = temp->next;
 	}
 	ft_fprintf(STDOUT, "\n");
 	return (EXIT_SUCCESS);
 }
 
-int	ft_redirect(t_input *token)
+int	ft_has_pipe(t_minishell *data)
 {
 	t_input	*temp;
 
-	temp = token;
-	while (temp->next)
+	temp = data->token;
+	while (temp)
 	{
 		if (temp->type == PIPE)
-			ft_construct_pipe(token);
+			return (EXIT_SUCCESS);
 		temp = temp->next;
 	}
 	return (EXIT_FAILURE);
 }
 
-int	ft_check_token(t_minishell *data)
+int	ft_count_pipe(t_minishell *data)
 {
-	if (data->token->type != CMD)
-		return (EXIT_FAILURE);
-	else
-		return (EXIT_SUCCESS);
+	t_input	*temp;
+
+	temp = data->token;
+	data->pipe_count = 0;
+	while (temp)
+	{
+		if (temp->type == PIPE)
+			data->pipe_count++;
+		temp = temp->next;
+	}
+	return (data->pipe_count);
+}
+
+int	ft_pipe_init(t_minishell *data)
+{
+	int	i;
+
+	if (ft_count_pipe(data))
+	{
+		data->pipe_matrix = ft_calloc(data->pipe_count + 1, sizeof(int *));
+		i = 0;
+		while (i < data->pipe_count)
+		{
+			data->pipe_matrix[i] = ft_calloc(2, sizeof(int));
+			pipe(data->pipe_matrix[i]);
+			i++;
+		}
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	ft_exec_pipe(t_minishell *data)
+{
+	(void)data;
+	data->seq++;
+	dup2(5 + data->seq, STDIN);
+	dup2(6 + data->seq, STDOUT);
+	close(5 + data->seq);
+	close(6 + data->seq);
+	return (EXIT_SUCCESS);
+}
+
+int	ft_next(t_minishell *data)
+{
+	while (data->token && data->token->type >= ARG)
+		data->token = data->token->next;
+	if (data && data->token && data->token->type == PIPE)
+		data->token = data->token->next;
+	dup2(data->fdout, STDOUT);
+	if (data && data->token == NULL)
+		dup2(data->fdin, STDIN);
+	return (EXIT_SUCCESS);
 }
 
 int	minishell(t_minishell *data)
@@ -83,19 +128,17 @@ int	minishell(t_minishell *data)
 	{
 		if (ft_readline(data, user) == EXIT_FAILURE)
 			continue ;
+		ft_pipe_init(data);
 		while (data && data->token)
 		{
-			ft_redirect(data->token);
-			if (ft_check_token(data))
-				data->token = data->token->next;
+			ft_exec_pipe(data);
 			if (ft_is_builtin(data) == EXIT_SUCCESS)
 				data->ret = ft_exec_builtin(data);
 			else if (ft_is_bin(data) == EXIT_SUCCESS)
 				data->ret = ft_exec_bin(data);
 			else
 				data->ret = ft_print_error(data);
-			while (data->token && data->token->type >= ARG)
-				data->token = data->token->next;
+			ft_next(data);
 		}
 	}
 	return (EXIT_SUCCESS);

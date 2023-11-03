@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 19:02:20 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/02 20:39:34 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_printf(const char *str, ...)
 	while (str[index])
 	{
 		if (str[index] == '%')
-			ret += ft_printf_aux(str[index++ + 1], var, fd);
+			ret += ft_aux(str[index++ + 1], var, fd);
 		else
 			ret += write(fd, &str[index], 1);
 		index++;
@@ -35,7 +35,7 @@ int	ft_printf(const char *str, ...)
 	return (ret);
 }
 
-int	ft_printf_aux(char str, va_list var, int fd)
+int	ft_aux(char str, va_list var, int fd)
 {
 	int	ret;
 

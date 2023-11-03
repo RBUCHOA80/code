@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 14:48:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 11:25:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/01 19:19:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_set_type(t_input *token)
 		return (PIPE);
 	else if (ft_strcmp(content, ";") == EXIT_SUCCESS)
 		return (END);
-	else if (prev && prev->type == CMD)
+	else if (prev && (prev->type == CMD || prev->type == ARG))
 		return (ARG);
 	else
 		return (CMD);

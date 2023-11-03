@@ -6,11 +6,11 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/10/30 22:06:47 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/11/02 15:50:30 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#MAKEFLAGS			=	--silent
+MAKEFLAGS			=	--silent
 
 NAME				=	minishell
 
