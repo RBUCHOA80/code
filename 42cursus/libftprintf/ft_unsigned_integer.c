@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:33:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/15 18:35:25 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 21:02:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	unsigned_integer_output(va_list var, int fd)
+int	ft_unsigned_integer_output(va_list var, int fd)
 {
 	unsigned int	unsig_int;
 	int				res;

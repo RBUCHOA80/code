@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:07 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 20:58:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 21:01:16 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftfprintf.h"
 
-int	hexadecimal_lower_output(va_list var, int fd)
+int	ft_hexadecimal_lower_output(va_list var, int fd)
 {
 	unsigned int	low_hex;
 	int				res;

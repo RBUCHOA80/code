@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:57 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/25 23:52:53 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 21:02:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	string_output(va_list var, int fd)
+int	ft_string_output(va_list var, int fd)
 {
 	char	*string;
 	int		len;

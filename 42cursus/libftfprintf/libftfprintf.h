@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 21:14:05 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/02 20:40:15 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 21:02:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@
 int		ft_fprintf(int fd, const char *str, ...);
 int		ft_aux(char str, va_list var, int fd);
 
-int		character_output(va_list var, int fd);
-int		decimal_output(va_list var, int fd);
-int		hexadecimal_lower_output(va_list var, int fd);
-int		hexadecimal_upper_output(va_list var, int fd);
-int		integer_output(va_list var, int fd);
-int		pointer_output(va_list var, int fd);
-int		string_output(va_list var, int fd);
-int		unsigned_integer_output(va_list var, int fd);
+int		ft_character_output(va_list var, int fd);
+int		ft_decimal_output(va_list var, int fd);
+int		ft_hexadecimal_lower_output(va_list var, int fd);
+int		ft_hexadecimal_upper_output(va_list var, int fd);
+int		ft_integer_output(va_list var, int fd);
+int		ft_pointer_output(va_list var, int fd);
+int		ft_string_output(va_list var, int fd);
+int		ft_unsigned_integer_output(va_list var, int fd);
 
 void	ft_put_u_nbr_fd(unsigned int n, int fd);
 void	ft_puthex_fd(unsigned long long nb, int fd);

@@ -6,13 +6,13 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:05:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 21:01:05 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftfprintf.h"
 
-int	decimal_output(va_list var, int fd)
+int	ft_decimal_output(va_list var, int fd)
 {
 	int	decimal;
 	int	res;	

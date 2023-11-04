@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 19:32:26 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/02 20:40:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 21:02:21 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@ int	ft_aux(char str, va_list var, int fd)
 
 	ret = 0;
 	if (str == 'c')
-		ret = character_output(var, fd);
+		ret = ft_character_output(var, fd);
 	else if (str == 's')
-		ret = string_output(var, fd);
+		ret = ft_string_output(var, fd);
 	else if (str == 'p')
-		ret = pointer_output(var, fd);
+		ret = ft_pointer_output(var, fd);
 	else if (str == 'd')
-		ret = decimal_output(var, fd);
+		ret = ft_decimal_output(var, fd);
 	else if (str == 'i')
-		ret = integer_output(var, fd);
+		ret = ft_integer_output(var, fd);
 	else if (str == 'u')
-		ret = unsigned_integer_output(var, fd);
+		ret = ft_unsigned_integer_output(var, fd);
 	else if (str == 'x')
-		ret = hexadecimal_lower_output(var, fd);
+		ret = ft_hexadecimal_lower_output(var, fd);
 	else if (str == 'X')
-		ret = hexadecimal_upper_output(var, fd);
+		ret = ft_hexadecimal_upper_output(var, fd);
 	else if (str == '%')
 		ret = write(fd, "%", 1);
 	return (ret);
