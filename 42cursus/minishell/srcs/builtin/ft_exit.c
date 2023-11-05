@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:18:28 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 12:27:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:31:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	ft_exit(t_minishell *data)
 	if (data->token)
 		data->token = data->token->next;
 	data->ret = EXIT_SUCCESS;
-	ft_fprintf(STDOUT, "exit\n");
+	ft_fprintf(STDOUT_FILENO, "exit\n");
 	if (data && data->token && data->token->content)
 	{
 		if (ft_strcmp(data->token->content, \
 				ft_itoa(ft_atoi(data->token->content))))
 		{
-			ft_fprintf(STDOUT, \
+			ft_fprintf(STDOUT_FILENO, \
 				"minishell: exit: %s: numeric argument required\n", \
 					data->token->content);
 			data->ret = 2;

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 19:18:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:31:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ int	ft_print_token_type(t_input *token)
 	while (temp)
 	{
 		if (temp->type == APPEND)
-			ft_fprintf(STDOUT, "%s APPEND (>>) ", RED);
+			ft_fprintf(STDOUT_FILENO, "%s APPEND (>>) ", RED);
 		if (temp->type == TRUNC)
-			ft_fprintf(STDOUT, "%s TRUNC (>) ", GREEN);
+			ft_fprintf(STDOUT_FILENO, "%s TRUNC (>) ", GREEN);
 		if (temp->type == INPUT)
-			ft_fprintf(STDOUT, "%s INPUT (<) ", YELLOW);
+			ft_fprintf(STDOUT_FILENO, "%s INPUT (<) ", YELLOW);
 		if (temp->type == PIPE)
-			ft_fprintf(STDOUT, "%s PIPE(|) ", BLUE);
+			ft_fprintf(STDOUT_FILENO, "%s PIPE(|) ", BLUE);
 		if (temp->type == END)
-			ft_fprintf(STDOUT, "%s END (;) ", PURPLE);
+			ft_fprintf(STDOUT_FILENO, "%s END (;) ", PURPLE);
 		if (temp->type == ARG)
-			ft_fprintf(STDOUT, "%sARG(%s)", LBLUE, temp->content);
+			ft_fprintf(STDOUT_FILENO, "%sARG(%s)", LBLUE, temp->content);
 		if (temp->type == CMD)
-			ft_fprintf(STDOUT, "%sCMD(%s)", WHITE, temp->content);
-		ft_fprintf(STDOUT, "%s ", NONE);
+			ft_fprintf(STDOUT_FILENO, "%sCMD(%s)", WHITE, temp->content);
+		ft_fprintf(STDOUT_FILENO, "%s ", NONE);
 	}
-	ft_fprintf(STDOUT, "\n");
+	ft_fprintf(STDOUT_FILENO, "\n");
 	return (EXIT_SUCCESS);
 }
 
@@ -55,9 +55,8 @@ int	ft_next(t_minishell *data)
 		data->token = data->token->next;
 	if (data && data->token && data->token->type == PIPE)
 		data->token = data->token->next;
-	dup2(data->fdout, STDOUT);
-	if (data && data->token == NULL)
-		dup2(data->fdin, STDIN);
+	dup2(data->fdout, STDOUT_FILENO);
+	dup2(data->fdin, STDIN_FILENO);
 	return (EXIT_SUCCESS);
 }
 

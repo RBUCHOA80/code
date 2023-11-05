@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 19:17:54 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:31:09 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@
 # define END	5
 # define ARG	6
 # define CMD	7
-
-# define STDIN	0
-# define STDOUT	1
-# define STDERR	2
 
 # define UNKNOWN_COMMAND	127
 

@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:47:12 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 12:27:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:31:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int	ft_echo(t_minishell *data)
 			data->token = data->token->next;
 			ret = ft_get_cmd(data);
 			if (ret)
-				ft_fprintf(STDOUT, "%s", ret);
+				ft_fprintf(STDOUT_FILENO, "%s", ret);
 			return (EXIT_SUCCESS);
 		}
 		else
 		{
 			ret = ft_get_cmd(data);
 			if (ret)
-				ft_fprintf(STDOUT, "%s", ret);
+				ft_fprintf(STDOUT_FILENO, "%s", ret);
 		}
 	}
-	ft_fprintf(STDOUT, "\n");
+	ft_fprintf(STDOUT_FILENO, "\n");
 	return (EXIT_SUCCESS);
 }

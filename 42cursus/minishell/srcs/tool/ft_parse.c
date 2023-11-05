@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 17:09:16 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/29 21:26:32 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:32:02 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	ft_quote_check(t_minishell *data, char *line)
 {
 	if (ft_check_opened_quotes(line) == EXIT_FAILURE)
 	{
-		ft_fprintf(STDERR, "minishell: syntax error with opened quotes\n");
+		ft_fprintf(STDERR_FILENO, \
+			"minishell: syntax error with opened quotes\n");
 		data->ret = 2;
 		data->token = NULL;
 		return (EXIT_FAILURE);
