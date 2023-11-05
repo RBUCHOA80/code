@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/04 21:30:47 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/05/04 11:19:03 by jeluiz4           #+#    #+#             */
+/*   Updated: 2022/05/04 11:47:17 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_bzero(void *s, size_t n)
 {
-	static t_minishell	data;
-
-	ft_banner();
-	ft_init(&data);
-	minishell(&data);
-	return (EXIT_SUCCESS);
+	while (n > 0)
+	{
+		((char *)s)[n - 1] = '\0';
+		n--;
+	}
 }

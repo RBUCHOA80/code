@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/02 22:02:50 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/03 22:04:00 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_pipe_init(t_minishell *data)
 {
 	int	i;
 
-	if (ft_count_pipe(data))
+	if (data->pipe_matrix == NULL && ft_count_pipe(data))
 	{
 		data->pipe_matrix = ft_calloc(data->pipe_count + 1, sizeof(int *));
 		i = 0;
@@ -90,15 +90,19 @@ int	ft_pipe_init(t_minishell *data)
 		{
 			data->pipe_matrix[i] = ft_calloc(2, sizeof(int));
 			pipe(data->pipe_matrix[i]);
+			ft_fprintf(STDERR, "addr = %p -> fd[%i][0] = %i\n", &data->pipe_matrix[i][0], i, data->pipe_matrix[i][0]);
+			ft_fprintf(STDERR, "addr = %p -> fd[%i][1] = %i\n", &data->pipe_matrix[i][1], i, data->pipe_matrix[i][1]);
 			i++;
 		}
+		return (EXIT_SUCCESS);
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }
 
 int	ft_exec_pipe(t_minishell *data)
 {
 	(void)data;
+	ft_fprintf(STDERR, "data->seq = %i\n", data->seq);
 	data->seq++;
 	dup2(5 + data->seq, STDIN);
 	dup2(6 + data->seq, STDOUT);
@@ -113,9 +117,9 @@ int	ft_next(t_minishell *data)
 		data->token = data->token->next;
 	if (data && data->token && data->token->type == PIPE)
 		data->token = data->token->next;
-	dup2(data->fdout, STDOUT);
-	if (data && data->token == NULL)
-		dup2(data->fdin, STDIN);
+	// dup2(data->fdout, STDOUT);
+	// if (data && data->token == NULL)
+	// 	dup2(data->fdin, STDIN);
 	return (EXIT_SUCCESS);
 }
 
@@ -128,10 +132,10 @@ int	minishell(t_minishell *data)
 	{
 		if (ft_readline(data, user) == EXIT_FAILURE)
 			continue ;
-		ft_pipe_init(data);
 		while (data && data->token)
 		{
-			ft_exec_pipe(data);
+			if (ft_pipe_init(data) == EXIT_SUCCESS)
+				ft_exec_pipe(data);
 			if (ft_is_builtin(data) == EXIT_SUCCESS)
 				data->ret = ft_exec_builtin(data);
 			else if (ft_is_bin(data) == EXIT_SUCCESS)

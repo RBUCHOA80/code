@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/04 21:30:47 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/05/06 11:45:13 by jeluiz4           #+#    #+#             */
+/*   Updated: 2022/05/19 15:06:23 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memchr(const void *s1, int c, size_t n)
 {
-	static t_minishell	data;
+	unsigned char	*temp;
+	size_t			i;
 
-	ft_banner();
-	ft_init(&data);
-	minishell(&data);
-	return (EXIT_SUCCESS);
+	temp = (unsigned char *)s1;
+	i = 0;
+	while (i < n)
+	{
+		if (temp[i] == (unsigned char)c)
+			return (&temp[i]);
+		i++;
+	}
+	return (0);
 }

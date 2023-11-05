@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/04 21:30:47 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/05/03 14:24:07 by jeluiz4           #+#    #+#             */
+/*   Updated: 2022/05/03 15:06:28 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-int	main(void)
+int	ft_isalpha(int c)
 {
-	static t_minishell	data;
-
-	ft_banner();
-	ft_init(&data);
-	minishell(&data);
-	return (EXIT_SUCCESS);
+	if ((c <= 122 && c >= 97) || (c <= 90 && c >= 65))
+		return (1);
+	return (0);
 }

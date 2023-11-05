@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/04 21:30:47 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/05/03 18:00:16 by jeluiz4           #+#    #+#             */
+/*   Updated: 2022/05/03 18:33:17 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-int	main(void)
+int	ft_isascii(int c)
 {
-	static t_minishell	data;
-
-	ft_banner();
-	ft_init(&data);
-	minishell(&data);
-	return (EXIT_SUCCESS);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: dvargas <dvargas@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:06:55 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/04 21:30:47 by ruchoa           ###   ########.fr       */
+/*   Created: 2022/12/29 09:27:33 by dvargas           #+#    #+#             */
+/*   Updated: 2023/01/08 13:06:09 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../include/lib_mini.h"
 
-int	main(void)
+void	ft_pwd(t_shell *blk, char **args)
 {
-	static t_minishell	data;
-
-	ft_banner();
-	ft_init(&data);
-	minishell(&data);
-	return (EXIT_SUCCESS);
+	if (args[1] != NULL)
+	{
+		g_return = 1;
+		perror("TOO MANY ARGS");
+		return ;
+	}
+	else
+	{
+		printf("%s\n", blk->pwd);
+		g_return = 0;
+	}
 }

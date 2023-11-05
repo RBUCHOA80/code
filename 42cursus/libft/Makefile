@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 19:07:24 by ruchoa            #+#    #+#              #
-#    Updated: 2023/02/11 17:03:58 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/11/04 18:41:07 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,11 @@ $(NAME):				$(SRCS_OBJS)
 $(NAME_BONUS):			$(BONUS_OBJS) 
 						$(foreach dir, $(LIBS), make all -C $(dir) ;)
 						$(AR) $(AFLAGS) $(NAME_BONUS) $(LIBS_A) $(BONUS_OBJS)
+
+debug:
+						$(foreach lib, $(LIBS_DIR), make all -sC $(lib);)
+						$(COMPILER) $(CFLAGS) -g $(SRCS) $(INCLUDE_DIR) $(LIBS_A) $(LIBRARY_DIR) -o $(NAME) $(LIBRARY)
+						lldb ./$(NAME)
 
 clean:
 						$(REMOVE) $(RFLAGS) $(SRCS_OBJS) $(BONUS_OBJS)
