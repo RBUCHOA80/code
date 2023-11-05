@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_pipe_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 23:37:00 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 12:27:52 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/11/05 19:12:42 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/11/05 19:15:22 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_env(t_minishell *data)
+int	ft_init_pipe(t_minishell *data)
 {
-	t_list	*temp;
+	int	i;
 
-	data->token = data->token->next;
-	temp = data->env;
-	while (temp && temp->content)
+	data->pipe_count = ft_count_pipe(data);
+	if (data->pipe_count)
 	{
-		ft_fprintf(STDOUT, "%s\n", (char *)temp->content);
-		temp = temp->next;
+		data->pipe_matrix = ft_calloc(data->pipe_count + 1, sizeof(int *));
+		i = 0;
+		while (i < data->pipe_count)
+		{
+			data->pipe_matrix[i] = ft_calloc(2, sizeof(int));
+			pipe(data->pipe_matrix[i]);
+			i++;
+		}
+		return (EXIT_SUCCESS);
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/11/03 22:00:48 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/11/05 19:23:24 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS_LIST			=	srcs/main/main.c \
 						srcs/builtin/ft_unset.c \
 						srcs/check/ft_is_bin.c \
 						srcs/check/ft_is_builtin.c \
+						srcs/check/ft_has_pipe.c \
 						srcs/env/ft_search_env.c \
 						srcs/exec/ft_exec_bin.c \
 						srcs/exec/ft_exec_builtin.c \
@@ -61,6 +62,8 @@ SRCS_LIST			=	srcs/main/main.c \
 						srcs/history/ft_history.c \
 						srcs/main/ft_banner.c \
 						srcs/main/ft_init.c \
+						srcs/pipe/ft_count_pipe.c \
+						srcs/pipe/ft_init_pipe.c \
 						srcs/pipe/ft_pipe.c \
 						srcs/signal/ft_signal.c \
 						srcs/tool/ft_expand.c \

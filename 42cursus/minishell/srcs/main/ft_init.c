@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/02 22:02:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 12:46:39 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_init_data(t_minishell *data)
 {
 	data->fdin = dup(STDIN);
 	data->fdout = dup(STDOUT);
-	data->seq = -1;
+	data->pipe_count = 0;
 	return (EXIT_SUCCESS);
 }
 

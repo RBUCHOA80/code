@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/02 21:55:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/05 19:17:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@
 # define STDOUT	1
 # define STDERR	2
 
-# define EXIT_FAILURE	1
-# define EXIT_SUCCESS	0
-
 # define UNKNOWN_COMMAND	127
 
 /* STRUCTS */
@@ -74,7 +71,6 @@ typedef struct s_minishell
 	char	**arge;
 	int		**pipe_matrix;
 	int		pipe_count;
-	int		seq;
 	t_list	*env;
 	t_input	*token;
 }	t_minishell;
@@ -84,6 +80,7 @@ int		minishell(t_minishell *data);
 
 int		ft_banner(void);
 int		ft_cd(t_minishell *data);
+int		ft_count_pipe(t_minishell *data);
 int		ft_echo(t_minishell *data);
 int		ft_env(t_minishell *data);
 int		ft_export(t_minishell *data);
@@ -91,14 +88,17 @@ char	*ft_get_cmd(t_minishell *data);
 char	*ft_search_env(t_list *env, char *s1);
 int		ft_exec_builtin(t_minishell *data);
 int		ft_exec_bin(t_minishell *data);
+int		ft_prepare_pipe(t_minishell *data);
 char	*ft_expand(t_minishell *data, char *str);
 int		ft_exit(t_minishell *data);
 char	**ft_get_arge(t_minishell *data);
 char	**ft_get_argv(t_minishell *data);
+int		ft_has_pipe(t_minishell *data);
 int		ft_history(char *line);
 int		ft_init(t_minishell *data);
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data);
+int		ft_init_pipe(t_minishell *data);
 int		ft_is_builtin(t_minishell *data);
 int		ft_is_bin(t_minishell *data);
 int		ft_parse(t_minishell *data, char *line);
