@@ -1,0 +1,18 @@
+NAME	=	ft_split
+
+INCLUDE	=	>
+
+LIBRARY	=	../../../../42cursus/libft
+
+$(NAME):
+			gcc -Wall -Wextra -Wextra -I $(INCLUDE) -L $(LIBRARY) $(NAME).c -lft -o $(NAME)
+		
+run:		$(NAME)
+			./$(NAME)
+
+valgrind:	$(NAME)
+			valgrind --leak-check=full --show-leak-kinds=all -s -v --track-origins=yes ./$(NAME)
+
+fsanitize:
+			gcc -Wall -Wextra -Wextra -I $(INCLUDE) -L $(LIBRARY) $(NAME).c -lft -o $(NAME) -fsanitize=address
+			./$(NAME)

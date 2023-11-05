@@ -5,7 +5,7 @@
 ###################################
 
 #Edit the next line with the path of your libft project.
-PATH_LIBFT="/mnt/d/GoogleDrive/dev/42rio/42cursus/libft/"
+PATH_LIBFT="/nfs/homes/ruchoa/code/evaluations/42cursus/libft/lpaixao/"
 
 #If you use a relative path, don't put double quotes.
 #For example :
