@@ -3,42 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: lpaixao- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 16:32:22 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/05/07 16:32:22 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/17 11:56:16 by lpaixao-          #+#    #+#             */
+/*   Updated: 2023/10/17 12:36:00 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <strings.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
-}
+	unsigned char	*str;
 
-/* char	g_str[] = "Put your text here.";
-
-int	main(void)
-{
-	size_t	len;
-	size_t	n;
-	size_t	i;
-
-	n = 9;
-	len = ft_strlen(g_str);
-	printf("%p %s \n", g_str, g_str);
-	ft_bzero(&g_str, n);
-	i = 0;
-	printf("%p ", g_str);
-	while (i < len)
+	str = (unsigned char *)s;
+	while (n > 0)
 	{
-		if (g_str[i] < 32)
-			printf("%d", g_str[i]);
-		else
-			printf("%c", g_str[i]);
-		i++;
+		*str = '\0';
+		str++;
+		n--;
 	}
-	printf("\n");
+}
+/*
+
+int	main()
+{
+	#include <stdio.h>
+
+	char str[] = "The  bzero()  function  erases  the data...";
+
+	printf("\nBefore bzero(): %s\n\n", str);
+
+	ft_bzero(str + 13, 8*sizeof(char));
+
+	printf("After my bzero():  %s \n\n", str);
+
+	char str2[] = "The  bzero()  function  erases  the data...";
+
+	bzero(str2 + 13, 8*sizeof(char));
+	printf("After the original bzero(): %s \n\n", str2);
+
 	return (0);
-} */
+}*/

@@ -3,45 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: lpaixao- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 23:33:44 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/06/11 23:22:47 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/19 20:02:35 by lpaixao-          #+#    #+#             */
+/*   Updated: 2023/11/04 21:11:40 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ret;
+	size_t	i;
+	char	*str;				
 
-	if (count == 0 || size == 0)
-		return (ft_calloc(1, 1));
-	if (((count * size) / count) != size)
+	i = 0;
+	if (nmemb == 0 || size == 0)
+		return (ft_strdup(""));
+	if (size != 0 && (nmemb * size) / size != nmemb)
 		return (NULL);
-	ret = (void *)malloc(count * size);
-	if (!ret)
+	str = (char *)malloc(nmemb * size);
+	if (!str)
 		return (NULL);
-	ft_bzero(ret, (count * size));
-	return (ret);
+	while (i < (nmemb * size))
+	{
+		str[i] = 0;
+		i++;
+	}
+	return (str);
 }
+/*
+#include <limits.h>
+#include <stdio.h>
 
-/* int	main(void)
+int	main()
 {
-	char	*src;
-	char	*dest;
-	size_t	count;
-	size_t	size;
+	int	n;
+	int	*my_str;
+	int	*or_str;
 
-	src = "Put your text here.";
-	count = ft_strlen(src);
-	size = sizeof(char);
-	printf("%p\t%s \n", src, src);
-	dest = ft_calloc(count, size);
-	if (!dest)
-		return (0);
-	ft_memmove(dest, src, count);
-	printf("%p\t%s \n", dest, dest);
+	n = 5;
+	my_str = ft_calloc(UINT_MAX, UINT_MAX);
+	or_str = calloc(n, 4);
+
+	if (!my_str)
+		return (123);
+	printf("Minha própria função calloc(): ");
+	while (n > 0)
+		printf("%i", my_str[n--]);
+	printf("\n");
+	//printf("Função calloc() original: %i\n", or_str[n]);
+	free(my_str);
+	free(or_str);
 	return (0);
-} */
+}*/
+/*
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
+//War Machine
+int		main(int argc, const char *argv[])
+{
+	char	*str;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	else if (atoi(argv[1]) == 1)
+	{
+		str = (char *)ft_calloc(30, 1);
+		if (!str)
+			write(1, "NULL", 4);
+		else
+			write(1,"blabla", 30);
+	}
+	return (0);
+}*/

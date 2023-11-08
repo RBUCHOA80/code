@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 17:09:16 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 19:32:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/07 22:18:14 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	ft_quote_check(t_minishell *data, char *line)
 		return (EXIT_SUCCESS);
 }
 
-//"CTRL+D"
 int	ft_parse(t_minishell *data, char *line)
 {
 	if (!line)

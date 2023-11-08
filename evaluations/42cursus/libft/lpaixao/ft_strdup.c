@@ -3,39 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: lpaixao- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 19:23:35 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/11/19 21:33:42 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/10/10 12:02:54 by lpaixao-          #+#    #+#             */
+/*   Updated: 2023/10/28 16:59:58 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+static size_t	ft_strlen(const char *str)
 {
-	size_t	len;
-	char	*dest;
+	size_t	i;
 
-	if (!s1)
-		return (NULL);
-	len = ft_strlen((char *)s1);
-	dest = (char *)malloc(sizeof(*dest) * (len + 1));
-	if (!dest)
-		return (NULL);
-	ft_memcpy(dest, s1, len);
-	dest[len] = '\0';
-	return (dest);
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
-/* int	main(void)
+static char	*ft_strcpy(char *dst, const char *src)
 {
-	char	*src;
+	size_t	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+char	*ft_strdup(const char *s)
+{
 	char	*dest;
 
-	src = "Put your text here.";
-	printf("%p\t%s \n", src, src);
-	dest = ft_strdup(src);
-	printf("%p\t%s \n", dest, dest);
+	dest = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	ft_strcpy(dest, s);
+	return (dest);
+}
+/*
+#include <stdio.h>
+
+int	main()
+{
+	#include <string.h>
+
+	const char	str[] = "Abacaxi";
+	char	*dest2;
+
+	dest2 = ft_strdup(str);
+	printf("Minha pŕopria função strdup(): %s\n", dest2);
+	free(dest2);
+
+	dest2 = strdup(str);
+	printf("Função strdup() original: %s\n", dest2);
+	free(dest2);
+
 	return (0);
-} */
+}*/

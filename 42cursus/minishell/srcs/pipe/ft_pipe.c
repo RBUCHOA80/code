@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 22:47:31 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/06 00:04:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/07 22:20:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	ft_prepare_pipe(t_minishell *data)
 {
-	int			fd_in;
-	int			fd_out;
+	int			pipe_in;
+	int			pipe_out;
 
-	fd_in = 5;
-	fd_out = 6;
-	fd_in = fd_in + ((data->pipe_count - ft_count_pipe(data) - 1) * 2);
-	fd_out = fd_out + ((data->pipe_count - ft_count_pipe(data)) * 2);
-	dup2(fd_in, STDIN_FILENO);
-	dup2(fd_out, STDOUT_FILENO);
-	close(fd_in);
-	close(fd_out);
+	pipe_in = 5;
+	pipe_out = 6;
+	pipe_in = pipe_in + ((data->pipe_count - ft_count_pipe(data) - 1) * 2);
+	pipe_out = pipe_out + ((data->pipe_count - ft_count_pipe(data)) * 2);
+	dup2(pipe_in, STDIN_FILENO);
+	dup2(pipe_out, STDOUT_FILENO);
+	close(pipe_in);
+	close(pipe_out);
 	return (EXIT_SUCCESS);
 }

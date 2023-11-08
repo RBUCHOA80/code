@@ -1,23 +1,69 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 14:47:24 by lpaixao-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:55:15 by lpaixao-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stdlib.h>
+#include <stdio.h>
 
-#include "libft.h"
+size_t	ft_strlen(const char *s)
+{
+	int	count;
+
+	count = 0;
+	while (s[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
+}
+
+static char	*ft_strcpy(char *dst, const char *src)
+{
+	size_t	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+
+	dest = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	ft_strcpy(dest, s);
+	return (dest);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	size_t	i;
+	char	*str;				
+
+	i = 0;
+	if (nmemb == 0 || size == 0)
+		return (ft_strdup(""));
+	if (size != 0 && (nmemb * size) / size != nmemb)
+		return (NULL);
+	str = (char *)malloc(nmemb * size);
+	if (!str)
+		return (NULL);
+	while (i < (nmemb * size))
+	{
+		str[i] = 0;
+		i++;
+	}
+	return (str);
+}
 
 static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	count;
 
-	i = 0;
 	if (!s)
 		return (0);
 	if (s[0] == c)
@@ -29,6 +75,7 @@ static int	count_words(char const *s, char c)
 	}
 	else
 		count = 1;
+	i = 0;
 	while (s[i])
 	{
 		if ((s[i] == c) && (s[i + 1] != '\0') && (s[i + 1] != c))
@@ -116,17 +163,16 @@ char	**ft_split(char const *s, char c)
 		return (vect);
 	return (make_vect(s, c, vect, count));
 }
-/*
-#include <stdio.h>
 
 int	main()
 {
 	int	j = 0;
 	int i = 0;
-//	char *str = "    Leticia    Paixao  Wermelinger ";
-//	char *str = "(null)";
-//	char *str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse"; // Teste 02 do war machine
-	char *str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+	// char *str = "    Leticia    Paixao  Wermelinger ";
+	// char *str = "(null)";
+	// char *str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse"; // Teste 02 do war machine
+	// char *str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+	char *str = "zzz zzz zzz Put your sample text here zzz zzz";
 	char sep = 'z';
 	char	**vect;
 
@@ -139,7 +185,7 @@ int	main()
 		printf("|%s|\n", vect[j]);
 		j++;
 	}
-//	printf("\n");
+	printf("\n");
 	j = 0;
 	while (vect[j])
 	{
@@ -148,4 +194,4 @@ int	main()
 	}
 	free(vect);
 	return (0);
-}*/
+}

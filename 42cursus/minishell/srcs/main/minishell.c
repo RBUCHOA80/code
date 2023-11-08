@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/06 00:04:21 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/07 22:13:01 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int	ft_print_token_type(t_input *token)
 		if (temp->type == INPUT)
 			ft_fprintf(STDOUT_FILENO, "%s INPUT (<) ", YELLOW);
 		if (temp->type == PIPE)
-			ft_fprintf(STDOUT_FILENO, "%s PIPE(|) ", BLUE);
+			ft_fprintf(STDOUT_FILENO, "%s PIPE (|) ", BLUE);
 		if (temp->type == END)
 			ft_fprintf(STDOUT_FILENO, "%s END (;) ", PURPLE);
 		if (temp->type == ARG)
-			ft_fprintf(STDOUT_FILENO, "%sARG(%s)", LBLUE, temp->content);
+			ft_fprintf(STDOUT_FILENO, "%s ARG (%s)", LBLUE, temp->content);
 		if (temp->type == CMD)
-			ft_fprintf(STDOUT_FILENO, "%sCMD(%s)", WHITE, temp->content);
+			ft_fprintf(STDOUT_FILENO, "%s CMD (%s)", WHITE, temp->content);
 		ft_fprintf(STDOUT_FILENO, "%s ", NONE);
 	}
 	ft_fprintf(STDOUT_FILENO, "\n");
@@ -51,12 +51,17 @@ int	ft_print_token_type(t_input *token)
 
 int	ft_next(t_minishell *data)
 {
-	while (data->token && data->token->type >= ARG)
+	while (data->token)
+	{
+		if (data->token->type == PIPE)
+		{
+			data->token = data->token->next;
+			break ;
+		}
 		data->token = data->token->next;
-	if (data && data->token && data->token->type == PIPE)
-		data->token = data->token->next;
+	}
+	//dup2(data->fdin, STDIN_FILENO);
 	dup2(data->fdout, STDOUT_FILENO);
-	dup2(data->fdin, STDIN_FILENO);
 	return (EXIT_SUCCESS);
 }
 

@@ -3,52 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
+/*   By: lpaixao- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 13:03:03 by ruchoa            #+#    #+#             */
-/*   Updated: 2022/08/30 22:19:41 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/09/07 19:41:51 by lpaixao-          #+#    #+#             */
+/*   Updated: 2023/10/25 20:29:03 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-/* size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
-	size_t	c;
+	int	count;
 
-	c = 0;
-	if (!str)
-		return (0);
-	while (str[c] != '\0')
-		c++;
-	return (c);
-} */
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	len;
-
-	if (!str)
-		return (0);
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	count = 0;
+	while (s[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
 }
-
-/* char	*g_src[] = {\
-					"A Sentence With 30 Characters.", \
-					"A New Sentence, With 35 Characters.", \
-					"Another Sentence, With 37 Characters.", \
-					"Another New Sentence, With 41 Characters.", \
-					};
-
-int	main(void)
+/*
+int	main(int argc, char *argv[])
 {
-	int	i;
+	#include <string.h>
 
-	i = -1;
-	while (g_src[++i])
-		printf("ft_strlen('%zu') = %s\n", ft_strlen(g_src[i]), g_src[i]);
+//	char	string[] = "ABACAXI GELADO";
+	long unsigned int	count_returned;
+
+	if (argc != 2)
+	{
+		printf("Favor digitar apenas um argumento");
+	}
+	count_returned = ft_strlen(argv[1]);
+	printf("Minha função: %li\n", count_returned);
+	printf("Função Original: %li\n", strlen(argv[1]));
 	return (0);
-} */
+}*/

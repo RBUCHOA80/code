@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:55:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/02 13:51:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/07 22:42:57 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_exec_bin(t_minishell *data)
 	}
 	else if (pid != -1)
 	{
-		wait(&data->ret);
+		waitpid(pid, &data->ret, 0);
 		data->ret /= 256;
 	}
 	return (data->ret);
