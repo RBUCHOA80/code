@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/12 16:52:46 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/13 21:42:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_print_token_type(t_input *token)
 	return (EXIT_SUCCESS);
 }
 
-int	ft_restore_fds(t_minishell *data)
+int	ft_restore_fd(t_minishell *data)
 {
 	dup2(data->fdin, STDIN_FILENO);
 	dup2(data->fdout, STDOUT_FILENO);
@@ -90,7 +90,7 @@ int	minishell(t_minishell *data)
 				data->ret = ft_exec_bin(data);
 			else
 				data->ret = ft_print_error(data);
-			ft_restore_fds(data);
+			ft_restore_fd(data);
 			ft_next(data);
 		}
 	}
