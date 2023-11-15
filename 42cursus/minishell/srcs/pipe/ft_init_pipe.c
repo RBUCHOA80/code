@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:12:42 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:02:11 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/15 20:19:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_init_pipe(t_minishell *data)
 	data->pipe_count = ft_count_pipe(data);
 	if (data->pipe_count)
 	{
-		//data->pid = ft_calloc(data->pipe_count + 1, sizeof(int));
 		data->pipe_matrix = ft_calloc(data->pipe_count + 1, sizeof(int *));
 		i = 0;
 		while (i < data->pipe_count)
