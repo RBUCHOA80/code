@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/05 19:31:09 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:24:56 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_minishell
 	char	*pathname;
 	char	**argv;
 	char	**arge;
+	int		pid[FILENAME_MAX];
 	int		**pipe_matrix;
 	int		pipe_count;
 	t_list	*env;

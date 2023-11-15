@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/13 21:42:07 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:25:27 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,13 @@ int	ft_next(t_minishell *data)
 	return (EXIT_SUCCESS);
 }
 
+int	ft_wait(t_minishell *data)
+{
+	waitpid(data->pid[ft_count_pipe(data)], &data->ret, 0);
+	data->ret /= 256;
+	return (EXIT_SUCCESS);
+}
+
 int	minishell(t_minishell *data)
 {
 	char	*user;
@@ -93,6 +100,7 @@ int	minishell(t_minishell *data)
 			ft_restore_fd(data);
 			ft_next(data);
 		}
+		ft_wait(data);
 	}
 	return (EXIT_SUCCESS);
 }

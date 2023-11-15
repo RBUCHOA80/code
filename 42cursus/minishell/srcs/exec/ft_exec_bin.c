@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:55:24 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/07 22:42:57 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:20:08 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,13 @@ int	ft_exec_bin(t_minishell *data)
 {
 	char	**argv;
 	char	**arge;
-	int		pid;
 
-	pid = fork();
-	if (pid == EXIT_SUCCESS)
+	data->pid[ft_count_pipe(data)] = fork();
+	if (data->pid[ft_count_pipe(data)] == EXIT_SUCCESS)
 	{
 		argv = ft_get_argv(data);
 		arge = ft_get_arge(data);
 		execve(data->pathname, argv, arge);
-	}
-	else if (pid != -1)
-	{
-		waitpid(pid, &data->ret, 0);
-		data->ret /= 256;
 	}
 	return (data->ret);
 }
