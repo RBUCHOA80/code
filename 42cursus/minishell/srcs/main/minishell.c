@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/15 20:19:02 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 11:46:52 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_print_error(t_minishell *data)
 {
-	ft_fprintf(data->fdout, \
+	ft_fprintf(STDERR_FILENO, \
 		"minishell: %s: command not found\n", \
 			data->token->content);
 	while (data && data->token)
@@ -51,8 +51,8 @@ int	ft_print_error(t_minishell *data)
 
 int	ft_restore_fd(t_minishell *data)
 {
-	dup2(data->fdin, STDIN_FILENO);
-	dup2(data->fdout, STDOUT_FILENO);
+	dup2(data->backup_fdin, STDIN_FILENO);
+	dup2(data->backup_fdout, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
 
@@ -72,7 +72,8 @@ int	ft_next(t_minishell *data)
 
 int	ft_wait(t_minishell *data)
 {
-	waitpid(data->pid[ft_count_pipe(data)], &data->ret, 0);
+	while (data->pipe_count + 1)
+		waitpid(data->child_pid[data->pipe_count--], &data->ret, 0);
 	data->ret /= 256;
 	return (EXIT_SUCCESS);
 }
@@ -86,7 +87,6 @@ int	minishell(t_minishell *data)
 	{
 		if (ft_readline(data, user) == EXIT_FAILURE)
 			continue ;
-		ft_init_pipe(data);
 		while (data && data->token)
 		{
 			if (ft_has_pipe(data) == EXIT_SUCCESS)

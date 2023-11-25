@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 21:59:01 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/10/28 22:35:24 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 11:47:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_exec_builtin(t_minishell *data)
 	int		ret;
 
 	token = data->token;
-	ret = 555;
+	ret = 0;
 	if (ft_strcmp(token->content, "echo") == EXIT_SUCCESS)
 		ret = ft_echo(data);
 	else if (ft_strcmp(token->content, "cd") == EXIT_SUCCESS)

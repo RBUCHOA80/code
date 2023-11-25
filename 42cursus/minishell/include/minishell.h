@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:24:56 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 11:46:41 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ typedef struct s_input
 
 typedef struct s_minishell
 {
-	int		fdin;
-	int		fdout;
+	int		backup_fdin;
+	int		backup_fdout;
 	int		ret;
 	char	*line;
 	char	*pathname;
 	char	**argv;
 	char	**arge;
-	int		pid[FILENAME_MAX];
+	pid_t	*child_pid;
 	int		**pipe_matrix;
 	int		pipe_count;
 	t_list	*env;

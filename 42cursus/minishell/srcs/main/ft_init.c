@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/15 20:18:33 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:18:17 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_init_data(t_minishell *data)
 {
-	data->fdin = dup(STDIN_FILENO);
-	data->fdout = dup(STDOUT_FILENO);
+	data->backup_fdin = dup(STDIN_FILENO);
+	data->backup_fdout = dup(STDOUT_FILENO);
 	data->pipe_matrix = NULL;
-	data->pipe_count = 0;
+	data->pipe_count = -1;
 	return (EXIT_SUCCESS);
 }
 
