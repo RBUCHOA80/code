@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/25 21:56:42 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 22:32:16 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,39 +73,48 @@ typedef struct s_minishell
 }	t_minishell;
 
 /* PROTOTYPES */
-int		minishell(t_minishell *data);
-
-int		ft_banner(void);
 int		ft_cd(t_minishell *data);
-int		ft_count_pipe(t_minishell *data);
 int		ft_echo(t_minishell *data);
 int		ft_env(t_minishell *data);
+int		ft_exit(t_minishell *data);
+int		ft_export(t_minishell *data);
+int		ft_pwd(t_minishell *data);
+int		ft_unset(t_minishell *data);
+
+int		ft_has_pipe(t_minishell *data);
+int		ft_is_bin(t_minishell *data);
+int		ft_is_builtin(t_minishell *data);
+
 t_list	*ft_env_search(t_list *lst, char *s1);
 char	*ft_env_value(t_list *env, char *s1);
-int		ft_export(t_minishell *data);
-int		ft_exec_builtin(t_minishell *data);
+
 int		ft_exec_bin(t_minishell *data);
-int		ft_exit(t_minishell *data);
-char	*ft_expand(t_minishell *data, char *str);
+int		ft_exec_builtin(t_minishell *data);
+
 char	**ft_get_arge(t_minishell *data);
 char	**ft_get_argv(t_minishell *data);
 char	*ft_get_cmd(t_minishell *data);
-int		ft_has_pipe(t_minishell *data);
+
 int		ft_history(char *line);
-int		ft_init(t_minishell *data);
+
 int		ft_init_data(t_minishell *data);
 int		ft_init_env(t_minishell *data);
-int		ft_init_pipe(t_minishell *data);
-int		ft_is_builtin(t_minishell *data);
-int		ft_is_bin(t_minishell *data);
-int		ft_parse(t_minishell *data, char *line);
+int		ft_init_signal(void);
+int		ft_init(t_minishell *data);
+
+int		ft_banner(void);
+int		minishell(t_minishell *data);
+
+int		ft_pipe_count(t_minishell *data);
 int		ft_pipe_init(t_minishell *data);
-int		ft_prepare_pipe(t_minishell *data);
-int		ft_pwd(t_minishell *data);
-int		ft_readline(t_minishell *data, char *user);
+int		ft_pipe_prepare(t_minishell *data);
+
 void	ft_signal(int sig);
+
+char	*ft_expand(t_minishell *data, char *str);
+int		ft_parse(t_minishell *data, char *line);
+int		ft_readline(t_minishell *data, char *user);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_tokenize(t_minishell *data, char *line);
-int		ft_unset(t_minishell *data);
 
 #endif

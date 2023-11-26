@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 23:31:32 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/25 11:49:06 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 22:17:12 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_readline(t_minishell *data, char *user)
 	if (ft_tokenize(data, line) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	ft_history(line);
-	ft_init_pipe(data);
+	ft_pipe_init(data);
 	data->child_pid = ft_calloc(data->pipe_count + 1, sizeof(pid_t));
 	return (EXIT_SUCCESS);
 }

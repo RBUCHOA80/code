@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init.c                                          :+:      :+:    :+:   */
+/*   ft_init_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 21:22:41 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/25 10:18:17 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/11/25 22:29:37 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/11/25 22:31:07 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-int	ft_init_data(t_minishell *data)
-{
-	data->backup_fdin = dup(STDIN_FILENO);
-	data->backup_fdout = dup(STDOUT_FILENO);
-	data->pipe_matrix = NULL;
-	data->pipe_count = -1;
-	return (EXIT_SUCCESS);
-}
 
 int	ft_init_env(t_minishell *data)
 {
@@ -44,23 +35,6 @@ int	ft_init_env(t_minishell *data)
 		}
 		i++;
 	}
-	return (EXIT_SUCCESS);
-}
-
-//"CTRL+C" = SIGINT
-//"CTRL+\" = SIGQUIT
-int	ft_init_signal(void)
-{
-	signal(SIGINT, &ft_signal);
-	signal(SIGQUIT, SIG_IGN);
-	return (EXIT_SUCCESS);
-}
-
-int	ft_init(t_minishell *data)
-{
-	ft_init_data(data);
-	ft_init_env(data);
-	ft_init_signal();
 	return (EXIT_SUCCESS);
 }
 

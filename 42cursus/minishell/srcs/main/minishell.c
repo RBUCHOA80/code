@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 21:06:46 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/25 11:46:52 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 22:22:06 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	minishell(t_minishell *data)
 		while (data && data->token)
 		{
 			if (ft_has_pipe(data) == EXIT_SUCCESS)
-				ft_prepare_pipe(data);
+				ft_pipe_prepare(data);
 			if (ft_is_builtin(data) == EXIT_SUCCESS)
 				data->ret = ft_exec_builtin(data);
 			else if (ft_is_bin(data) == EXIT_SUCCESS)
