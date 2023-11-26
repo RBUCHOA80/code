@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 13:04:02 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/15 20:32:30 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/25 12:33:23 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	ft_check_env(t_list *env, char *str)
 	{
 		temp = ft_split(lst->content, '=');
 		if (ft_strcmp(temp[0], strs[0]) == EXIT_SUCCESS)
-			break ;
+		{
+			printf("(A) %s\n", (char *)lst->content);
+			return (EXIT_SUCCESS);
+		}
 		else
 			lst = lst->next;
 	}
-	printf("(A) %s\n", (char *)lst->content);
 	return (EXIT_FAILURE);
 }
 
@@ -50,11 +52,11 @@ int	ft_export(t_minishell *data)
 	else if (ft_strchr(data->token->content, '=') == NULL)
 		return (EXIT_SUCCESS);
 	else if (ft_check_env(data->env, data->token->content) == EXIT_SUCCESS)
-		return (EXIT_SUCCESS);
-	else
 	{
 		cmd = data->token->content;
 		ft_lstadd_back(&data->env, ft_lstnew(cmd));
 		return (EXIT_SUCCESS);
 	}
+	else
+		return (EXIT_SUCCESS);
 }

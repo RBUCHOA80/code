@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/11/25 10:22:19 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/11/25 21:56:36 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ SRCS_LIST			=	srcs/main/main.c \
 						srcs/check/ft_is_bin.c \
 						srcs/check/ft_is_builtin.c \
 						srcs/check/ft_has_pipe.c \
-						srcs/env/ft_search_env.c \
+						srcs/env/ft_env_search.c \
+						srcs/env/ft_env_value.c \
 						srcs/exec/ft_exec_bin.c \
 						srcs/exec/ft_exec_builtin.c \
 						srcs/get/ft_get_arge.c \

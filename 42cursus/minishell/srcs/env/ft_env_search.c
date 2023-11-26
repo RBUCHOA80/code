@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   ft_env_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 21:56:21 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/25 21:07:11 by ruchoa           ###   ########.fr       */
+/*   Created: 2023/11/25 21:53:24 by ruchoa            #+#    #+#             */
+/*   Updated: 2023/11/25 22:03:54 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_unset(t_minishell *data)
+t_list	*ft_env_search(t_list *lst, char *s1)
 {
-	t_list	*prev;
 	t_list	*temp;
 	char	**strs;
 
-	data->token = data->token->next;
-	if (data->token == NULL)
-		return (EXIT_SUCCESS);
-	prev = data->env;
-	temp = data->env;
+	temp = lst;
 	while (temp && temp->content)
 	{
 		strs = ft_split(temp->content, '=');
-		if (ft_strcmp(strs[0], data->token->content) == EXIT_SUCCESS)
-		{
-			if (prev->next == temp->next)
-				data->env = temp->next;
-			else
-				prev->next = temp->next;
-		}
+		if (ft_strcmp(strs[0], s1) == EXIT_SUCCESS)
+			return (temp);
 		else
-			prev = temp;
-		temp = temp->next;
+			temp = temp->next;
 	}
-	return (EXIT_SUCCESS);
+	return (NULL);
 }
