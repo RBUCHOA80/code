@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/11/25 22:34:16 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/11/26 18:54:00 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRCS_LIST			=	srcs/builtin/ft_cd.c \
 						srcs/init/ft_init_env.c \
 						srcs/init/ft_init_signal.c \
 						srcs/init/ft_init.c \
+						srcs/lib/ft_strcmp.c \
 						srcs/main/ft_banner.c \
 						srcs/main/main.c \
 						srcs/main/minishell.c \
@@ -73,7 +74,6 @@ SRCS_LIST			=	srcs/builtin/ft_cd.c \
 						srcs/tool/ft_expand.c \
 						srcs/tool/ft_parse.c \
 						srcs/tool/ft_readline.c \
-						srcs/tool/ft_strcmp.c \
 						srcs/tool/ft_tokenize.c \
 
 #						$(shell echo '$@ <- Nome da regra.')

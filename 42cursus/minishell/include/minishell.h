@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/25 22:32:16 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/11/26 18:51:48 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int		ft_has_pipe(t_minishell *data);
 int		ft_is_bin(t_minishell *data);
 int		ft_is_builtin(t_minishell *data);
 
-t_list	*ft_env_search(t_list *lst, char *s1);
-char	*ft_env_value(t_list *env, char *s1);
+t_list	*ft_env_search(t_list *env, char *env_name);
+char	*ft_env_value(t_list *env, char *env_name);
 
 int		ft_exec_bin(t_minishell *data);
 int		ft_exec_builtin(t_minishell *data);
@@ -102,6 +102,8 @@ int		ft_init_env(t_minishell *data);
 int		ft_init_signal(void);
 int		ft_init(t_minishell *data);
 
+int		ft_strcmp(char *s1, char *s2);
+
 int		ft_banner(void);
 int		minishell(t_minishell *data);
 
@@ -114,7 +116,6 @@ void	ft_signal(int sig);
 char	*ft_expand(t_minishell *data, char *str);
 int		ft_parse(t_minishell *data, char *line);
 int		ft_readline(t_minishell *data, char *user);
-int		ft_strcmp(char *s1, char *s2);
 int		ft_tokenize(t_minishell *data, char *line);
 
 #endif
