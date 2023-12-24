@@ -6,7 +6,7 @@
 #    By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 22:52:27 by ruchoa            #+#    #+#              #
-#    Updated: 2023/11/26 18:54:00 by ruchoa           ###   ########.fr        #
+#    Updated: 2023/12/01 21:05:14 by ruchoa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,9 +72,13 @@ SRCS_LIST			=	srcs/builtin/ft_cd.c \
 						srcs/pipe/ft_pipe_prepare.c \
 						srcs/signal/ft_signal.c \
 						srcs/tool/ft_expand.c \
+						srcs/tool/ft_fprint_error.c \
+						srcs/tool/ft_next.c \
 						srcs/tool/ft_parse.c \
 						srcs/tool/ft_readline.c \
+						srcs/tool/ft_restore_fd.c \
 						srcs/tool/ft_tokenize.c \
+						srcs/tool/ft_wait.c \
 
 #						$(shell echo '$@ <- Nome da regra.')
 #						$(shell echo '$< <- Nome da primeira dependência.')

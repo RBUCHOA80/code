@@ -6,7 +6,7 @@
 /*   By: ruchoa <ruchoa@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:47:18 by ruchoa            #+#    #+#             */
-/*   Updated: 2023/11/26 18:51:48 by ruchoa           ###   ########.fr       */
+/*   Updated: 2023/12/01 20:53:27 by ruchoa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,12 @@ int		ft_pipe_prepare(t_minishell *data);
 void	ft_signal(int sig);
 
 char	*ft_expand(t_minishell *data, char *str);
+int		ft_fprint_error(t_minishell *data);
+int		ft_next(t_minishell *data);
 int		ft_parse(t_minishell *data, char *line);
 int		ft_readline(t_minishell *data, char *user);
+int		ft_restore_fd(t_minishell *data);
 int		ft_tokenize(t_minishell *data, char *line);
+int		ft_wait(t_minishell *data);
 
 #endif
